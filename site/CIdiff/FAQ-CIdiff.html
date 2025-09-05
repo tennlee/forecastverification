@@ -1,0 +1,116 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Beth Ebert">
+   <meta name="GENERATOR" content="Mozilla/4.79 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Confidence intervals for differences</title>
+   <link rel = "stylesheet" href="../../default.css">
+</head>
+<body>
+
+<center>
+<h3>
+How do I know whether one forecast system performs significantly better
+than another?</h3></center>
+
+<center>Ian Jolliffe, University of Aberdeen<br>
+Beth Ebert, BMRC</center>
+
+<p>First, a fair comparison between two competing forecast systems should
+ideally test on the same data, with a sample size that is large enough
+to produce verification scores that are fairly robust. In some studies
+confidence intervals have been computed on the scores and examined to see
+whether they overlap. However, a more powerful way to measure the significance
+of differences between scores is to look at the <i>confidence interval
+for the difference</i>.
+<p>Consider the simple example where we have <i>n</i> observations on some
+measurement (score) in each of two groups (forecast strategies/models)
+and we want to know whether the underlying mean scores for the two groups
+are different. To keep things simple, assume that the variances in the
+two groups are known and are the same, <font face="Symbol"><i>s</i><sup>2</sup></font>;
+also the scores in the two groups are independent. Separate 95% confidences
+for the two means have half-widths<img SRC="eq1.gif" ALT="1.96 * sigma / sqrt(n)" height=46 width=63 align=CENTER>
+. They will therefore overlap unless the difference between sample means
+exceeds<img SRC="eq2.gif" ALT="2 * 1.96 * sigma / sqrt(n)" height=41 width=78 align=CENTER>.
+<p>Let us now look at a confidence interval for the <i>difference</i> between
+two means. It will fail to include zero, indicating that the underlying
+means are different, if the difference between the two sample means exceeds
+the half-width of the interval, which is<img SRC="eq3.gif" ALT="sqrt(2) * 1.96 * sigma / sqrt(n)" height=41 width=92 align=CENTER>,
+smaller than the earlier difference. Hence 'significance' is achieved for
+a smaller difference between sample means.
+<p>In fact, it is likely that even smaller differences should be declared
+significant. We have made a number of assumptions above. Equal sample size
+is presumably okay in most circumstances and equal variances may not be
+too seriously wrong, but known variances is wrong. If they are unknown
+the effect is to replace <i><font face="Symbol">s&nbsp;</font></i> by the
+sample standard deviation <i>s</i>, and replace 1.96 from the Gaussian
+distribution with a critical value from a t distribution. This will increase
+the expected width of the interval but not by much unless the sample sizes
+are very small. Finally independence is assumed -- this is also clearly
+wrong, but if we replace it by something more realistic then it is likely
+that the confidence interval will become narrower still. Its half-width
+is now<img SRC="eq4.gif" ALT="sqrt( 2(1-rho) ) * 1.96 * sigma / sqrt(n)" height=42 width=141 align=CENTER>,
+where <i><font face="Symbol">r</font></i> is the correlation between scores
+for the two models, assumed positive. If <i><font face="Symbol">r</font></i>
+is 0.5, then the half-width is<img SRC="eq1.gif" ALT="1.96 * sigma / sqrt(n)" height=46 width=63 align=CENTER>;
+if <i><font face="Symbol">r</font></i> is 0.875, then the half-width is
+as small as<img SRC="eq5.gif" ALT="0.5 * 1.96 * sigma / sqrt(n)" height=41 width=92 align=CENTER>.
+<p><b>Example:</b>
+<p>Suppose two models produce the 59-day time series of areally averaged
+temperature forecasts shown by the orange and blue lines in the figure
+below. When verified against the observations, a time series of mean absolute
+error (MAE) is generated, indicated by the heavy lines. Model 2 appears
+to have smaller errors than Model 1. But is this difference significant?
+<br><img SRC="example.gif" height=289 width=716 align=TEXTTOP>
+<br><b>Statistics on mean absolute error time series</b>
+
+<table cellspacing="3" cellpadding="4" summary="Statistics on MAE time series">
+
+<tr>
+<td><center>.</center></td>
+<td><center>MAE 1<br>(C)</center></td>
+<td><center>MAE 2<br>(C)</center></td>
+<td><center>MAE 1 - MAE 2<br>(C)</center></td>
+</tr>
+
+<tr>
+<td>mean value</td>
+<td><center>3.8</center></td>
+<td><center>2.9</center></td>
+<td><center>0.9</center></td>
+</tr>
+
+<tr>
+<td>standard deviation</td>
+<td><center>2.3</center></td>
+<td><center>2.5</center></td>
+<td><center>2.9</center></td>
+</tr>
+
+<tr>
+<td>95% confidence&nbsp;
+<br>interval halfwidth</td>
+<td><center>0.59</center></td>
+<td><center>0.64</center></td>
+<td><center>0.77</center></td>
+</tr>
+</table>
+
+<p>In this example the difference between the two mean values of MAE is
+0.9, with Model 2 having the better value. The correlation between the
+two time series of MAE is <i><font face="Symbol">r</font></i> =0.2.&nbsp; 
+Taking a representative value for
+the standard deviation of <font face="Symbol"><i>s</i></font> =2.4 C, then the halfwidth of the confidence interval
+on the difference between the mean MAEs is&nbsp;
+<img SRC="eq4.gif" ALT="sqrt( 2(1-rho) ) * 1.96 * sigma / sqrt(n)" height=42 width=141 align=CENTER>=
+0.77. This value is less than the difference between the mean MAEs, indicating
+that the MAE of Model 2 is indeed better than the MAE of Model 1 at the
+95% significance level.
+<p>The 95% confidence intervals on the mean MAE values for the two models
+overlap (range of 3.21 to 4.39 for Model 1, range of 2.26 to 3.54 for Model
+2). This is a weaker test for measuring whether one forecast system performs
+better than another.
+<br>&nbsp;
+</body>
+</html>

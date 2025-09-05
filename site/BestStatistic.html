@@ -1,0 +1,140 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Beth Ebert">
+   <meta name="GENERATOR" content="Mozilla/4.79 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Best statistic for measuring forecast accuracy</title>
+   <link rel = "stylesheet" href="../default.css">
+</head>
+<body>
+
+<center>
+<h3>
+What is the best statistic for measuring the
+accuracy of a forecast?</h3></center>
+
+<center>
+<h4>
+Beth Ebert, Bureau of Meteorology Research
+Centre</h4></center>
+
+<p><br>A colleague of mine used
+to ask me, "Isn't there just one statistic that would give the accuracy
+of the forecast?"
+<p>It would be nice if things
+were that simple, but they rarely are! Typically we want to measure the
+accuracy and skill of a forecast <i>system</i>, which means that we have
+a large number of forecasts and observations covering a domain in time
+and/or space (rather than a single forecast / observation pair). There
+may be occasions when all that we care about is the average magnitude of
+the difference between the forecast and observations (in which case the
+mean absolute error would be the appropriate statistic), but usually we
+are interested in knowing more. Questions that we might like to answer
+include:
+<ul>
+<li>
+Was the forecast magnitude correct?</li>
+
+<li>
+Was the forecast biased?</li>
+
+<li>
+How often the forecast make
+an unacceptably large error?</li>
+
+<li>
+Did the distribution of forecast
+values resemble the distribution of observed values?</li>
+
+<li>
+Was the timing correct?</li>
+
+<li>
+Did the forecast put the event
+in the right place?</li>
+
+<li>
+Did the forecast event have
+the correct size and duration?</li>
+
+<li>
+Was the trend correct?</li>
+</ul>
+It is hard to imagine one statistic
+that would address all of those issues! It is pretty clear that a number
+of statistics are needed to give a useful description of the forecast system's
+performance, and to meet the needs of different users for information about
+particular attributes of the forecast. Some of the questions cannot easily
+be answered using standard scores, and one must either examine the forecasts
+and observations by eye, employ a distributions oriented approach (Brooks
+and Doswell, 1996), or use a more sophisticated diagnostic verification
+method.
+<p>Some attributes of the forecast
+performance may be more important than others, depending on the application.
+For example, for daily maximum and minimum temperatures forecasts it is
+important to get the magnitude right, and avoid large errors. Statistics
+that would be useful in this case would be the mean difference (to measure
+bias), mean absolute (or RMS) error, and perhaps a binary accuracy score
+based on a temperature error threshold.
+<p>Another example is fog forecasts
+for airports, where the main issues are whether or not the fog occurs,
+and if so, when it begins and ends. Categorical statistics such as probability
+of detection and false alarm ratio are generally used to evaluate these
+forecasts. If the forecasts are issued as probabilities of the event occurring,
+then probabilistic verification methods such as reliability diagrams, ROC
+diagrams, and Brier scores can be used.
+<p>A third example is a hurricane
+forecast, where the most critical predictions are for its intensity and
+the location and timing of landfall. Because a hurricane is a definable
+entity in time and space, simple matched-point statistics may not be very
+revealing. Statistics based on the properties of the forecast and observed
+entities are more appropriate. Examples would be the difference between
+the forecast and observed central pressure, the distance between the forecast
+and observed low pressure center, and the vector difference between predicted
+and observed storm velocity. Mean values of these differences are generally
+used to evaluate a set of hurricane forecasts.
+<p>Sometimes an administrator
+insists on receiving only a summary score, in which case there are several
+options:
+<p>(a) argue for the use of
+a few key statistics instead of only one,
+<br>(b) try to select the single
+most important statistic,
+<br>(c) combine several statistics
+into one score,
+<br>(d) combine several statistics
+into one diagram.
+<p>I believe that (a) and (d)
+are the best options, if they are allowable. Selecting only one statistic
+(option b) gives an incomplete picture of forecast performance, and can
+even be misleading. For example, a forecast with little bias can look great
+according to the mean error, but be completely useless if it does not capture
+the varying nature of the quantity being predicted.
+<p>A combined score (option
+c) is tempting, but is difficult to interpret. Does a good score mean that
+the forecast has "good" performance in all aspects, or great performance
+on some aspects and lousy performance on others? Should all components
+of a combined score receive equal weight, or should some get more emphasis
+than others? A combined score may be used by administrators for monitoring
+overall performance and setting performance targets (one example is the
+Met Office's <a href="http://www.met-office.gov.uk/research/nwp/numerical/nwpindex.html">NWP
+Index</a>).
+<p>An example of option (d)
+is the Taylor diagram (Taylor, 2001), which combines the RMS error, the
+correlation coefficient, and the standard deviations of the forecasts and
+observations on one diagram. Other types of diagrams are possible.
+<br>&nbsp;
+<br>&nbsp;
+<p>References:
+<p>Brooks, H.E. and C.A. Doswell
+III, 1996: A comparison of measures-oriented and distributions-oriented
+approaches to forecast verification. <i>Wea. Forecasting</i>, <b>11</b>, 288-303.
+<p>Taylor, K.E., 2001: Summarizing
+multiple aspects of model performance in a single diagram. <i>J. Geophys. Res.</i>,
+<b>106</b> (D7), 7183-7192.
+<br>&nbsp;
+<br>&nbsp;
+<p>June 2003
+</body>
+</html>

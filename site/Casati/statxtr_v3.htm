@@ -1,0 +1,192 @@
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+
+<HTML>
+	
+<HEAD>
+	<TITLE>Statistical challenges and Approaches for the analysis and verification/validation of weather and climate extremes</TITLE>
+</HEAD>
+
+<BODY  BGCOLOR="white"  >
+
+<center>
+<font size=6 color=black> Statistical challenges and approaches <BR> for the analysis and 
+verification/validation <BR> of weather and climate extremes </font>
+<br><br>Dr. B. Casati, Ouranos, Montreal, Canada<br>
+<a href="mailto:b.casati@gmail.com">b.casati@gmail.com</a>
+</center>
+
+<BR><BR>
+
+<P> Extreme events can be defined in different ways, depending on the users and purposes of the study. 
+Extremes can be maxima or minima, they can be regarded as rare events, they can be defined by their magnitude 
+or based on their socio-economical impacts. A definition embracing these and statistically sound is: 
+<B><I> extreme events are events in the tail of the distribution. </I></B> </P>
+
+<P> Several recent studies in weather and climate and related sciences have focused on extremes. 
+From the user's perspective, extremes have high social and economical impacts. Climate studies project 
+an increase in extreme frequency and magnitude. The progressively higher temporal and spatial 
+resolution of NWP model enables to better resolve (some) extreme events. Analysis and verification/validation 
+of extreme events plays a key role since (1) it enhances understanding of the capability of our models in 
+predicting extremes, and (2) it helps decision makers in developing adaptation strategies to mitigate impact and losses. </P>
+
+<P> Statistical analysis of extreme events is challenging for several reasons. Extremes are often characterized 
+by large values (and outliers): robust and resistant statistics are necessary for their treatment. Extreme 
+events are often rare events: these are characterized by a small sample, and therefore large uncertainties. 
+Pooling in space and time alleviate the effects of the small sample size, however inhomogeneity and 
+non-stationarity ought to be kept in account. Alternatively, statistical analysis of moderate extremes can 
+be used to infer the behaviour of more extreme events. Small samples in a categorical approach can result 
+also in unstable statistics, over-sensitivity to the bias and/or non-informative asymptotic limits. </P>
+
+<P> <B><I> Extreme Value Theory (EVT) </I></B> is the branch of statistics which studies the properties of 
+extreme values, and enables them to be fit with theoretical distributions. EVT provides a robust and resistant 
+approach, which is capable of optimally handle right-skewed distributions characterized by large values and 
+outliers. Moreover, using EVT one can infer properties of the population and/or very large extremes, even if they are not 
+observed in the actual sample. Non-stationary models in EVT account for covariates (e.g. annual and 
+diurnal cycles, North Atlantic Oscillation) and trends in the extremes. </P>
+
+<P> The capabilities of EVT have been only recently explored by the climate and weather research community. 
+The use of EVT is radically different within the two communities, due to the different spatial and temporal 
+matching requirements and different time scales. Climate does not require an exact time matching, therefore 
+climate studies focus on the analysis and comparison of marginal distributions obtained over 30 or more years 
+(e.g., future versus present climate). In weather forecasts, on the other hand, the events require a more exact 
+matching in space and time, therefore verification approaches focus on the behaviour of the forecast and 
+observation joint distribution. Therefore, analysis and validation of climate extremes use EVT for univariate 
+distributions, whereas extreme weather verification uses EVT for bivariate distributions. Climate and weather 
+community approaches are complementary -- both communities could gain from method exchanges and collaborations. </P>
+
+<TABLE cellspacing=50 cols=2>
+<TR> 
+
+<TD valign=top >
+<FONT size=+1><B><U> Extreme weather verification </U></B></FONT> <BR>
+<P>Early verification studies have analyzed the behaviour of traditional binary categorical verification 
+scores for extreme and rare events (Schaefer, 1990; Doswell <i>et al.</i>, 1990; Marzban, 1998; Goeber, 2004). 
+Most of these studies have shown that the verification scores in extreme and rare event situations are overly 
+sensitive to the bias and encourage either under- or over-forecasting. Few studies have investigated the 
+mathematical limits of the scores as the events become rarer: Schaefer (1990) showed that the ETS converges 
+to the TS as the base rate tends to zero; Doswell <i>et al.</i> (1990) showed that the PSS converges to the hit rate 
+as the number of correct rejections becomes larger relative to the other entries in the contingency table. 
+Goeber (2004) and Stephenson <i>et al.</i> (2008) show that most of the categorical scores converge to trivial limits 
+(either zero or infinity) as the events get more and more extreme and rare. </P>
+
+<P>Ferro (2007) and Stephenson et al (2008) propose a verification approach based on EVT for bivariate 
+distributions. Both studies are inspired by the study by Coles 
+<i>et al.</i> (1999) on dependence measures for extreme values. Ferro (2007) proposes a
+<A HREF="http://www.bom.gov.au/bmrc/wefor/staff/eee/verif/Ferro/Verif_rare_events.html">
+probability model</A> to represent the asymptotic behaviour of forecast and observation joint distribution as 
+the events get more and more rare. Stephenson <i>et al.</i> (2008) propose a non-vanishing measure for extreme event 
+verification, the Extreme Dependency Score (EDS). Both the probability model parameters and the EDS depend on 
+the rate of convergence to zero of the hit rate as the events get rarer. </P>
+
+<P> Neighbourhood (fuzzy) verification approaches (e.g., Ebert, 2008) have been recently used for extreme weather verification
+to alleviate the requirement of exact spatial and temporal matching between observed and forecast events 
+(quite a strict requirement, given the low predictability of extreme and rare events). </P>
+
+<P> There is not consensus between Weather Services on which technique is optimal to verify extremes. Extreme 
+events themselves are often defined by exceedance of fixed thresholds, which depend on the local climatology or 
+some specific application. A suite of standard statistics could help monitoring and intercomparisons.</P>
+
+</TD>
+
+<TD valign=top>
+<FONT size=+1><B><U> Climate extremes analysis and validation </U></B></FONT> <BR>
+<P> Two approaches for the analysis of extremes are adopted in climate studies:
+<OL> 
+
+<LI> <B> Evaluation and analysis of indices associated with extreme phenomena</B>. <BR>
+<BR>
+<TABLE border="2"><TR>
+<TD valign=top align=left>
+<FONT size=2>
+<B>Temperature Indices</B><BR>
+frost days = n of days with Tmin &lt; 0 <BR>
+cold days = n of days with Tmax &lt; 10%ile <BR>
+cold nights = n of days with Tmin &lt; 10%ile <BR>
+summer days = n of days with Tmax &gt; 25C <BR>
+warm days = n days with Tmax &gt; 90%ile <BR>
+warm nights = n days with Tmin &gt; 90%ile <BR>
+Diurnal T range = average Tmax - Tmin <BR>
+Standard deviation of Tmean<BR>
+</FONT>
+</TD><TD valign=top align=right>
+<FONT size=2>
+<B>Precipitation Indices</B> <BR>
+total annual snowfall accumulation <BR>
+total snow to total precip ratio <BR>
+days with precipitation <BR>
+days with rain <BR>
+average precip intensity for precip days <BR>
+average rainfall intensity for rain days <BR>
+max number of consecutive dry days <BR>
+highest 5-days precip accumulation amount <BR>
+Very wet days = n of days with P &gt; 95%ile <BR>
+Heavy precipitation days (P &gt; 10 mm) <BR>
+</FONT>
+</TD>
+</TR></TABLE>
+<BR>
+A suite of standard indices related to extremes in daily temperature and precipitation has been identified 
+(Frich <i>et al.</i>, 2002) and later amplified (<A HREF="http://cccma.seos.uvic.ca/ETCCDI/docs/ETCCDMIndicesComparison1.pdf">
+Index List</A>) by the joint CCl/CLIVAR/JCOMM Expert Team on Climate Change Detection and Indices (ETCCDI), 
+in an international effort coordinated by WMO/WCRP (<A HREF="http://cccma.seos.uvic.ca/ETCCDI">http://cccma.seos.uvic.ca/ETCCDI</A>). 
+These indices are used both to monitor extremes in the present climate (e.g., Vincent and Mekis, 2006), and to 
+analyze the evolution of extremes with Climate Change (e.g. Tebaldi <i>et al.</i>, 2006). Statistical significance of the 
+indices trend is usually assessed along with their distributions and geographical location.</LI>
+<BR>
+<LI> <B> Evaluation and analysis of return values obtained from extreme value distributions</B>.<BR>
+EVT describe two types of theoretical distributions fitting extreme values: the Block Maxima (e.g. maximum annual temperature) are described by the Generalized Extreme Value (GEV) distribution, whereas the magnitude of Peaks over Threshold (PoT) are fitted with the Generalized Pareto (GP) distribution. Most climate studies use GEV distributions to define extreme event return values (extreme value exceeded once every T years), and then analyze the changes in the return values with Climate Change (e.g., Kharin <i>et al.</i>, 2007; Fowler <i>et al.</i>, 2007). Stationary fits by using L-moments are usually used on two (present and future) time windows, however recent studies are considering maximum likelihood estimation (MLE) to determine covariates and time evolution of the extreme distributions with Climate Change. The PoT approach has also been recently embraced, since it enables the use of a larger data sample than the Block Maxima approach.</LI>
+</OL> 
+Due to the great scale mis-match between climate model grids and station observations, validation of climate models is usually performed versus re-analyses (Gleckler <i>et al.</i>, 2008). The representativeness error is quite dramatic when considering precipitation extremes. Upscaling techniques (to interpolate observed extremes to the model grid) or areal correction factors (to infer extreme local values from the grid-box areal-average estimates) are sometimes applied. Direct comparison of climate models versus observed extremes is usually used to define downscaling relations.  
+</P>
+</TD>
+
+</TR>
+</TABLE>
+
+<B> Some key references for EVT </B> <BR>
+<UL>
+<LI> Coles S. (2001): &quot;An Introduction to Statistical Modeling of Extreme Values&quot;, Springer.
+<LI> Naveau P. M. Nogaj, C. Ammann, P. Tiou, D. Cooley, V. Jomelli (2005): &quot;Statistical methods for the analysis of climate extremes&quot;. 
+Comptes Rendu Geoscience, vol 337, 1013-1022.
+<LI> Katz R.W., M.B. Parlange, P. Naveau (2002): &quot;Statistics of extremes in hydrology&quot;. Advances in Water Resources, vol. 25, 1287-1304.
+<LI> <A HREF="http://www.isse.ucar.edu/extremevalues/extreme.html"> R.Katz's Extremes Web-Page</A>. 
+This page provides an excellent summary of Extreme Value Theory and its application to climate studies, 
+including references to selected publications and links to available software for extremes.
+
+</UL>
+
+<B> References for weather extremes verification </B> <BR>
+<UL>
+<LI> Coles S., J. Heffernan, J. Tawn (1999): &quot;Dependence measures for extreme value analyses&quot;. Extremes 2:4, 339-365.
+<LI> Doswell C.A.III, R. Davies-Jones, D.L. Keller (1990): &quot;On summary measures of skill in rare event forecasting 
+based on contingency tables&quot;. Wea. Forecasting, 5, 576-585.
+<LI> Ebert, E.E. (2008): Fuzzy verification of high resolution gridded forecasts: A review and proposed framework. Meteorol. Appl., vol 15, 51-64.
+<LI> Ferro C.A.T. (2007): &quot;A probability model for verifying deterministic forecasts of extreme events&quot;. Wea. Forecasting, vol 22, 1089-1100.
+<LI> Gober M., C.A. Wilson, S.F. Milton, D.B. Stephenson (2004): &quot;Fairplay in the verification of operational 
+quantitative precipitation forecasts&quot;. J. Hydrology, vol 288, 225-236. 
+<LI> Marzban C. (1998): &quot;Scalar measures of performance in rare-event situations&quot;. Wea. Forecasting, vol 13, 753-763.
+<LI> Schaefer J.T. (1990): &quot;The critical success index as an indicator of warning skill&quot;. Wea. Forecasting, vol 5, pp 570-575. 
+<LI> Stephenson D.B., B. Casati, C.A.T. Ferro and C.A. Wilson (2008): &quot;The extreme dependency score: 
+a non-vanishing measure for forecasts of rare events&quot;. Meteorol. Appl., vol 15, 41-50.
+</UL>
+
+<B> References for climate extremes analysis and validation </B> <BR>
+<UL>
+<LI> Fowler, H.J., M. Ekstrom, S. Blenkinsop, A.P. Smith (2007): &quot;Estimating change in extreme European precipitation 
+using a multimodel ensemble&quot;. J. Geo. Research, vol 112, D18104.
+<LI> Frich P., L.V. Alexander, P. Della-Marta, B. Gleason, M. Haylock,A.M.G. Klein Tank, T. Peterson (2002): &quot;Observed 
+coherent changes in climatic extremes during the second half of the twentieth century&quot;. Clim. Res., vol 19, 193-212.
+<LI> Gleckler P.J., K.E. Taylor, C. Doutriaux (2008): &quot;Performance metrics for Climate models&quot;. J. Geo. Research, vol 113, D06104.
+<LI> Kharin V.V., F.W. Zwiers, X. Zhang, G.C. Hegerel (2007): &quot;Changes in Temperature and Precipitation Extremes in 
+the IPCC Ensemble of Global Coupled Model Simulations&quot;. J. of Clim., vol 20, 1419-1444.
+<LI> Tebaldi C., K. Hayhoe, J.M. Arblaster, G.A. Meehl (2006): &quot;Going to the extremes: An Intercomparison of 
+Model-Simulated Historical and Future Changes in Extreme Events&quot;. Clim. Change, vol 79, 185-211.
+<LI> Vincent L.A, E. Mekis (2006): &quot;Changes in daily extreme temperature and precipitation indices for Canada 
+over the 20th century&quot;. Atm. Ocean, vol. 44, 177-193.
+</UL>
+
+</BODY>
+
+</HTML>

@@ -1,0 +1,243 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:w="urn:schemas-microsoft-com:office:word"
+ xmlns:st1="urn:schemas-microsoft-com:office:smarttags"
+ xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+  <title>Deterministic Limit</title>
+</head>
+<body>
+<div class="Section1">
+<center>
+<h3>NEW APPROACHES TO VERIFYING FORECASTS OF HAZARDOUS WEATHER</h3>
+<p>Tim Hewson</p>
+<p>Met Office, Exeter, U.K.<br>
+E-mail: <i>tim.hewson@metoffice.gov.uk</i></p>
+</center>
+<b>Abstract</b>: A new, simple and
+informative verification measure called the ‘deterministic limit’ is
+introduced. It applies to categorical forecasts of a (pre-defined)
+adverse
+meteorological event, indicating the lead time beyond which these
+forecasts are
+more likely, on average, to be wrong than right. Examples are provided,
+based
+on wind speed. These also illustrate the importance of incorporating a
+suitable
+frequency-preserving calibration step, to best account for any forecast
+bias.
+<p><span style="font-size: 10pt;"><i><b>Keywords – </b>verification,
+hazardous weather, contingency
+table, deterministic,
+probabilistic, calibration, THORPEX</i></span></p>
+<h3>1. MOTIVATION</h3>
+<p>The practice of weather forecasting,
+particularly for rare events, has historically been hindered by a lack
+of clear
+measures of capability. Forecasters will understand that predicting a
+day with
+unusually high maxima - such as ‘over 30C at London Heathrow’ - is
+rather
+easier than predicting a short, intense rainfall event, such as ‘more
+than 10mm
+in 1 hour at Glasgow airport’, but knowledge of exactly how far ahead
+it is
+possible to successfully predict such events does not exist. Given the
+great importance
+attached, in socio-economic terms, to warning provision, this state of
+affairs
+is regrettable. The new ‘deterministic limit’ verification measure
+introduced
+here addresses this problem.</p>
+<h3>2. DEFINITION AND EXAMPLES</h3>
+<p>We define the
+deterministic limit (<i>T<sub>DL</sub></i>), for a
+pre-defined, rare
+meteorological event, to be ‘<i>the lead
+time (T) at which, over a suitably large and representative forecast
+sample,
+number of hits (H) equals the total number of misses and false alarms</i>
+<i>(X)</i>’ (see Fig. 1a). Null forecasts are
+ignored, being considered not relevant. The closest counterpart in
+traditional
+verification measures is the Critical Success Index (see Jolliffe &amp;
+Stephenson
+(2003), Ch 2), which equals <i>H</i>/(<i>H</i>+<i>X</i>).
+Evidently, at <i>T<sub>DL</sub></i>, this is
+0.5. What is new here is use of the lead-time dimension.<o:p></o:p></p>
+<p>Choice of CSI=0.5, as opposed to some
+other value, relates directly to forecast utility. Out of all
+forecasts, the
+subset which <i>is concerned with</i> the
+event in question is made up only of the non-null cases (i.e. H+X). So
+within
+this subset forecasts are more likely to be right only for <i>T
+</i>&lt; <i>T<sub>DL</sub></i><i>T </i>&gt;<i> T<sub>DL</sub></i>.</p>
+<p>One pre-requisite for
+defining <i>T<sub>DL</sub></i> is that <i>H</i> and
+<i>X</i> should, respectively, decrease and increase
+monotonically with <i>T</i>. In practice this should be a
+characteristic of almost every forecast system, though in cases where
+small sample
+size obscures this (e.g. Fig. 1a, top) smoothing could be used. In pure
+model
+forecasts assimilation-related spin-up problems could also lead to
+there being short
+periods, for small <i>T</i>, when &#8706;<i>H</i>/&#8706;<i>T</i> &gt; 0. However
+in systems employing 4D-Var this is
+less likely
+to be an issue. In terms of benefits, the deterministic limit:</p>
+<p style="margin-left: 40px;">i) is a simple,
+meaningful quantity that can be widely understood (by researchers,
+customers, etc.)</p>
+<p style="margin-left: 40px;">ii) can be applied to
+a very wide range of forecast parameters</p>
+<p style="margin-left: 40px;">iii) can be used to
+set appropriate targets for warning provision</p>
+<p style="margin-left: 40px;">iv) can be used to
+assess changes in performance (of models and/or forecasters)</p>
+<p style="margin-left: 40px;">v) provides guidance
+on when to switch from deterministic forecasts to probabilistic ones</p>
+<p style="margin-left: 40px;">vi) indicates how
+much geographical or temporal specificity to build into a forecast, at
+a given lead</p>
+<p>The Lerwick example in Fig. 1a - see caption for full event
+definition -
+leads to
+two conclusions. Firstly, for Force 7 wind predictions, <i>T<sub>DL</sub></i>
+is about 15 hours (marked). For lead times beyond this
+probabilistic guidance should be used. For Force 8, <i>T<sub>DL</sub></i>
+is less than zero (curves don’t cross), implying
+that probabilistic guidance should be used for all <i>T</i>.
+In part the reason <i>T<sub>DL</sub></i>
+is smaller for the more extreme winds is the lower base rate - i.e. the
+climatology
+(see caption). Base rate should always be quoted alongside the
+deterministic limit.
+In another model example (not shown) with site specific exceedance
+replaced by
+exceedance within an area, <i>T<sub>DL</sub></i>
+increases. This is due to reduced specificity - (vi) above - which in
+turn
+partly relates to a higher base rate. It is generally accepted that
+forecasts
+should be less specific at longer leads – this puts this practice onto
+a much firmer
+footing.</p>
+<img alt="Deterministic limit for winds" src="DetLimit.gif"
+ style="width: 1017px; height: 320px;">
+<p><span style="font-size: 10pt;"><b>Figure
+1</b>: Data for all panels covers
+a 24 month period from mid
+2004, with forecasts provided by the Met Office Mesoscale model (12km
+resolution). <b>(a)</b>: hits (green) and
+misses + false alarms (red) for mean wind exceedance, at Lerwick, at
+a fixed
+time; top lines for &#8805; Beaufort Force 7, base rate = 8% (deterministic
+limit is marked – assumes curves have been smoothed); bottom lines for
+Force 8,
+base rate = 2%. <b>(b)</b>: 2x2 contingency
+tables for T+0 North Rona mean wind
+&#8805;29
+m/s (~Force 11), with differing calibration methods. <b style="">(c)</b>:
+Scatter plot for Heathrow mean wind forecasts (m/s) for T+24h;
+lines show calibration methods; 2x2 contingency table structure for
+‘Reliable
+Calibration’ method is overlaid. <b style="">(d)</b>:
+Scatter plot for Heathrow T+6 wind forecasts (m/s), with method for
+estimating contingency
+table characteristics illustrated (see text). </span></p>
+<h3>3. CALIBRATION</h3>
+<p>In analysing strong
+wind data it became
+apparent that model bias can significantly impact on <i>T<sub>DL</sub></i>.
+Similar problems would likely be encountered for
+other parameters, such as rainfall. The clearest way round this is to
+calibrate
+model output, by site. Figure 1b illustrates the impact that
+calibration has on
+model handling at a very exposed site. Clearly a simple approach, using
+linear regression,
+is sub-optimal. The alternative, which we call ‘reliable calibration’,
+normalises misses to equal false alarms, and in so doing also elevates
+hits
+markedly. This method, touched on in Casati et al (2003), is
+illustrated in
+Fig. 1c. As the ‘contingency table cross’ (horizontal and vertical
+lines) moves
+along the reliable recalibration curve, the number of points in the
+right half
+(=event observed) always matches the number in the top half (=event
+forecast).
+Note also how the reliable recalibration curve varies through the data
+range,
+sometimes lying between the linear regression lines, sometimes outside.</p>
+<h3>4. FURTHER DISCUSSION</h3>
+Evidently the structure of a ‘forecast
+versus observed’ scatter plot (for lead time T) is pivotal for
+determining
+whether H &gt; X, which in turn indicates whether <i>T<sub>DL</sub></i>
+&gt; <i>T</i>: tighter
+point clustering would naturally be consistent with more hits. A simple
+first
+order assumption that there is a linear reduction in point density in
+the
+orthogonal directions s and n shown on Fig. 1d, above the threshold in
+question
+(with ~ zero density reached at the vectors’ ends), leads to the result
+that <i>T<sub>DL</sub></i> &#8776; <i>T</i> when s &#8776; 3n. This implies that
+if the cross-calibration spread
+(s)
+is more than about one third of the along-calibration spread (n), then
+event
+forecasts for that <i>T</i> should in
+general be probabilistic. This reasoning follows in the spirit of
+Murphy and
+Winkler (1987), where the importance of considering the joint
+distribution of
+forecasts and observations was highlighted.
+<p>As
+Fig 1a illustrates, the error bar on <i>T<sub>DL</sub></i>
+is a function of (&#8706;<i>H</i>/&#8706;<i>T)<sub>DL </sub></i>and
+(&#8706;<i>X</i>/&#8706;<i>T)<sub>DL</sub></i>. This can be
+computed geometrically.</p>
+<p>Forecasts of hazardous weather are
+intrinsically difficult to verify because of low base rates. For the
+time being
+this may constrain <i>T<sub>DL</sub></i>
+calculations to focus on thresholds that are less stringent than the
+ideal. In
+future we must strive to maximise the verification database by
+collecting all
+available data (e.g. 6-hourly maximum wind gusts), by providing model
+forecasts
+that are better suited to purpose (e.g. interrogating all model time
+steps to
+give 6-hourly maximum gust) and by reserving supercomputer time to
+perform
+reruns of new model versions on old cases. </p>
+<p>In the context of
+THORPEX, it is hoped
+that the deterministic limit concept will assist with long term
+socio-economic
+goals, by providing clear guidance on an appropriate structure for
+warning
+provision.</p>
+<h3>REFERENCES</h3>
+<p>Casati, B., Ross, G.
+and Stephenson, D.B. 2004. A new intensity-scale approach for the
+verification
+of spatial precipitation forecasts. <i>Meteorol. Applications</i>, <b>11</b>,
+141-154.</p>
+<p>Jolliffe, I.T. and Stephenson, D.B. (eds),
+2003. <i>Forecast Verification: A Practitioner’s
+Guide in Atmospheric Science</i>. John Wiley &amp; Sons, Chichester
+U.K.
+240 pp.</p>
+<p>Murphy, A.H. and Winkler, R.L. 1987: A General
+Framework for Forecast Verification. <i>Mon. Wea. Rev.</i>, <b>115</b>
+, 1330-1338.</p>
+</div>
+</body>
+</html>

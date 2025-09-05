@@ -1,0 +1,244 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Generator" content="Microsoft Word 97">
+   <meta name="GENERATOR" content="Mozilla/4.79 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>What does "hedging" a forecast mean?</title>
+   <link rel = "stylesheet" href="../default.css">
+</head>
+<body>
+
+<center><b><font face="Arial"><font size=+1>What does "hedging" a forecast
+mean, and how do some scores encourage hedging?</font></font></b>
+<p><b><font face="Arial">Laurie Wilson, Research en Prevision Numerique,
+Dorval, Quebec, Canada</font></b>
+<br><b><font face="Arial">Beth Ebert, Bureau of Meteorology Research Centre,
+Melbourne, Australia</font></b></center>
+
+<p>The Oxford English dictionary defines "to hedge" as, "To avoid a definite
+decision or commitment" or "to reduce one's risk of loss on a bet or speculation
+by compensating transactions on the other side". In more general terms,
+to "hedge one's bets" is "to protect oneself against loss or error by supporting
+more than one side in a contest, an argument etc". In the context of forecasting
+, hedging would mean the avoidance of a definite (specific or categorical)
+forecast, opting instead for a probabilistic forecast. The forecaster,
+instead of "putting all his eggs in one basket" and forecasting a single
+outcome with 100% probability, hedges his bets by assigning non-zero probability
+to more than one possible outcome.
+<p>In terms of forecast verification, probability forecasts which avoid
+the extremes of the probability range often receive more favorable scores,
+especially with quadratic scoring rules such as the root mean square error
+or Brier Score. This is because an extreme forecast is heavily penalized
+if it is incorrect. Thus a forecaster can minimize his risk of obtaining
+an unfavorable score on a particular forecast by hedging. At the same time,
+he lowers the maximum positive score he can obtain if he is correct.
+<p>In terms of forecast attributes as defined by Murphy (1993), hedged
+forecasts lack sharpness; they are smooth; probabilities are assigned over
+a broader range of possible outcomes. In the context of spatial forecasts,
+hedging means a tendency to underforecast the intensity of systems or to
+forecast the location of sharply defined features such as fronts with less
+precision.
+<p>"Hedging" has been given a somewhat different, but consistent interpretation
+by Murphy and Epstein (1967) and Murphy (1978). These authors considered
+only probabilistic forecasts, and defined hedging by the statement, "Hedging
+is said to occur whenever a forecaster's judgment and forecast differ".
+For example, if the forecaster truly believes the probability of an event
+is 50%, but issues a forecast probability of 20%, motivated, for example,
+by a desire to improve his verification score, then he is said to have
+hedged his forecast.
+<p>Apparent inconsistencies between this definition and the above arise
+because of differences in restrictions placed on forecasts vis-&agrave;-vis
+hedging. A categorical forecast may be required of a forecaster (he must
+make a decision), and he is not given the opportunity to use probabilities
+other than the categorical values of 0 and 100%. In such cases, given the
+known uncertainty of future weather, a categorical forecast can be almost
+always viewed as a hedged forecast in the sense that it does not correspond
+with the forecaster's true belief about the likelihood of the chosen outcome.
+At the same time, hedging by avoiding forecasts of extreme probabilities,
+when this option is available, has been demonstrated many times to generally
+improve verification scores, as stated above. However, this arises because
+the forecaster is then allowed to forecast according to his true belief,
+not because he has been able to "play the score".
+<p>Some verification scores may actually encourage forecasters to "play
+the score". Three screening criteria can be used to judge whether performance
+measures encourage hedging (Murphy, 1996):
+<blockquote><i>Equitability</i> - A score is "equitable" if it gives the
+same score for two types of unskilled forecasts: random chance, and constant
+forecasts of the same category. In other words, forecasts of random chance,
+"always yes", "always no", "always category 3", etc. should produce the
+same (bad) score.
+<p><i>Consistency</i> - In terms of performance measures, a score is "consistent"
+when it is the appropriate score for judging the quality of a deterministic
+or single-category forecast. If in reality the forecaster's judgement is
+represented by a probability distribution, but he/she must issue a single
+forecast according to some decision rule (for example, "forecast the mean
+of the distribution", or "forecast yes when the probability exceeds a certain
+threshold"), a consistent score gives an optimum value when the decision
+rule is followed (Mason, 1979, 2003). In the case of binary (yes/no) forecasts,
+the probability threshold that gives a consistent score depends on the
+score being used.
+<p><i>Propriety</i> - A score is "proper" when the score is optimized (has
+a maximum or minimum value, whichever is appropriate) if the forecast corresponds
+to the best judgement of the forecaster. Propriety is a special case of
+consistency, and applies only to probability forecasts. If there is only
+one unique maxima, then the score is "strictly proper" (For further mathematical
+development on strictly proper scoring, see Murphy and Epstein (1967),
+Wilks (1995, p.267), or <a href="http://www.nssl.noaa.gov/users/brooks/public_html/feda/note/properscoring.html">Harold
+Brooks' lecture notes</a>.)</blockquote>
+Several binary verification scores are listed below, along with their equitability
+and optimal threshold probability (Mason, 1979, 2003). In the expressions
+for optimal threshold probability, s refers to the base rate (also known
+as the sample climatology, or marginal probability of the observed event,
+equal to (<i>hits</i> + <i>misses</i>) / <i>N</i>), and <i>N</i> is the
+total number of forecasts made. In some cases the optimal decision threshold
+depends on the value of the score itself, which would make it difficult
+to specify a decision threshold in advance.
+<br>&nbsp;
+<!-- <table BORDER > -->
+<table>
+<tr>
+<td><b>Score</b></td>
+
+<td><b>Equitable?</b></td>
+
+<td>
+<center><b>Optimal threshold probability</b></center>
+</td>
+</tr>
+
+<tr>
+<td><a href="../index.html#ACC">Accuracy</a> (fraction correct),
+<i>ACC</i></td>
+
+<td>
+<center>No</center>
+</td>
+
+<td>
+<center>0.5</center>
+</td>
+</tr>
+
+<tr>
+<td><a href="../index.html#POD">Probability of detection</a> (hit
+rate), <i>POD</i></td>
+
+<td>
+<center>No</center>
+</td>
+
+<td>
+<center>0.0</center>
+</td>
+</tr>
+
+<tr>
+<td><a href="../index.html#FAR">False alarm ratio</a>, <i>FAR</i></td>
+
+<td>
+<center>No</center>
+</td>
+
+<td>
+<center>1.0</center>
+</td>
+</tr>
+
+<tr>
+<td><a href="../index.html#POFD">Probability of false detection</a>
+(false alarm rate), <i>POFD</i></td>
+
+<td>
+<center>No</center>
+</td>
+
+<td>
+<center>1.0</center>
+</td>
+</tr>
+
+<tr>
+<td><a href="../index.html#TS">Threat score</a> (critical success
+index), <i>TS</i></td>
+
+<td>
+<center>No</center>
+</td>
+
+<td>
+<center><i>TS</i> / (1+<i>TS</i>)</center>
+</td>
+</tr>
+
+<tr>
+<td><a href="../index.html#ETS">Equitable threat score</a> (Gilbert
+skill score), <i>ETS</i></td>
+
+<td>
+<center>Yes</center>
+</td>
+
+<td>
+<center>[<i>s</i> + (1-<i>s</i>)<i>ETS</i>] / (1+<i>ETS</i>)</center>
+</td>
+</tr>
+
+<tr>
+<td><a href="../index.html#HK">Hanssen and Kuipers discriminant</a>
+(true skill statistic, Peirces's skill score), <i>HK</i></td>
+
+<td>
+<center>Yes</center>
+</td>
+
+<td>
+<center>(<i>Ns</i>+1) / (<i>N</i>+2)</center>
+</td>
+</tr>
+
+<tr>
+<td><a href="../index.html#HSS">Heidke skill score</a>, <i>HSS</i></td>
+
+<td>
+<center>Yes</center>
+</td>
+
+<td>
+<center><i>s</i> + (1-2<i>s</i>)*(<i>HSS</i>/2)</center>
+</td>
+</tr>
+
+<tr>
+<td><a href="../index.html#ORSS">Odds ratio skill score</a> (Yule's
+Q), <i>ORSS</i></td>
+
+<td>
+<center>Yes</center>
+</td>
+
+<td>
+<center><i>s</i> / [<i>s</i> + (1-<i>s</i>)*<i>OR</i>*<i>POFD</i><sup>2</sup>/<i>POD</i><sup>2</sup>]</center>
+</td>
+</tr>
+</table>
+
+<p><b><i><font face="Arial">References:</font></i></b>
+<p>Mason, I.B., 1979: On reducing probability forecsts to yes/no forecasts.
+<i>Mon. Wea. Rev.</i>, <b>107</b>, 207-211.
+<br>Mason, I.B., 2003: Binary events. In <i>Forecast Verification. A Practioner's
+Guide in Atmospheric Science</i> (eds. I.T. Jolliffe and D.B. Stephenson).
+Wiley and Sons Ltd, 37-76.
+<br>Murphy, A.H., 1978: Hedging and the mode of expression of weather forecasts.
+<i>Bull. Amer. Met. Soc</i>., <b>59</b>, 371-373.
+<br>Murphy, A.H., 1993: What is a good forecast? An essay on the nature
+of goodness in weather forecasting. <i>Wea. Forecasting,</i> <b>8</b>, 281-293.
+<br>Murphy, A.H., 1996: The Finley affair: A signal event in the history
+of forecast verification. <i>Wea. Forecasting</i>, <b>11</b>, 3-20.
+<br>Murphy, A.H. and E.S. Epstein, 1967: A note on probability forecasts
+and "hedging". <i>J. Appl. Meteor</i>. <b>6</b>, 1002-1004.
+<br>Wilks, D.S., 1995: <i>Statistical Methods in the Atmospheric Sciences.
+An Introduction</i>.&nbsp; Academic Press, San Diego, 467 pp.
+<br>&nbsp;
+</body>
+</html>

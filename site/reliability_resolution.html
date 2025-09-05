@@ -1,0 +1,68 @@
+<html>
+<head>
+<link rel = "stylesheet" href="../default.css">
+</head>
+<body>
+
+<center>
+<h3><i>Reliability</i> and <i>resolution</i> - how are they different?</h3>
+<p>
+Yuejian Zhu, NCEP and Beth Ebert, CAWCR
+</p></center>
+
+<p>Reliability and resolution are two independent attributes of a forecast. 
+<i>Reliability</i> is concerned only with the statistical consistency between each class of forecasts 
+<i>F<sub>i</sub></i> 
+and the corresponding distribution of observations <i>O<sub>i</sub></i> that follows such forecasts. 
+Resolution is not affected at all by this consistency.</p>
+
+<p>By contrast, <i>resolution</i> reflects how well different forecast classes can separate cases with
+different subsequent observed events. Reliability is unaffected by this property of forecast systems.</p>
+
+<p>In principle, reliability can always be statistically 'enforced' or corrected. 
+Unlike reliability, resolution cannot be improved by statistically correcting the forecasts 
+to follow the distribution of ensuing verifying observations.</p>
+
+<p>When verifying probabilistic forecasts, quantitative values for reliability and resolution 
+can be generated from the Brier score. The Brier score can be decomposed into three terms
+and interpreted using the reliability diagram (observed frequency plotted as a function of
+forecast category). For <i>K</i> probability categories and <i>N</i> samples:
+
+<p><center><img src="BSterms.gif"
+ alt="Brier score decomposition" align="middle" height="75" width="501"></center>
+
+<table cellspacing="20">
+<tr>
+<td>
+The first term (reliability) measures the weighted error of the reliability curve, where the weights reflect
+the number of times each probability category is forecasted. 
+It indicates the degree to which forecast probabilities can be taken at face value.
+</td>
+<td>
+The second term (resolution) measures the distance between the observed relative frequency and climatological 
+frequency. It indicates the degree to which the forecast can separate different situations.
+</td>
+<td>
+The third term measures the variability of the observations. It indicates the degree to which 
+situations are climatologically easy or difficult to predict. It therefore has nothing to do with 
+forecast quality! 
+</td>
+</tr><tr>
+<td><center><img src="Reliability_concept.gif"
+ alt="Brier score decomposition" height="169" width="160"></center></td>
+<td><center><img src="Resolution_concept.gif"
+ alt="Brier score decomposition" height="161" width="159"></center></td>
+<td></td>
+</tr></table>
+
+<p><b>References:</b>
+</p>
+<p>Toth, Z., O. Talagrand, and Y. Zhu, 2006: The attributes of forecast systems. 
+In <i>Predictability of Weather and Climate</i>, ed. T.N. Palmer and R. Hagedorn, 
+Cambridge University Press, 584-595.
+<p>
+Wilks, D.S. 2005: <i>Statistical Methods in the Atmospheric Sciences. 2nd Edition</i>. Elsevier, 627 pp.
+
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="generator" content="HTML Tidy, see www.w3.org">
+   <meta name="Author" content="Beth Ebert">
+   <meta name="GENERATOR" content="Mozilla/4.79 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Cost/loss ratio and relative value</title>
+<style type="text/css">
+  H1 {font-size: x-large; color: #993366; font-family: Arial,Helvitica, sans-serif; font-style: italic }
+  H2 {font-size: large; color: #993366; font-family: Arial,Helvitica, sans-serif; font-style: italic }
+  H3 {font-size: medium; color: black; font-family: Arial,Helvitica, sans-serif; font-style: italic }
+  H4 {font-size: small; color: black; font-family: Arial,Helvitica, sans-serif; font-style: italic }
+  p  {font-size: medium; color: black; font_family: Times, serif; font-style: normal }
+ body {color: #000000;}
+ :link { color: #0000EE }
+ :visited { color: #551A8B }
+ :active { color: #FF0000 }
+</style>
+<!--  p  {font-size: small; color: black; font-family: Arial,Helvitica, sans-serif; font-style: normal } -->
+<script type="text/javascript">
+  <!--
+  function popup(mylink, windowname)
+  {
+  if (! window.focus)return true;
+  var href;
+  if (typeof(mylink) == 'string')
+     href=mylink;
+  else
+     href=mylink.href;
+  window.open(href, windowname, 'width=400,height=200,dependent=yes,left=300,top=200resizable=yes,scrollbars=yes');
+  return false;
+  }
+  //-->
+  </script>
+<script type="text/javascript">
+  <!--
+  function dropdown(mySel)
+  {
+  var myWin, myVal;
+  myVal = mySel.options[mySel.selectedIndex].value;
+  if(myVal)
+     {
+     if(mySel.form.target)myWin = parent[mySel.form.target];
+     else myWin = window;
+     if (! myWin) return true;
+     myWin.location = myVal;
+     }
+  return false;
+  }
+  //-->
+</script>
+</head>
+<body>
+
+<h3>
+<b>Cost/loss model and the relative value</b></h3>
+The <a href="../verif_web_page.html#relative value">relative value</a>
+assumes a cost-loss decision making model, in which the cost for taking
+action is <i>C</i> (whether the event occurs or not), and the loss incurred
+if the event occurs but no action is taken is <i>L</i>. The expense matrix
+is shown below.
+<br>&nbsp;
+<table WIDTH="389" HEIGHT="120" summary="Two by two
+contingency table of forecasts and observations" >
+<tr ALIGN=CENTER VALIGN=CENTER>
+<td>&nbsp;</td>
+
+<td>Event occurs</td>
+
+<td>Event does not occur</td>
+</tr>
+
+<tr ALIGN=CENTER VALIGN=CENTER>
+<td>Action taken</td>
+
+<td BGCOLOR="#FFFF00"><b><i>C</i></b></td>
+
+<td BGCOLOR="#FFFF00"><b><i>C</i></b></td>
+</tr>
+
+<tr ALIGN=CENTER VALIGN=CENTER>
+<td>Action not taken</td>
+
+<td BGCOLOR="#FFFF00"><b><i>L</i></b></td>
+
+<td BGCOLOR="#FFFF00"><b><i>0</i></b></td>
+</tr>
+</table>
+
+<p>For a forecast based on <i>climatological</i> information alone, one
+would either always take action or never take action, whichever is cheaper,
+yielding an optimal expected mean expense of min(<i>C</i>, <i>P<sub>clim</sub>L</i>).
+<p>For a <i>perfect</i> forecast with no misses or false alarms the mean
+expense would be <i>P<sub>clim</sub>*C.</i>
+<p>The mean expense for a particular forecast system over a sample of <i>N</i>
+forecasts&nbsp; is obtained by multiplying the expense matrix by the <a href="../verif_web_page.html#Contingency table">2x2
+contingency table</a> to yield 1/<i>N</i> (hits*<i>C</i> + false_alarms*<i>C</i>
++ misses*<i>L</i>).
+<p>It can be shown that the maximum value of <i>V</i> occurs where the
+cost/loss ratio equals the climatological probability, and that the value
+at this point is equal to the <a href="../verif_web_page.html#HK">Hanssen
+and Kuipers discriminant</a>.
+<p>A nice primer on forecast value and the cost-loss model is available
+from the
+<a href="http://www.wmo.ch/web/wcp/clips2001/html/index_curriculum.htm">WMO
+CLIPS curriculum</a>.(follow links to Tools, talk by David Richardson).
+<p>When applied to probabilistic forecasts the envelope of relative value
+curves represents the <i>potential</i> value since all decision thresholds
+are possible. In practice a user would choose an optimal decision threshold
+for his/her cost/loss ratio based on past performance, and apply this threshold
+to future (independent) forecasts. This <i>actual</i> value may be lower
+than the potential value if the conditions vary in time, or if the size
+of the sample used to estimate the optimal decision threshold was too small
+<a href="#Atger 2001">(Atger,
+2001)</a>. Also, the value of a probabilistic forecast system will not
+be truly optimal unless the forecasts are reliable (unbiassed), which may
+require some calibration.
+<p><b>References:</b>
+<br><a NAME="Atger 2001"></a>Atger, F., 2001: Verification of intense precipitation
+forecasts from single models and ensemble prediction systems. <i>Nonlin.
+Proc. Geophys.</i>,
+<b>8</b>, 401-417. Click <a href="http://www.copernicus.org/EGU/npg/8/401.htm">here</a>
+to see the abstract and get the PDF (295 Kb).
+<br><a NAME="Richardson 2000"></a>Richardson, D.S., 2000: Skill and relative
+economic value of the ECMWF ensemble prediction system. <i>Quart. J. Royal
+Meteorol. Soc.</i>, <b>126</b>, 649-667.
+<br><a NAME="Wilks 2001"></a>Wilks, D.S., 2001: A skill score based on
+economic value for probability forecasts. <i>Meteorol. Appl.</i>, <b>8</b>,
+209-219.
+<br>&nbsp;
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.79 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>AUTOMATED PHASE ERROR SYSTEM DOCUMENTATION</title>
+   <link rel = "stylesheet" href="../../default.css">
+</head>
+<body text="#000000" bgcolor="#FFCC33" link="#0000EE" vlink="#551A8B" alink="#FE0000">
+
+<center>
+<h1>
+AUTOMATED EAST-WEST PHASE ERROR CALCULATION</h1></center>
+
+<center>Keith F. Brill
+<br>United States Department of Commerce
+<br>National Oceanic and Atmospheric Administration
+<br>National Weather Service
+<br>National Centers for Environmental Prediction
+<br>Hydrometeorological Prediction Center
+<br>21 FEBRUARY 2001
+<br>Contributed 19 September 2002</center>
+
+<h1>
+1. Introduction.</h1>
+In the past, assessing forecast phase errors was a laborious process requiring
+manual tracking of systems. The emphasis was usually on position errors
+for high and low pressure centers. Because of the time and effort required,
+results were few in number and of questionable statistical significance.
+This automated system uses a different approach to the phase error assessment
+problem. It considers both high and low pressure centers, troughs, and
+ridges and takes into account the typical synoptic scale wavelength. While
+it would not necessarily yield the identical result as the manual method
+in any given particular case, it can be applied to every forecast over
+some period of time. With the large number of cases, mean positive and
+negative phase shift errors have statistical significance and give some
+indication of typical phase errors over a particular region.
+<p>This introduction continues with a brief description of forecast verification
+in very general terms. Following in Section 2 is a brief description of
+the automated phase error calculation procedure. Section 3 briefly describes
+a specific application of the procedure.
+<p>In general, any forecast verification procedure may be thought of as
+some operator V acting on a forecast f and its verifying observed values
+o yielding one or more values to be operated upon by some normalizing or
+score generating function E to give the final value or vector of values
+s:
+<center>s = E ( V(f,o) )</center>
+
+<p><br>
+<br>
+<p>For example, in the case of bias, V(f,o)=f-o, and E is the averaging
+operator (summation, followed by dividing by the number summed). Although
+s is presented here as the composition of two functions, E and V. It is
+often the case that both E and V are themselves composite functions, the
+division of mathematical labor between E and V may sometimes be chosen
+arbitrarily for the convenience of the problem under consideration and
+the method of data storage and processing. In general, the first function
+of which V is composed must be some transformation applied in the same
+way to both the verifying observations and the forecast values and a comparison
+operator of some sort. This may be expressed as T(f)~T(o), where T represents
+the transformation and ~ represents the operator. In the example of bias,
+T is the identity transformation and ~ is the subtraction operator.
+<p>This general description of the verification process is presented in
+this way to show that considerable creativity may be expressed in the design
+of these procedures. As long as the same thing is done to both the forecast
+and observed or analyzed values, it is possible to compute a measure of
+forecast verification that has validity. The usefulness of the measure
+to forecasters depends upon how well it can be related to factors that
+are considered during the forecasting process itself.
+<h1>
+2. The Phase Error Calculation.</h1>
+The phase error calculation starts with the application of the transformation,
+T, to both the gridded forecast and gridded verifying analysis fields.
+T, in this case, is a multi-step operation:
+<ol>
+<li>
+Interpolate gridded fields to latitude/longitude points in a bounded zonal
+band or strip.</li>
+
+<li>
+Average meridionally in each zonal strip to produce a single array of values
+as a function of latitude only for both the forecast and the analysis.</li>
+
+<li>
+Perform cosine series trigonometric approximations to both the forecast
+and analysis arrays of values.</li>
+
+<li>
+Compute the variance associated with each spectral component of the trigonometric
+approximation for both the forecast and analysis.</li>
+
+<li>
+Sort the variance values in descending order for both forecast and analysis.
+Also order the wave numbers of these spectral components in accordance
+with this sorting.</li>
+
+<li>
+Compare results of the preceding sort to make sure that the hierarchy of
+wave numbers is the same for the forecast and analysis for all wave numbers
+for which a phase error is requested. If the hierarchies differ, the forecast
+and analysis fields are too dissimilar to permit a phase error calculation.</li>
+
+<li>
+Compute the phase angle associated with the cosine series representation
+of the trigonometric approximations for both the forecast and the analysis.
+Do this for each spectral component being compared (usually just one, the
+spectral component bearing most of the variance).</li>
+</ol>
+Transformation, T, as described above, yields one or more phase angle values,
+for both the forecast and the analysis. What is done to the forecast has
+been done in identical fashion to the analysis. Now, the operator (~) must
+be applied. In this case, it is simply a subtraction followed by a check
+to make sure that the phase angle difference (error) lies between -PI and
++PI. The function V uses the wavelength of the spectral component and the
+average latitude of the zonal band to convert the phase angle error into
+a distance displacement in kilometers. Finally, the function E is the identity
+operator. Of course, E could be a time averaging operator applied to the
+same zonal band and spectral component, or it could be multiplication by
+a weighting function based on the magnitude of the variance associated
+with the spectral component.
+<p>The phase errors represent east/west displacements of the forecast relative
+to the analysis within zonal bands. Actual phase errors often have north/south
+components, and would, therefore, be larger in magnitude than represented
+by this approach. Future development will extend this method to two dimensions
+to determine a field of vector phase errors. In the future approach, the
+gradient of the forecast difference field will provide the basis for determining
+the direction of the phase error vector; while, its magnitude will be determined
+using the method outlined above applied in a zonal strip constructed in
+a latitude longitude coordinate system rotated to align with the great
+circle arc tangent to the gradient vector.&nbsp; The two-dimensional procedure
+need not be done at every grid point, but at the locations of selected
+features in the analysis field (<i>e.g.,&nbsp; </i>extrema, points along
+trough and ridge axes).
+<p>Finally, one may wonder if smoothing might need to be a part of T, since
+the forecast and analysis grids may have different resolutions. The effect
+of higher resolution on the trigonometric approximation is higher variance
+associated with the higher wave number spectral components. But the lowest
+wave numbers usually account for most of the variance and float to the
+top of the sorting operation. As long as the same few wave number components
+appear in the same order in both the forecast and the analysis list of
+wave numbers arranged in order of decreasing magnitude of their variance
+contributions, then the phase error computation may proceed for each such
+component without regard to resolution. Ignoring the high wave number components
+effectively achieves low-pass smoothing of the data.
+<h1>
+3. A Phase Error Application.</h1>
+The method described above is used in the United States National Weather
+Service's Nation Centers for Environmental Prediction (NCEP) Hydrometeorological
+Prediction Center (HPC) to provide constructive guidance to forecasters
+of mean sea level pressure at projection times of three to seven days.
+For the HPC verification, the zonal bands chosen for the phase error calculation
+are 12 degrees of latitude wide and 28 degrees of longitude in length.
+This makes them approximately one mid-latitude synoptic scale wavelength
+long (~2100 to 2600 km). Nine overlapping bands cover the continental United
+States. Results from each band are always treated individually; they are
+never combined. The phase error is computed for only the fundamental (longest
+wavelength) spectral component. Phase error presentations are created for
+both the forecasters and the corresponding model guidance.
+<p>Three figures are presented as examples of results of the phase error
+calculation.&nbsp; Each figure shows the analysis of the mean sea level
+pressure as solid blue contour lines and the forecast as dashed yellow
+lines.&nbsp; The caption at the bottom of each figure gives the verifying
+year, month, day, and hour along with the forecast hour, the name of the
+model, the phase error, and the percentage of variance associated with
+the fundamental wave for which the phase error was determined for both
+the forecast and the analysis.&nbsp;&nbsp; <a href="Brill_negative_error.gif">Fig.
+1</a> is a 72-h forecast from the NCEP global model showing that a trough
+exiting the eastern US is predicted to lag behind the observed position;
+hence, the phase is error is -166 KM, a negative value.&nbsp; This band
+is the Central Eastern US zonal band averaging about 2400 KM in length.&nbsp;
+The amplitude of the fundamental wave of that wave length accounts for
+93.7% of the forecast field variance and 84.6% of the analysis variance
+on that bounded zonal band, after meridional averaging.&nbsp;&nbsp; 
+<a href="Brill_positive_error.gif">Fig.
+2</a> is a 96-h forecast from the European Center global model showing
+a high pressure cell that the model is too quick to move off the northeastern
+US coast.&nbsp; In this case, the forecast is too fast; so, the phase error
+is +395 KM.&nbsp; This zonal band is the North Eastern US band having a
+length of almost 2200 KM.&nbsp; The variance information is shown on the
+figure caption.&nbsp;&nbsp;&nbsp; <a href="Brill_null_error.gif">Fig. 3</a>&nbsp;
+shows a verification on the North Western US band for which no phase error
+can be computed.&nbsp; The spectral decomposition for the analysis field
+differs too greatly from that for the forecast field.
+<p>In the NCEP/HPC application of this method, the following information
+is saved along with the phase error result:
+<ol>
+<li>
+the amplitude error for the spectral component to which the phase error
+applies</li>
+<li>
+the forecast variance associated with the spectral component</li>
+<li>
+the analysis variance associated with the spectral component</li>
+<li>
+the analysis phase angle</li>
+<li>
+the analysis amplitude</li>
+<li>
+the total forecast variance</li>
+<li>
+the total analysis variance</li>
+</ol>
+Saving this information allows the phase error values to be screened by
+display software.&nbsp; Phase errors associated with small amplitudes may
+be rejected.&nbsp; The phase error values may be weighted by the forecast
+or analysis variance or the fraction of the total variance associated with
+the spectral component.&nbsp; In its current configuration, the HPC display
+software does not make use of these data screening possibilities.
+<p>Various types of displays are generated in the HPC for assisting forecasters.&nbsp;
+Time series of phase errors are presented for both forecasters and models.&nbsp;
+Average positive and negative phase errors are displayed separately along
+with data counts to show which sign of phase error predominated.&nbsp;
+The average net phase error is also presented.&nbsp; The averaging period
+is arbitrarily set at 84 days.&nbsp; These averages are presented for each
+zonal band for both models and forecasters.
+<p>There are several things HPC forecasters must keep in mind when looking
+at individual phase errors. There are times when the phase error cannot
+be computed because the forecast and analysis have different spectra. Therefore,
+there will be gaps in time series plots. The values computed are "raw"
+phase errors not corrected for the degree to which the spectral component
+with which it is associated contributes to the total variance. The phase
+errors may be more like those computed using the traditional manual method
+during the cold season when the synoptic wave pattern is better defined.
+</body>
+</html>

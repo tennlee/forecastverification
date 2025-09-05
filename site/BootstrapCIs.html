@@ -1,0 +1,154 @@
+<HTML>
+<HEAD>
+<TITLE>Bootstrap confidence intervals</title>
+<link rel = "stylesheet" href="../default.css">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+<B><FONT SIZE=4><P ALIGN="CENTER">Confidence intervals for verification scores</P>
+</FONT></B>
+
+<p>
+Any verification score must be regarded as a sample estimate of the
+"true" value for an infinitely large verification dataset. There is
+therefore some uncertainty associated with the score's value, especially
+when the sample size is small or the data are not independent, or both.
+It is a good idea to estimate some confidence intervals (CIs) to set
+some bounds on the expected value of the verification score. This also
+helps to assess whether differences between competing forecast systems
+are real.
+</p><p>
+Jolliffe (2007) gives a nice discussion of several methods for deriving
+CIs for verification measures. Mathematical formulae are available for
+computing CIs for distributions which are binomial or normal,
+assumptions that are reasonable for scores that represent proportions
+(<i>PC</i>, <i>POD</i>, <i>FAR</i>, <i>TS</i>). In general, most verification scores cannot
+be expected to satisfy these assumptions. Moreover, the verification
+samples are often non-independent in space and/or time. A non-parametric
+method such as the /bootstrap method/ is ideally suited for handling
+these data because it does not require assumptions about distributions.
+The bootstrap is, however sensitive to dependence of the events in the
+verification sample.  A strategy such as <i>block bootstrapping</i>, where
+the data is resampled in blocks which can be considered independent of
+each other, is recommended for datasets with high spatial or temporal
+correlation.  This point is discussed further below.
+</p><p>
+ 
+
+The non-parametric bootstrap is quite simple to do:
+</p><p>
+ 
+
+1. Generate a bootstrap sample by randomly drawing <i>N</i>
+ forecast/observation pairs from the full set of <i>N</i> samples, <i>with
+replacement</i> (i.e., pick a sample, put it back, <i>N</i> times).
+</p><p>
+ 
+
+2. Compute the verification statistic for that bootstrap sample.
+</p><p>
+ 
+
+3. Repeat steps 1 and 2 a large number of times, say 1000, to generate
+1000 estimates for that verification statistic.
+</p><p>
+ 
+
+4. Order the estimates from smallest to largest. The (1-&alpha;) confidence
+interval is easily obtained by finding the values for which the fraction
+&alpha;/2 of estimates are lower and higher, respectively.
+</p><p>
+
+In step 1, it is sometimes appropriate to sample M < N replicates of the
+data.  For example, if the distribution for the data is heavy tailed, in
+which case it is recommended to use M=sqrt(N) (see, e.g., Gilleland,
+2010).  When using the bootstrap approach for finding confidence
+intervals, the main assumption is that the data sample represents the
+population distribution.  Therefore, N should be large enough that this
+assumption is likely to be valid; especially if using M<N.
+</p><p>
+ 
+
+Step 2 may entail computing several summary statistics all at once,
+which can save considerable computing time if intervals for more than
+one statistic are desired.
+</p><p>
+ 
+
+A general rule of thumb for selecting the number of replicate samples
+(or <i>resamples</i>) in step 3 is to choose the number small enough as to
+minimize the computational time, but large enough that a representative
+sample of statistics is found.  The usual technique is to start with a
+low number, say 500, and run the procedure twice.  If the resulting
+intervals differ wildly, then increase the number of resamples, e.g. to
+700.  Repeat this procedure until the confidence intervals do not change
+drastically.  Ideally, the procedure should be tried many times for each
+number of resamples, but it has been found in practice that twice is
+sufficient.
+</p><p>
+ 
+
+The procedure for determining the bootstrap confidence intervals from
+the sample of statistics in step 4 is known as the percentile method. 
+It is generally a good method, but there are more assumptions.  If these
+assumptions are not valid, then the intervals tend to be too narrow. 
+There are several alternative methods, and each has its own advantages
+and disadvantages.  A method known as the BCa method adjusts the
+quantiles (i.e., &alpha;/2 and 1-&alpha;/2) for violations of these
+assumptions.  The result are highly accurate estimates for the
+confidence limits, but the procedure involves an additional round of
+sampling that can be highly inefficient for large data sets.  An
+asymptotic approximation to the BCa bounds that is quick is known as the
+ABC method, but it can only be applied for smooth statistics.  See
+Gilleland (2010) for more about these approaches.
+
+</p><p>
+
+When comparing the scores for two or more forecasts one can calculate
+confidence intervals for the mean <i>difference</i> between the scores. If
+the (1-&alpha;) confidence interval does not include 0, then the performance
+of the forecasts can be considered significantly different.
+
+</p><p>
+
+As mentioned above, bootstrap sampling also implies independent events
+in the sample.  Thus it is often necessary to sample in "blocks" to
+obtain more reasonable estimates of the confidence limits.  For example,
+if there is high spatial correlation in the dataset, which is often the
+case in gridded forecasts, then each full grid might be sampled as a
+single block.  Or, if there is also temporal correlation in the
+forecasts, then it could be necessary to form blocks of two or three
+successive forecasts.
+
+</p><p>
+
+A crucial assumption for using the block bootstrap approach is that the
+length of correlation is much smaller than the sample size.  This
+assumption is usually valid for time series where the series is often
+very long, and the temporal correlation is relatively short.  However,
+this assumption is typically violated for spatial correlation whereby
+many variables tend to be highly correlated spatially over large areas
+relative to the size of the domain studied.  In such a case, a
+parametric bootstrap procedure may be preferred.  Such a procedure,
+however, requires an assumed model that can vary greatly from one type
+of variable (or region) to another.
+
+</p><p>
+
+References:
+
+</p><p>
+
+Gilleland, E., 2010: Confidence intervals for forecast verification.
+<a href="http://nldr.library.ucar.edu/collections/technotes/asset-000-000-000-846.pdf">
+<i>NCAR Technical Note</i> NCAR/TN-479+STR</a>, 71pp.
+
+</p><p>
+
+Jolliffe, I.T., 2007: Uncertainty and inference for verification
+measures. <i>Wea. Forecasting</i>, <b>22</b>, 637-650.
+
+</BODY>
+</HTML>
+
+

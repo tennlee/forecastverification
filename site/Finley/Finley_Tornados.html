@@ -1,0 +1,125 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="generator" content="HTML Tidy, see www.w3.org">
+   <meta name="Author" content="Beth Ebert">
+   <meta name="GENERATOR" content="Mozilla/4.79 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Finley tornado forecast example</title>
+   <link rel = "stylesheet" href="../../default.css">
+</head>
+<body>
+<h2><center>Finley (1884) Tornado Forecasts</center></h2
+<p>This is a classic example used in many textbooks, papers, and talks
+on forecast verification to illustrate the characteristics of the various
+categorical verification scores (e.g., <a href="#Murphy 1996">Murphy, 1996</a>;
+<a href="#Stephenson 2000">Stephenson, 2000</a>).
+<p>In March 1884 Sergeant John Finley initiated twice daily tornado forecasts
+for eighteen regions in the United States, east of the Rocky Mountains.
+Finley claimed 95.6% to 98.6% overall accuracy for the first 3-month period,
+depending on the time and district, with some districts achieving 100%
+accuracy for all 3 months. A critic of the results pointed out that 98.2%
+accuracy could be had by merely forecasting "no tornado"! This clearly
+illustrates the need for more meaningful verification scores.
+<p>The contingency table for <a href="#Finley 1884">Finley's (1884)</a>
+forecasts is:
+<br>&nbsp;
+<br>&nbsp;
+<table WIDTH="400" HEIGHT="180" summary="Contingency table
+for Finley's tornado forecasts" >
+<tr ALIGN=CENTER VALIGN=CENTER>
+<td><b>&nbsp;</b></td>
+<td><b>&nbsp;</b></td>
+<td WIDTH="75"></td>
+<td ALIGN=LEFT WIDTH="75">&nbsp;Observed</td>
+<td WIDTH="75"></td>
+</tr>
+<tr ALIGN=CENTER VALIGN=CENTER>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>tornado</td>
+<td>no tornado</td>
+<td>&nbsp;Total</td>
+</tr>
+<tr ALIGN=CENTER VALIGN=CENTER>
+<td ALIGN=LEFT VALIGN=BASELINE>Forecast</td>
+<td>tornado</td>
+<td BGCOLOR="#33FF33"><b>28</b></td>
+<td BGCOLOR="#33FF33"><b>72</b></td>
+<td BGCOLOR="#99FF99"><b>100</b></td>
+</tr>
+<tr ALIGN=CENTER VALIGN=CENTER>
+<td><b>&nbsp;</b></td>
+<td>no tornado</td>
+<td BGCOLOR="#33FF33"><b>23</b></td>
+<td BGCOLOR="#33FF33"><b>2680</b></td>
+<td BGCOLOR="#99FF99"><b>2703</b></td>
+</tr>
+<tr ALIGN=CENTER VALIGN=CENTER>
+<td ALIGN=LEFT>Total</td>
+<td><b>&nbsp;</b></td>
+<td BGCOLOR="#99FF99"><b>51</b></td>
+<td BGCOLOR="#99FF99"><b>2752</b></td>
+<td BGCOLOR="#99FF99"><b>2803</b></td>
+</tr>
+</table>
+
+<p>The standard categorical verification scores are computed and interpreted below:
+<p><b><i>Accuracy (fraction correct)</i></b> -&nbsp;
+<img SRC="ACC_finley.gif" ALT="accuracy for finley tornado forecasts" height=55 width=441 align=CENTER>&nbsp;&nbsp;&nbsp;
+<font color="#000000">Overall, 96.6% of the forecasts were correct.</font>
+<br>&nbsp;
+<p><b><i>Bias score (frequency bias)</i></b> -&nbsp;
+<img SRC="BIAS_finley.gif" ALT="bias score for finley tornado forecasts" height=50 width=344 align=CENTER>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<font color="#000000">Tornados were predicted roughly twice as often as they occurred.</font>
+<br>&nbsp;
+<p><b><i>Probability of detection (hit rate)</i></b> -&nbsp;
+<img SRC="POD_finley.gif" ALT="Probability of detection for finley tornado forecasts" height=49 width=286 align=CENTER>&nbsp;&nbsp;&nbsp;&nbsp;
+Slightly more than half of the tornados that occurred were correctly predicted to occur.
+<br>&nbsp;
+<p><b><i>False alarm ratio</i></b> -&nbsp;
+<img SRC="FAR_finley.gif" ALT="False alarm ratio for finley tornado forecasts" height=50 width=338 align=CENTER>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+72% of the forecasts for tornados turned out to be false alarms (no tornado occurred).
+<br>&nbsp;
+<p><b><i>Threat score (critical success index)</i></b> -&nbsp;
+<img SRC="CSI_finley.gif" ALT="Threat score for finley tornado forecasts" height=51 width=472 align=CENTER>&nbsp;&nbsp;&nbsp;&nbsp;
+Of the tornado events that were either forecast or observed, 23% of those were correctly forecast.
+<br>&nbsp;
+<p><b><i>Equitable threat score (Gilbert skill score)</i></b> -
+<img SRC="ETS_finley.gif" ALT="Equitable threat score for finley tornado forecasts" height=47 width=580 align=CENTER>
+<br>where&nbsp;
+<img SRC="randomhits_finley.gif" ALT="Random hits for finley tornado forecasts" height=50 width=563 align=CENTER>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Since one could expect to get very few positive tornado forecasts correct
+due to random chance (only about 2 out of a total of 2803 forecasts), the
+<i>ETS</i> is almost the same as the <i>TS</i>.
+<br>&nbsp;
+<p><b><i>Hanssen and Kuipers discriminant (true skill statistic, Pierce's skill score)</i></b> -&nbsp;
+<img SRC="HK_finley.gif" ALT="Hanssen & Kuipers score for finley tornado forecasts" height=46 width=602 align=CENTER>
+<p>The forecasts were 52% able to separate the "yes" cases from the "no"
+cases. Because the <i>correct negatives</i> term dominates the others in
+the contingency table, the <i>HK</i> tends toward the <i>POD</i> when "yes"
+events are rare.
+<br>&nbsp;
+<p><b><i>Heidke skill score</i></b> -&nbsp;
+<img SRC="HSS_finley.gif" ALT="Heidke skill score for finley tornado forecasts" height=95 width=763 align=CENTER>
+<p>There was a 36% improvement in forecast accuracy when compared to random chance.
+<br>&nbsp;
+<p><b><i>Odds ratio</i></b> -&nbsp;
+<img SRC="oddsratio_finley.gif" ALT="Odds ratio for finley tornado forecasts" height=44 width=369 align=CENTER>&nbsp;&nbsp;&nbsp;&nbsp;
+The odds were roughly 45 to 1 that a forecast for a tornado would be a
+hit as opposed to a false alarm.
+<br>&nbsp;
+<p>References:
+<p><a NAME="Finley 1884"></a>Finley, J.P., 1884: Tornado predictions. <i>Amer.
+Meteor. J.</i>, <b>1</b>, 85-88.
+<br>
+<a NAME="Murphy 1996"></a>Murphy, A.H., 1996: The Finley affair: A
+signal event in the history of forecast verification. <i>Wea. Forecasting</i>,
+<b>11</b>,
+3-20.
+<br>
+<a NAME="Stephenson 2000"></a>Stephenson, D.B., 2000: Use of the "odds
+ratio" for diagnosing forecast skill. <i>Wea. Forecasting</i>, <b>15</b>,
+221-232.
+</body>
+</html>

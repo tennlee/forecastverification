@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>Verifying probability of precipitation</title>
+  <meta content="Beth Ebert" name="author">
+  <link rel = "stylesheet" href="../../default.css">
+</head>
+<body style="color: rgb(0, 0, 0); background-color: rgb(204, 204, 204);"
+ alink="#000099" link="#000099" vlink="#990099">
+<h2>Verifying probability of precipitation - an example from Finland<br>
+</h2>
+<h3><img alt="Rain over Tampere, Finland" src="TampereRain.jpg"
+ style="width: 994px; height: 231px;"><br>
+</h3>
+24-hour and 48-hour forecasts of probability of precipitation were made
+by the Finnish
+Meteorological Institute (FMI) during 2003, for daily precipitation in
+the city of Tampere in south central Finland.
+Three precipitation categories were used:<br>
+&nbsp;&nbsp;&nbsp; Category 0:&nbsp;&nbsp; RR &#8804; 0.2 mm<br>
+&nbsp;&nbsp;&nbsp; Category 1:&nbsp;&nbsp; 0.3 mm &#8804; RR &#8804; 4.4 mm<br>
+&nbsp;&nbsp;&nbsp; Category 2:&nbsp;&nbsp; RR &#8805; 4.5 mm<br>
+The probability of rain in each category was predicted each day, with
+the probabilities across the three categories adding up to 1. Click <a
+ href="POP_3cat_2003.txt">here</a> to view the data.<br>
+<br>
+It is possible to verify these probabilistic forecasts using a variety
+of verification plots and statistics. Recall that verification of probability
+forecasts requires many samples in order to assess forecast quality,
+as it is not possible to say whether a single probability forecast
+(say, 30%) is right or wrong for a single outcome. The Tampere dataset
+gives forecasts for 365 days (actually a bit fewer since some days were
+missing), which is quite adequate for verifying probability forecasts.<br>
+<br>
+First consider the probability of precipitation (POP), where "no
+precipitation" corresponds to Category 0, and "precipitation"
+corresponds to Categories 1 and 2 put together. This effectively treats
+the multi-category forecast like a forecast for a binary event. We can
+also consider the probablity of precipitation in the highest
+category (POP<sub>hi</sub>) by taking "not heavier precipitation" to
+correspond to Categories 0 and 1, and "heavier precipitation" to correspond to Category 2.<br>
+<br>
+The <a href="../../index.html#BS">Brier score</a> measures the
+mean squared probability error. It can be decomposed into three terms,
+where the first term measures the reliability (this term should be small for
+good forecasts), the second term measures the resolution (this term
+should be large for good forecasts, and is subtracted), and the third
+term measures the climatological uncertainty (independent of the forecast
+quality). For the Tampere forecasts the values of these quantities were:<br>
+<br>
+<table cellspacing="3" cellpadding="4" summary="Tampere statistics" width="500">
+  <tbody>
+    <tr>
+      <td valign="top"><br></td>
+      <td colspan="2" align="center" valign="top">24-hour forecasts<br></td>
+      <td colspan="2" align="center" valign="top">48-hour forecasts<br></td>
+    </tr>
+    <tr>
+      <td valign="top"><br></td>
+      <td align="center" valign="top">POP<br></td>
+      <td align="center" valign="top">POP<sub>hi</sub><br></td>
+      <td align="center" valign="top">POP<br></td>
+      <td align="center" valign="top">POP<sub>hi</sub><br></td>
+    </tr>
+    <tr>
+      <td valign="top">Brier score<br></td>
+      <td align="center" valign="top">0.144<br></td>
+      <td align="center" valign="top">0.037<br></td>
+      <td align="center" valign="top">0.178<br></td>
+      <td align="center" valign="top">0.044<br></td>
+    </tr>
+    <tr>
+      <td valign="top">&nbsp;&nbsp;&nbsp;&nbsp; Reliability<br></td>
+      <td align="center" valign="top">0.025<br></td>
+      <td align="center" valign="top">0.003<br></td>
+      <td align="center" valign="top">0.027<br></td>
+      <td align="center" valign="top">0.003<br></td>
+    </tr>
+    <tr>
+      <td valign="top">&nbsp;&nbsp;&nbsp;&nbsp; Resolution<br></td>
+      <td align="center" valign="top">0.060<br></td>
+      <td align="center" valign="top">0.020<br></td>
+      <td align="center" valign="top">0.036<br></td>
+      <td align="center" valign="top">0.011<br></td>
+    </tr>
+    <tr>
+      <td valign="top">&nbsp;&nbsp;&nbsp;&nbsp; Uncertainty<br></td>
+      <td align="center" valign="top">0.179<br></td>
+      <td align="center" valign="top">0.054<br></td>
+      <td align="center" valign="top">0.187<br></td>
+      <td align="center" valign="top">0.052<br></td>
+    </tr>
+    <tr>
+      <td valign="top">Brier skill score<br></td>
+      <td align="center" valign="top">0.194<br></td>
+      <td align="center" valign="top">0.312<br></td>
+      <td align="center" valign="top">0.047<br></td>
+      <td align="center" valign="top">0.146<br></td>
+    </tr>
+  </tbody>
+</table>
+<br>
+The Brier score had lower values for the 24-hour forecasts than for the
+48-hour forecasts, which means that the 24-hour forecasts were more
+accurate. The difference was due mainly to the 24-hour forecasts having
+better resolution (i.e., they were better at separating "precipitation"
+from "no precipitation"). The differences in the uncertainties between
+the 24- and 48-hour forecasts relate to different days having missing
+data - for a complete dataset these values would be identical.&nbsp;
+The POP<sub>hi</sub> forecasts were more accurate than
+the POP forecasts. This is partly because heavier rainfall was
+rarer and the Brier score is heavily influenced by the no-event cases.
+To account for the relative frequency or rarity of events, the skill of
+the forecast relative to the sample climatology is often reported. The values of 
+<a href="../../index.html#BSS">Brier skill score</a> shown in the 
+bottom row of the table show that the
+24-hour forecasts for heavier rainfall occurrence were more skillful
+than for lighter rainfall or the longer forecast period.<br>
+<br>
+<img alt="Reliability diagram" src="reliability24.gif"
+ style="width: 313px; height: 282px;" align="left" height="282"
+ hspace="5" width="313">
+The reliability of the forecasts, that is, the degree to which the forecast
+probabilities match the observed frequencies, can be assessed using a 
+<a href="../../index.html#reliability">reliability diagram</a>.
+The reliability of the 24-hour POP forecasts is shown by the heavy line in
+the diagram at left. If the forecasts had perfect reliability (i.e., no
+bias) this curve would lie along the diagonal 1:1 line. The dashed horizontal line
+shows the climatological frequency, and the dotted line midway between
+the 1:1 line and the horizontal denotes no skill relative to
+climatology. The location of the
+reliability curve to the right of the diagonal indicates that the
+probabilities were overestimated for all but the zero-probability
+cases, and only for the higher probability categories did the POP
+forecasts have more skill than climatology. The bar chart in the upper
+left of the plot shows the number of times each probability value was predicted. <br>
+<br>
+<img alt="reliability diagram for heavier rain"
+ src="reliability24_hi.gif" style="width: 313px; height: 282px;"
+ align="right" hspace="5">The reliability diagram for the 24-hour POP<sub>hi</sub>
+forecasts (right) shows a reliability curve much closer to the diagonal
+at low probabilities, but veering sharply away for probabilities of 0.5
+or greater. However, these higher probabilities were rarely forecast
+(only eight forecasts of POP<sub>hi</sub> equal to 0.5 or more) so
+the reliability curve is noisy because of undersampling. (In practice
+it is a good idea to plot data only when there are enough samples.)<br>
+<br>
+The <a href="../../index.html#ROC">Relative Operating
+Characteristic (ROC)</a> is often used to measure how well the
+probabilistic forecasts discriminate between events and non-events
+(resolution). Because it is independent of bias it can be viewed as a
+kind of <i>potential </i>skill. The
+ROC curve for 24-hour POP forecasts is shown here.<img alt="ROC curve"
+ src="ROC_POP24.gif" style="width: 313px; height: 274px;" align="left"
+ hspace="5">
+A forecast that discriminates perfectly would have a ROC curve that
+starts in the lower left and follows the y-axis (false alarm rate=0)
+up to the top left corner, then follows the top axis (hit rate=1) to
+the upper right corner. The area under the ROC curve is a scalar
+measure that is frequently used to summarize the resolution. The perfect 
+value is 1.0 and the no-skill value is 0.5. For the Tampere forecasts
+the following ROC areas are obtained using both a simple trapezoid
+method and a curve-fitting method (preferred) to
+estimate the area under the curve:<br>
+<br>
+<table cellspacing="3" cellpadding="4" summary="ROC statistics" width="500">
+  <tbody>
+    <tr>
+      <td valign="top"><br></td>
+      <td colspan="2" align="center" valign="top">24-hour forecasts<br></td>
+      <td colspan="2" align="center" valign="top">48-hour forecasts<br></td>
+    </tr>
+    <tr>
+      <td valign="top"><br></td>
+      <td align="center" valign="top">POP<br></td>
+      <td align="center" valign="top">POP<sub>hi</sub><br></td>
+      <td align="center" valign="top">POP<br></td>
+      <td align="center" valign="top">POP<sub>hi</sub><br></td>
+    </tr>
+    <tr>
+      <td valign="top">ROC area (trapezoid rule)<br></td>
+      <td align="center" valign="top">0.857<br></td>
+      <td align="center" valign="top">0.849<br></td>
+      <td align="center" valign="top">0.767<br></td>
+      <td align="center" valign="top">0.763<br></td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">ROC area (curve fitting)<br></td>
+      <td style="vertical-align: top; text-align: center;">0.855<br></td>
+      <td style="vertical-align: top; text-align: center;">0.870<br></td>
+      <td style="vertical-align: top; text-align: center;">0.771<br></td>
+      <td style="vertical-align: top; text-align: center;">0.785<br></td>
+    </tr>
+  </tbody>
+</table>
+<br>
+These ROC areas suggest that the forecasts were able to
+resolve lighter and heavier rainfall with about the same ability. This
+similarity in the potential skill was not readily
+obvious from the Brier score, partly due to the bias in the POP
+forecasts.<br>
+<br>
+Another diagnostic that is related to forecast resolution, but puts the
+performance into a decision-making context, is the <a
+ href="../../index.html#relative%20value">relative value</a>.
+This measures the usefulness of a forecast in minimizing the economic
+costs associated with protecting against the effects of bad weather and
+the losses incurred when bad weather occurs but the user did not take
+protective action. The improvement in economic value of the forecast is
+measured relative to that of a climatology forecast and usually plotted as a
+function of the cost/loss ratio. For probabilistic forecasts the curve
+of interest is actually an envelope of&nbsp; curves representing each
+of the probability values allowed by the forecast (in this case, 0.0,
+0.1, 0.2, ... 1.0),<img alt="relative value curve" src="value24.gif"
+ align="right" height="274" hspace="5" width="313">
+and this envelope may look quite lumpy. The relative value curve shown
+here for the 24-hour POP forecasts is a case in point. The lighter
+curves represent the relative value as a function of cost/loss ratio
+using each of the probabilities as a yes/no threshold for the forecast,
+while the heavy curve is the outer envelope representing the maximum
+relative value possible. The maximum relative value of 0.57 occurred
+for a moderate cost/loss ratio of 0.23, which is the climatological
+frequency of rain in the sample. This plot shows that the POP forecasts
+have value for all decision makers except those with very low cost/loss
+ratios (who would always protect) or very high cost/loss ratios (who
+would never protect). <br>
+<br>
+All of the plots and statistics shown so far have only considered the
+two-category cases of rain/no rain or heavier rain/not heavier rain. A
+summary score that takes multiple categories into account is the <a
+ href="../../index.html#RPS">ranked probability score</a>
+(RPS), which measures the
+closeness of the probability forecasts in all categories to the
+category in which the observation fell. For example, if the observation was in
+category 2, then a probability forecast for categories 0, 1, and 2 of
+[0.3, 0.6, 0.1] would score better than a forecast of [0.7, 0.2, 0.1]
+because the "weight" of the forecast was closer to the correct
+category. To put the ranked probability scores into context, the <a
+ href="../../index.html#RPSS">ranked probability skill score</a>
+(RPSS) with respect to climatology is often used. For the year's worth
+of probability forecasts for Tampere the mean values of RPS, and the
+skill scores computed from these values, were:<br>
+<br>
+<table cellpadding="3" cellspacing="4" width="400">
+  <tbody>
+    <tr>
+      <td valign="top"><br></td>
+      <td align="center" valign="top">24-hour forecasts<br></td>
+      <td align="center" valign="top">48-hour forecasts</td>
+    </tr>
+    <tr>
+      <td valign="top">RPS<br></td>
+      <td align="center" valign="top">0.091<br></td>
+      <td align="center" valign="top">0.111<br></td>
+    </tr>
+    <tr>
+      <td valign="top">RPSS<br></td>
+      <td align="center" valign="top">0.222<br></td>
+      <td align="center" valign="top">0.069<br></td>
+    </tr>
+  </tbody>
+</table>
+<br>
+According to the RPSS, and in agreement with the Brier skill scores,
+both the 24-hour and 48-hour forecasts were skillful.<br>
+<hr size="2" width="100%">Many thanks to Dr. Pertti Nurmi of FMI for
+providing these data and the photo of Tampere.<br>
+<br>
+<a href="../../index.html">Back to <b>Forecast Verification - Methods and FAQ</b></a>
+&nbsp;&nbsp;&nbsp; <a href="POP_IDL_code.txt">Download IDL POP
+verification code for this example</a><br>
+<br>
+</body>
+</html>

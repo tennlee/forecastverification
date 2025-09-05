@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="GENERATOR" content="Mozilla/4.79 [en] (Windows NT 5.0; U) [Netscape]">
+  <title>Performance Diagram</title>
+  <link rel = "stylesheet" href="../../default.css">
+</head>
+<body>
+<center>
+<h1>Performance Diagram</h1>
+Paul Roebber<br>
+University of Wisconsin, Milwaukee
+</center>
+<p><br>
+<img style="width: 485px; height: 468px;" alt="Performance diagram"
+ src="PerformanceDiagram.gif" align="right">In an approach that is
+conceptually similar to the Taylor (2001)
+diagram, it is possible to exploit the geometric relationship between
+four measures of dichotomous forecast performance: probability of
+detection (POD), false alarm ratio or its opposite, the success ratio
+(SR), bias and critical success index (CSI; also known as the threat
+score). <a href="#Roebber_2009">Roebber (2009)</a> presents the
+details of the derivation of this diagram.</p>
+<p>
+For good forecasts, POD, SR, bias and CSI approach unity, such that a
+perfect forecast lies in the upper right of the diagram. Deviations in
+a particular direction will indicate relative differences in POD and
+SR, and consequently bias and CSI. An immediate visualization of
+differences in performance are thus obtained. Optimal increases in
+accuracy are obtained by moving at 45 degrees, that is, by maintaining
+unbiased forecasts through simultaneous increases in detection and
+reductions in false positives. Skill is assessed by plotting the
+forecast quality measure relative to a reference forecast (climatology,
+persistence or any other desired baseline). <br>
+</p>
+<p>
+The influence of sampling variability is estimated using a form of resampling with
+replacement bootstrapping from the verification data. The 95<sup>th</sup>
+percentile range for SR and POD are plotted as "cross-hairs" about
+the verification point and the variation in bias and CSI is simultaneously
+displayed. 1000 new samples of the same size as the original are created using
+the sampling frequencies of observed and forecast "yes" and "no"
+entries (i.e. the marginal frequencies), and the 25<sup>th</sup> and 975<sup>th</sup>
+accuracy measures are computed from these "climatological" samples to
+generate the 95<sup>th</sup> percentile range.
+</p>
+<p>In the example figure, the heavy
+and light snow density verification data from Roebber et al. (2003)
+(solid blue square and circle, respectively) along with the
+corresponding sample frequencies (open blue square and circle,
+respectively) are shown. Also shown is the 48h forecast verification
+for convective occurrence from Fowle and Roebber (2003) (red triangle).<br>
+</p>
+<h4>References</h4>
+<p>Fowle, M.A. and P.J. Roebber, 2003: Short-range
+(0-48 h) numerical prediction of convective occurrence, mode, and
+location. <i>Wea. Forecasting</i>, <b>18</b>, 782-794.</p>
+<p><a name="Roebber_2009"></a>Roebber, P.J., 2009: Visualizing multiple
+measures of forecast quality. <i>Wea. Forecasting</i>, <b>24</b>,
+601-608.</p>
+<p>Roebber, P.J., S.L. Breuning, D.M. Schultz, and J.V. Cortinas, Jr.,
+2003: Improving snowfall forecasting by diagnosing snow density. <i>Wea.
+Forecasting</i>, <b>18</b>, 264-287.<br>
+</p>
+<p>Taylor, K.E., 2001: Summarizing multiple aspects of model
+performance in a single diagram. <i>J. Geophys. Res.</i>, <b>106</b>
+(D7), 7183-7192.</p>
+<p><b>Code:</b> The R verification package
+contains code for making performance diagrams, using the function
+<i>performance.diagram</i>.
+</body>
+</html>

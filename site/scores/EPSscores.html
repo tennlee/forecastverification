@@ -1,0 +1,434 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="generator" content="HTML Tidy, see www.w3.org">
+   <meta name="Author" content="Beth Ebert">
+   <meta name="GENERATOR" content="Mozilla/4.79 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Forecast Verification - Methods and FAQ</title>
+<style type="text/css">
+  H1 {font-size: x-large; color: #993366; font-family: Arial,Helvitica, sans-serif; font-style: italic }
+  H2 {font-size: large; color: #993366; font-family: Arial,Helvitica, sans-serif; font-style: italic }
+  H3 {font-size: medium; color: black; font-family: Arial,Helvitica, sans-serif; font-style: italic }
+  H4 {font-size: small; color: black; font-family: Arial,Helvitica, sans-serif; font-style: italic }
+  p  {font-size: medium; color: black; font_family: Times, serif; font-style: normal }
+ body {color: #000000;}
+ :link { color: #0000EE }
+ :visited { color: #551A8B }
+ :active { color: #FF0000 }
+</style>
+<!--  p  {font-size: small; color: black; font-family: Arial,Helvitica, sans-serif; font-style: normal } -->
+<script type="text/javascript">
+  <!--
+  function popup(mylink, windowname)
+  {
+  if (! window.focus)return true;
+  var href;
+  if (typeof(mylink) == 'string')
+     href=mylink;
+  else
+     href=mylink.href;
+  window.open(href, windowname, 'width=400,height=200,dependent=yes,left=300,top=200resizable=yes,scrollbars=yes');
+  return false;
+  }
+  //-->
+  </script>
+<script type="text/javascript">
+  <!--
+  function dropdown(mySel)
+  {
+  var myWin, myVal;
+  myVal = mySel.options[mySel.selectedIndex].value;
+  if(myVal)
+     {
+     if(mySel.form.target)myWin = parent[mySel.form.target];
+     else myWin = window;
+     if (! myWin) return true;
+     myWin.location = myVal;
+     }
+  return false;
+  }
+  //-->
+</script>
+</head>
+<body>
+
+<h1>
+<b><i><font color="#666600">Methods and scores used for verifying ensemble
+forecasts</font></i></b></h1>
+<b><font color="#666600">Short cuts to:</font></b>
+<br><font color="#666600"><a href="#BIAS">Bias score</a></font>
+<br><font color="#666600"><a href="#ETS">Equitable threat score</a></font>
+<br><font color="#666600"><a href="#RMSE">Root mean square error</a></font>
+<br><font color="#666600"><a href="#reliability">Reliability diagram</a></font>
+<br><font color="#666600"><a href="#BSS">Brier skill score</a></font>
+<br><font color="#666600"><a href="#ROC">Relative operating characteriscis
+(ROC)</a></font>
+<br><font color="#666600"><a href="#RPSS">Ranked probability skill score</a></font>
+<br><font color="#666600"><a href="#rank histogram">Rank histogram</a></font>
+<br><a href="#relative value">Relative value</a>
+<p><font color="#666600">Only the methods and scores explicitly used in
+the BoM EPS precipitation verification are included. These descriptions
+are taken from the WWRP-WGNE Joint Verification Working Group's <a href="http://www.BoM.GOV.AU/bmrc/wefor/staff/eee/verif/verif_web_page.html">verification
+web site</a> and expanded upon in some cases using extracts lifted unashamedly
+from <a href="#Stanski et al 1989">Stanski et al. (1989)</a>.</font>
+<br>
+<hr WIDTH="100%">
+<h2>
+<b><i>Verification of non-probabilistic forecasts</i></b></h2>
+
+<h3>
+<b><i>(a) Dichotomous forecasts</i></b></h3>
+A dichotomous forecast says, "yes, an event will happen", or "no, the event
+will not happen". In the case of ensemble verification we usually verify
+the forecast occurrence of an event greater than a certain threshold (for
+example, daily rainfall of at least 1 mm/day). Because these apply to deterministic
+(non-probabilistic) forecasts, we use them to verify the individual ensemble
+members as well as the ensemble mean.
+<p>To verify this type of forecast&nbsp; we start with a contingency table
+that shows the frequency of "yes" and "no" forecasts and occurrences. The
+four combinations of forecasts (yes or no) and observations (yes or no),
+called the
+<i>conditional distribution</i>, are:
+<p>&nbsp;&nbsp;&nbsp;&nbsp; <i>hit</i> - event forecast to occur, and did
+occur
+<br>&nbsp;&nbsp;&nbsp;&nbsp; <i>miss</i> - event forecast not to occur,
+but did occur
+<br>&nbsp;&nbsp;&nbsp;&nbsp; <i>false alarm</i> - event forecast to occur,
+but did not occur
+<br>&nbsp;&nbsp;&nbsp;&nbsp; <i>correct negative</i> - event forecast not
+to occur, and did not occur
+<p>The total numbers of forecast and observed occurrences and non-occurences
+are given on the lower and right sides of the contingency table, and are
+called the <i>marginal distribution</i>.
+<br>&nbsp;
+<br>&nbsp;
+<table WIDTH="500" HEIGHT="180" summary="Two by two
+contingency table of forecasts and observations" >
+<caption><b>Contingency Table</b></caption>
+
+<tr ALIGN=CENTER VALIGN=CENTER>
+<td><b>&nbsp;</b></td>
+
+<td><b>&nbsp;</b></td>
+
+<td WIDTH="140"></td>
+
+<td ALIGN=LEFT WIDTH="140">&nbsp;Forecast</td>
+
+<td WIDTH="140"></td>
+</tr>
+
+<tr ALIGN=CENTER VALIGN=CENTER>
+<td>&nbsp;</td>
+
+<td>&nbsp;</td>
+
+<td>yes</td>
+
+<td>no</td>
+
+<td>&nbsp;Total</td>
+</tr>
+
+<tr ALIGN=CENTER VALIGN=CENTER>
+<td ALIGN=LEFT VALIGN=BASELINE>Observed</td>
+
+<td>yes</td>
+
+<td BGCOLOR="#33FF33"><b><i>hits</i></b></td>
+
+<td BGCOLOR="#33FF33"><b><i>misses</i></b></td>
+
+<td BGCOLOR="#99FF99"><b><i>observed yes</i></b></td>
+</tr>
+
+<tr ALIGN=CENTER VALIGN=CENTER>
+<td><b>&nbsp;</b></td>
+
+<td>no</td>
+
+<td BGCOLOR="#33FF33"><b><i>false alarms</i></b></td>
+
+<td BGCOLOR="#33FF33"><b><i>correct negatives</i></b></td>
+
+<td BGCOLOR="#99FF99"><b><i>observed no</i></b></td>
+</tr>
+
+<tr ALIGN=CENTER VALIGN=CENTER>
+<td ALIGN=LEFT>Total</td>
+
+<td><b>&nbsp;</b></td>
+
+<td BGCOLOR="#99FF99"><b><i>forecast yes</i></b></td>
+
+<td BGCOLOR="#99FF99"><b><i>forecast no</i></b></td>
+
+<td BGCOLOR="#99FF99"><b><i>total</i></b></td>
+</tr>
+</table>
+
+<p>The contingency table is a useful way to see what types of errors are
+being made. A perfect forecast system would produce only
+<i>hits</i> and
+<i>correct
+negatives</i>, and no <i>misses</i> or <i>false alarms</i>.
+<p>There are several categorical statistics that can be computed from the
+yes/no contingency table. The ones used in the EPS verification are:
+<br>&nbsp;
+<p><a NAME="BIAS"></a><b><i>Bias score</i></b> -&nbsp;<img SRC="BIAS.gif" ALT="Equation for bias" height=53 width=194 align=CENTER>
+<p><i><b>Answers the question: </b>How does the forecast frequency of events
+compare to the actual (observed) frequency of events?</i>
+<p><b>Range:</b> 0 to infinity.&nbsp; <b>Perfect score:</b> 1.
+<p><b>Characteristics:</b> Indicates whether the forecast system has a
+tendency to underforecast (<i>BIAS</i>&lt;1) or overforecast (<i>BIAS</i>>1)
+events. Does not measure how well the forecast corresponds to the observations
+(i.e., says nothing about accuracy), only measures relative frequencies.
+<br>&nbsp;
+<p><a NAME="ETS"></a><b><i>Equitable threat score</i></b>-<img SRC="ETSa.gif" ALT="Equation for equitable threat score" height=60 width=339 align=CENTER>
+where&nbsp;<img SRC="ETSb.gif" ALT="Equation for hits due to random chance" height=47 width=332 align=CENTER>
+<p><i><b>Answers the question: </b>How well did the forecast occurrence
+of events correspond to the actual (observed) occurrence of events?</i>
+<p><b>Range:</b> -1/3 to 1, 0 indicates no skill.&nbsp;&nbsp; <b>Perfect
+score:</b> 1.
+<p><b>Characteristics:</b> Measures the fraction of observed and/or forecast
+events that were correctly predicted, adjusted for hits associated with
+random chance. For example, it is easier to correctly forecast rain occurrence
+in a wet climate than in a dry climate. The <i>ETS</i> is often used in
+the verification of rainfall in NWP models because its "equitability" allows
+scores to be compared more fairly across different regimes. Because it
+penalises both misses and false alarms in the same way, it does not distinguish
+the source of forecast error.
+<br>&nbsp;
+<br>&nbsp;
+<h3>
+<b><i>(b) Continuous forecasts</i></b></h3>
+
+<p><br>Verification of forecasts of continuous variables measures how the
+<i>values</i>
+of the forecasts differ from the <i>values</i> of the observations.
+<br>&nbsp;
+<p><a NAME="RMSE"></a><b><i>Root mean square error</i></b> -&nbsp;<img SRC="RMSE.gif" ALT="Equation for root mean square error" height=58 width=178 align=CENTER>
+<p><i><b>Answers the question: </b>What is the magnitude of the forecast
+errors?</i>
+<p><b>Range:</b> 0 to infinity.&nbsp; <b>Perfect score:</b> 0.
+<p><b>Characteristics:</b> This simple and familiar score measures "average"
+error, weighted according to the square of the error.&nbsp; Does not indicate
+the direction of the deviations. The root mean square error puts greater
+influence on large errors than smaller errors, which may be a good thing
+if large errors are especially undesirable. However, the emphasis on large
+errors may encourage conservative forecasting.
+<br>&nbsp;
+<p>
+<hr WIDTH="100%">
+<h2>
+<b><i>Verification of probabilistic forecasts</i></b></h2>
+A probabilistic forecast gives a <i>probability</i> of an event occurring,
+with a value between 0 and 1 (or 0 and 100%). It is impossible to verify
+a single probabilistic forecast using a single observation. Instead one
+must verify a <i>set</i> of probabilistic forecasts, <i>p<sub>i</sub></i>,
+using observations that those events either occurred (<i>o<sub>i</sub></i>=1)
+or did not occur (<i>o<sub>i</sub></i>=0).
+<p>A good probability forecast system has several attributes:
+<p>&nbsp;&nbsp;&nbsp;&nbsp; <i>reliability</i> - agreement between forecast
+probability and mean observed frequency; like a categorical bias
+<br>&nbsp;&nbsp;&nbsp;&nbsp; <i>sharpness</i> - tendency to forecast extreme
+values -- "climatology" is not sharp
+<br>&nbsp;&nbsp;&nbsp;&nbsp; <i>resolution</i> - ability of forecast to
+resolve the set of sample events into subsets with characteristically different
+frequencies
+<p><a NAME="reliability"></a><img SRC="ReliabilityDiagram.gif" ALT="Reliability diagram of observed frequency vs forecast probability" height=319 width=333 align=RIGHT><b><i>Reliability
+diagram</i></b> - (also called "attributes diagram").
+<p><i><b>Answers the question: </b>How well do the predicted probabilities
+of an event correspond to their observed frequencies?</i>
+<p><b>Perfect:</b> Curve lines up on the diagonal.
+<p>The reliability diagram plots the observed frequency against the forecast
+probability, where the range of forecast probabilities is divided into
+<i>K</i>
+bins (for example, 0-5%, 5-15%, 15-25%, etc.). The diagonal line indicates
+perfect reliability (average observed frequency equal to predicted probability
+for each category), and the horizontal line represents the climatological
+frequency. Sometimes sample sizes are plotted either as a histogram, or
+as numbers next to the data points.
+<p><b>Characteristics:</b> The reliability diagram is in some ways analagous
+to a scatter plot, where the data are stratified by the forecast into <i>K</i>
+categories (<i>K</i> points). The reliability diagram thus represents stratification
+conditioned on the forecast and can be expected to give information on
+the real meaning of the forecast. Reliability is indicated by the proximity
+of the plotted curve to the diagonal. The deviation from the diagonal gives
+the <i>conditional bias</i>. If the curve lies below the line, this indicates
+overforecasting (probabilities too high); points above the line indicate
+underforecasting (probabilities too low). The flatter the curve in the
+reliability diagram, the less resolution it has. A forecast of climatology
+does not discriminate at all between events and non-events, and thus has
+no resolution.
+<p>The reliability diagram is conditioned on the forecasts (i.e., given
+that X was predicted, what was the outcome?). It it a good partner to the
+<i><a href="#ROC">ROC</a></i>, which is conditioned on the observations.
+<br>&nbsp;
+<br>&nbsp;
+<p><a NAME="BS"></a><b><i>Brier score</i></b> -&nbsp;<img SRC="BSexpanded.gif" ALT="Expansion of Brier Score" height=47 width=473 align=CENTER>
+<p><i><b>Answers the question: </b>What is the magnitude of the probability
+forecast errors?</i>
+<p><b>Range:</b> 0 to 1.&nbsp; <b>Perfect score:</b> 0.
+<p><b>Characteristics:</b> The Brier score is the mean squared error in
+probability space. It is sensitive to climatological frequency of the event.
+In the absence of any forecasting skill, the best strategy to optimise
+the Brier score is to forecast the climatological frequency. The more rare
+an event, the easier it is to get a good <i>BS</i> without having any real
+skill. For this reason, the Brier skill score (see below) is preferred
+because it references the score to climatology (sample or long-term).
+<p><a href="#Murphy 1973">Murphy (1973)</a> showed that the Brier score
+could be partitioned into three terms: (1) <i>reliability</i>, (2)
+<i>resolution</i>,
+and (3) <i>uncertainty</i>. These terms are sometimes shown separately
+to attribute sources of error.
+<br>&nbsp;
+<p><a NAME="BSS"></a><b><i>Brier skill score</i></b> -&nbsp;<img SRC="BSS.gif" ALT="Equation for Brier skill score" height=54 width=274 align=CENTER>
+<p><i><b>Answers the question: </b>What is the relative skill of the probabilistic
+forecast over that of climatology, in terms of predicting whether or not
+an event occurred?</i>
+<p><b>Range:</b> minus infinity to 1, 0 indicates no skill when compared
+to the reference forecast. <b>Perfect score:</b> 1.
+<p><b>Characteristics:</b> The Brier skill score measures the improvement
+of the probabilistic forecast relative to a reference forecast (usually
+the long-term or sample climatology), therefore taking climatological frequency
+into account. Because the denominator approaches 0 for a perfect forecast,
+this score can be unstable when applied to small data sets. This score
+should always be applied to a sufficiently large sample, one for which
+the sample climatology of the event is representative of the long term
+climatology. The rarer the event, the larger the number of samples needed
+to stablise the score. For best results the Brier skill score should be
+computed on the whole sample, i.e., the skill should be computed for an
+aggregated sample, not averaged for several samples.
+<br>&nbsp;
+<br>&nbsp;
+<p><a NAME="ROC"></a><b><i>Relative operating characteristic</i></b> -&nbsp;<img SRC="ROC.gif" ALT="Relative operating characteristic (ROC)" height=299 width=292 align=RIGHT>
+<p><i><b>Answers the question: </b>What is the ability of the forecast
+to discriminate between events and non-events?</i>
+<p><i>ROC</i>: <b>Perfect:</b> Curve travels from bottom left to top left
+of diagram, then across to top right of diagram. Diagonal line indicates
+no skill.
+<br><i>ROC area</i><b>:&nbsp; Range:</b> 0 to 1, 0.5 indicates no skill.
+<b>Perfect score:</b> 1
+<p>The <i>ROC</i> is created by plotting the <i>probability of detection</i>
+versus the <i>false alarm rate</i> (<i>false alarms</i> / <i>observed no</i>,
+also known as
+<i>probability of false detection</i>), using a set of increasing
+probability thresholds (for example, 0.05, 0.15, 0.25, etc.) to make the
+yes/no decision. The area under the <i>ROC</i> curve is frequently used
+as a score.
+<p><b>Characteristics:</b> <i>ROC</i> measures the ability of the forecast
+to discriminate between two alternative outcomes, thus measuring resolution.
+A good <i>ROC</i> is indicated by a curve that goes close to the upper
+left corner (low false alarm rate, high probability of detection). It is
+not sensitive to bias in the forecast, so says nothing about reliability.
+A biased forecast may still have good resolution and produce a good <i>ROC</i>
+curve, which means that it may be possible to improve the forecast through
+calibration. The ROC can thus be considered as a measure of potential usefulness.
+<p>The <i>ROC</i> is conditioned on the observations (i.e., given that
+Y occurred, what was the correponding forecast?)&nbsp; It is therefore
+a good companion to the <a href="#reliability">reliability diagram</a>,
+which is conditioned on the forecasts.
+<br>&nbsp;
+<p><a NAME="RPS"></a><b><i>Ranked probability score</i></b> -&nbsp;<img SRC="RPS.gif" ALT="ranked probability score formula" height=58 width=251 align=CENTER>
+<p><i><b>Answers the question: </b>How well did the probability forecast
+predict the category that the observations fell into?</i>
+<p><b>Range:</b> 0 to 1.&nbsp; <b>Perfect score:</b> 0.
+<p>This score is used to assess multi-category forecasts, where <i>M</i>
+is the number of forecast categories (for example, rainfall bins: 0-1 mm,
+1-5 mm, 5-10 mm, etc.),
+<i>p<sub>k</sub></i> is the predicted probability
+in forecast category <i>k</i>, and <i>o<sub>k</sub></i> is an indicator
+(0=no, 1=yes) for the observation in category <i>k</i>.
+<p><b>Characteristics:</b> The ranked probability score measures the sum
+of squared differences in cumulative probability space for a multi-category
+probabilistic forecast. The <i>RPS</i> penalizes forecasts less severely
+when their probabilities are close to the true outcome, and more severely
+when their probabilities are further from the actual outcome. For two forecast
+categories the <i>RPS</i> is the same as the Brier Score.
+<p><a NAME="RPSS"></a><b><i>Ranked probability skill score</i></b> -&nbsp;<img SRC="RPSS.gif" ALT="Equation for ranked probability skill score" height=50 width=326 align=CENTER>
+<p><i><b>Answers the question: </b>What is the relative skill of the probabilistic
+forecast over that of climatology, in terms of getting close to the actual
+outcome?</i>
+<p><b>Range:</b> minus infinity to 1, 0 indicates no skill when compared
+to the reference forecast. <b>Perfect score:</b> 1.
+<p><b>Characteristics:</b> The RPSS measures the improvement of the multi-category
+probabilistic forecast relative to a reference forecast (usually the long-term
+or sample climatology). It is similar to the 2-category Brier skill score,
+in that it takes climatological frequency into account. Because the denominator
+approaches 0 for a perfect forecast, this score can be unstable when applied
+to small data sets. This score should always be applied to a sufficiently
+large sample, one for which the sample climatology of the event is representative
+of the long term climatology. The rarer the event, the larger the number
+of samples needed to stablise the score. For best results the ranked probability
+skill score should be computed on the whole sample, i.e., the skill should
+be computed for an aggregated sample, not averaged for several samples.
+<br>&nbsp;
+<p><a NAME="rank histogram"></a><b><i>Rank histogram</i></b> (<a href="#Hamill 2001">Hamill,
+2001</a>)<img SRC="RankHistogram.gif" ALT="Rank histogram" height=119 width=379 align=ABSCENTER>
+<p><i><b>Answers the question: </b>How well does the ensemble spread of
+the forecast represent the true variability (uncertainty) of the observations?</i>
+<p><b>Perfect:</b> All bars the same height, i.e., flat histogram.
+<p>To construct a rank histogram, do the following:
+<br>1. At every observation (or analysis) point rank the <i>N</i> ensemble
+members from lowest to highest. This represents N+1 possible bins that
+the observation could fit into, including the two extremes
+<br>2. Identify which bin the observation falls into at each point
+<br>3. Tally over many observations to create a histogram of rank.
+<p><b>Characteristics:</b> Also known as a "Talagrand diagram", this method
+checks where the verifying observation usually falls with respect to the
+ensemble forecast data, which is arranged in increasing order at each grid
+point. In an ensemble with perfect spread, each member represents an equally
+likely scenario, so the observation is equally likely to fall between any
+two members. Note that a flat rank histogram does not necessarily indicate
+a good forecast, it only measures whether the observed probability distribution
+is well represented by the ensemble.
+<p>Interpretation:
+<br>Flat - ensemble spread about right to represent forecast uncertainty.
+<br>U-shaped - ensemble spread too small, many observations falling outside
+the extremes of the ensemble
+<br>Dome-shaped - ensemble spread too large, most observations falling
+near the center of the ensemble
+<br>Asymmetric - ensemble contains bias
+<br>&nbsp;
+<br>&nbsp;
+<p><a NAME="relative value"></a><b><i>Relative value (value score)</i></b>
+(<a href="#Wilks 2001">Wilks, 2001</a>)
+<br><img SRC="value.gif" ALT="Value score" height=159 width=387>
+<p><i><b>Answers the question: </b>For a cost/loss ratio C/L for taking
+action based on a forecast, what is the relative improvement in economic
+value between climatalogical and perfect information?</i>
+<p><b>Range:</b> minus infinity to 1.&nbsp; <b>Perfect score:</b> 1.
+<p>In the above equation for value score, the hits, misses, and false alarms
+are computed using the climatological probability <i>P<sub>clim</sub></i>
+as the yes/no decision threshold.
+<p><b>Characteristics:</b> The relative value is a skill score of expected
+expense, with climatology as the reference forecast. Because the cost/loss
+ratio is different for different users of forecasts, the value is generally
+plotted as a function of C/L. Like ROC, it gives information that can be
+used in decision making, but unlike ROC, it is sensitive to bias in the
+forecast.
+<br>&nbsp;
+<p>
+<hr WIDTH="100%">
+<h3>
+<i>References</i></h3>
+<a NAME="Hamill 2001"></a>Hamill, T.M., 2001: Interpretation of rank histograms
+for verifying ensemble forecasts. <i>Mon. Wea. Rev.</i>, <b>129</b>, 550-560.
+<br><a NAME="Murphy 1973"></a>Murphy, A.H., 1973: A new vector partition
+of the probability score. <i>J. Appl. Meteor.</i>,
+<b>12</b>, 595-600.
+<br><a NAME="Stanski et al 1989"></a>Stanski, H.R., L.J. Wilson, and W.R.
+Burrows, 1989: Survey of common verification methods in meteorology. World
+Weather Watch Tech. Rept. No.8, WMO/TD No.358, WMO, Geneva, 114 pp. Click
+<a href="http://www.BoM.GOV.AU/bmrc/wefor/staff/eee/verif/Stanski_et_al/Stanski_et_al.html">here</a>
+to access a PDF version.
+<br><a NAME="Wilks 2001"></a>Wilks, D.S., 2001: A skill score based on
+economic value for probability forecasts. <i>Meteorol. Appl.</i>, <b>8</b>,
+209-219.
+<p>
+<hr WIDTH="100%">
+<p>Beth Ebert, BMRC Weather Forecasting Group, June 2003
+</body>
+</html>

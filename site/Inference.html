@@ -1,0 +1,71 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Generator" content="Microsoft Word 97">
+   <meta name="GENERATOR" content="Mozilla/4.79 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Verification scores and statistical inference</title>
+   <link rel = "stylesheet" href="../default.css">
+</head>
+<body>
+<b>Verification scores and
+statistical inference</b>
+<p>Calculation of a verification score from a sample of forecasts and verification
+data should usually be only a first step. It should ideally be followed
+by some form of statistical inference. Even if the quality of forecasts
+remains constant, sampling variability means that a later sample of data
+will give a different value for the score, so the value of a score cannot
+be viewed in isolation, without some idea of its sampling variation. Most
+scores have an underlying 'population' value and the calculated score can
+be viewed as a <i>(point) estimate</i> of this population parameter. It
+is good practice, where possible, to find a <i>confidence interval</i>
+for this parameter – an interval that has a pre-specified high probability
+of including the true value of the parameter. To do so we need to know
+the <i>sampling distribution</i> of the sample score. Sometimes this can
+be approximated by a tractable distribution, such as a Gaussian distribution.
+On other occasions a <i>non-parametric</i>, or <i>resampling </i>approach,
+such as the <i>bootstrap</i> is needed.
+<p>It is important not to confuse the idea of a confidence interval for
+a population parameter with that of a <i>prediction interval</i>. The latter
+makes statements about likely values of a sample quantity, given assumptions
+about the underlying population; both can be useful in inference.
+<p>An alternative to <i>interval estimation</i> (constructing confidence
+intervals) is to <i>test hypotheses</i>. The most usual <i>null hypotheses</i>
+of interest are:
+<ul>
+<li>
+The population value of a verification score for a forecasting system is
+that corresponding to some reference forecast and hence represents zero
+skill.</li>
+
+<li>
+The population values of a verification score are the same for two forecasting
+systems.</li>
+</ul>
+The <i>alternative hypotheses</i> are usually fairly obvious: the forecasting
+system has a population verification score better than that of the reference
+forecasts; a new system has a better population verification score than
+an old one.
+<p>The idea of <i>power</i> is often forgotten in hypothesis testing. The
+probability of Type I error (rejecting the null hypothesis when it is true)
+is controlled to be a small number (for example 5%, 1%), but the power
+(the probability of correctly rejecting the null hypothesis when it is
+false) is frequently ignored. A test whose power is not much greater than
+its probability of Type I error is of little use. Power can be used to
+choose between competing tests of the same null hypothesis.
+<p>There is a close link between hypothesis testing, confidence intervals
+and prediction intervals in many circumstances. A null hypothesis will
+be rejected if and only if the null value of a population parameter lies
+outside a corresponding confidence interval, if and only if a sample score
+value lies outside a corresponding prediction interval.
+<br>&nbsp;
+<p>Ian Jolliffe, February 2003
+<p>A few other links for <b>hypothesis testing</b>:
+<p><a href="http://www.math.bcit.ca/faculty/david_sabo/apples/math2441/section9/inthyptest/introhyptest.htm">Probability
+and Statistics for Biological Sciences: Introduction to Hypothesis Testing</a>
+(David W. Sabo, British Columbia Institute of Technology)
+<p>WMO Climate Information and Prediction Services (CLIPS) curriculum -
+Link to <a href="http://www.wmo.ch/web/wcp/clips_curriculum/clips_curriculum.htm">Statistical
+Inference</a> (Ian Jolliffe, University of Aberdeen)
+</body>
+</html>

@@ -1,0 +1,3869 @@
+<!--  HERE ARE THE PAGE CONTENTS! -->
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"></head><body><a href="http://www.wmo.int/pages/prog/arep/wwrp/new/Forecast_Verification.html"><img alt="JWGFVR logo" src="verification_files/JWGFVR-logo-250.png" style="height: 90px;" vspace="2" border="0"></a>
+<a href="http://www.wmo.int/pages/prog/arep/wwrp/new/wwrp_new_en.html"><img alt="WWRP logo" src="verification_files/WWRPlogo.gif" style="height: 90px;" vspace="2" border="0"></a><a href="http://wcrp.wmo.int/wcrp-index.html"><img alt="WMO logo" src="verification_files/WCRPlogo.gif" style="height: 90px;" vspace="2" border="0"></a>
+<h3><a href="http://www.wmo.int/pages/prog/arep/wwrp/new/Forecast_Verification.html"><i><font color="#993366">WWRP/WGNE Joint Working Group on
+Forecast Verification Research</font></i></a></h3>
+<hr width="100%">
+
+<!-- NEW SINCE LAST UPDATE -->
+<h3><i>New: </i><a href="http://www.7thverificationworkshop.de/">7th International Verification Methods Workshop</a> </h3>
+<strong>Theme:</strong> Forecast Verification methods Across Time and Space Scales
+<br><strong>Venue:</strong> Berlin, Germany
+<br><strong>Tutorial:</strong> May 3-10, 2017 | <strong>Applications due:</strong> January 31, 2017
+<br><strong>Science Conference:</strong> May 8-11, 2017 | <strong>Abstracts Due:</strong> February 27, 2017  
+<hr width="100%">
+<!--
+<b><i>New since last update:</i></b><br> 
+More scores:<br>
+&nbsp;&nbsp;&nbsp;<a href="#Extreme_dependence">Extreme dependence family of scores for binary rare events</a><br>
+&nbsp;&nbsp;&nbsp;<a href="#SEEPS">Stable equitable error in probability space (SEEPS)</a><br>
+<hr width="100%">
+<b><i>Upcoming meetings:</i></b><br> 
+<hr width="100%">
+-->
+
+<!-- BULLETIN BOARD -->
+
+<a href="#Introduction">Introduction - what is this web site about?
+</a>
+<p><a href="#Introduction"><b><i>Issues:</i></b>
+<br>
+</a><a href="#Why_verify">Why verify?</a>
+<br>
+<a href="#Types_of_forecasts_and_verifications">Types of
+forecasts and verification</a>
+<br>
+<a href="#What_makes_a_forecast_good">What makes a forecast good?</a>
+<br>
+<a href="#Forecast_quality_vs._value">Forecast quality vs. value</a>
+<br>
+<a href="#What_is_truth">What is "truth"?</a>
+<br>
+<a href="#Validity_of_verification_results">Validity of verification
+results</a>
+<br>
+<a href="#Pooling_vs_stratifying_results">Pooling vs. stratifying
+results</a>
+</p>
+<p><b><i>Methods:</i></b>
+<br>
+<a href="#Standard_verification_methods">Standard verification
+methods:</a>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <a href="#Methods_for_dichotomous_forecasts">Methods
+for dichotomous (yes/no) forecasts</a>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <a href="#Methods_for_multi-category_forecasts">Methods for
+multi-category forecasts</a>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <a href="#Methods_for_foreasts_of_continuous_variables">Methods for
+forecasts of continuous variables</a>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <a href="#Methods_for_probabilistic_forecasts">Methods
+for probabilistic forecasts</a>
+<br>
+<a href="#Scientific_verification_methods">Scientific or diagnostic
+verification methods:</a>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <a href="#Methods_for_spatial_forecasts">Methods
+for spatial forecasts</a>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <a href="#Methods_for_EPS">Methods for
+probabilistic forecasts, including ensemble prediction systems</a>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <a href="#Methods_for_rare_events">Methods
+for rare events</a>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <a href="#Other_methods">Other methods</a>
+<br>
+</p>
+<p><b><i>Sample forecast datasets:</i></b>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <a href="#Finlay_tornado_forecasts">Finley
+tornado forecasts</a>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <a href="#POPexample">Probability of
+precipitation forecasts</a><br>
+<!--
+&nbsp;&nbsp;&nbsp;&nbsp; <a href="#Sydney_2000_radar_nowcasts">Sydney
+2000 Forecast Demonstration Project radar-based rainfall nowcasts</a>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; ..... climate example .....
+-->
+</p>
+<p><b><i><a href="#Tools_packages">Freely available verification tools and packages</a></i></b>
+</p>
+
+<p><b><i><a href="#FAQs">Some frequently asked questions</a></i></b>
+</p>
+<p><b><i><a href="#Discussion_group">Discussion group</a></i></b>
+</p>
+<p><b><i>References:</i></b>
+<br>
+<a href="#Links_to_other_verification_sites">Links to other
+verification
+sites</a>
+<br>
+<a href="#References">References and further reading</a>
+<br>
+<a href="#Contributors_to_this_site">Contributors to this site</a>
+<br>
+</p>
+<p><b><i><a href="#art">Verification and art</a></i></b></p>
+<hr width="100%">
+<h3><a name="Introduction"></a><i><font size="+2">Introduction</font></i></h3>
+This web site:
+<ul>
+Describes methods for forecast verification, including their characteristics,
+pros and cons. The methods range from simple traditional statistics and
+scores, to methods for more detailed diagnostic and scientific verification.
+</ul>
+<ul>
+Gives examples for each method, with links and references for further
+information. The examples are all drawn from the meteorological world (since
+the <a href="#Contributors_to_this_site">people creating this web</a> site
+are themselves meteorologists or work with meteorologists), but the
+verification methods can easily be applied in other fields. They are appropriate
+for verifying <i>estimates</i> as well as forecasts.
+</ul>
+<ul>
+Demonstrates the verification techniques on a handful of forecast examples.
+These data will be available for download if you want to try out some of
+the techniques.
+</ul>
+<ul>
+Does not provide source code&nbsp; (sorry, but what language would
+we use?). However, the simple methods are relatively easy to code, and
+the complex ones give references to people who have developed them or
+are working on them.
+</ul>
+<ul>
+Is a <b><i>dynamic site</i></b> - please contribute your ideas and
+verification methods, also suggestions for making the site better.
+</ul>
+<hr width="100%">
+<h2><i>Issues</i></h2>
+<h3>
+<a name="What_is_forecast_verification"></a><i>What is forecast
+verification?</i></h3>
+If we take the term <i>forecast</i> to mean <i>a prediction of the future
+state</i> (of the weather, stock market prices, or whatever), then <i>forecast
+verification</i> is the process of assessing the quality of a forecast.
+<p>The forecast is compared, or <i>verified</i>, against a
+corresponding observation of what actually occurred, or some good
+estimate of the true outcome. The verification can be qualitative ("does it look
+right?") or quantitative ("how accurate was it?"). In either case it should give
+you information about the nature of the forecast errors.
+</p>
+<h3><a name="Why_verify"></a><i>Why verify?</i></h3>
+A forecast is like an experiment -- given a set of conditions, you make
+a hypothesis that a certain outcome will occur. You wouldn't consider
+an experiment to be complete until you determined its outcome. In the same
+way, you shouldn't consider a forecast experiment to be complete until
+you find out whether the forecast was successful.
+<p>The three most important reasons to verify forecasts are:
+</p>
+<ul>
+to <i>monitor</i> forecast quality - how accurate are the forecasts
+and are they improving over time?
+</ul>
+<ul>
+to <i>improve</i> forecast quality - the first step toward getting
+better is discovering what you're doing wrong.
+</ul>
+<ul>
+to <i>compare</i> the quality of different forecast systems - to what
+extent does one forecast system give better forecasts than another, and
+in what ways is that system better?
+</ul>
+<h3>
+<a name="Types_of_forecasts_and_verifications"></a><i>Types of forecasts
+and verifications</i></h3>
+There are many types of forecasts, each of which calls for slightly
+different methods of verification. The table below lists one way of
+distinguishing forecasts, along with verification methods that are appropriate for
+that type of forecast. David Stephenson has proposed a <a href="https://www.cawcr.gov.au/projects/verification/forecast-types.pdf">classification
+scheme for forecasts</a>. It is often possible to convert from one type
+of forecast to another simply by rearranging, categorizing, or
+thresholding the data.
+<br>
+&nbsp;
+<table summary="Types of forecasts and
+verification methods that are appropriate" border="0">
+  <caption>&nbsp;</caption> <tbody>
+    <tr>
+      <td><b>Nature of forecast:</b></td>
+      <td><b>Example(s)</b></td>
+      <td><b>Verification methods</b></td>
+    </tr>
+    <tr>
+      <td>deterministic (non-probabilistic)&nbsp;</td>
+      <td>quantitative precipitation forecast</td>
+      <td><a href="#Eyeball_method">visual</a>, <a href="#Methods_for_dichotomous_forecasts">dichotomous</a>, <a href="#Methods_for_multi-category_forecasts">multi-category</a>, <a href="#Methods_for_foreasts_of_continuous_variables">continuous</a>, <a href="#Methods_for_spatial_forecasts">spatial</a></td>
+    </tr>
+    <tr>
+      <td>probabilistic</td>
+      <td>probability of precipitation, ensemble forecast</td>
+      <td><a href="#Eyeball_method">visual</a>, <a href="#Methods_for_probabilistic_forecasts">probabilistic</a>, <a href="#Methods_for_EPS">ensemble</a></td>
+    </tr>
+    <tr>
+      <td>qualitative (worded)</td>
+      <td>5-day outlook</td>
+      <td><a href="#Eyeball_method">visual</a>, <a href="#Methods_for_dichotomous_forecasts">dichotomous</a>, <a href="#Methods_for_multi-category_forecasts">multi-category</a></td>
+    </tr>
+    <tr>
+      <td> <br>
+      <b>Space-time domain:</b></td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>time series</td>
+      <td>daily maximum temperature forecasts for a city</td>
+      <td><a href="#Eyeball_method">visual</a>, <a href="#Methods_for_dichotomous_forecasts">dichotomous</a>, <a href="#Methods_for_multi-category_forecasts">multi-category</a>, <a href="#Methods_for_foreasts_of_continuous_variables">continuous</a>, <a href="#Methods_for_probabilistic_forecasts">probabilistic</a></td>
+    </tr>
+    <tr>
+      <td>spatial distribution</td>
+      <td>map of geopotential height, rainfall chart</td>
+      <td><a href="#Eyeball_method">visual</a>, <a href="#Methods_for_dichotomous_forecasts">dichotomous</a>, <a href="#Methods_for_multi-category_forecasts">multi-category</a>, <a href="#Methods_for_foreasts_of_continuous_variables">continuous</a>, <a href="#Methods_for_probabilistic_forecasts">probabilistic</a>, <a href="#Methods_for_spatial_forecasts">spatial</a>, <a href="#Methods_for_EPS">ensemble</a></td>
+    </tr>
+    <tr>
+      <td>pooled space and time</td>
+      <td>monthly average global temperature anomaly</td>
+      <td><a href="#Methods_for_dichotomous_forecasts">dichotomous</a>,
+      <a href="#Methods_for_multi-category_forecasts">multi-category</a>,
+      <a href="#Methods_for_foreasts_of_continuous_variables">continuous</a>,
+      <a href="#Methods_for_probabilistic_forecasts">probabilistic</a>,
+      <a href="#Methods_for_EPS">ensemble</a></td>
+    </tr>
+    <tr>
+      <td> <br>
+      <b>Specificity of forecast:</b></td>
+      <td><br>
+      </td>
+      <td><br>
+      </td>
+    </tr>
+    <tr>
+      <td>dichotomous (yes/no)</td>
+      <td>occurrence of fog</td>
+      <td><a href="#Eyeball_method">visual</a>, <a href="#Methods_for_dichotomous_forecasts">dichotomous</a>, <a href="#Methods_for_probabilistic_forecasts">probabilistic</a>, <a href="#Methods_for_spatial_forecasts">spatial</a>, <a href="#Methods_for_EPS">ensemble</a></td>
+    </tr>
+    <tr>
+      <td>multi-category</td>
+      <td>cold, normal, or warm conditions</td>
+      <td><a href="#Eyeball_method">visual</a>, <a href="#Methods_for_multi-category_forecasts">multi-category</a>, <a href="#Methods_for_probabilistic_forecasts">probabilistic</a>, <a href="#Methods_for_spatial_forecasts">spatial</a>, <a href="#Methods_for_EPS">ensemble</a></td>
+    </tr>
+    <tr>
+      <td>continuous</td>
+      <td>maximum temperature</td>
+      <td><a href="#Eyeball_method">visual</a>, <a href="#Methods_for_foreasts_of_continuous_variables">continuous</a>, <a href="#Methods_for_probabilistic_forecasts">probabilistic</a>, <a href="#Methods_for_spatial_forecasts">spatial</a>, <a href="#Methods_for_EPS">ensemble</a></td>
+    </tr>
+    <tr>
+      <td>object- or event-oriented&nbsp;</td>
+      <td>tropical cyclone motion and intensity</td>
+      <td><a href="#Eyeball_method">visual</a>, <a href="#Methods_for_dichotomous_forecasts">dichotomous</a>, <a href="#Methods_for_multi-category_forecasts">multi-category</a>, <a href="#Methods_for_foreasts_of_continuous_variables">continuous</a>, <a href="#Methods_for_probabilistic_forecasts">probabilistic</a>, <a href="#Methods_for_spatial_forecasts">spatial</a></td>
+    </tr>
+  </tbody>
+</table>
+<h3>
+<a name="What_makes_a_forecast_good"></a><i>What makes a forecast
+"good"?</i></h3>
+Allan Murphy, a pioneer in the field of forecast verification, wrote an
+essay on what makes a forecast "good" (<a href="#Murphy1993">Murphy,
+1993</a>).
+He distinguished three types of "goodness":
+<p><b><i>Consistency</i></b> - the degree to which the forecast
+corresponds to the forecaster's best judgement about the situation, based upon
+his/her knowledge base
+<br>
+<b><i>Quality</i></b> - the degree to which the forecast corresponds
+to what actually happened
+<br>
+<b><i>Value</i></b> - the degree to which the forecast helps a
+decision maker to realize some incremental economic and/or other benefit
+</p>
+<p>Since we're interested in forecast verification, let's look a bit closer
+at the forecast <b><i>quality</i></b>. Murphy described nine aspects
+(called "attributes") that contribute to the quality of a forecast. These are:
+</p>
+<p><b>Bias</b> - the correspondence between the mean forecast and mean
+observation.
+<br>
+<b>Association</b> - the strength of the linear relationship between
+the forecasts and observations (for example, the correlation
+coefficient measures this linear relationship)
+<br>
+<b>Accuracy</b> - the level of agreement between the forecast and the
+truth (as represented by observations). The difference between the
+forecast and the observation is the <i>error</i>. The lower the errors, the
+greater the accuracy.
+<br>
+<b>Skill</b> - the relative accuracy of the forecast over some
+reference forecast. The reference forecast is generally an unskilled forecast
+such as random chance, persistence (defined as the most recent set of
+observations, "persistence" implies no change in condition), or climatology. Skill
+refers to the increase in accuracy due purely to the "smarts" of the forecast
+system. Weather forecasts may be more accurate simply because the
+weather is easier to forecast -- skill takes this into account.
+<br>
+<b>Reliability</b> - the average agreement between the forecast values
+and the observed values. If all forecasts are considered together, then
+the <i>overall reliability</i> is the same as the <i>bias</i>. If the
+forecasts are stratified into different ranges or categories, then the
+reliability is the same as the <i>conditional bias</i>, i.e., it has a different
+value for each category.
+<br>
+<b>Resolution</b> - the ability of the forecast to sort or resolve
+the set of events into subsets with different frequency distributions.
+This means that the distribution of outcomes when "A" was forecast is
+different from the distribution of outcomes when "B" is forecast. Even if the
+forecasts are wrong, the forecast system has resolution if it can successfully
+separate one type of outcome from another.
+<br>
+<b>Sharpness</b> - the tendency of the forecast to predict extreme
+values. To use a counter-example, a forecast of "climatology" has no sharpness.
+Sharpness is a property of the forecast only, and like resolution, a forecast
+can have this attribute even if it's wrong (in this case it would have
+poor reliability).
+<br>
+<b>Discrimination</b> - ability of the forecast to discriminate among
+observations, that is, to have a higher prediction frequency for an
+outcome whenever that outcome occurs.
+<br>
+<b>Uncertainty</b> - the variability of the observations. The greater
+the uncertainty, the more difficult the forecast will tend to be.
+</p>
+<p>Traditionally, forecast verification has emphasized <i>accuracy</i>
+and <i>skill</i>. It's important to note that the other attributes of
+forecast performance also have a strong influence on the <i>value</i> of the
+forecast.
+</p>
+<h3><a name="Forecast_quality_vs._value"></a><i>Forecast quality vs.
+value</i></h3>
+Forecast quality is not the same as forecast value. A forecast has high
+<i>quality</i>
+if it predicts the observed conditions well according to some objective
+or subjective criteria. It has <i>value</i> if it helps the user to make
+a better decision.
+<p>Imagine a situation in which a high resolution numerical weather
+prediction model predicts the development of isolated thunderstorms in a
+particular region, and thunderstorms are indeed observed in the region but not in
+the particular spots suggested by the model. According to most standard
+verification measures this forecast would have poor quality, yet it
+might be very valuable to the forecaster in issuing a public weather forecast.
+</p>
+<p>An example of a forecast with high quality but little value is a
+forecast of clear skies over the Sahara Desert during the dry season.
+</p>
+<p>When the cost of a missed event is high, the deliberate overforecasting
+of a rare event may be justified, even though a large number of false
+alarms may also result. An example of such a circumstance is the occurence of
+fog at airports. In this case quadratic scoring rules (those involving
+squared errors) will tend to penalise such forecasts harshly, and a
+positively oriented score such as "hit rate" may be more useful.
+</p>
+<p><a href="#Katz_and_Murphy_1997">Katz and Murphy (1997)</a>, <a href="#Thornes_and_Stephenson_2001">Thornes
+and Stephenson (2001)</a> and <a href="#Wilks_2001">Wilks (2001)</a>
+describe methods for assessing the value of weather forecasts. The <a href="#relative_value">relative
+value plot</a> is sometimes used as a verification diagnostic.
+<br>
+&nbsp;
+</p>
+<h3><a name="What_is_truth"></a><i>What is "truth" when verifying a
+forecast?</i></h3>
+The "truth" data that we use to verify a forecasts generally comes from
+observational data. These could be rain gauge measurements, temperature
+observations, satellite-derived cloud cover, geopotential height
+analyses, and so on.
+<p>In many cases it is difficult to know the exact truth because there
+are errors in the observations. Sources of uncertainty include random
+and bias errors in the measurements themselves, sampling error and other
+errors of representativeness, and analysis error when the observational data
+are analyzed or otherwise altered to match the scale of the forecast.
+</p>
+<p>Rightly or wrongly, most of the time we ignore the errors in the
+observational data. We can get away with this if the errors in the observations are
+much smaller than the expected error in the forecast (high signal to noise
+ratio). Even skewed or under-sampled verification data can give us a good idea
+of which forecast&nbsp; products are better than others when
+intercomparing different forecast methods. Methods to account for errors in the
+verification data currently being researched.
+<br>
+&nbsp;
+</p>
+<h3><a name="Validity_of_verification_results"></a><i>Validity of
+verification results</i></h3>
+The verification results are naturally more trustworthy when the quantity
+and quality of the verification data are high. It is always a good idea
+to put some error bounds on the verification results themselves. It is
+especially important (a) for rare events where the sample size is typically
+small, (b) when the data shows a lot of variability, and (c)when you
+want to know whether one forecast product is significantly better (in a
+statistical sense) than another.
+<p>The usual approach is to determine confidence intervals for the
+verification scores using analytic, approximate, or 
+<a href="https://www.cawcr.gov.au/projects/verification/BootstrapCIs">bootstrapping methods</a> (depending
+on the score). Some good meteorological references on this subject are
+<a href="#Seaman_et_al_1996">Seaman
+et al. (1996)</a>, <a href="#Wilks">Wilks (2011, ch.5)</a>, <a href="#Hamill_1999">Hamill (1999)</a>, and 
+<a href="#Kane_and_Brown_2000">Kane and Brown (2000)</a>.
+<br>
+&nbsp;
+</p>
+<h3><a name="Pooling_vs_stratifying_results"></a><i>Pooling versus
+stratifying results</i></h3>
+To get reliable verification statistics, a large number of
+forecast/observations pairs (samples) may be pooled over time and/or space. The larger the
+number of samples, the more reliable the verification results.
+You can also get pooled results by aggregating verification statistics
+over a longer time period, but be careful to <a href="https://www.cawcr.gov.au/projects/verification/aggregation/guidelines.html">handle non-linear scores properly</a>.
+<p>The danger with pooling samples, however, is that it can mask
+variations in forecast performance when the data are not homogeneous. It
+can bias the results toward the most commonly sampled regime (for
+example, regions with higher station density, or days with no severe weather).
+Non-homegeneous samples can lead to overestimates of forecast skill
+using some commonly used metrics - <a href="#Hamill_and_Juras_2005">Hamill
+and Juras (2005)</a> provide some clear examples of how this can occur.<br>
+</p>
+<p>Stratifying the samples into quasi-homogeneous subsets (by season,
+by geographical region, by intensity of the observations, etc.) helps
+to tease out forecast behavior in particular regimes. When doing this, be
+sure that the subsets contain enough samples to give
+trustworthy verification results.
+</p>
+<hr width="100%">
+<h2><a name="Standard_verification_methods"></a><b><i>Standard
+verification methods</i></b></h2>
+<a name="Eyeball_method"></a><b><i><font size="+1">"Eyeball"
+verification</font></i></b>
+<p>One of the oldest and best verification methods is the good old
+fashioned visual, or "eyeball", method: look at the forecast and observations
+side by side and use human judgment to discern the forecast errors. Common
+ways to present data are as time series and maps.
+<br>
+<img src="verification_files/timeseries.gif" alt="Time series of temperature forecasts and observations" width="372" height="178" align="left"><img src="verification_files/DWDmaps.gif" alt="Rainfall forecast and observations" width="320" hspace="25" height="152"><br>
+&nbsp;
+</p>
+<p>The eyeball method is great if you only have a few forecasts, or you
+have lots of time, or you're not interested in quantitative verification
+statistics. Even when you do want statistics, it is a very good idea to
+look at the data from time to time!
+</p>
+<p>However, the eyeball method is not quantitative, and it is very
+prone to individual, subjective biases of interpretation. Therefore it must
+be used with caution in any formal verification procedure.
+</p>
+<p>The following sections give fairly brief descriptions of the
+standard verification methods and scores for dichotomous, multi-category,
+continuous, and probabilistic forecasts. For greater detail and discussion of the
+standard methods see <a href="#Stanski_et_al.">Stanski et al. (1989)</a> or
+one of the excellent
+<a href="#Books">books</a> on forecast verification and statistics.
+</p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</p>
+<p><a name="Methods_for_dichotomous_forecasts"></a><b><i><font size="+1">Methods
+for dichotomous (yes/no) forecasts</font></i></b>
+</p>
+<p>A dichotomous forecast says, "yes, an event will happen", or "no,
+the event will not happen". Rain and fog prediction are common examples of
+yes/no forecasts. For some applications a threshold may be specified to
+separate "yes" and "no", for example, winds greater than 50 knots.
+</p>
+<p>To verify this type of forecast&nbsp; we start with a <a href="#Contingency_table">contingency
+table</a> that shows the frequency of "yes" and "no" forecasts and
+occurrences.
+The four combinations of forecasts (yes or no) and observations (yes or
+no), called the <i>joint distribution</i>, are:
+</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; <i>hit</i> - event forecast to occur, and
+did occur
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <i>miss</i> - event forecast not to occur,
+but did occur
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <i>false alarm</i> - event forecast to occur,
+but did not occur
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <i>correct negative</i> - event forecast not
+to occur, and did not occur
+</p>
+<p>The total numbers of observed and forecast occurrences and non-occurences
+are given on the lower and right sides of the contingency table, and
+are called the <i>marginal distribution</i>.
+</p>
+<p><a name="Contingency_table"></a><br>
+&nbsp;
+</p>
+<table summary="Two by two
+contingency table of forecasts and observations" width="468" height="180">
+  <caption><b>Contingency Table</b></caption> <tbody>
+    <tr valign="CENTER" align="center">
+      <td><b>&nbsp;</b></td>
+      <td><b>&nbsp;</b></td>
+      <td width="140"><br>
+      </td>
+      <td width="140" align="left">&nbsp;Observed</td>
+      <td width="140"><br>
+      </td>
+    </tr>
+    <tr valign="CENTER" align="center">
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>&nbsp;Total</td>
+    </tr>
+    <tr valign="CENTER" align="center">
+      <td valign="baseline" align="left">Forecast</td>
+      <td>yes</td>
+      <td bgcolor="#33ff33"><b><i>hits</i></b></td>
+      <td bgcolor="#33ff33"><b><i>false alarms</i></b></td>
+      <td bgcolor="#99ff99"><b><i>forecast yes</i></b></td>
+    </tr>
+    <tr valign="CENTER" align="center">
+      <td><b>&nbsp;</b></td>
+      <td>no</td>
+      <td bgcolor="#33ff33"><b><i>misses</i></b></td>
+      <td bgcolor="#33ff33"><b><i>correct negatives</i></b></td>
+      <td bgcolor="#99ff99"><b><i>forecast no</i></b></td>
+    </tr>
+    <tr valign="CENTER" align="center">
+      <td align="left">Total</td>
+      <td><b>&nbsp;</b></td>
+      <td bgcolor="#99ff99"><b><i>observed yes</i></b></td>
+      <td bgcolor="#99ff99"><b><i>observed no</i></b></td>
+      <td bgcolor="#99ff99"><b><i>total</i></b></td>
+    </tr>
+  </tbody>
+</table>
+<p>The contingency table is a useful way to see what types of errors are
+being made. A perfect forecast system would produce only
+<i>hits</i> and <i>correct negatives</i>, and no <i>misses</i> or <i>false alarms</i>.
+</p>
+<p>A large variety of <i>categorical statistics</i> are computed from the
+elements in the contingency table to describe particular aspects of forecast
+performance. We will illustrate these statistics using a (made-up) example.
+Suppose a year's worth of official daily rain forecasts and
+observations produced the following contingency table:
+<br>
+&nbsp;
+</p>
+<table summary="Sample contingency
+
+table for made-up rainfall data" width="300" height="180">
+  <tbody>
+    <tr valign="CENTER" align="center">
+      <td><b>&nbsp;</b></td>
+      <td><b>&nbsp;</b></td>
+      <td width="50"><br>
+      </td>
+      <td width="75" align="left">&nbsp;Observed</td>
+      <td width="50"><br>
+      </td>
+    </tr>
+    <tr valign="CENTER" align="center">
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>yes</td>
+      <td>no</td>
+      <td>&nbsp;Total</td>
+    </tr>
+    <tr valign="CENTER" align="center">
+      <td valign="baseline" align="left">Forecast</td>
+      <td>yes</td>
+      <td bgcolor="#33ff33"><b>82</b></td>
+      <td bgcolor="#33ff33"><b>38</b></td>
+      <td bgcolor="#99ff99"><b>120</b></td>
+    </tr>
+    <tr valign="CENTER" align="center">
+      <td><b>&nbsp;</b></td>
+      <td>no</td>
+      <td bgcolor="#33ff33"><b>23</b></td>
+      <td bgcolor="#33ff33"><b>222</b></td>
+      <td bgcolor="#99ff99"><b>245</b></td>
+    </tr>
+    <tr valign="CENTER" align="center">
+      <td align="left">Total</td>
+      <td><b>&nbsp;</b></td>
+      <td bgcolor="#99ff99"><b>105</b></td>
+      <td bgcolor="#99ff99"><b>260</b></td>
+      <td bgcolor="#99ff99"><b>365</b></td>
+    </tr>
+  </tbody>
+</table>
+<p>Categorical statistics that can be computed from the yes/no contingency
+table are given below. Sometimes these scores are known by alternate names
+shown in parentheses.
+</p>
+<p><a name="ACC"></a>- - - - - - - - - - -
+</p>
+<p><b><i>Accuracy (fraction correct)</i></b> -&nbsp;<img src="verification_files/Accuracy.gif" alt="Equation for accuracy" width="267" height="55" align="middle">
+</p>
+<p><i><b>Answers the question: </b>Overall, what fraction of the
+forecasts were correct?</i>
+</p>
+<p><b>Range:</b> 0 to 1.&nbsp; <b>Perfect score:</b> 1.
+</p>
+<p><b>Characteristics:</b> Simple, intuitive. Can be misleading since it
+is heavily influenced by the most common category, usually "no event" in
+the case of rare weather.
+</p>
+<p><font color="#00cc00">In the example above, <i>Accuracy</i> =
+(82+222)
+/ 365 = 0.83, indicating that 83% of all forecasts were correct.</font>
+</p>
+<p><a name="BIAS"></a>- - - - - - - - - - -
+</p>
+<p><b><i>Bias score (frequency bias)</i></b> -&nbsp;<img src="verification_files/BIAS.gif" alt="Equation for bias" width="194" height="53" align="middle">
+</p>
+<p><i><b>Answers the question: </b>How did the forecast frequency of "yes"
+events compare to the observed frequency of "yes" events?</i>
+</p>
+<p><b>Range:</b> 0 to ∞.&nbsp; <b>Perfect score:</b> 1.
+</p>
+<p><b>Characteristics:</b> Measures the ratio of the frequency of forecast
+events to the frequency of observed events. Indicates whether the forecast
+system has a tendency to underforecast (<i>BIAS</i>&lt;1) or overforecast
+(<i>BIAS</i>&gt;1) events. Does not measure how well the forecast
+corresponds to the observations, only measures relative frequencies.
+</p>
+<p><font color="#00cc00">In the example above, <i>BIAS</i> = (82+38) /
+(82+23) = 1.14, indicating slight overforecasting of rain frequency.</font>
+</p>
+<p><a name="POD"></a>- - - - - - - - - - -
+</p>
+<p><b><i>Probability of detection (hit rate)</i></b> -&nbsp;<img src="verification_files/POD.gif" alt="Equation for probability of detection" width="162" height="49" align="middle">
+&nbsp;(also denoted <i>H</i>)
+</p>
+<p><i><b>Answers the question: </b>What fraction of the observed "yes"
+events were correctly forecast?</i>
+</p>
+<p><b>Range:</b> 0 to 1.&nbsp; <b>Perfect score:</b> 1.
+</p>
+<p><b>Characteristics:</b> Sensitive to hits, but ignores false alarms.
+Very sensitive to the climatological frequency of the event. Good for rare
+events.Can be artificially improved by issuing more "yes" forecasts to
+increase the number of hits. Should be used in conjunction with the false
+alarm ratio (below). <i>POD</i> is also an important component of the <a href="#ROC">Relative
+Operating Characteristic (ROC)</a> used widely for probabilistic forecasts.
+</p>
+<p><font color="#00cc00">In the example above, <i>POD</i> = 82 /
+(82+23)
+= 0.78, indicating that roughly 3/4 of the observed rain events were
+correctly predicted.</font>
+</p>
+<p><a name="FAR"></a>- - - - - - - - - - -
+</p>
+<p><b><i>False alarm ratio</i></b> -&nbsp;<img src="verification_files/FAR.gif" alt="Equation for false alarm ratio" width="198" height="52" align="middle">
+</p>
+<p><i><b>Answers the question: </b>What fraction of the predicted "yes"
+events actually did not occur (i.e., were false alarms)?</i>
+</p>
+<p><b>Range:</b> 0 to 1.&nbsp; <b>Perfect score:</b> 0.
+</p>
+<p><b>Characteristics:</b> Sensitive to false alarms, but ignores
+misses. Very sensitive to the climatological frequency of the event. Should be
+used in conjunction with the probability of detection (above).
+</p>
+<p><font color="#00cc00">In the example above, <i>FAR</i> = 38 /
+(82+38)
+= 0.32, indicating that in roughly 1/3 of the forecast rain events,
+rain was not observed.</font>
+</p>
+<p><a name="POFD"></a>- - - - - - - - - - -
+</p>
+<p><b><i>Probability of false detection (false alarm rate)</i></b>
+-&nbsp;<img src="verification_files/POFD.gif" alt="probability of false detection" width="278" height="54" align="middle">
+&nbsp;(also denoted <i>F</i>)
+</p>
+<p><i><b>Answers the question: </b>What fraction of the observed "no"
+events were incorrectly forecast as "yes"?</i>
+</p>
+<p><b>Range:</b> 0 to 1.&nbsp; <b>Perfect score:</b> 0.
+</p>
+<p><b>Characteristics:</b> Sensitive to false alarms, but ignores
+misses.
+Can be artificially improved by issuing fewer "yes" forecasts to reduce
+the number of false alarms. Not often reported for deterministic forecasts,
+but is an important component of the <a href="#ROC">Relative Operating
+Characteristic (ROC)</a> used widely for probabilistic forecasts.
+</p>
+<p><font color="#00cc00">In the example above, <i>POFD</i> = 38 / (222+38)
+= 0.15, indicating that for 15% of the observed "no rain" events the
+forecasts were incorrect.</font>
+</p>
+<p><a name="SR"></a>- - - - - - - - - - -
+</p>
+<p><b><i>Success ratio</i></b>
+-&nbsp;<img src="verification_files/SR.gif" alt="success ratio" width="182" height="51" align="middle">
+</p>
+<p><i><b>Answers the question: </b>What fraction of the forecast "yes"
+events were correctly observed?</i>
+</p>
+<p><b>Range:</b> 0 to 1.&nbsp; <b>Perfect score:</b> 1.
+</p>
+<p><b>Characteristics:</b> Gives information about the likelihood of
+an observed event, given that it was forecast.
+It is sensitive to false alarms but ignores misses.
+<i>SR</i> is equal to 1-<i>FAR</i>. <i>POD</i> is plotted against 
+<i>SR</i> in the <a href="#Roebber_diagram">categorical performance diagram</a>.
+</p>
+<p><font color="#00cc00">In the example above, <i>SR</i> = 82 / (82+38)
+= 0.68, indicating that for 68% of the forecast rain events, rain was 
+actually observed.</font>
+</p>
+<p><a name="CSI"></a>- - - - - - - - - - -
+</p>
+<p><b><i>Threat score (critical success index)</i></b> -&nbsp;<img src="verification_files/TS.gif" alt="Equation for threat score" width="250" height="48" align="middle">
+&nbsp;(also denoted CSI)
+</p>
+<p><i><b>Answers the question: </b>How well did the forecast "yes"
+events correspond to the observed "yes" events?</i>
+</p>
+<p><b>Range:</b> 0 to 1, 0 indicates no skill.
+<b>Perfect score:</b> 1.
+</p>
+<p><b>Characteristics:</b> Measures the fraction of observed and/or forecast
+events that were correctly predicted. It can be thought of as the <i>accuracy</i>
+when correct negatives have been removed from consideration, that is, <i>TS</i>
+is only concerned with forecasts that count. Sensitive to hits,
+penalizes both misses and false alarms. Does not distinguish source of forecast
+error. Depends on climatological frequency of events (poorer scores for rarer
+events) since some hits can occur purely due to random chance.
+</p>
+<p><font color="#00cc00">In the example above, <i>TS</i> = 82 /
+(82+23+38)
+= 0.57, meaning that slightly more than half of the "rain" events
+(observed
+and/or predicted) were correctly forecast.</font>
+</p>
+<p><a name="ETS"></a>- - - - - - - - - - -
+</p>
+<p><b><i>Equitable threat score (Gilbert skill score)</i></b>-<img src="verification_files/ETSa.gif" alt="Equation for equitable threat score" width="339" height="60" align="middle">
+&nbsp;(also denoted GSS)
+<br>where&nbsp;<a name="random_hits"></a><img src="verification_files/ETSb.gif" alt="Equation for hits due to random chance" width="332" height="47" align="middle">
+</p>
+<p><i><b>Answers the question: </b>How well did the forecast "yes" events
+correspond to the observed "yes" events (accounting for hits due to
+chance)?</i>
+</p>
+<p><b>Range:</b> -1/3 to 1, 0 indicates no skill.&nbsp;&nbsp; <b>Perfect
+score:</b> 1.
+</p>
+<p><b>Characteristics:</b> Measures the fraction of observed and/or forecast
+events that were correctly predicted, adjusted for hits associated with
+random chance (for example, it is easier to correctly forecast rain
+occurrence in a wet climate than in a dry climate). The <i>ETS</i> is often used
+in the verification of rainfall in NWP models because its "equitability"
+allows scores to be compared more fairly across different regimes. Sensitive
+to hits. Because it penalises both misses and false alarms in the same way,
+it does not distinguish the source of forecast error.
+</p>
+<p><font color="#00cc00">In the example above, <i>ETS</i> = (82-34) /
+(82+23+38-34)
+= 0.44. <i>ETS</i> gives a lower score than <i>TS</i>.</font>
+</p>
+<p><a name="HK"></a>- - - - - - - - - - -
+</p>
+<p><b><i>Hanssen and Kuipers discriminant (true skill statistic,
+Peirce's
+skill score)</i></b> -&nbsp;<img src="verification_files/HK.gif" alt="Equation for Hanssen and Kuipers score" width="391" height="48" align="middle">
+&nbsp;(also denoted TSS and PSS)
+</p>
+<p><i><b>Answers the question: </b>How well did the forecast separate
+the "yes" events from the "no" events?</i>
+</p>
+<p><b>Range:</b> -1 to 1, 0 indicates no skill.
+<b>Perfect score:</b> 1.
+</p>
+<p><b>Characteristics:</b> Uses all elements in contingency table. Does
+not depend on climatological event frequency. The expression is
+identical to <i>HK = POD - POFD</i>, but the Hanssen and Kuipers score can also
+be interpreted as <i>(accuracy for events) + (accuracy for non-events) - 1</i>.
+For rare events <i>HK</i> is unduly weighted toward the first term (same
+as <i>POD</i>), so this score may be more useful for more frequent events.
+Can be expressed in a form similar to the <i>ETS</i> except the <i>hits<sub>random</sub></i>
+term is unbiased. See <a href="#Woodcock_1976">Woodcock (1976)</a>
+for a comparison of <i>HK</i> with other scores.
+</p>
+<p><font color="#00cc00">In the example above, <i>HK</i> = 82 /
+(82+23)
+- 38 / (38+222) = 0.63</font>
+</p>
+<p><a name="HSS"></a>- - - - - - - - - - -
+</p>
+<p><b><i>Heidke skill score (Cohen's <font face="Symbol">k</font>)</i></b>
+-&nbsp;<img src="verification_files/HSSnew.gif" alt="Heidke skill score" width="388" height="49" align="middle">
+<br>
+where&nbsp;<img src="verification_files/ExpectedCorrect.gif" alt="Expected correct forecasts for random chance" width="634" height="53" align="middle">
+</p>
+<p><i><b>Answers the question: </b>What was the accuracy of the
+forecast
+relative to that of random chance?</i>
+</p>
+<p><b>Range:</b> -1 to 1, 0 indicates no skill.&nbsp; <b>Perfect
+score:</b> 1.
+</p>
+<p><b>Characteristics:</b> Measures the fraction of correct forecasts
+after eliminating those forecasts which would be correct due purely to random
+chance. This is a form of the <a href="#Skill_score">generalized skill
+score</a>, where the <i>score</i> in the numerator is the number of correct
+forecasts, and the reference forecast in this case is random chance. In
+meteorology, at least, random chance is usually not the best forecast
+to compare to - it may be better to use climatology (long-term average
+value) or persistence (forecast = most recent observation, i.e., no change) or
+some other standard.
+</p>
+<p><font color="#00cc00">In the example above, <i>HSS</i> = 0.61</font>
+</p>
+<p><a name="OR"></a>- - - - - - - - - - -
+</p>
+<p><b><i>Odds ratio</i></b> -<img src="verification_files/OddsRatio.gif" alt="odds ratio" width="301" height="86" align="middle">
+</p>
+<p><i><b>Answers the question: </b>What is the ratio of the odds of a "yes"
+forecast being correct, to the odds of a "yes" forecast being wrong?</i>
+</p>
+<p><b>Odds ratio - Range:</b> 0 to ∞, 1 indicates no skill. <b>Perfect
+score:</b> ∞
+<br>
+<b>Log odds ratio - Range:</b> -∞ to ∞, 0 indicates
+no skill.&nbsp; <b>Perfect score:</b> ∞
+</p>
+<p><b>Characteristics:</b> Measures the ratio of the odds of making a
+hit to the odds of making a false alarm. The logarithm of the odds ratio is
+often used instead of the original value. Takes prior probabilities
+into account. Gives better scores for rarer events. Less sensitive to
+hedging. Do not use if any of the cells in the contingency table are equal to
+0.&nbsp; Used widely in medicine but not yet in meteorology -- see <a href="#Stephenson_2000">Stephenson
+(2000)</a> for more information.
+<br>
+&nbsp;&nbsp;&nbsp; Note that the odds ratio is not the same as the
+ratio of the <i>probability</i> of making a hit (<i><font face="Arial,Helvetica">hits
+/ # forecasts</font></i>) to the <i>probability</i> of making a false
+alarm
+(<i><font face="Arial,Helvetica">false alarms / # forecasts</font></i>),
+since both of those can depend on the climatological frequency (i.e.,
+the prior probability) of the event.
+</p>
+<p><font color="#00cc00">In the example above, <i>OR</i> = (82 x 222)
+/ (23 x 38) = 20.8, indicating that the odds of a "yes" prediction
+being correct are over 20 times greater than the odds of a "yes" forecast
+being incorrect.</font>
+</p>
+<p><a name="ORSS"></a>- - - - - - - - - - -
+</p>
+<p><b><i>Odds ratio skill score (Yule's Q)</i></b> -<img src="verification_files/ORSS.gif" alt="odds ratio skill score equation" width="375" height="47" align="middle">
+</p>
+<p><i><b>Answers the question: </b>What was the improvement of the
+forecast
+over random chance?</i>
+</p>
+<p><b>Range:</b> -1 to 1, 0 indicates no skill. <b>Perfect score:</b>
+1
+</p>
+<p><b>Characteristics:</b> Independent of the marginal totals (i.e., of
+the threshold chosen to separate "yes" and "no"), so is difficult to
+hedge.
+See <a href="#Stephenson_2000">Stephenson
+(2000)</a> for more information.
+</p>
+<p><font color="#00cc00">In the example above, <i>ORSS</i> = [(82 x
+222)-(23
+x 38)] / [(82 x 222)+(23 x 38)] = 0.91</font>
+</p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</p>
+<p><a name="Methods_for_multi-category_forecasts"></a><b><i><font size="+1">Methods
+for multi-category forecasts</font></i></b>
+</p>
+<p>Methods for verifying multi-category forecasts&nbsp; also start with
+a contingency table showing the frequency of forecasts and observations
+in the various bins. It is analogous to a scatter plot for categories.
+<br>
+&nbsp;
+</p>
+<table summary="multi-category
+
+contingency table" width="600" height="100">
+  <caption><b>Multi-category Contingency Table</b></caption> <tbody>
+    <tr align="center">
+      <td><br>
+      </td>
+      <td width="50"><br>
+      </td>
+      <td width="60"><br>
+      </td>
+      <td width="60" align="right">Observed</td>
+      <td width="60" align="left">Category</td>
+      <td width="60"><br>
+      </td>
+      <td>Total</td>
+    </tr>
+    <tr align="center">
+      <td align="center"><br>
+      </td>
+      <td><i>i,j</i></td>
+      <td align="center">1</td>
+      <td>2</td>
+      <td>...</td>
+      <td><i>K</i></td>
+      <td><br>
+      </td>
+    </tr>
+    <tr align="center">
+      <td><br>
+      </td>
+      <td>1</td>
+      <td bgcolor="#33ff33"><i>n(F<sub>1</sub>,O<sub>1</sub>)</i></td>
+      <td bgcolor="#33ff33"><i>n(F<sub>1</sub>,O<sub>2</sub>)</i></td>
+      <td bgcolor="#33ff33"><i>...</i></td>
+      <td bgcolor="#33ff33"><i>n(F<sub>1</sub>,O<sub>K</sub>)</i></td>
+      <td bgcolor="#99ff99"><i>N(F<sub>1</sub>)</i></td>
+    </tr>
+    <tr align="center">
+      <td>Forecast</td>
+      <td>2</td>
+      <td bgcolor="#33ff33"><i>n(F<sub>2</sub>,O<sub>1</sub>)</i></td>
+      <td bgcolor="#33ff33"><i>n(F<sub>2</sub>,O<sub>2</sub>)</i></td>
+      <td bgcolor="#33ff33"><i>...</i></td>
+      <td bgcolor="#33ff33"><i>n(F<sub>2</sub>,O<sub>K</sub>)</i></td>
+      <td bgcolor="#99ff99"><i>N(F<sub>2</sub>)</i></td>
+    </tr>
+    <tr align="center">
+      <td>Category</td>
+      <td>...</td>
+      <td bgcolor="#33ff33" align="center">...</td>
+      <td bgcolor="#33ff33">...</td>
+      <td bgcolor="#33ff33">...</td>
+      <td bgcolor="#33ff33">...</td>
+      <td bgcolor="#99ff99">...</td>
+    </tr>
+    <tr align="center">
+      <td><br>
+      </td>
+      <td><i>K</i></td>
+      <td bgcolor="#33ff33"><i>n(F<sub>K</sub>,O<sub>1</sub>)</i></td>
+      <td bgcolor="#33ff33"><i>n(F<sub>K</sub>,O<sub>2</sub>)</i></td>
+      <td bgcolor="#33ff33"><i>...</i></td>
+      <td bgcolor="#33ff33"><i>n(F<sub>K</sub>,O<sub>K</sub>)</i></td>
+      <td bgcolor="#99ff99"><i>N(F<sub>K</sub>)</i></td>
+    </tr>
+    <tr align="center">
+      <td>Total</td>
+      <td><br>
+      </td>
+      <td bgcolor="#99ff99"><i>N(O<sub>1</sub>)</i></td>
+      <td bgcolor="#99ff99"><i>N(O<sub>2</sub>)</i></td>
+      <td bgcolor="#99ff99"><i>...</i></td>
+      <td width="50" bgcolor="#99ff99"><i>N(O<sub>K</sub>)</i></td>
+      <td bgcolor="#99ff99"><i>N</i></td>
+    </tr>
+  </tbody>
+</table>
+<p>In this table <i>n(F<sub>i</sub>,O<sub>j</sub>)</i> denotes the number
+of forecasts in category <i>i</i> that had observations in category
+<i>j</i>,
+<i>N(F<sub>i</sub>)</i>
+denotes the total number of forecasts in category
+<i>i,</i> <i>N(O<sub>j</sub>)</i>
+denotes the total number of observations in category<i> j</i>, and <i>N</i>
+is the total number of forecasts.
+</p>
+<p>The <i>distributions approach</i> to forecast verification examines
+the relationship among the elements in the multi-category contingency
+table. A perfect forecast system would have values of non-zero elements only
+along the diagonal, and values of 0 for all entries off the diagonal. The
+off-diagonal elements give information about the specific nature of the forecast
+errors. The marginal distributions (<i>N</i>'s at right and bottom of table)
+show whether the forecast produces the correct distribution of categorical
+values when compared to the observations.
+<a href="#Murphy_and_Winkler_1987">Murphy
+and Winkler (1987)</a>, <a href="#Murphy_et_al_1989">Murphy et al. (1989)</a>
+and <a href="#Brooks_and_Doswell_1996">Brooks and Doswell (1996)</a> develop
+this approach in detail.
+</p>
+<p>The advantage of the distributions approach is that the nature of
+the forecast errors can more easily be diagnosed. The disadvantage is that
+it is more difficult to condense the results into a single number.
+There are fewer statistics that summarize the performance of multi-category
+forecasts. However, any multi-category forecast verification can be converted to a
+series of <i>K</i>-1 yes/no-type verifications by defining "yes" to be
+"in category <i>i</i>" or "in category <i>i</i> or higher", and "no"
+to be "not in category
+<i>i</i>" or "below category <i>i</i>".
+</p>
+<p><a name="histogram"></a>- - - - - - - - - - -
+</p>
+<p><b><i>Histogram</i></b> - Plot the relative frequencies of forecast
+and observed categories<img src="verification_files/histogram.gif" alt="histogram of temperature change categories" width="311" height="178">
+</p>
+<p><i><b>Answers the question: </b>How well did the distribution of forecast
+categories correspond to the distribution of observed categories?</i>
+</p>
+<p><b>Characteristics:</b> Shows similarity between location, spread,
+and skewness of forecast and observed distributions. Does not give
+information on the correspondence between the forecasts and observations.
+Histograms give information similar to <a href="#box_plot">box plots</a>.
+</p>
+<p><a name="ACCmulti"></a>- - - - - - - - - - -
+<br>
+<b><i>Accuracy</i></b> -&nbsp;<img src="verification_files/ACCmulti.gif" alt="Equation for accuracy for multiple categories" width="189" height="47" align="middle">
+</p>
+<p><i><b>Answers the question: </b>Overall, what fraction of the
+forecasts were in the correct category?</i>
+</p>
+<p><b>Range:</b> 0 to 1.&nbsp; <b>Perfect score:</b> 1.
+</p>
+<p><b>Characteristics:</b> Simple, intuitive. Can be misleading since
+it is heavily influenced by the most common category.
+</p>
+<p><a name="HSSmulti"></a>- - - - - - - - - - -
+</p>
+<p><a name="multicategory_HSS"></a><b><i>Heidke skill score</i></b>
+-&nbsp;<img src="verification_files/HSSmulti.gif" alt="Equation for Heidke skill score for multiple categories" width="324" height="110" align="middle">
+</p>
+<p><i><b>Answers the question: </b>What was the accuracy of the forecast
+in predicting the correct category, relative to that of random chance?</i>
+</p>
+<p><b>Range:</b> -∞ to 1, 0 indicates no skill.&nbsp; <b>Perfect
+score:</b> 1.
+</p>
+<p><b>Characteristics:</b> Measures the fraction of correct forecasts
+after eliminating those forecasts which would be correct due purely to random
+chance. This is one form of a <a href="#Skill_score">generalized
+skill score</a>, where the <i>score</i> in the numerator is the number of
+correct forecasts, and the reference forecast in this case is random chance.
+Requires a large sample size to make sure that the elements of the contingency
+table are all adequately sampled. In meteorology, at least, random chance is
+usually not the best forecast to compare to - it may be better to use
+climatology (long-term average value) or persistence (forecast is most recent
+observation, i.e., no change) or some other standard.
+</p>
+<p><a name="HKmulti"></a>- - - - - - - - - - -
+</p>
+<p><a name="multicategory_HK"></a><b><i>Hanssen and Kuipers discriminant
+(true skill statistic, Peirce's skill score)</i></b> -&nbsp;<img src="verification_files/HKKmulti.gif" alt="Hanssen and Kuipers score for multiple categories" width="323" height="105" align="middle">
+</p>
+<p><i><b>Answers the question: </b>What was the accuracy of the
+forecast in predicting the correct category, relative to that of random chance?</i>
+</p>
+<p><b>Range:</b> -1 to 1, 0 indicates no skill.
+<b>Perfect score:</b> 1
+</p>
+<p><b>Characteristics:</b> Similar to the Heidke skill score (above),
+except that in the denominator the fraction of correct forecasts due to random
+chance is for an unbiased forecast.
+</p>
+<p><a name="Gerrity"></a>- - - - - - - - - - -
+</p>
+<p><b><i>Gerrity score</i></b> -&nbsp;
+<img src="verification_files/GSS.gif" alt="Gerrity skill score for multiple categories" width="186" height="50" align="middle">
+<br>where <i>s<sub>ij</sub></i> are elements of a scoring matrix given by
+<br>
+<img src="verification_files/GSS_sii.gif" alt="Gerrity skill score sii term" width="185" height="50" align="middle"> (<i>i = j</i>, diagonal), &nbsp;
+<img src="verification_files/GSS_sij.gif" alt="Gerrity skill score sij term" width="270" height="50" align="middle"> (<i>i ≠ j</i>, off-diagonal), and &nbsp;&nbsp;
+<img src="verification_files/GSS_ai.gif" alt="Gerrity skill score a term" width="167" height="50" align="middle">
+<br>
+with the sample probabilities (observed frequencies) given by
+<i>p<sub>i</sub></i> = <i>N(O<sub>i</sub>)</i> / <i>N</i>).
+</p><p><i><b>Answers the question: </b>What was the accuracy of the
+forecast in predicting the correct category, relative to that of random chance?</i>
+</p>
+<p><b>Range:</b> -1 to 1, 0 indicates no skill.
+<b>Perfect score:</b> 1
+</p>
+<p><b>Characteristics:</b> Uses all entries in the contingency table,  
+does not depend on the forecast distribution, and is equitable
+(i.e., random and constant forecasts score a value of 0). 
+GS does not reward conservative forecasting like HSS and HK, but rather rewards 
+forecasts for correctly predicting the less likely categories. Smaller errors
+are penalized less than larger forecast errors. 
+This is achieved through the use of the scoring
+matrix. A more detailed discussion and examples for 3-category
+forecasts can be found in <a href="#Jolliffe_and_Stephenson_2012">Jolliffe
+and Stephenson (2012)</a>.
+</p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</p>
+<p><a name="Methods_for_foreasts_of_continuous_variables"></a><b><i><font size="+1">Methods for foreasts of continuous variables</font></i></b>
+</p>
+<p>Verifying forecasts of continuous variables measures how the
+<i>values</i>
+of the forecasts differ from the values of the observations. The
+continuous
+verification methods and statistics will be demonstrated on a sample
+data
+set of 10 temperature forecasts taken from <a href="#Stanski_et_al.">Stanski
+et al. (1989)</a>:
+<br>
+&nbsp;
+<br>
+&nbsp;
+</p>
+<table summary="Sample data set of ten temperature
+forecasts taken from Stanski et al (1989)" width="500">
+  <tbody>
+    <tr align="center">
+      <td width="35" align="left">Day</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+      <td>10</td>
+    </tr>
+    <tr bgcolor="#99ff99" align="center">
+      <td align="left">Forecast, <i>F<sub>i </sub></i>(C)</td>
+      <td>5</td>
+      <td>10</td>
+      <td>9</td>
+      <td>15</td>
+      <td>22</td>
+      <td>13</td>
+      <td>17</td>
+      <td>17</td>
+      <td>19</td>
+      <td>23</td>
+    </tr>
+    <tr bgcolor="#99ff99" align="center">
+      <td align="left">Observation, <i>O<sub>i</sub></i> (C)</td>
+      <td>-1</td>
+      <td>8</td>
+      <td>12</td>
+      <td>13</td>
+      <td>18</td>
+      <td>10</td>
+      <td>16</td>
+      <td>19</td>
+      <td>23</td>
+      <td>24</td>
+    </tr>
+  </tbody>
+</table>
+<p>Verification of continous forecasts often includes some exploratory
+plots such as scatter plots and box plots, as well as various summary
+scores.
+</p>
+<p><a name="scatterplot"></a>- - - - - - - - - - -
+</p>
+<p><b><i>Scatter plot -</i></b> Plots the forecast values against the
+observed
+values.&nbsp;<img src="verification_files/scatterplot.gif" alt="Scatter plot of forecast vs observed temperatures" width="209" height="212" align="bottom">
+</p>
+<p><i><b>Answers the question: </b>How well did the forecast values
+correspond
+to the observed values?</i>
+</p>
+<p><b>Characteristics:</b> Good first look at correspondence between
+forecast
+and observations. An accurate forecast will have points on or near the
+diagonal.
+</p>
+<p><img src="verification_files/error_scatterplot.gif" alt="error scatterplots" width="323" height="157" align="texttop">Scatter
+plots of the error can reveal relationships between the observed or
+forecast
+values and the errors.
+</p>
+<p><a name="box_plot"></a>- - - - - - - - - - -
+</p>
+<p><b><i>Box plot -</i></b> Plot boxes to show the range of data
+falling
+between the 25th and 75th percentiles, horizontal line inside the box
+showing
+the median value, and the whiskers showing the complete range of the
+data.
+<br>
+<img src="verification_files/boxplot.gif" alt="box plot of temperature forecasts" width="353" height="165" align="middle"></p>
+<p><i><b>Answers the question: </b>How well did the distribution of
+forecast
+values correspond to the distribution of observed values?</i>
+</p>
+<p><b>Characteristics:</b> Shows similarity between location, spread,
+and
+skewness of forecast and observed distributions. Does not give
+information
+on the correspondence between the forecasts and observations. Box plots
+give information similar to <a href="#histogram">histograms</a>.
+</p>
+<p><a name="meanerror"></a>- - - - - - - - - - -
+</p>
+<p><b><i>Mean error</i></b> -&nbsp;<img src="verification_files/MeanError.gif" alt="Equation for mean error" width="196" height="48" align="middle">
+</p>
+<p><i><b>Answers the question: </b>What is the average forecast error?</i>
+</p>
+<p><b>Range:</b> -∞ to ∞.
+<b>Perfect score:</b> 0.
+</p>
+<p><b>Characteristics:</b> Simple, familiar. Also called the (additive)
+bias. Does not measure the magnitude of the errors. Does not measure
+the
+correspondence between forecasts and observations, i.e., it is possible
+to get a perfect score for a bad forecast if there are compensating
+errors.
+</p>
+<p><font color="#00cc00">In the example above, <i>Mean Error</i> = 0.8
+C</font>
+</p>
+<p><a name="multiplicative_bias"></a>- - - - - - - - - - -
+</p>
+<p><b><i>(Multiplicative) bias</i></b> -&nbsp;<img src="verification_files/multbias.gif" alt="multiplicative bias equation" width="113" height="92" align="middle">
+</p>
+<p><i><b>Answers the question: </b>How does the average forecast
+magnitude
+compare to the average observed magnitude?</i>
+</p>
+<p><b>Range:</b> -∞ to ∞.
+<b>Perfect score:</b> 1.
+</p>
+<p><b>Characteristics:</b> Simple, familiar. Best suited for quantities
+that have 0 as a lower or upper bound. Does not measure the magnitude
+of
+the errors. Does not measure the correspondence between forecasts and
+observations,
+i.e., it is possible to get a perfect score for a bad forecast if there
+are compensating errors.
+</p>
+<p><font color="#00cc00">In the example above, <i>Bias</i> = 1.06</font>
+</p>
+<p><a name="MAE"></a>- - - - - - - - - - -
+</p>
+<p><b><i>Mean absolute error</i></b> -&nbsp;<img src="verification_files/MAE.gif" alt="Equation for mean absolute error" width="161" height="48" align="middle">
+</p>
+<p><i><b>Answers the question: </b>What is the average magnitude of
+the
+forecast errors?</i>
+</p>
+<p><b>Range:</b> 0 to ∞.&nbsp; <b>Perfect score:</b> 0.
+</p>
+<p><b>Characteristics:</b> Simple, familiar. Does not indicate the
+direction
+of the deviations.
+</p>
+<p><font color="#00cc00">In the example above, <i>MAE</i> = 2.8 C</font>
+</p>
+<p><a name="RMS"></a>- - - - - - - - - - -
+</p>
+<p><b><i>Root mean square error</i></b> -&nbsp;<img src="verification_files/RMSE.gif" alt="Equation for root mean square error" width="178" height="58" align="middle">
+</p>
+<p><i><b>Answers the question: </b>What is the average magnitude of
+the
+forecast errors?</i>
+</p>
+<p><b>Range:</b> 0 to ∞.&nbsp; <b>Perfect score:</b> 0.
+</p>
+<p><b>Characteristics:</b> Simple, familiar. Measures "average" error,
+weighted according to the square of the error. Does not indicate the
+direction
+of the deviations. The <i>RMSE</i> puts greater influence on large
+errors
+than smaller errors, which may be a good things if large errors are
+especially
+undesirable, but may also encourage conservative forecasting.
+</p>
+<p><font color="#00cc00">In the example above, <i>RMSE</i> = 3.2 C</font>
+</p>
+<p>The <a href="#RMSF">root mean square factor</a> is similar to
+<i>RMSE</i>,
+but gives a multiplicative error instead of an additive error.
+</p>
+<p><a name="MSE"></a>- - - - - - - - - - -
+</p>
+<p><b><i>Mean squared error</i></b> -&nbsp;<img src="verification_files/MSE.gif" alt="Equation for mean squared error" width="162" height="52" align="middle">
+</p>
+<p>Measures the mean squared difference between the forecasts and
+observations.
+</p>
+<p><b>Range:</b> 0 to ∞.&nbsp; <b>Perfect score:</b> 0.
+</p>
+<p><b>Characteristics:</b> Can be decomposed into component error
+sources
+following Murphy (1987). Units of
+<i>MSE</i> are the square of the basic
+units.
+</p>
+<p><font color="#00cc00">In the example above, <i>MSE</i> = 10 degrees
+squared</font>
+</p>
+<p><a name="LEPS"></a>- - - - - - - - - - -
+</p>
+<p><b><i><a href="https://www.cawcr.gov.au/projects/verification/LEPS.php">Linear
+error in probability space</a>
+(LEPS)</i></b> -&nbsp;<img src="verification_files/LEPS.gif" alt="Equation for linear errorin probability space" width="248" height="47" align="middle"><img src="verification_files/LEPSdiagram.gif" alt="LEPS diagram" width="370" vspace="3" hspace="3" height="243" align="right">
+</p>
+<p>Measures the error in probability space as opposed to measurement
+space,
+where <i>CDFo()</i> is the cumulative probability density function of
+the observations, determined from an appropriate climatology.
+</p>
+<p><b>Range:</b> 0 to 1.&nbsp; <b>Perfect score:</b> 0.
+</p>
+<p><b>Characteristics:</b> Does not discourage forecasting extreme
+values if they are warranted. Requires knowledge of climatological PDF. Not
+yet in wide usage --&nbsp; <a href="#Potts_et_al_1996">Potts et al.
+(1996)</a>
+derived an improved version of the LEPS score that is equitable and
+does not "bend back" (give better scores for worse forecasts near the
+extremes):<img src="verification_files/LEPSrevised.gif" alt="Revised LEPS score" width="616" height="33">.
+</p>
+<p><font color="#00cc00">In the example above, suppose the climatological
+temperature is normally distributed with a mean of 14 C and variance of
+50 C. Then according to the first expression, LEPS=0.106.</font>
+</p>
+<p><a name="SEEPS"></a>- - - - - - - - - - -
+</p>
+<p><b><i>Stable equitable error in probability space
+(SEEPS)</i></b> -&nbsp;<img src="verification_files/SEEPS.gif" alt="Equation for stable equitable error in probability space" width="211" height="50" align="middle"><img src="verification_files/SEEPSdiagram.gif" alt="SEEPS diagram" width="288" vspace="3" hspace="3" height="282" align="right">
+<br>where <i>n</i>(<i>F<sub>i</sub>,O<sub>j</sub></i>) is the joint occurrence
+of forecast category <i>i</i> and observed category <i>j</i> in
+the 3x3 contingency table, and
+the scoring matrix is given by
+<img src="verification_files/SEEPS_scoring_matrix.gif" alt="SEEPS scoring matrix" width="427" height="139" align="middle">
+</p>
+<p>Like LEPS, SEEPS measures the error in probability space as opposed to measurement
+space. It was developed to assess rainfall forecasts,
+where (1-<i>p<sub>1</sub></i>) is the climatological probability of 
+rain (i.e., accumulation exceeding 0.2 mm, following WMO guidelines),
+and <i>p<sub>2</sub></i>=2<i>p<sub>3</sub></i> divides the 
+climatological cumulative rainfall distribution
+into "light" (lower 2/3 of rain rates ≥0.2 mm) and "heavy" 
+(upper 1/3 of rain rates ≥0.2 mm).
+Refer to diagram at right, where t<sub>L/H</sub> is the threshold
+delineating "light" and "heavy" rain.
+</p>
+<p><b>Range:</b> 0 to 1.&nbsp; <b>Perfect score:</b> 0. 
+</p>
+<p><b>Characteristics:</b> Encourages forecasting of all categories.
+Resistent to hedging. Requires knowledge of climatological PDF. 
+1-SEEPS may be preferred as it is positively oriented.
+Use of locally derived thresholds allows aggregation/comparison of scores across
+climatologically varying regimes.
+For further stability require 0.1 &lt; <i>p<sub>1</sub></i> &lt; 0.85, 
+that is, climate not too dry or too wet so that rain (or no rain) is
+an extreme event. 
+For more information see <a href="#Rodwell_et_al_2010">Rodwell et al.
+(2010)</a>.
+</p>
+<p><a name="corr"></a>- - - - - - - - - - -
+</p>
+<p><b><i>Correlation coefficient</i></b> -&nbsp;<img src="verification_files/Corr.gif" alt="Equation for correlation coefficient" width="208" height="61" align="middle">
+</p>
+<p><i><b>Addresses the question: </b>How well did the forecast values
+correspond to the observed values?</i>
+</p>
+<p><b>Range:</b> -1 to 1.&nbsp; <b>Perfect score:</b> 1.
+</p>
+<p><b>Characteristics:</b> Good measure of linear association or phase
+error. Visually, the correlation measures how close the points of a
+scatter plot are to a straight line. Does not take forecast bias into account
+--
+it is possible for a forecast with large errors to still have a good
+correlation coefficient with the observations. Sensitive to outliers.
+</p>
+<p><font color="#00cc00">In the example above, <i>r</i> = 0.914</font>
+</p>
+<p><a name="AC"></a>- - - - - - - - - - -
+</p>
+<p><b><i>Anomaly correlation</i></b> -&nbsp;<img src="verification_files/AnomCorr.gif" alt="Anomaly correlation equation" width="650" height="66" align="middle">
+</p>
+<p><i><b>Addresses the question: </b>How well did the forecast
+anomalies correspond to the observed anomalies?</i>
+</p>
+<p><b>Range:</b> -1 to 1.&nbsp; <b>Perfect score:</b> 1.
+</p>
+<p><b>Characteristics:</b> Measures correspondence or phase difference
+between forecast and observations, subtracting out the climatological
+mean at each point, <i>C</i>, rather than the sample mean values. The
+anomaly correlation is frequently used to verify output from numerical weather
+prediction (NWP) models. <i>AC</i> is not sensitive to forecast bias,
+so a good anomaly correlation does not guarantee accurate forecasts. Both
+forms of the equation are in common use -- see <a href="#Jolliffe_and_Stephenson_2012">Jolliffe
+and Stephenson (2012)</a> or <a href="#Wilks">Wilks (2011)</a> for
+further discussion.
+</p>
+<p><font color="#00cc00">In the example above, if the climatological
+temperature is 14 C, then
+<i>AC</i> = 0.904. <i>AC</i> is more often used in spatial
+verification.</font>
+</p>
+<p><a name="S1"></a>- - - - - - - - - - -
+</p>
+<p><b><i>S1 score</i></b> -&nbsp;<img src="verification_files/S1.gif" alt="Equation for S1 score" width="242" height="78" align="middle">
+<br>
+where <i><font face="Symbol">D</font><font face="Arial,Helvetica">F</font></i>
+(<i><font face="Symbol">D</font><font face="Arial,Helvetica">O</font></i>)
+refers to the horizontal gradient in the forecast (observations).
+</p>
+<p><i><b>Answers the question: </b>How well did the forecast gradients
+correspond to the observed gradients?</i>
+</p>
+<p><b>Range:</b> 0 to ∞.&nbsp; <b>Perfect score:</b> 0.
+</p>
+<p><b>Characteristics:</b> It is usually applied to geopotential height
+or sea level pressure fields in meteorology. Long historical records in
+NWP showing improvement in model performance over the years. Because
+<i>S1</i>
+depends only on gradients, good scores can be achieved even when the
+forecast values are biased. Also depends on spatial resolution of the forecast.
+</p>
+<p><a name="skill"></a>- - - - - - - - - - -
+</p>
+<p><a name="Skill_score"></a><b><i>Skill score</i></b> -&nbsp;<img src="verification_files/Skill.gif" alt="Equation for equation for skill score" width="310" height="51" align="middle">
+</p>
+<p><i><b>Answers the question: </b>What is the relative improvement of
+the forecast over some reference forecast?</i>
+</p>
+<p><b>Range:</b> Lower bound depends on what score is being used to
+compute skill and what reference forecast is used, but upper bound is always 1;
+0 indicates no improvement over the reference forecast. <b>Perfect
+score:</b>
+1.
+</p>
+<p><b>Characteristics:</b> Implies information about the value or worth
+of a forecast relative to an alternative (reference) forecast. In
+meteorology the reference forecast is usually persistence (no change from most
+recent observation) or climatology. The <i>skill score</i> can be unstable
+for small sample sizes. When
+<i>MSE</i> is the score used in the above expression
+then the resulting statistic is called the <b>reduction of variance</b>.
+</p>
+<p>- - - - - - - - - - -
+</p>
+<p>See also <a href="#Methods_for_spatial_forecasts">Methods for
+spatial forecasts</a> for more scientific/diagnostic techniques.<br>
+</p>
+<p>See also <a href="#Other_methods">Other methods</a> for additional
+scores for forecasts of continuous variables.<br>
+</p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</p>
+<p><a name="Methods_for_probabilistic_forecasts"></a><b><i><font size="+1">Methods
+for probabilistic forecasts</font></i></b>
+</p>
+<p>A probabilistic forecast gives a <i>probability</i> of an event occurring,
+with a value between 0 and 1 (or 0 and 100%). In general, it is difficult
+to verify a single probabilistic forecast. Instead, a set of probabilistic
+forecasts, <i>p<sub>i</sub></i>, is verified using observations that those
+events either occurred (<i>o<sub>i</sub></i>=1) or did not occur (<i>o<sub>i</sub></i>=0).
+</p>
+<p>An accurate probability forecast system has:
+</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; <i>reliability</i> - agreement between
+forecast probability and mean observed frequency
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <i>sharpness</i> - tendency to forecast
+probabilities near 0 or 1, as opposed to values clustered around the mean
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <i>resolution</i> - ability of the forecast
+to resolve the set of sample events into subsets with characteristically
+different outcomes
+</p>
+<p><a name="reliability"></a>- - - - - - - - - - -
+</p>
+<p><b><i>Reliability diagram</i></b> - (called "attributes diagram"
+when the no-resoloution and no-skill w.r.t. climatology lines are included).
+</p>
+<p><img src="verification_files/ReliabilityDiagram.gif" alt="reliability diagram" width="326" height="321" align="middle"></p>
+<p>The reliability diagram plots the observed frequency against the
+forecast probability, where the range of forecast probabilities is divided into
+<i>K</i>
+bins (for example, 0-5%, 5-15%, 15-25%, etc.). The sample size in each
+bin is often included as a histogram or values beside the data points.
+</p>
+<p><i><b>Answers the question:</b> How well do the predicted
+probabilities of an event correspond to their observed frequencies?</i>
+</p>
+<p><b>Characteristics:</b> Reliability is indicated by the proximity of
+the plotted curve to the diagonal. The deviation from the diagonal gives
+the <i>conditional bias</i>. If the curve lies below the line, this
+indicates overforecasting (probabilities too high); points above the line
+indicate underforecasting (probabilities too low). The flatter the curve in the
+reliability diagram, the less resolution it has. A forecast of
+climatology does not discriminate at all between events and non-events, and thus
+has no resolution. Points between the "no skill" line and the diagonal
+contribute positively to the <a href="#BSS">Brier skill score</a>. The frequency
+of forecasts in each probability bin (shown in the histogram) shows the
+sharpness of the forecast.
+<br>
+The reliability diagram is conditioned on the forecasts (i.e., given
+that an event was predicted, what was the outcome?), and can be expected to give
+information on the real meaning of the forecast. It is a good partner
+to the <a href="#ROC">ROC</a>, which is conditioned on the observations. Some
+users may find a reliability table (table of observed relative frequency associated with 
+each forecast probability) easier to understand than a reliability diagram.
+</p>
+<p><a name="BS"></a>- - - - - - - - - - -
+</p>
+<p><b><i>Brier score</i></b> -&nbsp;<img src="verification_files/BSexpanded.gif" alt="Expansion of Brier Score" width="473" height="47" align="middle">
+</p>
+<p><i><b>Answers the question:</b> What is the magnitude of the
+probability
+forecast errors?</i>
+</p>
+<p>Measures the mean squared probability error. <a href="#Murphy_1973">Murphy
+(1973)</a> showed that it could be partitioned into three terms: (1) <i>reliability</i>,
+(2)
+<i>resolution</i>, and (3) <i>uncertainty</i>.
+</p>
+<p><b>Range:</b> 0 to 1.&nbsp; <b>Perfect score:</b> 0.
+</p>
+<p><b>Characteristics:</b> Sensitive to climatological frequency of the
+event: the more rare an event, the easier it is to get a good <i>BS</i>
+without having any real skill. Negative orientation (smaller score
+better) - can "fix" by subtracting <i>BS</i> from 1.
+</p>
+<p><a name="BSS"></a>- - - - - - - - - - -
+</p>
+<p><b><i>Brier skill score</i></b> -&nbsp;<img src="verification_files/BSS.gif" alt="Equation for Brier skill score" width="274" height="54" align="middle">
+</p>
+<p><i><b>Answers the question:</b> What is the relative skill of the probabilistic
+forecast over that of climatology, in terms of predicting whether or
+not an event occurred?</i>
+</p>
+<p><b>Range:</b> -∞ to 1, 0 indicates no skill when
+compared
+to the reference forecast. <b>Perfect score:</b> 1.
+</p>
+<p><b>Characteristics:</b> Measures the improvement of the probabilistic
+forecast relative to a reference forecast (usually the long-term or
+sample climatology), thus taking climatological frequency into account. Not
+strictly proper. Unstable when applied to small data sets; the rarer the event,
+the larger the number of samples needed.
+</p>
+<p><a name="ROC"></a>- - - - - - - - - - -
+</p>
+<p><b><i>Relative operating characteristic</i></b> -<img src="verification_files/ROC.gif" alt="Relative operating characteristic (ROC)" width="292" height="299" align="right">Plot
+<i><a href="#POD">hit
+rate (POD)</a></i> vs <a href="#POFD"><i>false alarm rate</i> (<i>POFD</i>)</a>,
+using a set of increasing probability thresholds (for example, 0.05, 0.15,
+0.25, etc.) to make the yes/no decision. The area under the ROC curve
+is frequently used as a score.
+</p>
+<p><i><b>Answers the question:</b> What is the ability of the forecast
+to discriminate between events and non-events?</i>
+</p>
+<p><i>ROC</i>: <b>Perfect:</b> Curve travels from bottom left to top
+left of diagram, then across to top right of diagram. Diagonal line
+indicates no skill.
+<br>
+<i>ROC area</i>:&nbsp; <b>Range:</b> 0 to 1, 0.5 indicates no skill.
+<b>Perfect
+score:</b> 1
+</p>
+<p><b>Characteristics:</b> ROC measures the ability of the forecast to
+discriminate between two alternative outcomes, thus measuring resolution.
+It is not sensitive to bias in the forecast, so says nothing about reliability.
+A biased forecast may still have good resolution and produce a good ROC
+curve, which means that it may be possible to improve the forecast
+through calibration. The ROC can thus be considered as a measure of potential
+usefulness.
+<br>
+The ROC is conditioned on the observations (i.e., given that an event occurred,
+what was the correponding forecast?)&nbsp; It is therefore a good companion
+to the <a href="#reliability">reliability diagram</a>, which is
+conditioned on the forecasts.
+<br>
+More information on ROC can be found in <a href="#Mason_1982">Mason
+1982</a>, <a href="#Jolliffe_and_Stephenson_2012">Jolliffe and Stephenson
+2012</a> (ch.3), and the <a href="http://wise.cgu.edu/sdtmod/measures6.asp">WISE site</a>.
+</p>
+<p><a name="Discrimination_diagram"></a>- - - - - - - - - - -
+</p>
+<p><b><i>Discrimination diagram</i></b> - <img src="verification_files/Discrimination_diagram.gif" alt="Discrimination diagram" width="377" height="194" align="right">Plot the likelihood of each forecast probability 
+when the event occurred and when it did not occur. A summary score can be
+computed as the absolute value of the difference between the mean values of
+each distribution.
+</p>
+<p><i><b>Answers the question:</b> What is the ability of the forecast
+to discriminate between events and non-events?</i>
+</p>
+<p>Perfect discrimination is when there is no overlap between the distributions of
+forecast probabilities for observed events and non-events. As with the 
+<a href="#ROC">ROC</a> the discrimination diagram is conditioned on the observations 
+(i.e., given that an event occurred,
+what was the correponding forecast?)&nbsp; Some users may find the discrimination diagram 
+easier to understand than the ROC.
+</p>
+<p><a name="RPS"></a>- - - - - - - - - - -
+</p>
+<p><b><i>Ranked probability score</i></b> -&nbsp;<img src="verification_files/RPS.gif" alt="ranked probability score formula" width="243" height="57" align="middle">
+<br>
+where <i>M</i> is the number of forecast categories,
+<i>p<sub>k</sub></i>
+is the predicted probability in forecast category <i>k</i>, and <i>o<sub>k</sub></i>
+is an indicator (0=no, 1=yes) for the observation in category <i>k</i>.
+</p>
+<p><i><b>Answers the question:</b> How well did the probability forecast
+predict the category that the observation fell into?</i>
+</p>
+<p><b>Range:</b> 0 to 1.&nbsp; <b>Perfect score:</b> 0.
+</p>
+<p><b>Characteristics:</b> Measures the sum of squared differences in cumulative
+probability space for a multi-category probabilistic forecast. Penalizes
+forecasts more severely when their probabilities are further from the actual
+outcome. Negative orientation - can "fix" by subtracting <i>RPS</i> from
+1. For two forecast categories the <i>RPS</i> is the same as the Brier Score.
+<br>
+Continuous version -&nbsp;<img src="verification_files/CRPS.gif" alt="Continuous ranked probability score" width="224" height="60" align="middle">
+</p>
+<p><a name="RPSS"></a>- - - - - - - - - - -
+</p>
+<p><b><i>Ranked probability skill score</i></b> -&nbsp;<img src="verification_files/RPSS.gif" alt="Equation for ranked probability skill score" width="326" height="50" align="middle">
+</p>
+<p><i><b>Answers the question:</b> What is the relative improvement of
+the probability forecast over climatology in predicting the category
+that the observations fell into?</i>
+</p>
+<p><b>Range:</b> -∞ to 1, 0 indicates no skill when
+compared to the reference forecast. <b>Perfect score:</b> 1.
+</p>
+<p><b>Characteristics:</b> Measures the improvement of the
+multi-category probabilistic forecast relative to a reference forecast (usually the
+long-term or sample climatology). Strictly proper. Takes climatological frequency
+into account. Unstable when applied to small data sets.
+</p>
+<p><a name="relative_value"></a>- - - - - - - - - - -
+</p>
+<p><b><i>Relative value (value score)</i></b> (<a href="#Richardson_2000">Richardson,
+2000</a>; <a href="#Wilks_2001">Wilks, 2001</a>)&nbsp;<img src="verification_files/value_determ.gif" alt="relative value curve for deterministic forecast" width="352" height="264" align="right">
+<br>
+<img src="verification_files/value.gif" alt="Equation for relative value score" width="353" height="148"></p>
+<p><i><b>Answers the question: </b>For a <a href="https://www.cawcr.gov.au/projects/verification/value/relativevalue_more.html">cost/loss
+ratio</a> C/L for taking action based on a forecast, what is the
+relative improvement in economic value between climatalogical and perfect
+information?</i>
+</p>
+<p><b>Range:</b> -∞ to 1.&nbsp; <b>Perfect score:</b> 1.
+</p>
+<p><b>Characteristics:</b> The relative value is a skill score of
+expected expense, with climatology as the reference forecast. Because the
+cost/loss ratio is different for different users of forecasts, the value is
+generally plotted as a function of <i>C/L</i>.
+</p>
+<p><img src="verification_files/value_EPS.gif" alt="relative value for ensemble prediction system" width="353" height="265" border="0" align="right">Like
+<a href="#ROC">ROC</a>,
+it gives information that can be used in decision making. When applied
+to a probabilistic forecasts system (for example, an ensemble
+prediction system), the optimal value for a given <i>C/L</i> may be achieved by a
+different forecast probability threshold than the optimal value for a
+different <i>C/L</i>.
+In this case it is necessary to compute relative value curves for the entire
+range of probabilities, then select the optimal values (the upper envelope
+of the relative value curves) to represent the value of the probabilistic
+forecast system. Click <a href="https://www.cawcr.gov.au/projects/verification/value/relativevalue_more.html">here</a>
+for more information on the cost/loss model and relative value.
+</p>
+<p>- - - - - - - - - - -
+</p>
+<p>See also <a href="#Methods_for_EPS">Methods for ensemble
+prediction
+systems</a> for more scientific/diagnostic techniques.
+<br>
+</p>
+<hr width="100%">
+<p><a name="Scientific_verification_methods"></a><b><i><font size="+2">Scientific
+or diagnostic verification methods</font></i></b>
+</p>
+<p><i>Scientific</i>, or <i>diagnostic</i>, verification methods delve more
+deeply into the nature of forecast errors. As a result they are frequently
+more complex than the standard verification measures described earlier.
+Distributions-oriented approaches and plots such as <a href="#histogram">histograms</a>,
+<a href="#box_plot">box
+plots</a>, and <a href="#scatterplot">scatter plots</a>, are standard
+diagnostic verification methods.
+</p>
+<p>This section gives very brief descriptions of several recently
+developed scientific and diagnostic methods, and relies heavily on references and
+links to other sites with greater detail.
+</p>
+<p><b><i><font color="#3333ff">This is also a place to promote new
+verification techniques. If you are working in this area, then you are encouraged to
+share your methods via this web site.</font></i></b>
+</p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</p>
+<h3><a name="Methods_for_spatial_forecasts"></a>
+<b><i>Methods for spatial forecasts</i></b></h3>
+<p><big><b><i>Scale decomposition methods</i></b></big> - allow the
+errors at each scale to be diagnosed:
+</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; Wavelet decomposition&nbsp; (<a href="#Briggs_and_Levine_1997">Briggs
+and Levine, 1997</a>)<br>
+</p>
+<p>- - - - - - - - - - -
+</p>
+<a name="IS"></a>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i><b><a href="http://www.met.rdg.ac.uk/%7Eswr00bc/PhD.html">Intensity-scale
+verification approach</a></b></i> (<a href="#Casati2004">Casati et al.
+2004</a>)<br>
+</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b><i>Answers
+the question:&nbsp;</i></b> <i>How does the skill
+of spatial precipitation forecasts depend on both the scale of the
+forecast error and the intensity of the precipitation events?<img alt="MSE skill for intensity-scale verification method" src="verification_files/IS_MSEskill.gif" width="444" vspace="5" hspace="5" height="239" align="right"></i><br>
+</p>
+<p>The intensity-scale verification approach bridges
+traditional categorical binary verification, which provides information
+about skill for different precipitation intensities, with the more
+recent techniques which evaluate the forecast skill on different
+spatial scales (e.g., Zepeda-Arce et al., 2000; Briggs
+and Levine, 1997). It assesses the forecast on its whole domain, and is
+well suited for verifying spatially discontinuous fields, such as
+precipitation fields characterized by the presence of many scattered
+precipitation events. It provides useful insight on
+individual forecast cases as well as for forecast systems evaluated
+over many cases.<br>
+</p>
+<p>Forecasts are assessed using the Mean Squared Error
+(MSE) skill score of binary images, obtained from the forecasts and
+analyses by thresholding at different precipitation rate intensities.
+The skill score is decomposed on different spatial scales using a
+two-dimensional discrete Haar wavelet decomposition of binary error
+images. The
+forecast skill can then be evaluated in terms of precipitation rate
+intensity and spatial scale. <br>
+</p>
+<p><click><a href="http://www.met.rdg.ac.uk/%7Eswr00bc/PhD.html">
+here</a> to learn more.<br>
+</click></p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; Discrete cosine transformation (DCT) (<a href="#Denis_et_al_2002a">Denis
+et al., 2002a</a> for method; <a href="#Denis_et_al_2002b">Denis
+et al.,
+2002b</a> and <a href="#de_Elia_et_al_2002">de Elia et al.,
+2002</a> for application)
+</p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -<br>
+</p>
+<p><big><b><i>Neighborhood (fuzzy) methods</i></b></big> - relax the
+requirement for an exact match by evaluating forecasts
+in the local neighborhood of the observations. <br>
+</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; Multi-scale statistical organization (<a href="#Zepeda-Arce_et_al_2000">Zepeda-Arce
+et al., 2000</a>)
+</p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -<br>
+</p>
+<a name="FSS"></a>
+<img alt="Plot of fractions skill score" src="verification_files/FSSplot.gif" style="width: 559px; height: 280px;" vspace="2" align="right">
+<p>&nbsp;&nbsp;&nbsp;&nbsp; <i><b>Fractions skill score</b></i> (<a href="#Roberts_Lean_2008">Roberts and Lean, 2008</a>)<br>
+</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i><b>Answers the question: </b>What are
+the spatial scales at which the forecast resembles the observations?</i>
+</p>
+<p>This approach directly compares the forecast and observed
+fractional coverage of grid-box events (rain exceeding a certain
+threshold, for example) in spatial windows of increasing size. These
+event frequencies are used directly to compute a Fractions Brier Score,
+a version of the more familiar (half) <a href="#BS">Brier score</a>
+but now the observation can take any value between 0 and 1. The result can be
+framed as a Fractions Skill Score<br>
+<img alt="Equation for fractions skill score" src="verification_files/FSS.gif" style="width: 201px; height: 93px;" align="middle">
+</p><p>where <i>P<sub>f</sub></i> is the forecast fraction,
+<i>P<sub>o</sub></i> is the observed fraction, and <i>N</i>
+is the number of spatial windows in the domain.</p>
+<p>FSS has the following properties:
+</p><ul>
+  <li>The Fractions Skill Score
+ranges from 0 (complete mismatch) to 1 (perfect match). </li>
+  <li>If either there are no events
+forecast and some occur, or some occur and none are forecast the score
+is always 0.</li>
+  <li>The value of FSS above which the forecasts are considered to have useful 
+(better than random) skill is given by 
+<i>FSS<sub>useful</sub></i> = 0.5 + <i>f<sub>o</sub></i>/2, where 
+<i>f<sub>o</sub></i> is the domain average observed fraction. The smallest
+window size for which <i>FSS</i> ≥ <i>FSS<sub>useful</sub></i> can be considered
+the "skillful scale".</li>
+  <li>As the size of the squares used to
+compute the fractions gets larger, the score will asympotote to a value
+that depends on the ratio between the forecast and observed frequencies
+of the event. The closer the asymptotic value is to 1, the smaller the
+forecast bias.</li>
+  <li>The score is most sensitive to rare
+events (e.g., small rain areas).</li>
+</ul>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -<br>
+</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; Fuzzy logic (<a href="#Damrath_2004">Damrath,
+2004</a>)
+</p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -<br>
+</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; Pragmatic (neighborhood)
+method (<a href="#Theis_et_al_2005">Theis et al., 2005</a>)
+</p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; <i><b><a href="https://www.cawcr.gov.au/projects/verification/Atger/SpatialMultiEvent.html">Spatial
+multi-event contingency
+tables</a></b></i> - useful for verifying high resolution forecasts (<a href="#Atger_2001">Atger, 2001</a>). <br>
+</p>
+<p>By using multiple thresholds, a deterministic forecast system can be
+evaluated across a <i>range </i>of possible decision thresholds
+(instead of just one) using <a href="#ROC">ROC</a>
+and <a href="#relative_value">relative
+value</a>. The decision thresholds might be intensity thresholds or
+even "closeness"
+thresholds (for example, forecast event within 10 km of the location of
+interest, within 20 km, 30 km, etc.). Such verification results can
+be used to assess the performance of high resolution forecasts
+where the exact spatial matching of forecast and observed events is
+difficult or unimportant. This multi-threshold approach enables a fairer
+comparison against ensemble prediction
+systems or other probabilistic forecasts. <br>
+</p>
+<p>Click <a href="https://www.cawcr.gov.au/projects/verification/Atger/SpatialMultiEvent.html">here</a> to learn more.<br>
+</p>
+<p>(related work: <a href="#Tremblay_et_al_1996">Tremblay
+et al., 1996</a>)
+</p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; Practically perfect
+hindcasts - assessing relative skill of spatial
+forecasts (<a href="#Brooks_et_al_1998">Brooks et al, 1998</a>; <a href="http://www.rap.ucar.edu/research/verification/pdf/kay.pdf">Kay,
+2002</a>)
+</p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-style: italic;"><span style="font-weight: bold;">Neighborhood </span></span><b><i>verification
+framework</i></b> - 12 neighborhood (a.k.a. fuzzy verification) methods
+combined into one
+framework (<a href="#Ebert_2008">Ebert, 2008</a>)<br>
+</p>
+<p class="MsoNormal">Neighborhood verification approaches reward
+closeness
+by relaxing
+the requirement for exact matches between forecasts and observations.
+Some of
+these neighborhood methods compute standard verification metrics for
+deterministic
+forecasts using a broader definition of what constitutes a "hit".
+Other neighborhood methods treat the forecasts and/or observations as
+probability
+distributions and use verification metrics suitable for probability
+forecasts.
+Implicit in each neighborhood verification method is a particular
+decision
+model
+concerning what constitutes a good forecast.</p>
+<p class="MsoNormal"><o:p>&nbsp;</o:p>The key to the neighborhood
+approach is
+the use of a spatial window or
+neighborhood surrounding the forecast and/or observed points. The
+treatment of
+the points within the window may include averaging (upscaling),
+thresholding,
+or generation of a PDF, depending on the neighborhood method used. The
+size of
+this
+neighborhood can be varied to provide verification results at multiple
+scales,
+thus allowing the user to determine at which scales the forecast has
+useful
+skill. Other windows could be included to represent closeness in time,
+closeness in intensity, and/or closeness in some other important aspect.</p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+<br>
+</p>
+<big><b><i>Object oriented methods:</i></b>
+</big>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; <b><i><a href="https://www.cawcr.gov.au/projects/verification/CRA/CRA_verification.html">CRA
+(entity-based) verification</a></i></b> (<a href="#Ebert_and_McBride_2000">Ebert and McBride, 2000</a>)
+</p>
+<p><i><b>&nbsp;&nbsp;&nbsp; Answers the question:</b>
+What is the location
+error of the (spatial) forecast, and how does the total error break
+down
+into components due to incorrect location, volume, and fine scale
+structure?</i>
+<br>
+<img src="verification_files/CRA_entities0.gif" alt="CRA entities" width="260" vspace="5" hspace="5" height="111" align="right"><br>
+This object-oriented method verifies the properties of spatial
+forecasts of
+<i>entities</i>,
+where an entity is anything that can be defined by a closed contour.
+Some
+examples of entities, or blobs, are contiguous rain areas (CRAs, for
+which
+the method is named), convective outlook regions, and low pressure
+minima.
+For each entity that can be identified in the forecast and the
+observations,
+CRA verification uses pattern matching techniques to determine the
+location
+error, as well as errors in area, mean and maximum intensity, and
+spatial
+pattern. The total error can be decomposed into components due to
+location,
+volume, and pattern error. This is a useful property for model
+developers
+who need such information to improve the numerical weather prediction
+models.
+</p>
+<p>In addition, the verified entities themselves may be
+classified as "hits",
+"misses", etc., according to how close the forecast location was to the
+observed location, and how well the maximum intensity was represented
+by
+the forecast. This event verification can be useful for monitoring
+forecast performance.
+</p>
+<p>Click <a href="https://www.cawcr.gov.au/projects/verification/CRA/CRA_verification.html">here</a>
+to learn more.
+</p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; <b><i>Method for Object-based Diagnostic
+Evaluation (MODE)</i></b> (<a href="#Brown_et_al_2004">Brown
+et al.,
+2004</a>; <a href="#Davis_et_al_2006a">Davis et al., 2006</a>)
+<img src="verification_files/MODE.gif" alt="MODE objects" width="236" hspace="5" height="209" align="right"><br>
+</p>
+<p><i><b>&nbsp;&nbsp;&nbsp; Answers the question:</b>
+How similar are the forecast objects to the observed objects
+according to a variety of descriptive criteria ?</i></p>
+<p>MODE uses a convolution filter and thresholding to first
+identify objects in gridded fields. Performance at different spatial
+scales can be investigated by
+varying the values of the filter and threshold parameters.
+Then a fuzzy logic scheme is used to
+merge objects within a field, and match them between the forecast and
+the observations. Several attributes of the matched objects
+(location, area, volume, intensity, shape, etc.) are compared
+to see how similar they are. These are combined to give an "interest
+value"
+that summarizes the goodness of the match.</p>
+<p>Output of the MODE algorithm include:<br>
+</p>
+<ul>
+  <li>Attributes of single matched shapes (i.e., hits)</li>
+  <li>Attributes of single unmatched shapes (i.e., false alarms, misses)</li>
+  <li>Attributes of clustered objects (i.e., groups of forecast or
+observed
+objects that are merged together)</li>
+  <li>Attributes of interest to specific users (e.g., gaps between
+storms, for aviation strategic planning)</li>
+</ul>
+<p>Attributes can be summarized across many cases to
+understand how forecasts represent the storm/precipitation climatology,
+understand systematic errors, and
+document variability in performance in different situations.</p>
+<p>The MODE verification scheme is part of the <a href="http://www.dtcenter.org/met/users/">
+Model Evaluation Tools (MET)</a> toolkit freely available from NCAR.
+More information on MODE is available from the
+<a href="http://www.dtcenter.org/met/users/docs/overview.php">Developmental
+Testbed Center</a>.</p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; Event verification using
+composites (<a href="#Nachamkin2004">Nachamkin, 2004</a>)
+</p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; Cluster analysis (<a href="#Marzban_Sandgathe_2006">Marzban and Sandgathe, 2006, 2008</a>)<br>
+</p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; Procrustes shape analysis (<a href="#Michaes_2007">Michaes et al., 2007</a>; <a href="#Lack_et_al_2010">Lack et al. 2010</a>)<br>
+</p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp; Structure-Amplitude-Location
+(SAL) method (<a href="#Wernli_2008">Wernli et al., 2008</a>)<br>
+</p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</p>
+<p><b><i><a href="https://www.cawcr.gov.au/projects/verification/Brill/Brill_EW_PhaseError.html">Automated
+east-west phase
+error calculation</a></i></b> (Keith Brill, NOAA/NWS/NCEP/HPC)
+</p>
+<p><i><b>Answers the question:</b> What is the phase
+error of the (spatial) forecast?</i>
+</p>
+<p>This approach considers both high and low pressure centers, troughs,
+and ridges, and takes into account the typical synoptic scale
+wavelength.
+</p>
+<p>Gridded forecasts and analyses of mean sea level
+pressure are meridionally
+averaged within a zonal strip to give an east-west series of forecast
+and
+analyzed values. Cosine series trigonometric approximations are applied
+to both series, and the variance associated with each spectral
+component is computed. These are then sorted in descending order of
+variance to
+get
+the hierarchy of most important waves. If the hierarchies agree between
+the forecast and analyzed spectral components, then the phase angle
+(error) can be computed for each component.
+</p>
+<p>In practice, the first spectral component is usually responsible for
+most
+of the variance and is the main one of interest. The phase errors are
+presented as time series.&nbsp; Click <a href="https://www.cawcr.gov.au/projects/verification/Brill/Brill_EW_PhaseError.html">here</a>
+to learn more.
+</p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</p>
+<p>Feature calibration and alignment (<a href="#Hoffman_et_al._1995">Hoffman
+et al., 1995</a>; <a href="#Nehrkorn_et_al_2003">Nehrkorn et
+al., 2003</a>)
+</p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+<br>
+</p>
+<big><b><i>Field verification methods:</i></b></big> <br>
+<br><a name="DAS"></a>
+&nbsp;&nbsp;&nbsp;&nbsp; 
+<b><i>Displacement and Amplitude Score (DAS)</i></b>
+<a href="#Keil_Craig_2009">Keil and Craig, 2009</a>)<br>
+<br>
+<i><b>&nbsp;&nbsp;&nbsp; Answers the question:</b>
+What is the distance between forecast and observed features?</i>
+<br>
+<img style="width: 325px; height: 321px;" alt="Example of Displacement Amplitude Score verification" src="verification_files/DASexample.gif" align="right"><br>
+<span lang="EN-GB">Measuring distance between
+observed and
+forecast features is not only an intuitive error measure for many
+users, but
+also avoids the double-counting penalty where a feature displaced in
+space is
+scored worse than either a complete miss or a false alarm since it is
+penalized
+as both at once. The Displacement and Amplitude Score (DAS) is based on
+an
+optical flow algorithm that defines a vector field that deforms, or
+morphs, one
+image to match another. In DAS distance and amplitude errors are
+combined to
+produce a single measure. The optical flow method does not require
+identification and matching of discrete objects, which is often
+subjective and
+sensitive to many parameters in the algorithms.<br>
+<br>
+The figure to the right shows the o</span><span lang="EN-GB">bserved
+radar reflectivity
+(top left),
+forecast reflectivity (top right), forecast superimposed with
+displacement
+vector field
+matching the forecast onto the observation (bottom left), and morphed
+forecast
+(bottom right). The two components of DAS in forecast space comprise
+the mean
+displacement vector length and the root mean square error of morphed
+forecast
+and observation (bottom right – top left).</span><big>
+</big>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</p>
+<h3><a name="Methods_for_EPS"></a><i>Methods for probabilistic
+forecasts, including ensemble prediction systems</i></h3>
+Wilson method for EPS verification (<a href="#Wilson_et_al_1999">Wilson
+et al, 1999</a>)
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</p>
+<p>Multi-category reliability diagram (<a href="#Hamill_1997">Hamill,
+1997</a>)
+</p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</p>
+<p><a name="rank_histogram"></a><b><i>Rank histogram</i></b>
+(<a href="#Talagrand_et_al_1997">Talagrand
+et al, 1997</a>; <a href="#Hamill_2001">Hamill, 2001</a>)<img src="verification_files/RankHistogram.gif" alt="rank histogram diagram" width="379" height="119" align="middle">
+</p>
+<p><i><b>Answers the question:</b> How well does the ensemble spread of
+the forecast represent the true variability (uncertainty) of the
+observations?</i>
+</p>
+<p>Also known as a "Talagrand diagram", this method
+checks where the verifying
+observation usually falls with respect to the ensemble forecast data,
+which
+is arranged in increasing order at each grid point. In an ensemble with
+perfect spread, each member represents an equally likely scenario, so
+the
+observation is equally likely to fall between any two members.
+</p>
+<p>To construct a rank histogram, do the following:
+<br>
+1. At every observation (or analysis) point rank the <i>N</i> ensemble
+members from lowest to highest. This represents N+1 possible bins that
+the observation could fit into, including the two extremes
+<br>
+2. Identify which bin the observation falls into at each point
+<br>
+3. Tally over many observations to create a histogram of rank.
+</p>
+<p>Interpretation:
+<br>
+Flat - ensemble spread about right to represent forecast uncertainty
+<br>
+U-shaped - ensemble spread too small, many observations falling outside
+the extremes of the ensemble
+<br>
+Dome-shaped - ensemble spread too large, most observations falling
+near the center of the ensemble
+<br>
+Asymmetric - ensemble contains bias
+</p>
+<p>Note: A flat rank histogram does not necessarily
+indicate a good forecast,
+it only measures whether the observed probability distribution is well
+represented by the ensemble.
+</p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</p>
+<p><b><i><a href="https://www.cawcr.gov.au/projects/verification/CorrespondenceRatio.php">Correspondence
+ratio</a></i></b>
+- ratio
+of the area of intersection of two or more events to the combined area
+of those events (<a href="#Stensrud_and_Wandishin_2000">Stensrud
+and Wandishin, 2000</a>)
+<br>
+<img src="verification_files/CorrespondenceRatio.gif" alt="Equation for correspondence ratio" width="442" height="91"><img src="verification_files/Venn.gif" alt="Venn diagram showing intersection of three areas" width="119" height="135"><br>
+where <i>F<sub>m,i</sub></i> is the value of forecast <i>m</i> at
+gridpoint
+<i>i</i>,
+and <i>O<sub>i</sub></i> is the corresponding observed value. In the
+diagram
+<i>CR</i>
+is the ratio of the dark area to the total shaded area. Click
+<a href="https://www.cawcr.gov.au/projects/verification/CorrespondenceRatio.php">here</a>
+to learn more.
+</p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</p>
+<p><b><i><a href="http://arxiv.org/PS_cache/physics/pdf/0308/0308046v2.pdf">Likelihood
+skill measure</a></i></b> - Likelihood is defined very simply as <i>the
+probability of the observations given the forecast</i>.
+Likelihood-based measures can be used for binary and continuous
+probability forecasts, and provide
+a simple and natural general framework for the evaluation of all kinds
+of probabilistic forecasts. For more information see <a href="#Jewson_2003">Jewson, (2003</a>)
+</p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+<br>
+</p>
+<p><b><i><a href="https://www.cawcr.gov.au/projects/verification/Ignorance.php">Logarithmic
+scoring rule (ignorance
+score)</a></i></b> (<a href="#Roulston_Smith_2002">Roulston and Smith,
+2002</a>)<br>
+</p>
+<p class="MsoNormal" style="text-align: justify;">The
+logarithmic scoring rule can be defined as
+follows: If there are <i>n</i> (mutually exclusive) possible
+outcomes and <i>f<sub>i</sub></i> (<i>i</i>=1,...<i>n</i>) is the
+predicted probability of the <i>i<sup>th</sup></i>
+outcome occurring then if the <i>j<sup>th</sup></i> outcome is the
+one which actually occurs the score for this particular
+forecast-realization pair is given by</p>
+<p class="MsoNormal" style="text-align: center;"><o:p>&nbsp;IGN
+= -log</o:p><small><sub>2</sub></small> <i>f<sub>j</sub></i><br>
+</p>
+As defined above,
+with a negative sign, the logarithmic score cannot be negative and
+smaller values of
+the score are better. The minimum value of the score (zero) is obtained
+if a probability
+of 100% is assigned to the actual outcome. If a probability of zero is
+assigned
+to the actual outcome the logarithmic scoring rule is infinite. Click <a href="https://www.cawcr.gov.au/projects/verification/Ignorance.php">here</a>
+to learn more.<br>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</p>
+<h3><a name="Methods_for_rare_events"></a><b><i>Methods
+for rare events</i></b></h3>
+<p><img src="verification_files/DetLim.gif" alt="deterministic limit diagram" width="320" vspace="2" height="237" align="right">
+<b><i><a href="https://www.cawcr.gov.au/projects/verification/Hewson/DeterministicLimit.html">Deterministic
+limit</a></i></b> <a href="#Hewson2007">(Hewson, 2007)</a><a>
+</a></p>
+<p><a><i><b>Answers the question:</b> What is the length
+of time into the forecast in which the forecast is more likely to be
+correct than incorrect?</i>
+</a></p>
+<p><a>The 'deterministic limit' is defined, for
+categorical forecasts of a pre-defined rare meteorological event, to
+simply be the point ahead of issue time at which, across the
+population, the number of misses plus false alarms equals the number of
+hits (i.e. </a><a href="https://www.cawcr.gov.au/projects/verification/CSI">critical
+success index</a>
+=0.5). A hypothetical example of an accuracy statement that might thus
+arise would be: 'The deterministic limit for predicting a windstorm,
+with gusts in excess of 60 kts at one or more low-lying inland stations
+in NW Europe, is 2.1 days'. The base rate (or event frequency) should
+also be disclosed. Recalibration of the forecast is often necessary for
+useful deterministic limit measures to be realised. </p>
+<p>As they provide a clear measure of capability,
+deterministic limit values for various parameters may in due course be
+used as year-on-year performance indicators, and also to provide
+succinct guidelines for warning service provision. They could also be
+used as the cut-off point to switch from deterministic to probabilistic
+guidance. In turn this may help elevate the hitherto muted enthusiasm
+shown, by some customers, for probabilistic forecasts.
+</p>
+<p>Click <a href="https://www.cawcr.gov.au/projects/verification/Hewson/DeterministicLimit.html">here</a>
+to learn more.<br>
+</p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</p>
+<a name="Extreme_dependence"></a>
+<p><b><i>Extreme dependency score</i></b> -<img src="verification_files/EDS.gif" alt="extreme dependency score equation" width="319" height="95" align="absmiddle">
+<br><b><i>Symmetric extreme dependency score</i></b> -<img src="verification_files/SEDS.gif" alt="symmetric extreme dependency score equation" width="251" height="95" align="absmiddle">
+<br><b><i>Extremal dependence index</i></b> -<img src="verification_files/EDI.gif" alt="extremal dependence index equation" width="132" height="45" align="absmiddle">
+<br><b><i>Symmetric extremal dependence index</i></b> -<img src="verification_files/SEDI.gif" alt="symmetric extremal dependence index equation" width="282" height="49" align="absmiddle">
+</p>
+<br>where <i>p</i>=(<i>hits</i>+<i>misses</i>)/<i>total</i>
+ is the base rate (climatology),
+<i>q</i>=(<i>hits</i>+<i>false alarms</i>)/<i>total</i>
+ is the frequency with which the event is forecast,
+<i>H</i> is the <a href="#POD">hit rate</a>, 
+also known as the probability of detection, and
+<i>F</i> is the <a href="#POFD">false alarm rate</a>, 
+also known as the probability of false detection.
+<p><i><b>Answer the question: </b>What is the association between
+forecast and observed rare events?</i>
+</p>
+<p><b>Range:</b> -1 to 1, 0 indicates no skill. <b>Perfect score:</b>
+1
+</p>
+<p><b>Characteristics:</b> Scores converge to 2η-1 as event frequency
+approaches 0, where
+η is a parameter describing how fast the hit rate converges to zero
+for rarer events.
+EDS is independent of bias, so should be presented together with
+the frequency bias.
+Both EDI and SEDI are independent of the base rate. SEDI approaches 1 only
+as the forecast approaches perfection, whereas it is possible to optimize
+EDS and EDI for biased forecasts.
+For further details and comparison of the merits of these scores see
+<a href="#Ferro_Stephenson_2011">Ferro and Stephenson (2011)</a>.
+</p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</p>
+<p><b><i><a href="https://www.cawcr.gov.au/projects/verification/Ferro/Verif_rare_events.html">Probability
+model approach</a></i></b> <a href="#Ferro2007">(Ferro, 2007)</a> -
+Probability models that impose parametric forms on the relationships
+between observations and forecasts can help to quantify forecast
+quality
+for rare, binary events by identifying key features of the
+relationships and reducing sampling
+variation of verification measures. Click <a href="https://www.cawcr.gov.au/projects/verification/Ferro/Verif_rare_events.html">here</a>
+to learn more.
+</p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</p>
+<h3>
+<a name="Other_methods"></a><i>Other
+methods</i></h3>
+<img style="width: 347px; height: 331px;" alt="Taylor diagram example" src="verification_files/TaylorDiagram.gif" align="right"> <span style="font-weight: bold; font-style: italic;">Diagrams to plot
+several statistics at one time<br>
+</span>&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-weight: bold; font-style: italic;">Taylor diagram</span>
+of correlation coefficient,
+root-mean-square difference, and standard deviation (<a href="#Taylor,_2001">Taylor,
+2001</a>); see also <a href="http://www-pcmdi.llnl.gov/about/staff/Taylor/CV/Taylor_diagram_primer.pdf">LLNL
+description</a>.
+An example of a Taylor diagram is shown at right.<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-weight: bold; font-style: italic;">BLT diagram</span> of
+relative climate mean squared
+difference, variance ratio, and effective correlation (<a href="#Boer_and_Lambert_2001">Boer
+and Lambert, 2001</a>).<br>
+<br>
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -<br>
+<br>
+<a name="Roebber_diagram"></a>&nbsp;&nbsp;&nbsp;&nbsp;
+<i><b>Categorical
+performance diagram</b></i> (<a href="https://www.cawcr.gov.au/projects/verification/verif.html#Roebber_2009">Roebber
+2009</a>)<br>
+<img style="width: 243px; height: 234px;" alt="Probability of Detection vs. Success Ratio" src="verification_files/PerformanceDiagram_small.gif" align="right"><br>
+In an approach that is
+conceptually similar to the Taylor diagram, it is possible to exploit
+the geometric relationship between
+four measures of dichotomous forecast performance: probability of
+detection (POD), false alarm ratio or its opposite, the success ratio
+(SR), bias and critical success index (CSI; also known as the threat
+score). For good forecasts, POD, SR, bias and CSI approach unity, such
+that a
+perfect forecast lies in the upper right of the diagram. Skill is
+assessed by plotting the
+forecast quality measure relative to a reference forecast (climatology,
+persistence or any other desired baseline). <br>
+<br>
+Click <a href="https://www.cawcr.gov.au/projects/verification/Roebber/PerformanceDiagram.html">here</a> to learn more.<br>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</p>
+<p><a name="RMSF"></a><b><i>Root mean squared factor</i></b>&nbsp;
+(<a href="#Golding_1998">Golding,
+1998</a>)&nbsp;<img src="verification_files/RMSF.gif" alt="root mean square factor" width="235" height="74" align="middle">
+<br>
+<i><b>Answers the question:</b> What is the average multiplicative
+error?</i>
+</p>
+<p>The <i>RMSF</i> is the exponent of the root mean square error of
+the
+logarithm of the data. The logarithmic transformation is performed to
+smooth the
+data, reduce the discontinuities, and make the data more robust.
+Whereas the RMS error can be interpreted as giving a scale to the
+additive
+error, i.e., <b><i>f</i></b> =
+<b><i>o</i></b> ± <b><i>RMS</i></b>, the RMSF
+can be interpreted as giving a scale to the multiplicative error, i.e.,
+<b><i>f</i></b> =
+<b><i>o</i></b> ×/÷ <b><i>RMSF</i></b> (read: "multiplied or divided
+by"), which is a more appropriate measure of accuracy for some
+variables
+and more intuitively meaningful than the RMS log error. In order to
+avoid assigning skill to trivial forecasts, statistics are only
+accumulated
+where either the forecast or observations are within specified limits.
+For
+example, for visibility verification, the lower and upper limits used
+by Golding
+(1998) were 1 m and 5000 m. When either the forecast or the observation
+lies within the range but the other is outside the range, then limits
+of half the lower limit or double the upper limit are prescribed on the
+other.
+</p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</p>
+<i><b>Nash-Sutcliffe
+efficiency coefficient</b></i> (<a href="#Nash_Sutcliffe_1970">Nash
+and Sutcliffe, 1970</a>) - <img style="width: 150px; height: 95px;" alt="Nash-Sutcliffe efficiency factor" src="verification_files/NashEfficiency.gif" align="middle">
+<p><i><b>Answers the question:</b> How well does the forecast predict
+the observed time series?</i>
+</p>
+<p><b>Range:</b> -∞ to 1.&nbsp; <b>Perfect score:</b> 1.
+</p>
+<p><b>Characteristics:</b> Frequently used to quantify the accuracy of
+hydrological predictions. If <i>E</i>=0 then the model forecast is no
+more
+accurate than the mean of the observations; if <i>E</i>&lt;0 then the
+mean
+observed value is a more accurate predictor than the model. The
+expression is identical to that for the coefficient of determination 
+<i>R</i><sup>2</sup> and the <a href="#Skill score">reduction of variance</a>.<br>
+</p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</p>
+<a name="alpha_index"></a>
+<b><i>Alpha Index</i></b> (<a href="#Koh_Ng_2009">Koh and Ng, 2009</a>)&nbsp;
+-&nbsp; &nbsp; <img style="width: 203px; height: 56px;" alt="Koh's alpha index" src="verification_files/AlphaIndex.gif" align="middle">
+<p><i><b>Answers the question:</b> How does the random error of a
+forecast compare between regions of different observational variability?</i>
+</p>
+<p><b>Range:</b> 0 to 2.&nbsp; <b>Perfect score:</b> 0.
+</p>
+<p><b>Characteristics:</b> Alpha is a normalized measure of unbiased
+error
+variance, where the normalization factor is the reciprocal of the sum
+of forecast and observation variances. Replace the squares by inner
+products if the variable is a vector (e.g. wind).
+</p>
+<p>Click <a href="https://www.cawcr.gov.au/projects/verification/Koh/AlphaIndex.html">here</a> to learn more.
+</p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</p>
+<a name="elliptical_representation"></a> <b><i>Elliptical
+representation of vector
+errors</i></b> (<a href="https://www.cawcr.gov.au/projects/verification/verif.html#Koh_Ng_2009">Koh and Ng, 2009</a>)&nbsp;&nbsp;
+<br>
+<p><i><b>Answers the question: </b>How does the vector error
+between
+the model and observation vary about the mean vector error (i.e.,
+bias)?</i></p>
+<p>In the diagram to the right, the mean vector error is represented
+by&nbsp;<i><b><img style="width: 76px; height: 26px;" alt="Expression for mean vector error" src="verification_files/VectorError.gif" align="top"></b></i>.
+The error variance ellipse may be
+represented by: &nbsp;<img style="width: 335px; height: 263px;" alt="error variance ellipse" src="verification_files/VarianceEllipse_medium.gif" align="right">
+</p>
+<ul>
+  <li>standard deviation, <img style="width: 89px; height: 34px;" alt="standard deviation" src="verification_files/SD.gif" align="middle"></li>
+  <li>eccentricity, <sup><img style="width: 107px; height: 32px;" alt="eccentricity" src="verification_files/eccentricity.gif" align="top"></sup></li>
+  <li>orientation of the major axis, <i>θ</i>.</li>
+</ul>
+where <i>a</i> and <i>b</i> are the semi-major and semi-minor axes
+of the ellipse.
+<p><b><i>Range:</i></b>
+<i>σ</i> ∈ [0,∞), <i>ε</i> ∈ [0,1],
+<i>θ</i> ∈ [0,<i>π</i>)&nbsp;&nbsp;&nbsp;
+<b><i>Perfect Score:</i></b> for a vector error&nbsp;
+<i>σ</i> = 0, <i>ε</i> = 0
+</p>
+<p><b><i>Characteristics:</i></b>
+For the error ellipse (i.e.,
+forecast minus
+observation), <i>σ</i> indicates the overall
+magnitude of the random error, <i>θ</i>
+is the preferred
+direction of the vector random error, and <i>ε</i> denotes
+the degree of
+preference for that direction.
+</p>
+<p>Click <a href="https://www.cawcr.gov.au/projects/verification/Koh/EllipticalVectorError.html">here</a> to learn
+more.
+</p>
+<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+</p>
+<b><i>Quantile-based
+categorical statistics</i></b>&nbsp;
+(<a href="#Jenkner_2008">Jenkner et al., 2008</a>) <img alt="Example of quantile scores for Switzerland" src="verification_files/fall_bothint_querrclim.gif" style="width: 397px; height: 291px;" align="right"><br>
+<br>
+Dichotomous forecasts can be thought of in terms of
+statistical frequencies instead of physical amplitudes. If the marginal
+totals of the contingency table are fixed by means of quantiles,
+categorical statistics benefit from some inherent advantages. The
+verification problem automatically is calibrated and the degrees of
+freedom reduce to one, allowing the potential accuracy of the
+calibrated forecast to be described using a single score. The total
+error can be split up into the bias and the potential accuracy,
+which can be measured by the quantile difference and the debiased <a href="#HK">Peirce's Skill Score</a>, respectively. These two quantities
+provide a complete verification set with the ability to assess the full
+range of intensities. The verification can be computed
+for certain quantiles, as shown at right for the COSMO model's QPF
+performance over six predefined
+regions in Switzerland, or it can be aggregated over intensities by
+means of appropriate summary measures.
+<p>Click <a href="https://www.cawcr.gov.au/projects/verification/Jenkner/qbasedverif.htm">here</a> to learn more.<br>
+</p>
+<br>
+<hr width="100%">
+<p><b><i><font size="+2">Sample forecast
+datasets</font></i></b>
+</p>
+<h3><a name="Finlay_tornado_forecasts"></a><b><i>Finley
+tornado forecasts</i></b></h3>
+This is a classic example used in many
+textbooks and talks on forecast
+verification to illustrate the characteristics of the various
+categorical verification scores.
+<p>In March 1884 Sergeant John Finley initiated twice daily tornado forecasts
+for eighteen regions in the United States, east of the Rocky Mountains.
+Finley claimed 95.6% to 98.6% overall accuracy for the first 3-month
+period,
+depending on the time and district, with some districts achieving 100%
+accuracy for all 3 months. A critic of the results pointed out that
+98.2%
+accuracy could be had by merely forecasting "no tornado"! This clearly
+illustrates the need for more meaningful verification scores.
+</p>
+<p>The contingency table for <a href="#Finley_1884">Finley's (1884)</a>
+forecasts is:
+</p>
+<p>&nbsp;
+</p>
+<table summary="Contingency table
+
+for Finley's tornado forecasts" width="400" height="180">
+  <tbody>
+    <tr valign="CENTER" align="center">
+      <td><b>&nbsp;</b></td>
+      <td><b>&nbsp;</b></td>
+      <td width="75"><br>
+      </td>
+      <td width="75" align="left">&nbsp;Observed</td>
+      <td width="75"><br>
+      </td>
+    </tr>
+    <tr valign="CENTER" align="center">
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>tornado</td>
+      <td>no tornado</td>
+      <td>&nbsp;Total</td>
+    </tr>
+    <tr valign="CENTER" align="center">
+      <td valign="baseline" align="left">Forecast</td>
+      <td>tornado</td>
+      <td bgcolor="#33ff33"><b>28</b></td>
+      <td bgcolor="#33ff33"><b>72</b></td>
+      <td bgcolor="#99ff99"><b>100</b></td>
+    </tr>
+    <tr valign="CENTER" align="center">
+      <td><b>&nbsp;</b></td>
+      <td>no tornado</td>
+      <td bgcolor="#33ff33"><b>23</b></td>
+      <td bgcolor="#33ff33"><b>2680</b></td>
+      <td bgcolor="#99ff99"><b>2703</b></td>
+    </tr>
+    <tr valign="CENTER" align="center">
+      <td align="left">Total</td>
+      <td><b>&nbsp;</b></td>
+      <td bgcolor="#99ff99"><b>51</b></td>
+      <td bgcolor="#99ff99"><b>2752</b></td>
+      <td bgcolor="#99ff99"><b>2803</b></td>
+    </tr>
+  </tbody>
+</table>
+<p>Click <a href="https://www.cawcr.gov.au/projects/verification/Finley/Finley_Tornados.html">here</a>
+to see how the
+different categorical scores rate the Finley (1884) forecasts. <br>
+<br>
+</p>
+<h3><a name="POPexample"></a><a href="https://www.cawcr.gov.au/projects/verification/POP3/POP3.html"><img alt="Tampere, Finland" src="verification_files/TampereRain_small.jpg" style="border: 0px solid ; width: 497px; height: 116px;" align="right"></a>
+<i>Probability of precipitation forecasts</i></h3>
+24-hour and 48-hour forecasts of probability of
+precipitation were made by the Finnish
+Meteorological Institute (FMI) during 2003, for daily precipitation in
+the city of Tampere in south central Finland.
+Three precipitation categories were used:<br>
+&nbsp;&nbsp;&nbsp; Category 0:&nbsp;&nbsp; RR ≤ 0.2 mm<br>
+&nbsp;&nbsp;&nbsp; Category 1:&nbsp;&nbsp; 0.3 mm ≤ RR ≤ 4.4 mm<br>
+&nbsp;&nbsp;&nbsp; Category 2:&nbsp;&nbsp; RR ≥ 4.5 mm<br>
+The probability of rain in each category was predicted each day, with
+the probabilities across the three categories adding up to 1. <br>
+<br>
+Click <a href="https://www.cawcr.gov.au/projects/verification/POP3/POP3.html">here</a>
+to view the data and see the
+standard probabilitistic verification results for these precipitation
+forecasts. Scores and diagnostic plots that are demonstrated include
+Brier score and its decomposition, Brier skill score, reliability
+diagram, relative operating characteristic (ROC), relative value,
+ranked probability score, and ranked probability skill score.<br>
+<br>
+
+<hr width="100%">
+<h3><a name="Tools_packages"></a><b><i><font size="+2">
+Freely available verification tools and packages</font></i></b></h3>
+
+<h3><i>Model Evaluation Tools (MET)</i></h3>
+<p>
+The <a href="http://www.dtcenter.org/met/users/">Model Evaluation Tools (MET)</a>
+verification package was developed by the National Center for Atmospheric Research 
+(NCAR) Developmental Testbed Center (DTC). 
+It is a highly-configurable, state-of-the-art suite of verification tools. 
+It was developed using output from the Weather Research and Forecasting (WRF) 
+modeling system but may be applied to the output of other modeling systems as well.
+It computes the following:<br>
+</p><ul>
+ <li>Standard verification scores comparing gridded model data to point-based observations</li>
+ <li>Standard verification scores comparing gridded model data to gridded observations</li>
+ <li>Spatial verification methods comparing gridded model data to gridded observations using 
+     neighborhood, object-based, and intensity-scale decomposition approaches</li>
+ <li>Ensemble and probabilistic verification methods comparing gridded model data to 
+     point-based or gridded observations</li>
+ <li>Aggregating the output of these verification methods through time and space</li>
+</ul>
+<p></p>
+
+<p>
+</p><h3><i>Ensemble Verification System (EVS)</i></h3>
+The <a href="http://amazon.nws.noaa.gov/ohd/evs/evs.html">Ensemble Verification System</a>
+is designed to verify ensemble forecasts of hydrologic and hydrometeorological variables,
+such as temperature, precipitation, streamflow, and river stage, issued at discrete
+forecast locations (points or areas). It is an experimental prototype developed by the
+Hydrological Ensemble Prediction group of the NOAA Office of Hydrologic Development.
+<p>This Java application in intended to be flexible, modular, and open
+to accommodate enhancements and additions by its developers and users. Participation in
+the continuing development of the EVS toward a versatile and standardized tool for
+ensemble verification is welcomed.
+For more information see the
+<a href="http://amazon.nws.noaa.gov/ohd/evs/evs.html">EVS web site</a>,
+or the papers by <a href="#Brown_2010">Brown et al. (2010)</a>
+and <a href="#Demargne_et_al_2010">Demargne et al. (2010)</a>.
+</p>
+
+<p>
+</p><h3><i>R</i></h3>
+<a href="http://www.r-project.org/">The R Project for Statistical
+Computing</a> has free software for statistical computing and graphics,
+including some packages for forecast verification. In particular, the
+"verification" package provides basic verification functions including
+<a href="https://www.cawcr.gov.au/projects/verification/ROC">ROC plots</a>,
+<a href="#reliability">attributes (reliability) diagrams</a>,
+<a href="#Methods_for_dichotomous_forecasts">contingency table scores</a>, 
+and more, depending on the type of forecast and observation. It verifies
+<ul>
+<li>binary forecasts versus binary observations,</li>
+<li>probabilistic forecasts versus binary observations,</li>
+<li>continous forecasts versus continuous observations,</li>
+<li>ensemble forecasts versus continuous observations,</li>
+<li>spatial forecasts versus spatial observations using
+<a href="https://www.cawcr.gov.au/projects/verification/FSS">fractions skill score</a> and the 
+<a href="https://www.cawcr.gov.au/projects/verification/IS">intensity-scale method</a>.</li>
+</ul>
+Click <a href="https://www.cawcr.gov.au/projects/verification/R_verif_info.php">here</a>
+to find out how to get the R forecast verification routines. <p></p>
+
+<h3><i>Climate Explorer</i></h3>
+<p>
+The <a href="http://climexp.knmi.nl/">Climate Explorer</a> is a web based tool
+for performing climate analysis that also includes several options for seasonal
+forecast verification. The user is allowed to select a particular season and
+variable of interest (e.g., precipitation, 2 metre temperature, sea
+surface temperature, sea level pressure, etc.) and a seasonal forecast
+model (e.g., ECMWF, UK Met Office, NCEP/CPF, ECHAM4.5, in addition to a
+large number of models participating in the EU projects 
+<a href="http://www.ecmwf.int/research/demeter/">DEMETER</a> and 
+<a href="http://www.ecmwf.int/research/EU_projects/ENSEMBLES/">ENSEMBLES</a>, 
+and the corresponding observations prior to performing verification. 
+Climate Explorer offers a large number of deterministic and probabilistic scores 
+for assessing the performance of seasonal ensemble predictions (e.g., correlation; 
+root meansquare error and mean absolute error of the ensemble mean; Brier score
+and its decomposition into reliability, resolution and uncertainty;
+reliability diagram; Brier skill score; tercile and quintile ranked
+probability score; tercile and quintile ranked probability skill score;
+and relative operating characteristics (ROC) curve). Forecast
+verification results and scores are displayed as spatial maps, diagrams and
+single values when the user selects the option for time series verification.
+</p>
+
+
+<hr width="100%">
+<h3><a name="FAQs"></a><b><i><font size="+2">Some Frequently Asked
+Questions</font></i></b></h3>
+<a name="How_many_samples"></a><b>1. How
+many samples are needed to get reliable verification results?</b>
+<p><b><a href="https://www.cawcr.gov.au/projects/verification/BestStatistic.php">2. What is the best statistic for measuring
+the accuracy of a forecast?</a></b>
+</p>
+<!--<p><b><a href="Double_penalty_combined.html">3. Why, when a model's resolution 
+is improved, do the forecasts often verify worse?</a></b>
+</p>-->
+<p><b><a href="https://www.cawcr.gov.au/projects/verification/Goeber_Wilson/super_obs.html">4. How do I compare gridded
+forecasts (from a model, for example) with observations at point
+locations?</a></b>
+</p>
+<p><b><a href="https://www.cawcr.gov.au/projects/verification/WordedForecasts.html">5.
+How do I verify worded forecasts?</a></b>
+</p>
+<p><b><a href="https://www.cawcr.gov.au/projects/verification/FAQ-Hedging2.html">6.
+What does "hedging" a forecast mean,
+and how do some scores encourage hedging?</a></b>
+<!--
+<p><b><a href="StrictlyProper.html">7. What does "strictly proper" mean
+when referring to verification scores?</a></b>
+--></p>
+<p><b>
+<a href="https://www.cawcr.gov.au/projects/verification/VerificationValidation.html">7.
+Is there a difference between "verification" and "validation"?</a></b>
+</p>
+<p><b><a href="https://www.cawcr.gov.au/projects/verification/Inference.php">8.
+What is the relationship between confidence
+intervals and prediction intervals?</a></b>
+</p>
+<p><b><a href="https://www.cawcr.gov.au/projects/verification/CIdiff/FAQ-CIdiff.html">9.
+How do I know whether one forecast
+system performs significantly better than another?</a></b>
+<br>
+</p>
+<p><b><a href="https://www.cawcr.gov.au/projects/verification/Casati/statxtr.htm">10.
+What are the challenges and strategies to verify weather and climate
+extremes?</a></b>
+</p>
+<p><b><a name="reliablity_resolution"></a><a href="https://www.cawcr.gov.au/projects/verification/reliability_resolution.html">
+11. Reliability and resolution - how are they different?</a></b>
+<br>
+...
+</p>
+
+<hr width="100%">
+<h3><a name="Discussion_group"></a><i><font size="+2">Discussion
+group</font></i></h3>
+We welcome discussion, questions, and new methods of verification. You
+may wish to join an e-mail discussion group on verification called
+"vx-discuss". To subscribe, visit the <a href="http://mail.rap.ucar.edu/mailman/listinfo/vx-discuss">vx-discuss</a>
+web page. This discussion group was begun in June 2003.
+<hr width="100%">
+<h3><a name="Links_to_other_verification_sites"></a><i><font size="+2">Links
+to verification and related sites</font></i></h3>
+<i>General</i>
+<br>
+<a href="http://www.sec.noaa.gov/forecast_verification/verif_glossary.html">Glossary
+of Verification Terms</a> - excellent list of definitions and scores,
+with equations, compiled by NOAA Space Environment Center
+<br>
+<a href="http://www.met.rdg.ac.uk/cag/publications/Glossary.pdf">Glossary
+of Forecast Verification Terms</a> - another excellent list of
+definitions and scores, with equations, compiled by David Stephenson
+<br>
+<a href="http://www.nssl.noaa.gov/%7Ebrooks/verification/">Harold
+Brooks'
+site</a> - a great reference list and a sample temperature data set to
+play with
+<br>
+<a href="http://www.met.rdg.ac.uk/cag/forecasting/">David Stephenson's
+Forecasting page</a> - useful links to books, articles, and other
+things related to statistics and forecast verification
+<p><i>Statistics</i>
+<a href="http://www.sportsci.org/resource/stats/">A New View of
+Statistics</a>
+- Will Hopkins' statistical primer for the health sciences
+<br>
+<a href="http://www.itl.nist.gov/div898/handbook/index.htm">Engineering
+Statistics Handbook</a> - NIST / SEMATECH summaries of statistical
+methods
+<br>
+<a href="http://wise.cgu.edu/index.html">Web Interface for
+Statistics Education (WISE)</a> - teaching resources offered through
+Introductory Statistics courses, especially in the social sciences
+<br>
+<a href="http://home.ubalt.edu/ntsbarsh/index.html">Dr. Arsham's Web
+Page</a> - zillions of links to web-based statistics resources
+</p>
+<i>Meteorological - methods</i>
+<br>
+<a href="http://www.eumetcal.org/resources/ukmeteocal/temp/msgcal/www/english/courses/msgcrs/crsindex.htm">
+EUMETCAL Forecast Verification tutorial</a>
+- terrific hands-on tutorial on basic forecast verification methods,
+last updated June 2009<br>
+<a href="https://www.cawcr.gov.au/projects/verification/Stanski_et_al/Stanski_et_al.html">Survey of common verification
+methods in meteorology</a> - classic WMO publication by Stanski et al.
+on verification with clear descriptions and examples, 1989
+<br>
+<a href="http://www.wmo.ch/web/www/DPS/SVS-for-LRF.html">Standardised
+Verification System (SVS) for Long-Range Forecasts (LRF)</a> - WMO/CBS
+framework for long range forecast verification. See also <a href="http://www.wmo.ch/web/www/DPS/LRF-standardised-verif-sys-2002.doc">New
+Attachment, 2002</a> (MSWord document)
+<br>
+<a href="https://www.cawcr.gov.au/projects/verification/Bougeault/Bougeault_Verification-methods.htm">WGNE
+survey of verification methods for numerical prediction of weather elements
+and severe weather events</a> - excellent summary by Philippe Bougeault
+on the state of the art in 2002
+<br>
+<a href="https://www.cawcr.gov.au/projects/verification/Rec_FIN_Oct.pdf">Recommendations
+on the verification of local
+weather forecasts (at ECMWF member states)</a> - consultancy report to
+ECMWF Operations Department by Pertti Nurmi, October 2003 <br>
+<a href="https://www.cawcr.gov.au/projects/verification/WGNE/QPF_verif_recomm.pdf">Recommendations
+for the
+verification and intercomparison of QPFs from operational NWP models</a>
+- WWRP/WGNE Joint Verification Working Group recommendations, December
+2004<br>
+<a href="http://pub.smhi.se/cost717/doc/WDF_02_200109_1.pdf">Review
+of current methods and tools for verification of numerical forecasts of
+precipitation</a> - summary report prepared for COST717
+<br>
+<a href="https://www.cawcr.gov.au/projects/verification/Mason/IntegratedVerificationProcedures.pdf">Integrated
+verification procedures for forecasts and warnings</a> - Ian Mason's
+1999
+consultancy report for the Bureau of Meteorology
+<br>
+<a href="http://www.wmo.ch/web/www/DPS/ET-EPS-TOKYO/ET-EPS-TOKYO-8%282%29.pdf">Development
+of standard verification measures for EPS</a> - document submitted by
+L. Lefaivre to WMO Commission for Basic Systems, October 2001
+<br>
+<a href="http://www.wmo.ch/pages/prog/amp/pwsp/qualityassuranceverification_en.htm">
+WMO verification guidance for public weather services</a> - good
+overall guidance on verifying public weather forecasts
+<br>
+<a href="http://www.wmo.ch/web/wcp/clips2001/html/index_curriculum.htm">WMO
+Climate Information and Prediction Services (CLIPS) curriculum</a> -
+education on climate model predictions
+<br>
+<a href="http://www.cimms.ou.edu/%7Edoswell/OZtrip/STSConf/Verify.html">Verification
+of Forecasts of Convection: Uses, Abuses, and Requirements</a> - Chuck
+Doswell speaks out<br>
+<a href="http://www.dtcenter.org/met/users/">Model Evaluation Tools</a>
+- A highly-configurable, state-of-the-art suite
+of verification tools, freely available for download!
+<p><i>Meteorological -
+examples</i>
+<br>
+<a href="http://www-ad.fsl.noaa.gov/fvb/rtvs/index.html">NOAA Forecast
+Systems Laboratory's (FSL) Real Time Verification System (RTVS)</a> -
+large variety of real-time verification results with an aviation
+emphasis
+<br>
+<a href="http://www.nssl.noaa.gov/etakf/qpfplots/">Verification of
+NCEP model QPFs</a> - rain maps and verification scores for regional
+and mesoscale models over the USA
+<br>
+<a href="http://www.nws.noaa.gov/mdl/verif/">MOS Verification over
+the US</a> - operational verification of temperature and probability of
+precipitation forecasts using several scores
+<br>
+<a href="http://wwwt.emc.ncep.noaa.gov/gmb/ens/verif.html">Ensemble
+Evaluation and Verification</a> - NCEP ensemble prediction system
+verification
+<br>
+<a href="http://www.ecmwf.int/research/demeter/d/charts/verification">DEMETER
+Verification</a> - deterministic and probabilistic verification of EU
+multi-model ensemble system for seasonal to interannual prediction
+</p>
+<p><i>Workshops</i>
+<br>
+<a href="http://www.ncmrwf.gov.in/verif2014/">
+6th International Verification Methods Workshop</a>, 13-19 March 2014
+New Delhi, India - Presentations and tutorial lectures. 
+<br>
+<a href="http://cawcr.gov.au/events/verif2011/">
+5th International Verification Methods Workshop</a>, 1-7 December 2011,
+Melbourne, Australia - Presentations and tutorial lectures.
+Click
+<a href="http://onlinelibrary.wiley.com/doi/10.1002/met.2013.20.issue-2/issuetoc">
+here</a> to see the 2013 special issue of <i>Meteorological Applications</i> on
+Forecast Verification featuring papers from the 2011 workshop.
+<br>
+<a href="http://www.space.fmi.fi/Verification2009/">
+4th International Verification Methods Workshop</a>, 8-10 June 2009,
+Helsinki, Finland - Presentations and tutorial lectures.
+<br>
+<a href="http://www.ecmwf.int/newsevents/meetings/workshops/2007/jwgv/general_info/index.html">3rd
+International Verification Methods Workshop</a>, 31 January-2 February,
+2007,
+Reading,UK - Tutorial lecture notes and scientific presentations. Click
+<a href="http://www.ecmwf.int/newsevents/meetings/workshops/2007/jwgv/METspecialissueemail.pdf">here</a>
+to see the 2008 special issue of <i>Meteorological Applications</i> on
+Forecast Verification that features papers from the workshop.
+<br>
+<a href="https://www.cawcr.gov.au/projects/verification/Workshop2004/home.html">2nd
+International Verification Methods Workshop</a>, September 15-17, 2004,
+Montreal,
+Canada - Presentations and discussion
+<br>
+<a href="http://www.rap.ucar.edu/research/verification/verification_wkshp_2002/ver_wkshp.html">Workshop
+on Making Verification More Meaningful</a>, Boulder, CO, 30 July - 1
+August 2002 - Presentations and posters
+<br>
+<a href="http://www.weather.gov/oh/hrl/presentations/verificationworkshop.htm">RFC
+River Forecast Verification Workshop</a>, Silver Spring, MD, 27-28
+February 2002 - Talks on verification of river forecasts
+<br>
+<a href="https://www.cawcr.gov.au/projects/verification/QPF_Prague2001/main.html">WWRP/WMO
+Workshop on the Verification of Quantitative Precipitation Forecasts</a>,
+Prague, Czech Republic, 14-16 May 2001 - papers on verification of QPFs
+<br>
+<a href="http://hirlam.knmi.nl/open/publications/HLworkshops/MesVerApr01.pdf">SRNWP
+Mesoscale Verification Workshop 2001</a>, KNMI, De Bilt, The
+Netherlands, 23-24 April 2001
+</p>
+<i>Centers</i>
+<br>
+<a href="http://www.hpc.ncep.noaa.gov/html/hpcvrftxt.html">NOAA/NCEP
+Hydrometeorological Prediction Center (HPC)</a> - verification of
+precipitation and temperature forecasts over the United States
+<br>
+<a href="http://www.evac.ou.edu/">Environmental Verification and
+Analysis
+Center (EVAC)</a> - U. Oklahoma site with precipitation verification at
+the GPCP Surface Reference Data Center
+<br>
+<a href="http://www.meto.gov.uk/corporate/verification/index.html">The
+Met Office (UK) verification page</a>
+<br>
+&nbsp;<br>
+<i>Miscellaneous<br>
+</i><a href="http://www.rmets.org/survey/">The Royal Meteorological
+Society Quality of Weather Forecasts Project</a> - online survey of
+user-focused forecast assessment<br>
+<a href="http://www.ral.ucar.edu/projects/icp/index.html">Spatial
+Verification Methods Inter-comparison Project</a> - comparison
+of newly proposed spatial methods to give the user information
+about which methods are appropriate for which types of data, forecasts
+and desired forecast utility.<br>
+<br>
+<h3><a name="References"></a><i><font size="+2">References
+and further
+reading</font></i></h3>
+<h4>
+<a name="Books"></a><i>Books,
+technical reports, and journal special issues</i></h4>
+<p><a name="Katz_and_Murphy 1997"></a>Katz, R.W. and A.H.
+Murphy (eds), 1997: <i>Economic
+Value of Weather and Climate Forecasts</i>. Cambridge University Press,
+Cambridge.
+</p>
+<p><a name="Jolliffe_and_Stephenson 2012"></a>Jolliffe, I.T., and D.B.
+Stephenson, 2012: <i>Forecast Verification: A Practitioner's Guide in
+Atmospheric Science. 2nd Edition</i>.&nbsp; Wiley and Sons Ltd, 274 pp.
+</p>
+<p>Murphy, A.H. and R.W. Katz, ed., 1985: <i>Probability, Statistics,
+and Decision Making in the Atmospheric Sciences.</i> Westview Press,
+Boulder, CO.
+</p>
+<p>Nurmi, P., 2003: <i>Recommendations on the verification of local
+weather forecasts (at ECWMF member states)</i>. ECMWF Operations
+Department,
+October 2003. Click <a href="https://www.cawcr.gov.au/projects/verification/Rec_FIN_Oct.pdf">here</a>
+to access a PDF version (464 kB).
+</p>
+<p><a name="Stanski_et_al."></a>Stanski, H.R., L.J. Wilson, and W.R.
+Burrows,
+1989: <i>Survey of common verification methods in meteorology</i>.
+World Weather Watch Tech. Rept. No.8, WMO/TD No.358, WMO, Geneva, 114
+pp. Click
+<a href="https://www.cawcr.gov.au/projects/verification/Stanski_et_al/Stanski_et_al.html">here</a>
+to access a PDF version.
+</p>
+<p>von Storch, H. and F.W. Zwiers, 1999: <i>Statistical Analysis in
+Climate Research</i>. Cambridge University Press, Cambridge.
+</p>
+<p><a name="Wilks"></a>Wilks,
+D.S., 2011: <i>Statistical Methods in the
+Atmospheric Sciences. 3rd Edition</i>.&nbsp; Elsevier, 676 pp.
+</p>
+<p><a name="MetApps"></a>
+Special issues of <i>Meteorological Applications</i> on Forecast Verification 
+(<a href="http://onlinelibrary.wiley.com/doi/10.1002/met.v15:1/issuetoc">2008</a>, 
+ <a href="http://onlinelibrary.wiley.com/doi/10.1002/met.2013.20.issue-2/issuetoc">2013</a>)
+</p>
+<p><a name="WAF_ICP"></a>
+Special collection in <i>Weather and Forecasting (2009-2010)</i> on the 
+<a href="http://journals.ametsoc.org/page/ICP">
+Spatial Forecast Verification Methods Inter-Comparison Project (ICP)</a>
+</p>
+
+<h4><i>Journal articles and conference preprints</i></h4>
+
+<p>Accadia, C., S. Mariani, M. Casaioli, A. Lavagnini, and A. Speranza, 2005: Verification 
+of precipitation forecasts from two limited-area models over Italy and comparison with 
+ECMWF forecasts using a resampling technique. <i>Wea. Forecasting</i>, <b>20</b>, 276-300. 
+</p>
+<p>Ahijevych, D., E. Gilleland, B.G. Brown, E.E. Ebert, 2009: Application of spatial 
+verification methods to idealized and NWP-gridded precipitation forecasts. <i>Wea. 
+Forecasting</i>, <b>24</b>, 1485-1497. 
+</p>
+<p>Amodei, M. and J. Stein, 2009: Deterministic and fuzzy verification methods 
+for a hierarchy of numerical models. <i>Met. Appl.</i>, <b>16</b>, 191-203.
+</p>
+<p><a name="Atger_2001"></a>Atger, F., 2001: Verification of intense precipitation
+forecasts from single models and ensemble prediction systems. <i>Nonlin.
+Proc. Geophys.</i>, <b>8</b>, 401-417. Click <a href="http://www.copernicus.org/EGU/npg/8/401.htm">here</a>
+to see the abstract and get the PDF (295 Kb).
+</p>
+<p>Atger, F., 2003: Spatial and interannual variability of the
+reliability of ensemble-based probabilistic forecasts: Consequences for
+calibrations. <i>Mon. Wea. Rev.</i>, <b>131</b>, 1509-1523.
+</p>
+<p>Atger, F., 2004: Relative impact of model quality and ensemble
+deficiencies on the performance of ensemble based probabilistic
+forecasts evaluated through the Brier score. <i>Nonlin.
+Proc. Geophys.</i>, <b>11</b>, 399-409.
+</p>
+<p>Atger, F., 2004: Estimation of the expected reliability of
+ensemble-based probabilistic forecasts. <i>Q. J. R. Meteorol. Soc.</i>,
+<b>130</b>, 627-646.
+</p>
+<p>Baldwin, M.E. and J.S. Kain, 2006: Sensitivity of several
+performance measures to displacement error, bias, and event frequency. <i>Wea.
+Forecasting</i>, <b>21</b>, 636-648.
+</p>
+<p>Barnes, L.R., E.C. Gruntfest, M.H. Hayden, D.M. Schultz, C. Benight, 2007: 
+False alarms and close calls: A conceptual model of warning accuracy. <i>Wea. 
+Forecasting</i>, <b>22</b>, 1140-1147. 
+</p>
+<p>Barnes, L.R., D.M. Schultz, E.C. Gruntfest, M.H. Hayden and C.C. Benight, 2009: 
+CORRIGENDUM: False alarm rate or false alarm ratio? <i>Wea. Forecasting</i>, <b>24</b>, 1452-1454.
+</p>
+<p>Barnston, A.G., S. Li, S.J. Mason, D. G. DeWitt, L. Goddard, and X. Gong, 2010: 
+Verification of the first 11 years of IRI's seasonal climate forecasts. <i>J. Appl. 
+Meteor. Climatol.</i>, <b>49</b>, 493-520. 
+</p>
+<p>Barnston, A.G. and S.J. Mason, 2011: Evaluation of IRI�s seasonal climate forecasts 
+for the extreme 15% tails. <i>Wea. Forecasting</i>, <b>26</b>, 545-554. 
+</p>
+<p>Bieringer, P., and P. S. Ray, 1996: A comparison of tornado warning lead times with 
+and without NEXRAD Doppler radar. <i>Wea. Forecasting</i>, <b>11</b>, 41-46.
+</p>
+<p>Bland, J.M. and D.G. Altman, 1986: Statistical
+methods for assessing agreement between two methods of clinical measurement.
+<i>Lancet</i>, <b>i</b>, 307-310.
+</p>
+<p>Blattenberger, G., and F. Lad, 1985: Separating the Brier score into calibration 
+and refinement components: A graphical exposition. <i>The American Statistician</i>, <b>39</b>, 26-32.
+</p>
+<p><a name="Boer_and_Lambert 2001"></a>Boer, G.J and S. J. Lambert, 2001:
+Second-order space-time climate difference statistics. <i>Climate
+Dynamics</i>, <b>17</b>, 213-218.
+</p>
+<p>Bowler, N.E., 2008:
+Accounting for the effect of observation errors on verification of
+MOGREPS. <i>Meteorol. Appl.</i>, <b>15</b>.</p>
+<p>Bradley, A.A., T. Hashino, and S.S. Schwartz, 2003: Distributions-oriented
+verification of probability forecasts for small data samples. <i>Wea.
+Forecasting</i>, <b>18</b>, 903-917.
+</p>
+<p>Bradley, A.A., S.S. Schwartz, and T. Hashino, 2008: Sampling uncertainty and 
+confidence intervals for the Brier score and Brier skill score. <i>Wea. Forecasting</i>, 
+<b>23</b>, 992-1006. 
+</p>
+<p>Brier, G. W., 1950: Verification of forecasts expressed in terms of probability. 
+<i>Mon. Wea. Rev.</i>, <b>78</b>, 1-3.
+</p>
+<p><a name="Briggs_and_Levine 1997"></a>Briggs, W.M. and R.A. Levine, 1997:
+Wavelets and field forecast verification. <i>Mon. Wea. Rev.</i>, <b>125</b>,
+1329-1341.
+</p>
+<p>Bröcker, J. and L.A. Smith, 2007: Increasing the reliability of reliability diagrams. 
+<i>Wea. Forecasting</i>, <b>22</b>, 651-661.
+</p>
+<p>Bröcker, J. and L.A. Smith, 2007: Scoring probabilistic forecasts: the 
+importance of being proper. <i>Wea. Forecasting</i>, <b>22</b>, 382-388. 
+</p>
+<p><a name="Brooks_and_Doswell 1996"></a>Brooks, H.E. and C.A. Doswell
+III, 1996: A comparison of measures-oriented and distributions-oriented
+approaches to forecast verification. <i>Wea. Forecasting</i>, <b>11</b>, 288-303.
+</p>
+<p><a name="Brooks_et_al_1998"></a>Brooks, H.E., M. Kay and
+J.A. Hart, 1998: Objective limits on forecasting skill of rare events. <i>19th
+Conf. Severe Local Storms, AMS</i>, 552-555.
+</p>
+<p><a name="Brown_et_al_2004"></a>Brown, B.G., R.R. Bullock, C.A. David,
+J.H. Gotway, M.B. Chapman, A. Takacs, E. Gilleland, K. Manning, J.
+Mahoney, 2004: New verification approaches for convective weather forecasts. 
+<i>11th Conf. Aviation, Range, and Aerospace Meteorology, 4-8 Oct 2004, Hyannis, MA.</i>
+</p>
+<p>Brown, B.G. and A.H. Murphy, 1987: Quantification of uncertainty in
+fire-weather forecasts: Some results of operational and experimental
+forecasting programs. <i>Wea. Forecasting</i>, <b>2</b>, 190-205.
+</p>
+<p>Brown, B.G., G. Thompson, R.T. Bruintjes, R. Bullock, and T. Kane, 1997:
+Intercomparison of in-flight icing algorithms: Part II: Statistical
+verification results. <i>Wea. Forecasting</i>,
+<b>12</b>, 890-914.
+</p>
+<p><a name="Brown_2010"></a>Brown J.D., Demargne J., Seo D-J., and Liu Y., 2010: The Ensemble Verification 
+System (EVS): a software tool for verifying ensemble forecasts of hydrometeorological 
+and hydrologic variables at discrete locations. <i>Environmental Modelling and Software</i>, 
+<b>25</b>, 854-872.
+</p>
+<p>Candille, G., C. Côté, P. L. Houtekamer and G. Pellerin, 2007:
+Verification of an ensemble prediction system against observations.
+<i>Mon. Wea. Rev.</i>, <b>135</b>, 1140-1147.
+</p>
+<p><a name="Casati2004"></a>Casati,
+B., Ross, D.B. Stephenson, 2004: A new intensity-scale approach for the
+verification of spatial precipitation forecasts, <i>Meteorol. Appl.</i>, <b>11</b>,
+141-154.
+</p>
+<p>Casati, B., 2010: New developments of the intensity-scale technique within the 
+Spatial Verification Methods Intercomparison Project. <i>Wea. Forecasting</i>, <b>25</b>, 113-143. 
+</p>
+<p>Casati, B., and L.J. Wilson, 2007: 
+A New spatial-scale decomposition of the Brier score: 
+Application to the verification of pightning probability forecasts.
+<i>Mon. Wea. Rev.</i>, <b>135</b>, 3052-3069.
+</p>
+<p>Casati, B., L.J. Wilson, D.B. Stephenson, P. Nurmi, A. Ghelli, M. Pocernich, U.
+Damrath, E.E. Ebert, B.G. Brown and S. Mason, 2008: Forecast verification:
+current status and future directions. <i>Meteorol. Appl.</i>, <b>15</b>, 3-18.
+</p>
+<p>Case, J.L., J. Manobianco, J. E. Lane, C.D. Immer, and F.J. Merceret,
+2004: An objective technique for verifying sea breezes in
+high-resolution numerical weather prediction models. <i>Wea.
+Forecasting</i>, <b>19</b>, 690-705.
+</p>
+<p>Clemen, R.T., A.H. Murphy, and R.L. Winkler, 1995: Screening probability forecasts: 
+Contrasts between choosing and combining. <i>Int. J. Forecasting</i>, <b>11</b>, 133-146.
+</p>
+<p>Cloke, H.L. and F. Pappenberger, 2008: Evaluating forecasts of extreme events
+for hydrological applications: an approach for screening unfamiliar
+performance measures. <i>Meteorol. Appl.</i>, <b>15</b>, 181-197.
+</p>
+<p><a name="Damrath_2004"></a>Damrath,
+U., 2004: Verification against precipitation observations of a high
+density network - what did we learn? <i>Intl.
+Verification Methods Workshop, 15-17 September 2004, Montreal, Canada. </i>Click
+<a href="https://www.cawcr.gov.au/projects/verification/Workshop2004/presentations/5.3_Damrath.pdf">here</a>
+to download the PDF (980 Kb).
+</p>
+<p>Davis, C. and F. Carr, 2000: Summary of the 1998 Workshop on Mesoscale
+Model Verification. <i>Bull. Amer. Met. Soc.</i>, <b>81</b>, 809-819.
+</p>
+<p><a name="Davis_et_al_2006a"></a>Davis,
+C., B. Brown, and R. Bullock, 2006a: Object-based verification of precipitation
+forecasts. Part I: Methods and application to mesoscale rain areas. <i>Mon.
+Wea. Rev.</i>, <b>134</b>, 1772-1784.
+</p>
+<p>Davis C.A., B.G. Brown, and R.G. Bullock, 2006b. Object-based verification of
+precipitation forecasts, Part II: Application to convective rain
+systems. <i>Mon. Wea. Rev.</i> <b>134</b>, 1785-1795.
+</p>
+<p>Davis, C.A., B.G. Brown, R. Bullock, and J. Halley-Gotway, 2009: The Method for 
+Object-Based Diagnostic Evaluation (MODE) applied to numerical forecasts from the 
+2005 NSSL/SPC Spring Program. <i>Wea. Forecasting</i>, <b>24</b>, 1252-1267. 
+</p>
+<p><a name="de_Elia_et_al_2002"></a>de Elia, R., R. Laprise, and B. Denis,
+2002: Forecasting skill limits of nested, limited-area models: A
+perfect-model approach. <i>Mon. Wea. Rev.</i>, <b>130</b>, 2006-2023.
+</p>
+<p><a name="de_Elía_and_Laprise_2003"></a>de Elia, R. and R. Laprise, 2003:
+Distribution-oriented verification of limited-area model forecasts in a
+perfect-model framework. <i>Mon. Wea. Rev.</i>, <b>131</b>, 2492-2509.
+</p>
+<p>DeGroot, M.H., and S.E. Fienberg, 1983: The comparison and evaluation of 
+forecasters. <i>The Statistician</i>, <b>32</b>, 14-22. 
+</p>
+<p>Demargne, J., M. Mullusky, K. Werner, T. Adams, S. Lindsey, N.
+Schwein, W. Marosi, and E. Welles, 2009: Application of forecast
+verification science to operational river forecasting in the U.S.
+National Weather Service.  <i>Bull. Amer. Meteorol. Soc.</i>, <b>90</b>, 779-784.
+</p>
+<p><a name="Demargne_et_al_2010"></a>Demargne J., J.D. Brown, Y. Liu Y., D-J. Seo, L. Wu, Z. Toth, and Y. Zhu, 2010: 
+Diagnostic verification of hydrometeorological and hydrologic ensembles. 
+<i>Atmos. Sci. Lett.</i>, <b>11</b>, 114-122.
+</p>
+<p><a name="Denis_et_al_2002a"></a>Denis, B., J. Côté and
+R. Laprise, 2002a: Spectral decomposition of two-dimensional atmospheric
+fields on limited-area domains using the discrete cosine transform
+(DCT). <i>Mon. Wea. Rev.</i>, <b>130</b>, 1812-1829.
+</p>
+<p><a name="Denis_et_al_2002b"></a>Denis, B., R. Laprise, D. Caya, and
+J. Côté, 2002b: Downscaling ability of one-way nested regional
+climate models: the Big-Brother Experiment. <i>Climate Dynamics</i>, <b>18</b>,
+627-646.
+</p>
+<p>Doblas-Reyes,, F.J., C. A. S. Coelho, D. B. Stephenson, 2008: How
+much does simplification of probability forecasts reduce forecast
+quality? <i>Meteorol. Appl.</i>, <b>15</b>.</p>
+<p>Doswell, C.A. III, R. Davies-Jones, and D.L. Keller, 1990: On summary
+measures of skill in rare event forecasting based on contingency tables.
+<i>Wea. Forecasting</i>, <b>5</b>, 576-585.
+</p>
+<p>Duc, L., K. Saito, and H. Seko, 2013: Spatial-temporal fractions verification 
+for high-resolution ensemble forecasts. <i>Tellus A</i>, <b>65</b>.
+</p>
+<p><a name="Ebert_2008"></a>Ebert, E.E., 2008: Fuzzy
+verification of high resolution gridded forecasts: A review and
+proposed framework. <i>Meteorol. Appl.</i>, <b>15</b>, 51-64.
+</p>
+<p>Ebert, E.E., 2009: Neighborhood verification: a strategy for
+rewarding close forecasts. <i>Wea. Forecasting</i>, <b>24</b>, 1498-1510.
+</p>
+<p>Ebert, E.E. and W.A. Gallus, 2009: Toward better understanding of the contiguous 
+rain area (CRA) method for spatial forecast verification. <i>Wea. Forecasting</i>, <b>24</b>, 1401-1415. 
+</p>
+<p><a name="Ebert_and_McBride_2000"></a>Ebert,
+E.E. and J.L. McBride, 2000:
+Verification of precipitation in weather systems: Determination of
+systematic errors. <i>J. Hydrology</i>, <b>239</b>, 179-202.
+</p>
+<p>Efron, B. and R. Tibshirani, 1986: Bootstrap methods for standard errors,
+confidence intervals, and other measures of statistical accuracy. <i>Statistical
+Science</i>, <b>1</b>, 54-77.
+</p>
+<p>Ehrendorfer, M., and A.H. Murphy, 1988: Comparative evaluation of weather forecasting 
+systems: Sufficiency, quality, and accuracy. <i>Mon. Wea. Rev.</i>, <b>116</b>, 1757-1770.
+</p>
+<p>Elmore, K.L., 2005: Alternatives to the chi-square test for evaluating rank histograms 
+from ensemble forecasts. <i>Wea. Forecasting</i>, <b>20</b>, 789-795. 
+</p>
+<p>Elmore, K.L., M.E. Baldwin and D.M. Schultz, 2006: Field significance
+revisited: Spatial bias errors in forecasts as applied to the Eta model.
+<i>Mon. Wea. Rev.</i>, <b>134</b>, 519-531.
+</p>
+<p>Elsner, J.B. and C.P. Schmertmann, 1994: Assessing forecast skill through
+cross validation. <i>Wea. Forecasting</i>, <b>9</b>, 619-624.
+</p>
+<p>Fawcett, R., 2008: Verification techniques and simple theoretical forecast models. 
+<i>Wea. Forecasting</i>, <b>23</b>, 1049-1068.
+</p>
+<p><a name="Ferro2007"></a>Ferro C.A.T.,
+2007: A probability model for verifying deterministic forecasts of
+extreme events. <i>Wea. Forecasting</i>, <b>22</b>, 1089-1100.
+</p>
+<p>Ferro, C.A.T., D.S. Richardson, A.P. Weigel, 2008: On the
+effect of ensemble size on the discrete and continuous ranked
+probability scores. <i>Meteorol. Appl.</i>, <b>15</b>, 19-24.
+</p>
+<p><a name="Ferro_Stephenson_2011"></a>Ferro C.A.T.,
+and D.B. Stephenson,
+2011: Extremal Dependence Indices: improved verifiation
+measures for deterministic forecasts of rare binary
+events. <i>Wea. Forecasting</i>, <b>26</b>, 699-713.
+</p>
+<p><a name="Finley_1884"></a>Finley, J.P., 1884: Tornado
+predictions. <i>Amer. Meteor. J.</i>, <b>1</b>, 85-88.
+</p>
+<p>Gallus, W.A., Jr., 2002: Impact of verification grid-box size on
+warm-season QPF skill measures. <i>Wea. Forecasting</i>, <b>17</b>, 1296-1302.
+</p>
+<p>Gallus, W.A., Jr., 2010: Application of object-based verification 
+techniques to ensemble precipitation forecasts. 
+<i>Wea. Forecasting</i>, <b>25</b>, 144-158.
+</p>
+<p><a name="Gerrity_1992"></a>Gerrity, J.P., 1992: 
+A note on Gandin and Murphy's equitable skill score.
+<i>Mon. Wea. Rev.</i>, <b>120</b>, 2709-2712.
+</p>
+<p>Gerstensarbe, F.-W., M. Kucken and P.C. Werner, 2005: A new validation scheme for 
+the evaluation of multiparameter fields. <i>Tellus</i>, <b>57A</b>, 35-42. 
+</p>
+<p>Ghelli, A. and C. Primo, 2009: On the use of the extreme dependency 
+score to investigate the perfromance of an NWP model for rare events. 
+<i>Met. Appl.</i>, <b>16</b>, 537-544.
+</p>
+<p>Gilleland, E., 2011: Spatial forecast verification: Baddeley�s delta metric applied 
+to the ICP test cases. <i>Wea. Forecasting</i>, <b>26</b>, 409-415.
+</p>
+<p>Gilleland, E., J. Lindstrom and F. Lindgren, 2010: Analyzing the image warp forecast 
+verification method on precipitation fields from the ICP. 
+<i>Wea. Forecasting</i>, <b>25</b>, 1249-1262. 
+</p>
+<p>Gilleland, E., D. Ahijevych, B.G. Brown, B. Casati, and E.E. Ebert,
+2009: Intercomparison of spatial forecast verification methods.
+<i>Wea. Forecasting</i>, <b>24</b>, 1416-1430.
+</p>
+<p>Gilleland, E., D. Ahijevych, B.G. Brown, and E.E. Ebert, 2010:
+Verifying forecasts spatially.
+<i>Bull. Amer. Meteorol. Soc.</i>, <b>91</b>, 1365-1373.
+</p>
+<p>Göber, M., E. Zsoter and D.S. Richardson, 2008: Could a perfect
+model ever satisfy a naive forecaster? On grid box mean versus point
+verification. <i>Meteorol. Appl.</i>, <b>15</b>, 359-365.
+</p>
+<p><a name="Golding_1998"></a>Golding, B.W., 1998: Nimrod: A system for
+generating automated very short range forecasts. <i>Meteorol. Appl.</i>,
+<b>5</b>, 1-16.
+</p>
+<p>Gringorten, I. I., 1967: Verification to determine and measure forecasting skill. 
+<i>J. Appl. Meteor. </i>, <b>6</b>, 742-747.
+</p>
+<p>Guillermo J.B., P.L. Antico and L. Goddard, 2005: Evaluation of the climate outlook 
+forums'  seasonal precipitation forecasts of southeast South America during 1998-2002. 
+<i>Int. J. Climatol.</i>, <b>25</b>, 365-377
+</p>
+<p>Hagedorn, R. and L.A. Smith, 2009: Communicating the value of 
+probabilistic forecasts with weather roulette, <i>Met. Appl.</i>, <b>16</b>, 143-155.
+</p>
+<p><a name="Hamill_1997"></a>Hamill, T.M., 1997: Reliability diagrams for
+multicategory probabilistic forecasts. <i>Wea. Forecasting</i>, <b>12</b>,
+736-741.
+</p>
+<p><a name="Hamill_1999"></a>Hamill, T.M., 1999: Hypothesis tests for evaluating
+numerical precipitation forecasts. <i>Wea. Forecasting</i>, <b>14</b>,
+155-167.
+</p>
+<p><a name="Hamill_2001"></a>Hamill, T.M., 2001: Interpretation of rank
+histograms for verifying ensemble forecasts. <i>Mon. Wea. Rev.</i>, <b>129</b>,
+550-560.
+</p>
+<p><a name="Hamill_and_Juras_2005"></a>Hamill, T.M., and J. Juras,
+2006: Measuring forecast skill: is it real skill or is it the varying
+climatology? <i>Q. J. Royal Met. Soc.</i>, <b>132</b>, 2905-2923.
+Click <a href="http://www.cdc.noaa.gov/people/tom.hamill/skill_overforecast_QJ_v2.pdf">here</a>
+to download the PDF (1.6 Mb).
+</p>
+<p>Hamill, T.M. and S.J. Colucci, 1998: Verification of eta-RSM
+short-range ensemble forecasts. <i>Mon. Wea. Rev.</i>, <b>126</b>, 711-724.
+</p>
+<p>Harris,
+D., E. Foufoula-Georgiou, K.K. Droegemeier and J.J. Levit, 2001:
+Multiscale statistical properties of a high-resolution precipitation
+forecast. <i>J. Hydromet.</i>, <b>2</b>, 406-418.
+</p>
+<p>Hartmann, H.C., T.C. Pagano, S. Sorooshian, and R. Bales, 2002: Confidence
+builders. Evaluating seasonal climate forecasts from user perspectives.
+<i>Bull. Amer. Met. Soc.</i>, <b>83</b>, 683-698.
+</p>
+<p>Harvey, L.O., Jr., K.R. Hammond, C.M. Lusk, and E.F. Mross, 1992: The
+application of signal detection theory to weather forecasting behavior.
+<i>Mon. Wea. Rev.</i>, <b>120</b>, 863-883.
+</p>
+<p>Hersbach, H., 2000: Decomposition of the continuous ranked probability
+score for ensemble prediction systems. <i>Wea. Forecasting</i>, <b>15</b>,
+559-570.
+</p>
+<p><a name="Hewson2007"></a>Hewson, T.,
+2007: The concept of 'Deterministic limit'. <i>3rd Intl. Verification
+Methods Workshop, 31 January-2 February 2007, Reading, UK. </i>Click <a href="http://www.ecmwf.int/newsevents/meetings/workshops/2007/jwgv/workshop_presentations/T_Hewson.pdf">here</a>
+to download the PDF (788 Kb).
+</p>
+<p><a name="Hoffman_et_al._1995"></a>Hoffman, R.N., Z. Liu, J.-F. Louis,
+and C. Grassotti, 1995: Distortion representation of forecast errors. <i>Mon.
+Wea. Rev.</i>, <b>123</b>, 2758-2770.
+</p>
+<p><a name="Hogan_et_al_2010"></a>
+Hogan, R.J., C.A.T. Ferro, I.T. Jolliffe and D.B. Stephenson, 2010: Equitability revisited: 
+Why the "equitable threat score" is not equitable. <i>Wea. Forecasting</i>, <b>25</b>, 710-726. 
+</p>
+<p>Hsu, W.-R. and A.H. Murphy, 1986: The attributes diagram: A geometrical
+framework for assessing the quality of probability forecasts. <i>Int.
+J. Forecasting</i>, <b>2</b>, 285-293.
+</p>
+<p><a name="Jenkner_2008"></a>Jenkner,
+J., C. Frei and C. Schwierz, 2008: Quantile-based short-range QPF
+evaluation over Switzerland. Meteorologische Zeitschrift, <b>17</b>, 827-848. Click <a href="https://www.cawcr.gov.au/projects/verification/Jenkner/qbasedverif-Dateien/Jenkner_MZ2008.pdf">here</a>
+to download the PDF (1.9 MB).
+</p>
+<p><a name="Jewson_2003"></a>Jewson,
+S., 2003: Use of the likelihood for
+measuring the skill of probabilistic forecasts. <a href="http://arxiv.org/PS_cache/physics/pdf/0308/0308046v2.pdf">http://arxiv.org/PS_cache/physics/pdf/0308/0308046v2.pdf</a>
+</p>
+<p>Jewson, S., 2004: The
+problem with the Brier score. <a href="http://arxiv.org/PS_cache/physics/pdf/0401/0401046v1.pdf">http://arxiv.org/PS_cache/physics/pdf/0401/0401046v1.pdf</a>
+</p>
+<p>Jewson, S. and C. Ziehmann, 2003: Five guidelines for the evaluation
+of site-specific medium range probabilistic temperature forecasts. <a href="http://arxiv.org/PS_cache/physics/pdf/0310/0310021v1.pdf">
+http://arxiv.org/PS_cache/physics/pdf/0310/0310021v1.pdf</a>
+</p>
+<p>Jolliffe, I.T., 2007: Uncertainty and inference for verification measures. 
+<i>Wea. Forecasting</i>, <b>22</b>, 637-650. 
+</p>
+<p>Jolliffe, I.T., 2008:
+The impenetrable hedge: a note on propriety, equatability, and
+consistency. <i>Meteorol. Appl.</i>, <b>15</b>.
+</p>
+<p>Jolliffe, I.T. and Stephenson, D.B., 2008: Proper scores for
+probability forecasts can never be equitable. <i>Mon. Wea. Rev.</i>,
+<b>136</b>, 1505-1510.
+</p>
+<p>Jung, T. and M. Leutbecher, 2008: Scale-dependent verification of ensemble 
+forecasts. <i>Quart. J. Royal Meteorol. Soc.</i>, <b>132</b>, 2905-2923.
+</p>
+<p>Kain, J.S., M.E. Baldwin, P.R. Janish, S.J. Weiss, M.P. Kay and G.W.
+Carbin, 2003: Subjective verification of numerical models as a
+component of a broader interaction between research and operations. <i>Wea.
+Forecasting</i>, <b>18</b>, 847-860.
+</p>
+<p><a name="Kane_and_Brown_ 2000"></a>Kane, T.L. and B.G.
+Brown, 2000: Confidence
+intervals for some verification measures - a survey of several methods.<i>15th
+Conference on Probability and Statistics in the Atmospheric Sciences,
+Amer. Met. Soc., 8-11 May 2000, Asheville, North Carolina</i>.
+</p>
+<p>Kessler, E. and B. Neas, 1994: On correlation, with applications to
+the radar and raingage measurement of rainfall. <i>Atmos. Research</i>,
+<b>34</b>, 217-229.
+</p>
+<p>Keil, C. and G.C. Craig, 2007: A displacement-based error measure
+applied in a regional ensemble forecasting system. <i>Mon. Wea. Rev.</i>,
+<b>135</b>, 3248-3259.</p>
+<p><a name="Keil_Craig_2009"></a>Keil, C. and G.C. Craig, 2009: A
+displacement and amplitude score employing an optical flow technique. <i>Wea.
+Forecasting</i>, <b>24</b>, 1297-1308.
+</p>
+<p><a name="Koh_Ng_2009"></a>Koh, T. Y. and J. S. Ng, 2009: Improved
+diagnostics for NWP verification in the
+tropics. <i>J. Geophys. Res.</i>, <b>114</b>, D12102,
+doi:10.1029/2008JD011179.
+</p>
+<p>Krzysztofowicz, R., 1992: Bayesian correlation score: A utilitarian measure of 
+forecast skill. <i>Mon. Wea. Rev.</i>, <b>120</b>, 208-219.
+</p>
+<p><a name="Lack_et_al_2010"></a>Lack, S., G.L. Limpert, and N.I. Fox,
+2010: An object-oriented multiscale verification scheme. <i>Wea.
+Forecasting</i>, <b>25</b>, 79-92.
+</p>
+<p>Laio, F. and S. Tamea, 2007: Verification tools for probabilistic
+forecasts of continuous hydrological variables. <i>Hydrol. Earth Syst.
+Sci.</i>, <b>11</b>, 1267-1277.
+</p>
+<p>Lakshmanan, V. and J.S. Kain, 2010: A Gaussian mixture model approach to forecast 
+verification. <i>Wea. Forecasting</i>, <b>25</b>, 908-920. 
+</p>
+<p>Lakshmanan, V. and T. Smith, 2010: An objective method of evaluating and devising 
+storm-tracking algorithms. <i>Wea. Forecasting</i>, <b>25</b>, 701-709. 
+</p>
+<p>Legates, D.R. and G. J. McCabe Jr., 1999: Evaluating the use of "goodness-of-fit"
+measures in hydrologic and hydroclimatic model validation. <i>Water
+Resour. Res.</i>, <b>35</b>, 233-241.
+</p>
+<p>Livezey, R.E., 1995: Evaluation of forecasts. <i>Analysis of Climate Variability</i> 
+(ed. H. von Storch and A. Navarra). Springer-Verlag, pp. 177-196.
+</p>
+<p>Loughe, A.F., J.K Henderson, J.L. Mahoney and E.I. Tollerud, 2001: A
+verification approach suitable for assessing the quality of model-based
+precipitation forecasts during extreme precipitation events. <i>Symposium
+on Precipitation Extremes: Prediction, Impacts, and Responses, Amer.
+Met. Soc., 13-18 January 2001, Albuquerque, New Mexico</i>, 77-81.
+</p>
+<p>Manzato, A., 2005: An odds ratio parameterization for ROC diagram and skill score indices. 
+<i>Wea. Forecasting</i>, <b>20</b>, 918-930. 
+</p>
+<p>Manzato, A., 2007: A note on the maximum Peirce skill score. <i>Wea. Forecasting</i>, 
+<b>22</b>, 1148-1154. 
+</p>
+<p>Marchok, T., R. Rogers, and R. Tuleya, 2007: Validation schemes for tropical cyclone 
+quantitative precipitation forecasts: Evaluation of operational models for U.S. landfalling cases. 
+<i>Wea. Forecasting</i>, <b>22</b>, 726-746.  
+</p>
+<p>Marshall, K.T., and R.M. Oliver, 1995: <i>Decision Making and Forecasting</i>. 
+McGraw-Hill, 407 pp. See Chapter 8 (pp. 303-341).
+</p>
+<p>Marsigli, C., F. Boccanera, A. Montani, and T. Paccagnella, 2005:
+The COSMO-LEPS ensemble system: validation of the methodology and verification. <i>Nonlinear
+Processes in Geophysics</i>, <b>12</b>, 527-536.</p>
+<p>Marzban, C., 1998: Scalar measures of performance in
+rare-event situations. <i>Wea. Forecasting</i>, <b>13</b>, 753-763.
+</p>
+<p><a name="Marzban_Sandgathe_2006"></a>Marzban,
+C. and S. Sandgathe, 2006: Cluster analysis for verification of
+precipitation fields, <i>Wea. Forecasting</i>, <b>21</b>, 824-838.
+</p>
+<p>Marzban, C. and S. Sandgathe, 2008: Cluster analysis for object-oriented verification
+of fields: A variation. <i>Mon. Wea. Rev.</i>, <b>136</b>, 1013-1025.
+</p>
+<p>Marzban, C. and S. Sandgathe, 2009: Verification with variograms. <i>Wea. 
+Forecasting</i>, <b>24</b>, 1102-1120. 
+</p>
+<p>Marzban, C., S. Sandgathe, H. Lyons and N. Lederer, 2009: Three spatial verification 
+techniques: Cluster analysis, variogram, and optical flow. <i>Wea. Forecasting</i>, 
+<b>24</b>, 1457-1471. 
+</p>
+<p><a name="Mason_1982"></a>Mason, I., 1982: A model for
+assessment of weather forecasts. <i>Aust. Met. Mag.</i>, <b>30</b>, 291-303.
+</p>
+<p>Mason, S.J., 2004: On using "climatology" as a reference strategy in
+the Brier and ranked probability skill scores. <i>Mon. Wea. Rev.</i>, 1891-1895.
+</p>
+<p>Mason, S.J., 2008: Understanding forecast verification statistics. <i>Meteorol.
+Appl.</i>, <b>15</b>.
+</p>
+<p>Mason, S.J., J.S. Galpin, L. Goddard, N.E. Graham, and B. Rajartnam, 2007:
+Conditional exceedance probabilities. <i>Mon. Wea. Rev.</i>, <b>135</b>, 363-372.
+</p>
+<p>Mason, S.J. and N.E. Graham, 1999: Conditional probabilities, relative
+operating characteristics, and relative operating levels.
+<i>Wea. Forecasting</i>, <b>14</b>, 713-725.
+</p>
+<p>Mason, S.J. and G.M. Mimmack, 1992: The use of bootstrap confidence
+intervals for the correlation coefficient in climatology. <i>Theor.
+Appl. Climatol.</i>, <b>45</b>, 229-233.
+</p>
+<p>Mason, S.J., and A.P. Weigel, 2009: A generic forecast verification framework for 
+administrative purposes. <i>Mon. Wea. Rev.</i>, <b>137</b>, 331-349. 
+</p>
+<p>Mass, C.F., D.Ovens, K. Westrick and B.A. Colle, 2002: Does increasing
+horizontal resolution produce more skillful forecasts? <i>Bull. Amer.
+Met. Soc.</i>, <b>83</b>, 407-430.
+</p>
+<p>May, P.T., and T.P. Lane, 2009: A method for using radar data to test 
+cloud resolving models. <i>Met. Apps.</i>, <b>16</b>, 425-432.
+</p>
+<p><a name="Michaes_2007"></a>Michaes, A.C., N.I. Fox, S.A. Lack and
+C.K. Wikle, 2007: Cell identification and verification of QPF ensembles
+using shape
+analysis techniques. <i>J. Hydrol.</i>, <b>343</b>, 105-116.
+</p>
+<p>Mielke, P.W., 1991: The application of multivariate permutation methods based on distance 
+functions in the earth sciences. <i>Earth Sciences Review</i>, <b>31</b>, 55-71.
+</p>
+<p>Mittermaier, M.P., 2008: The potential impact of using persistence as a reference 
+forecast on perceived forecast skill. <i>Wea. Forecasting</i>, <b>23</b>, 1022-1031. 
+</p>
+<p>Mittermaier, M. and N. Roberts, 2010: Intercomparison
+of spatial forecast verification methods: identifying skillful spatial
+scales using the fractions skill score. <i>Wea. Forecasting,</i>
+<b>25</b>, 343-354.</p>
+<p><a name="Murphy_1973"></a>Murphy, A.H., 1973: A new
+vector partition of the probability score. <i>J. Appl. Meteor.</i>,
+<b>12</b>, 595-600.
+</p>
+<p>Murphy, A.H., 1988: Skill scores based on the mean
+square error and their relationships to the correlation coefficient. <i>Mon. Wea. Rev.</i>,
+<b>116</b>, 2417-2424.
+</p>
+<p>Murphy, A.H., 1991: Probabilities, odds, and
+forecasts of rare events. <i>Wea. Forecasting,</i> <b>6</b>, 302-308.
+</p>
+<p>Murphy, A.H., 1991: Forecast verification: Its complexity and dimensionality. 
+<i>Mon. Wea. Rev.</i>, <b>119</b>, 1590-1601.
+</p>
+<p><a name="Murphy1993"></a>Murphy, A.H., 1993: What is
+a good forecast?
+An essay on the nature of goodness in weather forecasting. <i>Wea.
+Forecasting</i>, <b>8</b>, 281-293.
+</p>
+<p>Murphy, A.H., 1995: The coefficients of correlation
+and determination
+as measures of performance in forecast verification.
+<i>Wea. Forecasting</i>, <b>10</b>, 681-688.
+</p>
+<p>Murphy, A.H., 1995: A coherent method of
+stratification within a general
+framework for forecast verification. <i>Mon. Wea. Rev.</i>, <b>123</b>,
+1582-1588.
+</p>
+<p>Murphy, A.H., 1996: The Finley affair: A signal event
+in the history of forecast verification. <i>Wea. Forecasting</i>,
+<b>11</b>, 3-20.
+</p>
+<p>Murphy, A.H., 1996: General decompositions of MSE-based skill scores: Measures of 
+some basic aspects of forecast quality. <i>Mon. Wea. Rev.</i>, <b>124</b>, 2353-2369.
+</p>
+<p>Murphy, A.H., 1997: Forecast verification. <i>Economic Value of Weather and Climate 
+Forecasts</i> (R.W. Katz and A.H. Murphy, Editors). Cambridge Univ. Press, ch. 7 (pp. 19-74).
+</p>
+<p><a name="Murphy_et_al_1989"></a>Murphy, A.H., B.G.
+Brown, and Y.-S.
+Chen, 1989: Diagnostic verification of temperature forecasts. <i>Wea.
+Forecasting</i>, <b>4</b>, 485-501.
+</p>
+<p>Murphy, A.H., and H. Daan, 1985: Forecast evaluation. <i>Probability, 
+Statistics, and Decision Making in the Atmospheric Sciences</i> (ed. A.H. Murphy and R.W. Katz). 
+Westview Press, pp. 379-437.
+</p>
+<p>Murphy, A.H. and E.S. Epstein, 1989: Skill scores and
+correlation coefficients
+in model verification. <i>Mon. Wea. Rev.</i>, <b>117</b>, 572-581.
+</p>
+<p>Murphy, A.H. and D.S. Wilks, 1998: A case study of
+the use of statistical
+models in forecast verification: Precipitation probability forecasts. <i>Wea.
+Forecasting</i>, <b>13</b>, 795-810.
+</p>
+<p><a name="Murphy_and_Winkler_1987"></a>Murphy, A.H. and R.L. Winkler,
+1987: A general framework for forecast verification. <i>Mon. Wea. Rev.</i>,
+<b>115</b>, 1330-1338.
+</p>
+<p>Murphy, A.H. and R.L. Winkler, 1992: Diagnostic
+verification of probability forecasts. <i>Int. J. Forecasting</i>,
+<b>7</b>, 435-455.
+</p>
+<p><a name="Nachamkin2004"></a>Nachamkin,
+J.E., 2004: Mesoscale verification using meteorological composites. <i>Mon.
+Wea. Rev.</i>, <b>132</b>, 941-955.
+</p>
+<p>Nachamkin, J.E., 2009: Application of the composite method to the Spatial Forecast 
+Verification Methods Intercomparison dataset. <i>Wea. Forecasting</i>, <b>24</b>, 1390-1400. 
+</p>
+<p><a name="Nash_Sutcliffe_1970"></a>Nash, J.E. and J.V. Sutcliffe,
+1970: River flow forecasting through conceptual models part I
+: A discussion of principles. <i>J. Hydrology</i>, <b>10</b>,
+282-290.
+</p>
+<p><a name="Nehrkorn_et_al_2003"></a>Nehrkorn, T., R.N. Hoffman, C.Grassotti
+and J.-F. Louis, 2003: Feature calibration and alignment to represent
+model forecast errors: Empirical regularization. <i>Q. J. R. Meteorol.
+Soc.</i>, <b>129</b>, 195-218.
+</p>
+<p>Nigro, M.A., J.J. Cassano and M.W. Seefeldt, 2011: A weather-pattern-based approach 
+to evaluate the Antarctic Mesoscale Prediction System (AMPS) forecasts: Comparison to 
+automatic weather station observations. <i>Wea. Forecasting</i>, <b>26</b>, 184-198. 
+</p>
+<p>Pappenberger, F., A. Ghelli, R. Buizza, K. B�dis, 2009: The skill of probabilistic 
+prediction forecasts under observational uncertainties within the Generalized Likelihood 
+Uncertainty Estimation framework for hydrological applications. 
+<i>J. Hydromet.</i>, <b>10</b>, 807-819.
+</p>
+<p>Petrik, R., M. Baldauf, H. Schlunzen and A. Gassmann, 2011: Validation of a mesoscale 
+weather prediction model using subdomain budgets. <i>Tellus</i>, <b>63A</b>, 707-726. 
+</p>
+<p><a name="Potts_et_al_ 1996"></a>Potts, J.M., C.K.
+Folland, I.T. Jolliffe, and D. Sexton, 1996: Revised "LEPS" scores 
+for assessing climate model simulations and long-range forecasts. 
+<i>J. Climate</i>, <b>9</b>, 34-53.
+</p>
+<p>Primo, C and A. Ghelli, 2009: The affect of the base rate on the 
+extreme dependency score. <i>Met. Appl.</i>, <b>16</b>, 533-535.
+</p>
+<p>Renner, M., M.G.F. Werner, S. Rademacher, E. Sprokkereef, 2009: 
+Verification of ensemble flow forecasts for the River Rhine. 
+<i>J. Hydrol.</i>, <b>376</b>, 463-475.
+</p>
+<p><a name="Richardson_2000"></a>Richardson, D.S., 2000: Skill and relative
+economic value of the ECMWF ensemble prediction system. <i>Quart. J.
+Royal Met. Soc.</i>, <b>126</b>, 649-667.
+</p>
+<p>Rife, D.L., and C.A. Davis, 2005: Verification of temporal  
+variations in mesoscale numerical wind forecasts. <i>Mon. Wea. Rev.</i>, 
+<b>133</b>, 3368-3381.
+</p>
+<p>Rife, D.L., C.A. Davis, and J.C. Knievel, 2009: Temporal
+changes in wind as objects for evaluating mesoscale numerical weather
+prediction. <i>Wea. Forecasting</i>, <b>24</b>, 1374-1389. 
+</p>
+<p><a name="Roberts_Lean_2008"></a>Roberts,
+N.M. and H.W. Lean, 2008: Scale-selective verification of rainfall accumulations
+from high-resolution forecasts of convective events. <i>Mon. Wea. Rev.</i>,
+ <b>136</b>, 78-97.
+</p>
+<p><a name="Rodwell_et_al_2010"></a>Rodwell, M.J., D.S. Richardson, T.D. Hewson 
+and T. Haiden, 2010: A new equitable score suitable for verifying precipitation
+in numerical weather prediction. <i>Q. J. R. Meteorol. Soc.</i>, 
+<b>136</b>, 1344-1363.
+</p>
+<p><a name="Roebber_2009"></a>Roebber, P.J., 2009: Visualizing multiple
+measures of forecast quality. <i>Wea. Forecasting</i>, <b>24</b>, 601-608.
+</p>
+<p>Roebber, P.J., and L.F. Bosart, 1996: The contributions of education and 
+experience to forecast skill. <i>Wea. Forecasting</i>, <b>11</b>, 21-40.
+</p>
+<p><a name="Roulston_Smith_2002"></a>Roulston, M.S. and
+L.A. Smith, 2002: Evaluating probabilistic forecasts
+using information theory. <i>Mon. Wea. Rev.</i>, <b>130</b>, 1653-1660.
+</p>
+<p>Saetra, O., H. Hersbach, J.-R. Bidlot and D. S. Richardson, 2004:
+Effects of observation errors on the statistics for ensemble spread and
+reliability. <i>Mon. Wea. Rev.,</i> <b>132</b>, 1487-1501.
+</p>
+<p>Schervish, M.J., 1989: A general method for comparing probability assessors. 
+<i>Annals of Statistics</i>, <b>17</b>, 1856-1879.
+</p>
+<p><a name="Seaman_et_al_1996"></a>Seaman, R., I. Mason, and F. Woodcock,
+1996: Confidence intervals for some performance measures of yes-no
+forecasts.<i>Aust. Met. Mag.</i>, <b>45</b>, 49-53.
+</p>
+<p>Smith, L.A. and J.A. Hansen, 2005: Extending the limits of ensemble
+forecast verification with the minimum spanning tree. <i>Mon. Wea. Rev.</i>,
+<b>132</b>, 1522-1528.
+</p>
+<p>Smith, P.L., 1999: Effects of imperfect storm reporting on the
+verification of weather warnings. <i>Bull. Amer. Met. Soc.</i>,
+<b>80</b>, 1099-1105.
+</p>
+<p>Smith, T.M., S.A. Myers and K.L. Elmore, 2000: An evaluation
+methodology applied to the damaging downburst prediction and detection algorithm. 
+20<i>th Conference on Severe Local Storms, Amer. Met. Soc., 11-16 September
+2000, Orlando, Florida</i>, 374-377.
+</p>
+<p>Stensrud, D.J., and J.A. Skindlov, 1996: Gridpoint predictions of high temperature from 
+a mesoscale model. <i>Wea. Forecasting</i>, <b>11</b>, 103-110.
+</p>
+<p><a name="Stensrud_and_Wandishin 2000"></a>Stensrud, D.J. and M.S. Wandishin,
+2000: The correspondence ratio in forecast evaluation. <i>Wea.
+Forecasting</i>, <b>15</b>, 593-602.
+</p>
+<p><a name="Stephenson_2000"></a>Stephenson, D.B., 2000:
+Use of the "odds ratio" for diagnosing forecast skill. 
+<i>Wea. Forecasting</i>, <b>15</b>, 221-232.
+</p>
+<p>Stephenson, D.B. and F. J. Doblas-Reyes, 2000: Statistical methods for
+interpreting Monte Carlo ensemble forecasts. <i>Tellus</i>, <b>52A</b>, 300-322.
+</p>
+<p><a name="Stephenson_et_al_2008"></a>Stephenson D.B., B. Casati,
+C.A.T. Ferro and C.A. Wilson, 2008: The
+extreme dependency score: a non-vanishing measure for forecasts of rare events.
+<i>Meteorol. Appl.</i>, <b>15</b>, 41-50.
+</p>
+<p>Stephenson, D.B., C.A.S. Coelho, I.T. and Jolliffe, 2008: Two
+extra components in the Brier Score Decomposition, <i>Wea. Forecasting</i>,
+<b>23</b>, pp 752-757.
+</p>
+<p>Stewart, T.R., 1990: A decomposition of the correlation coefficient
+and its use in analyzing forecast skill. <i>Wea. Forecasting</i>, <b>5</b>,
+661-666.
+</p>
+<p><a name="Talagrand_et_al_1997"></a>Talagrand, O., R.
+Vautard and B.  Strauss, 1997: Evaluation of probabilistic prediction 
+systems.  <i>Proceedings, ECMWF Workshop on Predictability.</i>
+</p>
+<p>Tartaglione, N., 2010: Relationship between precipitation forecast errors and skill 
+scores of dichotomous forecasts. <i>Wea. Forecasting</i>, <b>25</b>, 355-365. 
+</p>
+<p><a name="Taylor,_2001"></a>Taylor, K.E., 2001: Summarizing multiple
+aspects of model performance in a single diagram. <i>J. Geophys. Res.</i>,
+<b>106</b> (D7), 7183-7192.
+</p>
+<p><a name="Theis_et_al_2005"></a>Theis,
+S.E., A. Hense and U. Damrath, 2005: Probabilistic precipitation
+forecasts from a deterministic model: a pragmatic approach. <i>Meteorol.
+Appl.</i>, <b>12</b>, 257-268.
+</p>
+<p><a name="Thornes_and_Stephenson_2001"></a>Thornes,
+J.E. and D.B. Stephenson,
+2001: How to judge the quality and value of weather forecast products.
+<i>Meteorol. Appl.</i>, <b>8</b>, 307-314. Click <a href="http://www.met.rdg.ac.uk/cag/publications/ma2001.pdf">here</a>
+to download a PDF of this paper (79 KB).
+</p>
+<p><a name="Tremblay_et_al_1996"></a>Tremblay, A., S.G. Cober, A. Glazer,
+G. Isaac, and J. Mailhot, 1996: An intercomparison of mesoscale
+forecasts of aircraft icing using SSM/I retrievals.
+<i>Wea. Forecasting</i>, <b>11</b>, 66-77.
+</p>
+<p>Tustison, B., E. Foufoula-Georgiou, and D. Harris,
+2003: Scale-recursive estimation for multisensor quantitative 
+precipitation forecast verification: A preliminary assessment. 
+<i>J. Geophys. Res.</i>, <b>108</b>, D8, 8377.
+</p>
+<p>Tustison, B., D. Harris, and E. Foufoula-Georgiou,
+2001: Scale issues in verification of precipitation forecasts. 
+<i>J. Geophys. Res.</i>, <b>106</b> (D11), 11,775-11,784.
+</p>
+<p>Van Galen, J., 1970: A new method for verifying deterministic predictions
+of meteorological scalar fields. <i>Tellus</i>, <b>22</b>, 32-42.
+</p>
+<p>Venugopal, V., S. Basu and E. Foufoula-Georgiou, 2005: 
+A new metric for comparing precipitation patterns with an application 
+to ensemble forecasts. <i>J. Geophys. Res.</i>, <b>110, D08111</b>.
+</p>
+<p>Wandishin, M.S. and S.J. Mullen, 2009: Multiclass ROC analysis. 
+<i>Wea. Forecasting</i>, <b>24</b>, 530-547. 
+</p>
+<p>Warner, S., N. Platt and J.F. Heagy, 2004: User-oriented two-dimensional measure 
+of effectiveness for the evaluation of transport and dispersion models.
+<i>J. Appl. Meteorol.</i>, <b>43</b>, 58-73.
+</p>
+<p>Watterson, I.G., 1996: Non-dimensional measures of
+climate model performance. <i>Int. J. Climatol.</i>, <b>16</b>, 379-391.
+</p>
+<p><a name="Wernli_2008"></a>Wernli H., M. Paulat, M. Hagen and C.
+Frei, 2008: SAL - a novel quality measure for the verification of 
+quantitative precipitation forecasts. <i>Mon. Wea. Rev.,</i>, <b>136</b>, 4470-4487.
+</p>
+<p>Wei, M. and Z. Toth, 2003: A new measure of ensemble
+performance: Perturbation versus error correlation analysis (PECA). 
+<i>Mon. Wea. Rev.</i>, <b>131</b>, 1549-1565.
+</p>
+<p>Weigel, A.P. and S.J. Mason, 2011: The generalized discrimination Score for 
+ensemble forecasts. <i>Mon. Wea. Rev.,</i>, <b>139</b>, 3069-3074.
+</p>
+<p>Weisheimer, A., L.A. Smith and K. Judd, 2005: A new view of seasonal forecast skill: 
+bounding boxes from the DEMETER ensemble forecasts. <i>Tellus</i>, <b>57A</b>, 265-279. 
+</p>
+<p>Weygandt, S.S. and N.L. Seaman, 1994: Quantification of predictive
+skill for mesoscale and synoptic-scale meteorological features as a
+function of horizontal grid resolution. 
+<i>Mon. Wea. Rev.</i>, <b>122</b>, 57-71.
+</p>
+<p><a name="Weygandt_et_al_2004"></a>Weygandt,
+S.S., A.F. Loughe, S.G. Benjamin and J.L. Mahoney, 2004: Scale
+sensitivities in model precipitation skill scores during IHOP. <i>22nd Conf.
+Severe Local Storms, Amer. Met. Soc., 4-8 October 2004, Hyannis, MA</i>.
+</p>
+<p>Wilks D.S., 2000: Diagnostic verification of the climate prediction center 
+long-lead outlooks, 1995-98. <i>J. Climate</i>, <b>13</b>, 2389-2403.
+</p>
+<p><a name="Wilks_2001"></a>Wilks, D.S., 2001: A skill
+score based on economic value for probability forecasts. 
+<i>Meteorol. Appl</i>., <b>8</b>, 209-219.
+</p>
+<p><a name="Wilson_et_al_1999"></a>Wilson, L.J., W.R.
+Burrows, and A. Lanzinger,
+1999: A strategy for verification of weather element forecasts from an
+ensemble prediction system. <i>Mon. Wea. Rev.</i>, <b>127</b>, 956-970.
+</p>
+<p>Winkler, R.L., 1994: Evaluating probabilities: Asymmetric scoring rules. 
+<i>Management Science</i>, <b>40</b>, 1395-1405.
+</p>
+<p>Winkler, R.L., 1996: Scoring rules and the evaluation of probabilities. 
+<i>Test</i>, <b>5</b>, 1-60. 
+</p>
+<p><a name="Woodcock_1976"></a>Woodcock, F., 1976:
+The evaluation of yes/no forecasts for scientific and administrative 
+purposes. <i>Mon.  Wea. Rev.</i>, <b>104</b>, 1209-1214.
+</p>
+<p>Yates, E., S. Anquetin, V. Ducrocq, J.-D. Creutin, D.
+Ricard and K. Chancibault, 2006: Point and areal validation of forecast
+precipitation fields. <i>Meteorol. Appl.</i>, <b>13</b>, 1-20.
+</p>
+<p>Yates, J.F., 1994: Subjective probability accuracy analysis. 
+<i>Subjective Probability</i> (ed. G. Wright and P. Ayton). Wiley, pp. 381-410.
+</p>
+<p><a name="Zepeda-Arce_et_al_2000"></a>Zepeda-Arce, J., E. Foufoula-Georgiou,
+and K.K. Droegemeier, 2000: Space-time rainfall organization and its
+role in validating quantitative precipitation forecasts. <i>J.
+Geophys. Res.</i>, <b>105</b> (D8), 10,129-10,146.
+</p>
+<p>Zingerle, C. and P. Nurmi, 2008: Monitoring and verifying cloud foreacsts 
+originating from numerical models. <i>Met. Appl.</i>, <b>15</b>, 325-330.
+</p>
+
+
+<h3><a name="Contributors_to_this_site"></a><i><font size="+2">Contributors
+to this site</font></i></h3>
+<p>
+<script> email("frederic.atger","meteo.fr","Fr&eacute;d&eacute;ric Atger") </script>,
+Météo-France, Toulouse, France
+<br>
+<script> email("baldwin","purdue.edu","Mike Baldwin") </script>, Purdue
+University, West Lafayette, Indiana, USA
+<br>
+<script> email("keith.brill","noaa.gov","Keith Brill") </script>,
+NOAA/NWS Hydrometeorological Prediction Center, Washington DC, USA
+<br>
+<a href="http://www.nssl.noaa.gov/users/brooks/public_html/">Harold Brooks</a>,
+National Severe Storms Laboratory, Norman, Oklahoma, USA
+<br>
+<a href="http://www.ral.ucar.edu/staff/bgb-staff.php">Barb Brown</a>,
+NCAR, Boulder, Colorado, USA
+<br>
+<script> email("Casati.Barbara","ec.gc.ca","Barbara Casati") </script>,
+Environment Canada, Montreal, Quebec, Canada
+<br>
+<script> email("ulrich.damrath","dwd.de","Ulrich Damrath") </script>,
+Deutscher Wetterdienst, Offenbach, Germany
+<br>
+<a href="http://www.cawcr.gov.au/staff/eee">Beth Ebert</a>, Bureau of
+Meteorology, Melbourne, Australia
+<br>
+<a href="http://www.secam.ex.ac.uk/profile/catf201">
+Chris Ferro</a>, University of Exeter, Exeter, UK
+<br>
+<script> email("ghelli","ecmwf.int","Anna Ghelli") </script>, 
+ECMWF, Reading, UK
+<br>
+<script> email("martin.goeber","dwd.de","Martin G&ouml;ber") </script>,
+Deutscher Wetterdienst, Offenbach, Germany
+<br>
+Johannes Jenkner, University of British Columbia, Vancouver, BC, Canada
+<br>
+<a href="http://www.secam.ex.ac.uk/profile/itj201">
+Ian Jolliffe</a>, University of Exeter, Exeter, UK
+<br>
+<script> email("christian.keil","lmu.de","Christian Keil") </script>,
+University of Munich, Munich, Germany
+<br>
+<a href="http://www3.ntu.edu.sg/home/kohty/spms">
+Tieh-Yong Koh</a>, Nanyang Technological University, Singapore
+<br>
+<script> email("Pertti.Nurmi","fmi.fi","Pertti Nurmi") </script>,
+Finnish Meteorological Institute, Hensinki, Finland
+<br>
+<a href="https://pantherfile.uwm.edu/roebber/www/">
+Paul Roebber</a>, University of Wisconsin, Milwaukee, Wisconsin, USA
+<br>
+<a href="http://www.secam.ex.ac.uk/profile/dbs202">
+David Stephenson</a>, University of Exeter, Exeter, UK
+<br>
+<script> email("clive.wilson","metoffice.com","Clive Wilson") </script>,
+The Met Office, Exeter, UK
+<br>
+<script> email("Lawrence.Wilson","ec.gc.ca","Laurie Wilson") </script>,
+Research en Prévision Numérique, Dorval, Canada
+<br>
+</p>
+<hr width="100%">
+<p>Webmaster:
+<script> email("E.Ebert","BoM.GOV.AU","Beth Ebert") </script> <br>
+Last updated: 26 January 2015<br>
+</p>
+</body></html>

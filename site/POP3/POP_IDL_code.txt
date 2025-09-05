@@ -1,0 +1,573 @@
+;NOTE: SAVE THIS FILE AS IDL PROCEDURE CALLED prob_scores.pro
+
+;pro prob_scores,show=show,h48=h48
+;
+;Read from Pertti's POP_3 file and compute a variety of probabilistic
+;verification scores and diagrams:
+;  Brier score
+;  Brier skill score
+;  Ranked probability score
+;  Ranked probability skill score
+;  Reliability diagram
+;  ROC diagram
+;  ROC area
+;  Value score
+;This is to put on the web page as an example
+
+;To show a plot, set show='reliability', 'ROC', or 'value'
+;To compute results for 48h forecasts set /h48 (default=24h fcsts)
+;
+;Example:  prob_scores,show='reliability'   makes reliability plots for
+;                                             24h forecasts
+;Example:  prob_scores,show='ROC',/h48      makes ROC plots for 48h fcsts
+
+;-----------------------------------------------------------------------
+
+pro pstats,obsocc,pop,refpop,ncat, $
+   pod=pod,pofd=pofd, show=show
+
+;Compute probabilistic verification statistics, including skill scores, on
+;pooled data.
+;
+;Input:  obsocc      observed occurrence [npts]
+;        pop         forecast probability of precipitation [npts]
+;                    Note: negative values of obs or prob treated as bad data!
+;        refpop      reference probability of precipitation (climatology) [npts]
+;        ncat        number of probability categories (generally equal to
+;                      number of ensemble members + 1 )
+;Keywords:
+;        pod, pofd   output probability of detection, probability of false
+;                      detection [ncat,nthresh]
+;        show        show='reliability', 'ROC', or 'value'
+
+if n_elements(show) eq 0 then show=''
+
+probcat=1./(ncat-1.)*findgen(ncat) & print,'probcat=',probcat
+binsize=probcat[1]-probcat[0]
+halfbinsize=binsize/2.
+
+;Check compatibility of array sizes
+npts=n_elements(obsocc)
+if n_elements(pop) ne npts or n_elements(refpop) ne npts $
+  then begin
+  print,'pstats -- size mismatch between obsocc, pop, refpop, thresh -- quit'
+  goto, done
+  endif
+
+;Keep only good observations (i.e., >=0; masked values=-1)
+ss=where(obsocc ge 0,npts)
+obs=obsocc[ss]
+prob=pop[ss]
+refprob=refpop[ss]
+
+;Output POD and POFD
+pod=fltarr(ncat+1)
+pofd=fltarr(ncat+1)
+
+;Working arrays for probabilistic verification
+n   =make_array(ncat,/float,value=0.)
+o   =make_array(ncat,/float,value=0.)
+nref=make_array(ncat,/float,value=0.)
+oref=make_array(ncat,/float,value=0.)
+
+;Bin by forecast probability category
+for k=0,ncat-1 do begin
+  ;Which forecasts fall into probability category k
+  ss=where(abs(prob-probcat[k]) lt halfbinsize,num)
+  if num gt 0 then begin
+    n[k]=num              ;# fcsts in category k
+    o[k]=total(obs[ss])   ;# observed occurrences in category k
+    endif
+  sr=where(abs(refprob-probcat[k]) lt halfbinsize,num)
+  if num gt 0 then begin
+    nref[k]=num
+    oref[k]=total(obs[sr])
+    endif
+  endfor
+
+
+;Compute Brier score manually
+BS=total((prob-obs)^2.)/npts
+
+;Brier score decomposition into reliability, resolution, uncertainty
+reliability,probcat,n,o,BSd,decomp=decomp,show=(show eq 'reliability')
+rel=decomp[1]
+res=decomp[2]
+unc=decomp[3]
+print,'BS-BSd=',BS-BSd
+
+;Brier score for ref fcst (climatology), Brier skill score
+BSref=total((refprob-obs)^2.)/npts
+BSS=(BSref-BS)/BSref
+
+;Area under ROC curve
+roc,n,o,h,f,rocarea,/debug,show=(show eq 'ROC')
+;roc,n,o,h,f,rocarea,/debug,/binormal,show=(show eq 'ROC')
+pod=[1.,h]
+pofd=[1.,f]
+
+;Value plot
+pclim=total(oref)/total(nref)
+value,probcat,n,o,pclim,show=(show eq 'value')
+
+
+print,'n=',n
+print,'BS=',BS
+print,'reliability=',rel
+print,'resolution=',res
+print,'uncertainty=',unc
+print,'BSS=',BSS
+print,'ROCarea=',rocarea
+
+done:
+end
+
+
+;-----------------------------------------------------------------------
+
+pro reliability, probcat,n,o,BS, $
+  title=title,decomp=decomp,show=show,debug=debug
+
+;Compute Brier score, and components: reliability, resolution, uncertainty
+;Optional: make reliability diagram for probabilistic forecast of
+;value at each gridpoint exceeding threshold
+
+;Input:   probcat      probability categories
+;         n            # forecasts in each fcst probability category
+;         o            # occurrences in each fcst probability category
+;Output:  BS           Brier Score computed as rel-res+unc (Wilks, 1995)
+;Keywds:  title        optional title for plot
+;         decomp       [obar, reliability, resolution, uncertainty]
+;         show         show reliability diagram (default=don't)
+;         debug        print,n,o, components
+
+BS=-999.
+decomp=[-999.,-999.,-999.,-999.]
+
+;Get rid of empty bins
+ss=where(n gt 0.,ng)
+if ng eq 0 then goto, done
+nn=n[ss]
+oo=o[ss]
+pcat=probcat[ss]
+
+;Compute observed probability in each fcst prob. category
+oo=oo/nn
+
+ntot=total(nn)
+
+;Compute reliability, resolution, and uncertainty
+obar=total(nn*oo)/ntot
+rel =total(nn*(pcat-oo)^2.)/ntot
+res =total(nn*(oo-obar)^2.)/ntot
+unc =obar*(1.-obar)
+BS=rel-res+unc
+
+if n_elements(debug) eq 0 then debug=0
+if (debug) then begin
+  print,'obar,rel,res,unc=',obar,rel,res,unc
+  print,'BS=',BS
+  endif
+
+decomp=[obar,rel,res,unc]
+
+if n_elements(show) eq 0 then show=0
+if (show) then begin
+  if n_elements(title) eq 0 then title=''
+  ;Plot diagonal line
+  plot,[0,1],[0,1],title=title, $
+    xtitle='Forecast Probability',ytitle='Observed Frequency', $
+    /xstyle,/ystyle,linestyle=0,thick=1
+  ;Plot reliability
+  oplot,pcat,oo,max_value=1.,thick=2
+  ;Plot climatological frequency
+  oplot,[0,1],[obar,obar],linestyle=2,thick=1
+  ;Plot no-skill line
+  oplot,[0,1],[obar/2,obar+(1.-obar)/2.],linestyle=1,thick=1
+  plot,[0,1],[0,max(nn)],/nodata,/noerase,position=[.35,.7,.60,.90], $
+    xtitle='Fcst Probability',ytitle='# Times Fcst', $
+    charsize=0.8
+  xbox=[-1,1,1,-1,-1] & ybox=[0,0,1,1,0]
+  for i=0,ng-1 do polyfill,pcat[i]+0.02*xbox,nn[i]*ybox,color=255,/noclip
+  endif
+
+done:
+end
+
+
+;-----------------------------------------------------------------------
+
+pro roc, n,o,h,f,area, $
+  binormal=binormal,title=title,show=show,debug=debug
+
+;Compute area under ROC curve.
+;Optional: make relative operating characteristic (ROC) diagram for
+;probabilistic forecast of value at each gridpoint exceeding threshold
+
+;Input:   n            # forecasts in each fcst probability category
+;         o            # occurrences in each fcst probability category
+;         title        optional title for plot
+;Output:  h            hit rate as a function of probability threshold
+;         f            false alarm rate (POFD) "   "
+;         area         area under ROC curve
+;Keywds:  binormal     use binormal fit to estimate ROC area (default=not)
+;         title        title of plot
+;         show         show plot (default=don't)
+;         debug        print values of n,o,n,f
+
+if n_elements(binormal) eq 0 then binormal=0
+if n_elements(title) eq 0 then title='Relative Operating Characteristic'
+if n_elements(show) eq 0 then show=0
+if n_elements(debug) eq 0 then debug=0
+
+;Number of probability categories
+ncat=n_elements(n)
+
+;Compute hit rates and false alarm rates by probability category
+non=n-o
+h=make_array(ncat,/float,value=-999.)
+f=make_array(ncat,/float,value=-999.)
+for k=0,ncat-2 do begin
+  W=total(non[0:k])
+  Y=total(  o[0:k])
+  Z=total(non[k+1:ncat-1])
+  X=total(  o[k+1:ncat-1])
+  if (X+Y) gt 0. then h[k]=X/(X+Y)
+  if (Z+W) gt 0. then f[k]=Z/(Z+W)
+  endfor
+;Add endpoints at [0,0] and [1,1]
+h[ncat-1]=0.
+f[ncat-1]=0.
+hs=[1.,h]
+fs=[1.,f]
+
+;Get rid of empty bins
+ss=where(hs ge 0. and fs ge 0.,nok)
+hs=hs[ss]
+fs=fs[ss]
+
+if (debug) then begin
+  print,format='("      f=",16f8.4)',f
+  print,format='("      h=",16f8.4)',h
+  endif
+
+
+if (binormal) then begin
+  print,'Using binormal estimation of ROC area'
+
+  ;Compute area under the curve using binormal curve fitting (Ian Mason's notes)
+  if nok ge 3 then begin
+    ;Transform hit rate and false alarm rate to Z
+    ;but don't transform values of 0 or fit won't work
+    ss=where(h gt 0. and f gt 0.,npos)
+    nz=npos-1
+    zh=fltarr(nz)
+    zf=fltarr(nz)
+    for k=0,nz-1 do zh[k]=gauss_cvf(h[ss[k]])
+    for k=0,nz-1 do zf[k]=gauss_cvf(f[ss[k]])
+    ;Fit line to zh vs. zf
+    if nz eq 1 then begin
+      slope=1.              ;in 2-category case assume equal variances of PDFs
+      intcpt=zh[0]-zf[0]
+      endif
+    if nz eq 2 then begin
+      slope=(zh[1]-zh[0])/(zf[1]-zf[0])    ;2 points define line
+      intcpt=zh[0]-slope*zf[0]
+      endif
+    if nz ge 3 then begin
+      coeff= $               ;Regression fit
+        regress(reform(zf,1,nz),zh,replicate(1.,nz),zhfit,const=intcpt)
+      slope=coeff[0]
+      print,'Binormal fit: slope, intercept=',slope,intcpt
+      endif
+    ;For integration take finer intervals in Z space
+    zffit=-3.0+0.1*findgen(61)
+    zhfit=intcpt+slope*zffit
+    ;Now transform back to probability space before integrating
+    hfit=fltarr(61)
+    ffit=fltarr(61)
+    for k=0,60 do hfit[k]=1.-gauss_pdf(zhfit[k])
+    for k=0,60 do ffit[k]=1.-gauss_pdf(zffit[k])
+    hfit=[1.,hfit,0.]
+    ffit=[1.,ffit,0.]
+    ;Now integrate under curve using trapezoid rule
+    area=0.
+    for k=0,61 do area=area+abs(ffit[k]-ffit[k+1])*(hfit[k]+hfit[k+1])/2.
+  endif else begin
+    area=0.5
+  endelse
+  print,'ROC area (binormal fit)=',area
+
+endif else begin
+
+  ;Compute area under the curve from line segments
+  area=0.
+  if nok ge 3 then for k=0,nok-2 do $
+                   area=area+abs(fs[k]-fs[k+1])*(hs[k]+hs[k+1])/2. $
+              else area=0.5
+  print,'ROC area (line segments)=',area
+
+endelse
+
+if (show) then begin
+  plot,[0,1],[0,1],title=title, $
+    xtitle='False Alarm Rate',ytitle='Hit Rate',/xstyle,/ystyle,linestyle=2
+  if (binormal) then oplot,ffit,hfit,max_value=1., thick=2 $
+                else oplot,fs,hs,max_value=1.,thick=2
+  ;oplot,fs,hs,max_value=1.,psym=7
+  endif
+
+done:
+end
+
+
+;-----------------------------------------------------------------------
+
+function rps,prob,obsocc
+
+;Computes the Ranked Probability Score RPS, which is ~the mean squared
+;difference between the observed and forecast CDFs.
+;Reference: Stanski et al, 1989
+;
+;Input:  prob    forecast probability in each category
+;                  dimensions (nc,nr,nbins) or (npts,nbins)
+;        obsocc  observed occurrence in each category
+;                  dimensions (nc,nr,nbins) or (npts,nbins)
+;Output: rps     ranked probability score
+
+sz=size(obsocc)
+ndim=sz[0]
+nbins=sz[ndim]
+
+CDFo=fltarr(nbins)
+CDFf=fltarr(nbins)
+
+;Want to work with arrays of dimension (npts,nbins)
+if ndim eq 2 then begin
+  npts=sz[1]
+  ob=obsocc
+  prb=prob
+endif else begin
+  npts=sz[1]*sz[2]
+  ob=reform(obsocc,npts,nbins)
+  prb=reform(prob,npts,nbins)
+endelse
+
+;Loop on data
+rps=0.
+n=0.
+CDFo=fltarr(nbins)
+CDFf=fltarr(nbins)
+for i=0,npts-1 do begin
+
+  ;Define the CDF for this observation
+  o=reform(ob[i,*],nbins)
+  CDFo[0]=o[0]
+  for j=1,nbins-1 do CDFo[j]=CDFo[j-1]+o[j]
+
+  ;Invert the fcst prob array to create CDF
+  p=reform(prb[i,*],nbins)
+  CDFf[0]=p[0]
+  for j=1,nbins-1 do CDFf[j]=CDFf[j-1]+p[j]
+
+  ;Compute mean squared difference (nearly)
+  msd=total((CDFf-CDFo)^2) / (nbins-1.)
+;print,'o   =',o,'   CDFo=',CDFo,'   p   =',p,'   CDFf=',CDFf
+
+  rps=rps+msd
+  n=n+1
+
+  continue:
+  endfor
+
+;Get mean RPS over all data
+rps=rps/n
+
+return,rps
+end
+
+
+;-----------------------------------------------------------------------
+
+pro value,probcat,n,o,pclim,show=show
+
+;Plot relative value as a function of cost/loss ratio
+;For a probability forecast plots the envelope of curve maxima
+
+;Input:   probcat      probability categories
+;         n            # forecasts in each fcst probability category
+;         o            # occurrences in each fcst probability category
+;         pclim        climatological probability (base rate)
+;Keywds:  show         show plot (default=don't)
+
+if n_elements(show) eq 0 then show=0
+
+non=n-o
+npts=total(n)
+ncat=n_elements(probcat)
+
+;Compute value as a function of cost/loss ratio between 0 and 1
+nb=50    ;number of increments between 0 and 1
+CLratio=1./(nb-1.)*findgen(nb)
+value=fltarr(nb)
+maxvalue=make_array(nb,/float,value=-999.)  ;Envelope of value curves
+
+if (show) then plot,[0,1],[0,0],title=title,yrange=[0,1], $
+      xtitle='Cost/Loss Ratio',ytitle='Relative Value',linestyle=2
+
+for icat=0,ncat-2 do begin
+  p=probcat(icat+1)
+  ;;;;p=pclim   ;Used for deterministic forecast value assessment
+  k=max([0,where(probcat lt p)])
+  Y=total(  o[0:k])/npts          ;misses
+  Z=total(non[k+1:ncat-1])/npts   ;false alarms
+  X=total(  o[k+1:ncat-1])/npts   ;hits
+  for ib=0,nb-1 do begin
+    if CLratio[ib] lt pclim then $
+      value[ib]=(Clratio[ib]*(X+Z-1.)+Y) / (CLratio[ib]*(pclim-1.))
+    if CLratio[ib] ge pclim then $
+      value[ib]=(Clratio[ib]*(X+Z)+Y-pclim) / (pclim*(CLratio[ib]-1.))
+    if value[ib] gt maxvalue[ib] then maxvalue[ib]=value[ib]
+    endfor
+  if (show) then oplot,CLratio,value,linestyle=0,thick=0.5
+  endfor
+
+if (show) then oplot,CLratio,maxvalue,thick=2
+
+end
+
+
+;-----------------------------------------------------------------------
+
+pro prob_scores,show=show,h48=h48
+
+;Read from Pertti's POP_3 file and compute a variety of probabilistic
+;verification scores and diagrams:
+;  Brier score
+;  Brier skill score
+;  Ranked probability score
+;  Ranked probability skill score
+;  Reliability diagram
+;  ROC diagram
+;  ROC area
+;  Value score
+;This is to put on the web page as an example
+
+;To show a plot, set show='reliability', 'ROC', or 'value'
+;To compute results for 48h forecasts set /h48 (default=24h fcsts)
+
+;Notes from Pertti:
+;------------------
+;OBS is daily rainfall in mm
+;P's are probabilities adding up to 1.0
+;h0: No rain (precip le 0.2 mm)
+;h1: precip between 0.3 and 4.4 mm
+;h2: precip ge 4.5 mm
+
+yyyy=0L & mm=0L & dd=0L
+RR=0.
+P1d=fltarr(3)
+P2d=fltarr(3)
+P24=fltarr(365,3)
+P48=fltarr(365,3)
+O24=fltarr(365,3)
+O48=fltarr(365,3)
+R24=fltarr(365)
+R48=fltarr(365)
+line=''
+
+;Read the data from file
+;Throw out bad data
+n24=0
+n48=0
+openr,unit,'POP_3cat_2003.txt',/get_lun
+readf,unit,line
+for id=0,364 do begin
+  readf,unit,yyyy,mm,dd,RR,P1d,P2d
+  if RR lt 999 and P1d[0] ge 0. then begin
+    P24[n24,*]=P1d
+    O24[n24,0]=(RR le 0.2)
+    O24[n24,1]=(RR ge 0.3 and RR le 4.4)
+    O24[n24,2]=(RR ge 4.5)
+    R24[n24]=RR
+    n24=n24+1
+    endif
+  if RR lt 999 and P2d[0] ge 0. then begin
+    P48[n48,*]=P2d
+    O48[n48,0]=(RR le 0.2)
+    O48[n48,1]=(RR ge 0.3 and RR le 4.4)
+    O48[n48,2]=(RR ge 4.5)
+    R48[n48]=RR
+    n48=n48+1
+    endif
+  endfor
+close,unit & free_lun,unit
+print,'Number of good samples n24,n48=',n24,n48
+n=n24
+P24=P24[0:n-1,*]
+P48=P48[0:n-1,*]
+O24=O24[0:n-1,*]
+O48=O48[0:n-1,*]
+R24=R24[0:n-1,*]
+R48=R48[0:n-1,*]
+
+;Plot rain amount to see whether there is a seasonal signal
+;If there is a strong seasonal cycle then the sample climatology
+;for the whole year might not be an appropriate reference
+plot,R24,ytitle='Rainfall (mm)',xtitle='Day',xrange=[0,n],/xstyle
+
+;Get sample climatological probability
+P24clim=fltarr(3)
+P48clim=fltarr(3)
+for icat=0,2 do begin
+  P24clim[icat]=mean(O24[*,icat])
+  P48clim[icat]=mean(O48[*,icat])
+  endfor
+print,'P24clim=',P24clim
+print,'P48clim=',P48clim
+P24clim=[[replicate(P24clim[0],n)],[replicate(P24clim[1],n)],[replicate(P24clim[2],n)]]
+P48clim=[[replicate(P48clim[0],n)],[replicate(P48clim[1],n)],[replicate(P48clim[2],n)]]
+
+;-------------------------------------------------------------------
+
+if n_elements(show) eq 0 then show=''
+
+;Compute statistics using pstats.pro
+;Start with probability of rain (cats 1 + 2)
+obs=O24[*,1]+O24[*,2]
+pop=P24[*,1]+P24[*,2]
+refpop=P24clim[*,1]+P24clim[*,2]
+obshi=O24[*,2]
+pophi=P24[*,2]
+refpophi=P24clim[*,2]
+RR=R24
+RaPS=rps(P24,O24)
+RPSref=rps(P24clim,O24)
+
+if n_elements(h48) gt 0 then begin
+ print,'Verifying 48h forecasts'
+ obs=O48[*,1]+O48[*,2]
+ pop=P48[*,1]+P48[*,2]
+ refpop=P48clim[*,1]+P48clim[*,2]
+ obshi=O48[*,2]
+ pophi=P48[*,2]
+ refpophi=P48clim[*,2]
+ RR=R48
+ RaPS=rps(P48,O48)
+ RPSref=rps(P48clim,O48)
+ endif
+
+ncat=11
+print,'' & print,'Statistics for POP (2nd and 3rd categories)'
+if show ne '' then window,0,xsize=400,ysize=380,title='POP'
+pstats,obs,pop,refpop,ncat,show=show
+print,'' & print,'Statistics for POP for highest rain category'
+;If plotting results then make another window the same size as the first
+if show ne '' then window,1,xsize=!d.x_size,ysize=!d.y_size,title='POPhi'
+pstats,obshi,pophi,refpophi,ncat,show=show
+
+RPSS=(RPSref-RaPS)/RPSref
+print,'RPS=',RaPS
+print,'RPSS=',RPSS
+
+end

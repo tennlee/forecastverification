@@ -1,0 +1,127 @@
+<!doctype html public "-//W3C//DTD html 4.0 transitional//EN">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Generator" content="Microsoft Word 97">
+   <meta name="GENERATOR" content="Mozilla/4.79 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Use of super-observations (=upscaled observations) for verification</title>
+   <link rel = "stylesheet" href="../../default.css">
+</head>
+<body link="#0000FF">
+
+<center><h2>Comparing gridded forecasts with observations at point locations:
+<br>Use of super-observations (upscaled
+observations) for verification</h2>
+<p><b>Martin Goeber, Met Office</b></center>
+
+<p><b>Why?</b>
+<p>The theoretical limit of the scales represented in
+a numerical model is 2*<i>dx</i>, where <i>dx</i> is the grid size. In
+practise the "real resolution" of the model is at least twice as large
+depending on model formulation (especially parametrisations), orography,
+weather situation etc. and thus the model output should be viewed as an
+areal mean and not as a point value.
+<p>The gradients of the fields are small on scales of
+order(<i>dx</i>) for many variables and weather situations and thus a point
+observation can be seen as representative for an area of <i>dx</i>*<i>dx</i>.
+<p>There are two classes of exceptions: a) observations
+in areas of high variabililty of geographical factors (orography, land/sea/ice,
+etc.) and b) variables like precipitation, clouds, visibility etc..
+<p>Let's have a closer look at the variability within
+the latter class. Wood et al. (2000) report from a rainfall measurement
+campaign in England using 49 tipping-bucket gauges in a 135 km<sup>2</sup>
+catchment, including a super-dense network of 8 gauges in 4 km<sup>2</sup>,
+and a 2 km resolution radar.
+<p><img SRC="Image1834.gif" ALT="Comparison of the standard errors of estimation" height=335 width=411>
+<p><font size=-1>Figure 1: Comparison of the standard
+errors of estimation for 15 minute rainfall for a single, gauge, for 8
+gauges in the square and for radar estimates (from Wood et al., 2000).</font>
+<p>Fig. 1 shows that the errors <i>at a point</i> are
+about twice as large for a single gauge and four times as large for the
+radar compared to an areal estimate based on a network of gauges. On the
+other hand, the mean over the <i>catchment </i>(which here was about as
+big as a typical mesoscale model grid box) was best represented by radar
+measurements for all but the heaviest rainfall (Fig. 2).
+<p><img SRC="Image1833.gif" ALT="Standard error of the catchment rainfall estimate" height=441 width=517>
+<p><font size=-1>Figure 2: Standard error of the catchment
+rainfall estimate obtained from a single gauge or from radar as a function
+of total rainfall. Gauge 02 is a gauge on the edge and gauge 25 at the
+centre of the catchment and 'typical' is the average gauge (from Wood et
+al., 2000).</font>
+<p>Thus one should use observations <i>upscaled</i>
+to the model resolution or observations which already measure an areal quantity.
+<p>The accuracy of the accumulation estimation increases
+with accumulation time, specifically for heavier rainfall (Fig. 3).
+<p><img SRC="Image1835.gif" ALT="Standard error of rainfall estimate from a single gauge as a function of total rainfall" height=356 width=423>
+<p><font size=-1>Figure 3 : Standard error of rainfall
+estimate from a single gauge as a function of total rainfall over the catchment
+for accumulation periods of 15 minutes, 60 minutes, and 24 hours (from
+Wood et al., 2000).</font>
+<p><b>How?</b>
+<p>There are lots of methods available to upscale observations,
+from simple averages, distance weighted-averages, error (observational
+and representativity) weighted methods (e.g. Daley, 1991), to multi-variate
+statistical methods (e.g., Von Storch, 1995; Pardo-Iguzquiza, 1998).
+<p><u>Typical results</u>
+<p>As an example, Cherubini et al. (2002) verified precipitation
+forecasts against either a set of standard low resolution gauge observations
+from the Global Telecommunication System (GTS) or against a set of upscaled
+high-resolution observations from the Mesoscale Alpine Program (MAP). They
+showed that the over-estimation of most rainfall amounts is reduced when
+using upscaled observations instead of point measurements. The accuracy
+of their forecasts was increased as well using this "fairer" comparison.
+<p><b>Recommendation</b>
+<p>When possible, one should use rainfall estimates
+representative of areal means similar to what the model simulates.
+<p>But there are all sorts of problems which make it
+difficult to get up-scaled estimates based on high-resolution observations
+(availability of high-resolution data, longer-term inconsistencies in observational
+network, etc.). In this case it helps to remember that even rainfall fields
+are not white noise but substantially correlated in space and time. Thus,
+when looking at longer term statistics (e.g., monthly scores of 12 hour
+totals) instantenous errors cancel out to a good degree (for example, Goeber
+and Milton (2002) show that verification results do not vary dramatically
+between verifying at model resolution and 3*model resolution). But what
+one should <i>not</i> do with low-resolution networks is to look at single
+cases or compare verification results obtained with different data sets.
+<p>There is even some "advantage" of a low resolution
+(but well distributed!) network, since then observations might be spatially
+independent and thus each pair of observation-forecast does actually give
+new information, whereas highly correlated observations or forecasts do
+not really give a lot of independent information. For instance, a model
+forecast might comprise 10<sup>4</sup> data points but there are only three
+rain areas at that time. Thus the real number of degrees of freedom of
+the data set is certainly not 10<sup>4</sup> but possibly of order(10-100),
+and thus the confidence one can have in the results changes dramatically.
+Hamill (1999) uses re-sampling methods to estimate confidence intervals
+for precipitation forecasts. Ebert and McBride (2000) show the advantage
+of using an object oriented verification method in these cases.
+<p><b>References</b>:
+<p>Cherubini, T., Ghelli, A. and Lalaurette, F., 2002:
+Verification of precipitation forecasts over the Alpine region using a
+high-density observing network. Wea. Forecasting, <b>17</b>, 238-249.
+<p>Daley, R. (1991): <i>Atmospheric data analysis</i>.
+Cambridge, Cambridge University Press, 457 pp.
+<p>Ebert, E.E. and McBride, J.L., (2000): Verification
+of precipitation in weather systems: determination of systematic errors.
+<i>J.
+Hydrol.</i>, <b>239</b>, 179-202.
+<p>Goeber, M. and Milton, S., 2002: Verifying precipitation
+events. <i>NWP Gazette</i>, March 2002, Met Office, 9-11. Also available
+at: <a href="http://www.metoffice.com/research/nwp/publications/nwp_gazette/mar02/verif.html">www.metoffice.com/research/nwp/publications/nwp_gazette/mar02/verif.html</a>
+<p>Hamill, T.M., 1999: Hypothesis tests for evaluating
+numerical precipitation forecasts. <i>Wea. Forecasting</i>, <b>14</b>,
+155-167.
+<p>Pardo-Iguzquiza,E. (1998): Comparison of geostatistical
+methods for the estimation of the areal average climtatological rainfall
+mean using data on precipitation and topography. <i>Int.J. Climatol.</i>,
+<b>18</b>,
+1031-1047.
+<p>Von Storch, H. (1995): Inconsistencies at the interface
+of climate impact studies and global climate research. <i>Meteorol. Zeitschrift</i>,
+N. F, <b>4</b>, 72-80.
+<p>Wood, S.J., Jones, D.A. and Morre, R.J. (2000): Accuracy
+of rainfall measurement for scales of hydrological interest. <i>Hydrol.
+Earth Syst.</i>, <b>4</b>, 531-543.
+</body>
+</html>

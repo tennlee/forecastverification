@@ -1,0 +1,93 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="generator" content="HTML Tidy, see www.w3.org">
+   <meta name="Author" content="Beth Ebert">
+   <meta name="GENERATOR" content="Mozilla/4.79 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Relative value</title>
+   <link rel = "stylesheet" href="../../default.css">
+</head>
+<body>
+<h3>Relative value (value score)</h3> 
+(<a href="#Richardson 2000">Richardson, 2000</a>; <a href="#Wilks 2001">Wilks, 2001</a>)&nbsp;&nbsp;&nbsp;
+<img SRC="../value_determ.gif" ALT="relative value curve for deterministic forecast" height=264 width=352 align=RIGHT>
+<br><img SRC="../value.gif" ALT="Equation for relative value score" height=148 width=353>
+<p><i><b>Answers the question: </b>For a <a href="#cost-loss">cost/loss
+ratio</a> C/L for taking action based on a forecast, what is the relative
+improvement in economic value between climatalogical and perfect information?</i>
+<p><b>Range:</b> minus infinity to 1.&nbsp; <b>Perfect score:</b> 1.
+<p><b>Characteristics:</b> The relative value is a skill score of expected
+expense, with climatology as the reference forecast. Because the cost/loss
+ratio is different for different users of forecasts, the value is generally
+plotted as a function of <i>C/L</i>.
+<p><img SRC="../value_EPS.gif" ALT="relative value for ensemble prediction system" BORDER=0 height=265 width=353 align=RIGHT>
+Like <a href="../../index.html#ROC">ROC</a>,
+it gives information that can be used in decision making. When applied
+to a probabilistic forecasts system (for example, an ensemble prediction
+system), the optimal value for a given <i>C/L</i> may be achieved by a
+different forecast probability threshold than the optimal value for a different
+<i>C/L</i>.
+In this case it is necessary to compute relative value curves for the entire
+range of probabilities, then select the optimal values (the upper envelope
+of the relative value curves) to represent the value of the probabilistic
+forecast system.
+<p><a NAME="cost-loss"></a><b>More information: </b>The relative value
+assumes a cost-loss decision making model, in which the cost for taking
+action is <i>C</i> (whether the event occurs or not), and the loss incurred
+if the event occurs but no action is taken is <i>L</i>. The expense matrix
+is shown below.
+<br>&nbsp;
+<table WIDTH="389" HEIGHT="120" summary="Two by two contingency table of forecasts and observations">
+<tr ALIGN=CENTER VALIGN=CENTER>
+  <td>&nbsp;</td>
+  <td>Event occurs</td>
+  <td>Event does not occur</td>
+</tr>
+<tr ALIGN=CENTER VALIGN=CENTER>
+  <td>Action taken</td>
+  <td BGCOLOR="#CCFFFE"><b><i>C</i></b></td>
+  <td BGCOLOR="#CCFFFE"><b><i>C</i></b></td>
+</tr>
+<tr ALIGN=CENTER VALIGN=CENTER>
+  <td>Action not taken</td>
+  <td BGCOLOR="#CCFFFE"><b><i>L</i></b></td>
+  <td BGCOLOR="#CCFFFE"><b><i>0</i></b></td>
+</tr>
+</table>
+
+<p>For a forecast based on climatological information alone, one would
+either always take action or never take action, whichever is cheaper, yielding
+an optimal expected mean expense of min(<i>C</i>, <i>P<sub>clim</sub>*L</i>).
+The mean expense for a particular forecast system over a sample of <i>N</i>
+forecasts&nbsp; is obtained by multiplying the expense matrix by the <a href="../../index.html#Contingency table">2x2
+contingency table</a> to yield 1/<i>N</i> (hits*<i>C</i> + false_alarms*<i>C</i>
++ misses*<i>L</i>). For a perfect forecast with no misses or false alarms
+the mean expense would be <i>P<sub>clim</sub>*C.</i> It can be shown that
+the maximum value of <i>V</i> occurs where the cost/loss ratio equals the
+climatological probability, and that the value at this point is equal to
+the <a href="../../index.html#HK">Hanssen and Kuipers discriminant</a>.
+<p>When applied to probabilistic forecasts the envelope of relative value
+curves represents the <i>potential</i> value since all decision thresholds
+are possible. In practice a user would choose an optimal decision threshold
+for his/her cost/loss ratio based on past performance, and apply this threshold
+to future (independent) forecasts. This <i>actual</i> value may be lower
+than the potential value if the conditions vary in time, or if the size
+of the sample used to estimate the optimal decision threshold was too small
+<a href="#Atger 2001">(Atger, 2001)</a>. Also, the value of a probabilistic forecast 
+system will not be truly optimal unless the forecasts are reliable (unbiassed), 
+which may require some calibration.
+<p><b>References:</b>
+<br><a NAME="Atger 2001"></a>Atger, F., 2001: Verification of intense precipitation
+forecasts from single models and ensemble prediction systems. <i>Nonlin.
+Proc. Geophys.</i>, <b>8</b>, 401-417. Click <a href="https://npg.copernicus.org/articles/8/401/2001/">
+here</a> to download the PDF (295 Kb).
+<br><a NAME="Richardson 2000"></a>Richardson, D.S., 2000: Skill and relative
+economic value of the ECMWF ensemble prediction system. <i>Quart. J. Royal
+Meteorol. Soc.</i>, <b>126</b>, 649-667.
+<br><a NAME="Wilks 2001"></a>Wilks, D.S., 2001: A skill score based on
+economic value for probability forecasts. <i>Meteorol. Appl.</i>, <b>8</b>,
+209-219.
+<br>&nbsp;
+</body>
+</html>

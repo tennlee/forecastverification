@@ -1,0 +1,354 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD html 4.0 transitional//EN">
+<html>
+<head>
+<meta name="generator" content="HTML Tidy, see www.w3.org">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="Author" content="Beth Ebert">
+<meta name="GENERATOR" content="Mozilla/4.79 [en] (Windows NT 5.0; U) [Netscape]">
+<title>CRA (entity-based) verification</title>
+<link rel = "stylesheet" href="../../default.css">
+</head>
+<body>
+<h2><center>CRA (entity-based) verification</center></h2>
+<br>
+Beth Ebert<br>
+Bureau of Meteorology, Melbourne, Australia<br>
+beth.ebert@bom.gov.au<br>
+<p><br></p>
+
+<h4>Summary</h4>
+
+This object-oriented method verifies the properties of spatial
+forecasts of <em>entities</em>, where an entity is anything that
+can be defined by a closed contour. Some examples of entities, or
+blobs, are contiguous rain areas (CRAs, for which the method is
+named), convective outlook regions, and low pressure minima. For
+each entity that can be identified in the forecast and the
+observations, CRA verification uses pattern matching techniques to
+determine the location error, as well as errors in area, mean and
+maximum intensity, and spatial pattern. The total error can be
+decomposed into components due to location, volume, and pattern
+error. This is a useful property for model developers who need such
+information to improve the numerical weather prediction models. 
+
+<p>In addition, the verified entities themselves may be classified
+as "hits", "misses", etc., according to how close the forecast
+location was to the observed location, and how well the maximum
+intensity was represented by the forecast. This event verification
+can be useful for monitoring forecast performance.</p>
+
+<p>The CRA verification method is described below using rain
+forecasts as an example. The method is described in detail by <a
+href="#Ebert and McBride 2000">Ebert and McBride (2000)</a>.</p>
+
+<h4>1. Introduction</h4>
+
+A good quantitative precipitation forecast (QPF) correctly
+predicts: 
+
+<ul>
+<li>&nbsp;rain area</li>
+<li>&nbsp;rain intensity</li>
+<li>&nbsp;location of rain system</li>
+</ul>
+
+Errors can occur in all of the above quantities.&nbsp; However, it
+is difficult to determine the source(s) of error using traditional
+verification statistics over the model domain. Traditional
+verification methods&nbsp; focus on matches between the forecast
+and observations at individual stations or gridpoints, and do not
+consider the spatial relationship between the points. In addition,
+it may be difficult to interpret the verification results for a
+given spatial forecast when there is more than one feature of
+interest in the domain. 
+
+<p>When we verify a spatial forecast by eye, we compare the mapped
+forecast and observations side by side, generally focussing on one
+or more features of interest. The first things we notice are
+whether each feature was forecast to be in the right place, and
+whether it had the correct size, shape, and magnitude.</p>
+
+<p>CRA verification is an intuitive approach that quantifies the
+results of "eyeball", or visual, verification. It focuses on
+individual weather systems as opposed to the entire domain,
+enabling the errors in each event to be separately assessed. It
+verifies the properties of the forecast entities against the
+properties of the corresponding observed entities. A big advantage
+of this approach over more traditional verification methods is that
+the <em>location error</em> of the forecast entity can be
+quantified.</p>
+
+<h4>2. Definition of CRA</h4>
+
+A contiguous rain area (CRA) is defined as a region bounded by a
+user-specified isohyet (rain rate contour) in the forecast and/or
+the observations. It is the <em>union</em> of the forecast and
+observed entities (blobs). In Figure 1 below the CRA is defined as
+the entire shaded area. The forecast and observed entities need not
+overlap, but they must be associated with each other, which usually
+means that they are nearby. 
+
+<p><img src="CRA_entities.gif" alt="Schematic of CRA" hspace="3"
+vspace="3" height="145" width="279" align="LEFT">The choice of
+contour used to define the CRA depends on the application. For
+example, 1 mm hr<sup>-1</sup> could be used to include all rain in
+a radar-based nowcast, while 20 mm d<sup>-1</sup> could be used to
+isolate the bull's eye in a daily rainfall forecast.</p>
+
+<h4>3. Calculating location errors</h4>
+
+The location error is determined using&nbsp; pattern matching. The
+forecast field is horizontally translated over the observed field
+until the best match is obtained. The location error is then simply
+the vector displacement of the forecast. The method does not
+consider amplification or distortion of features, unlike the
+domain-based feature verification method of <a href=
+"#Hoffman et al 1995">Hoffman et al. (1995)</a>. 
+
+<p>The best match can be determined in a number of ways: (a) by
+maximizing the correlation coefficient, (b) by minimizing the total
+squared error, (c) by maximizing the overlap of the two entities,
+and (d) by overlaying the centres of gravity of the two entities.
+The domain over which these statistics are calculated includes all
+gridpoints in the forecast and observed entities, before and after
+translation. When the forecast matches the observations quite well,
+all of the methods will give very similar location errors. However,
+not all forecasts are well behaved, and it may be necessary to try
+the various matching methods to see which one gives the most
+intuitively pleasing results for the particular forecast
+application being assessed.</p>
+
+<h4>4. Error decomposition</h4>
+
+When error minimization is used to determine the best pattern
+match, then it is possible to decompose the total error into
+components due to location error, volume (intensity) error, and
+pattern error. The total mean squared error (MSE) can be written
+as: 
+
+<p>&nbsp;&nbsp;&nbsp; <em>MSE<sub>total</sub></em> =
+<em>MSE<sub>displacement</sub></em> + <em>MSE<sub>volume</sub></em>
++ <em>MSE<sub>pattern</sub></em></p>
+
+<p>The difference between the mean square error before and after
+translation is the contribution to total error due to
+displacement,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;
+<em>MSE<sub>displacement</sub></em>&nbsp; =
+<em>MSE<sub>total</sub></em> - <em>MSE<sub>shifted</sub></em></p>
+
+<p>The error component due to volume represents the bias in mean
+intensity,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp; <em>MSE<sub>volume</sub></em> = (
+<strong><em>F</em></strong> - <strong><em>X</em></strong>
+)<sup>2</sup></p>
+
+<p>where <strong><em>F</em></strong> and
+<strong><em>X</em></strong> are the CRA mean forecast and observed
+values after the shift. The pattern error accounts for differences
+in the fine structure of the forecast and observed fields,</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp; <em>MSE<sub>pattern</sub></em> =
+<em>MSE<sub>shifted</sub></em> - <em>MSE<sub>volume</sub></em></p>
+
+<p>Note that it may be possible to do the error decomposition when
+other pattern matching criteria are used. However, it is not
+guaranteed because the mean squared error may not decrease for the
+"best" match, giving in this case a negative pattern error.</p>
+
+<h4>5. A few examples</h4>
+
+<img src="CRA_LAPS20010201.gif" alt=
+"CRA for LAPS forecast in eastern Australia for 1 February 2001"
+hspace="3" vspace="3" border="0" height="515" width="440">CRA
+verification has been used to verify 24 h QPFs from the Australian
+regional forecast model since mid-1999. Figure 2 shows the CRA
+verification for a heavy rain event on the east coast of Australia
+in February 2001. A contour of 20 mm d<sup>-1</sup> was chosen to
+isolate the region of greatest interest. The heaviest rain was
+forecast slightly to the northwest of where it actually occurred,
+as shown by the arrow. If it had been forecast in the correct
+location the RMS error would have been roughly half the original
+value and the correlation coefficient would also have been much
+better. The forecast area and intensity of the rain were predicted
+reasonably well. For this event about 70% of the total error was
+associated with the error in location, and most of the remaining
+error was associated with the fine scale structure. <br>
+<img src="CRA_auton20001103.gif" alt=
+"CRA verification for Autonowcaster radar-based nowcast" hspace="3"
+vspace="3" height="519" width="619">The second example is for a
+radar-based nowcast of rain in a severe storm near Sydney in
+November 2000. The storm moved to the left of the mean flow,
+leading to an error in the forecast position of about 13 km to the
+southwest. The nowcast overestimated the size and rain volume of
+the storm. In this event most of the error was split between
+displacement and pattern error, while 9% of the total error was due
+to incorrect rain volume. 
+
+<p>When the CRA verification is applied to a large number of
+entities, it is possible to diagnose systematic errors in the
+forecasts (e.g., Ebert and McBride, 2000). An example is shown
+below. The dominant sources of error can also be diagnosed.<br>
+<img src="CRA_scatterplots.gif" alt=
+"Scatterplot and 2D histogram of max RR and location errors"
+height="283" width="476"></p>
+
+<h4>6. Event verification</h4>
+
+Another way that entity-based verification can quantify visual
+verification is to categorize the forecasts for the <em>events</em>
+themselves as "hits", "misses", etc., depending on whether their
+location and intensity were well predicted. 
+
+<p>The specific criteria for what constitutes "well predicted"
+depends on the needs of the user. For example, for spatial 24 h
+rain forecasts Ebert and McBride (2000) specified that (a) the
+location error must be within one effective radius of the rain
+system, but not more than 5 degrees latitude/longitude, and (b) the
+forecast maximum rain rate must be within one category of the
+observed (categories bounded by 1, 2, 5, 10, 20, 50, 100, 150, and
+200 mm d<sup>-1</sup>).</p>
+
+<p>Based on the designated location and intensity criteria, an
+<em>event contingency table</em> can be constructed:</p>
+
+<table cellspacing="3" cellpadding="4" summary="Event contingency table">
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td align="CENTER"><strong>Intensity</strong></td>
+<td></td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td align="CENTER">Too little</td>
+<td valign="CENTER">Approx. correct</td>
+<td align="CENTER">Too much</td>
+</tr>
+
+<tr>
+<td><strong>Location</strong></td>
+<td align="RIGHT">Close</td>
+<td bgcolor="#66FFFF">Underestimate</td>
+<td align="CENTER" bgcolor="#66FFFF">Hit</td>
+<td align="CENTER" bgcolor="#66FFFF">Overestimate</td>
+</tr>
+
+<tr>
+<td></td>
+<td align="CENTER">Far</td>
+<td align="CENTER" bgcolor="#66FFFF">Missed Event</td>
+<td align="CENTER" bgcolor="#66FFFF">Missed location</td>
+<td align="CENTER" bgcolor="#66FFFF">False alarm</td>
+</tr>
+</table>
+
+<p>A missed event can also occur when an entity was observed but
+not predicted at all. Similarly, a false alarm can occur when an
+entity was predicted but did not occur. While in these cases it is
+impossible to determine a location or intensity error, it is still
+important to include them in the event verification.</p>
+
+<p>Event verification for a large number of CRAs can give useful
+information on the nature of the forecast errors. These
+descriptions could prove a useful tool for monitoring forecast
+performance over time.</p>
+
+<p>An example for the Australian regional model is shown below,
+where the results are stratified according to the observed maximum
+intensity of the events. For all events together (threshold of 0 mm
+d<sup>-1</sup>) the event hit rate was close to 50%, while the most
+common type of error was a missed location. The event hit rate
+improves slightly as the rain events become more intense, then
+rapidly drops when the observed intensity exceeds 100 mm
+d<sup>-1</sup>. Although the forecast location was good for these
+very heavy rain events, their intensity was underestimated by the
+model.<br>
+<img src="CRA_event_verification.gif" alt=
+"CRA event verification categories as a function of max rain rate"
+hspace="3" vspace="3" height="372" width="350"></p>
+
+<h4>7. Strengths and weaknesses of CRA verification</h4>
+
+The entity-based CRA verification method has a number of attractive
+features: 
+
+<blockquote>(a) It is intuitive, quantifying what we can see by
+eye<br>
+(b) it estimates the location error in the forecast,<br>
+(c) the total error can be decomposed into contributions from
+location, intensity, and pattern,<br>
+(d) forecast events can be categorized as hits, misses, etc. These
+descriptions could prove a useful tool for monitoring forecast
+performance over time.</blockquote>
+
+There are also some drawbacks to this approach: 
+
+<blockquote>(a) Because it depends on pattern matching, it must be
+possible to associate entities in the forecast with entities in the
+observations. This means that the forecast must be halfway decent.
+The verification results for a large number of CRAs will be biased
+toward the "decent" forecasts, i.e., those for which location and
+intensity errors could reliably be determined.<br>
+(b) The user must choose the pattern matching method as well as the
+isoline used to define the entities. The verification results will
+be somewhat dependent on these choices.<br>
+(c) When a forecast and/or observed entity extends across the
+boundary of the domain it is not possible to be sure whether the
+pattern match is optimal. If the CRA has a reasonably large area
+still within the domain then the probability of a good match is
+high. Ebert and McBride (2000) suggest applying a minimum area
+criterion to address this issue.</blockquote>
+
+The CRA verification methodology has so far been successfully
+applied to 6- and 24-hourly numerical precipitation forecasts
+(Ebert and McBride, 2000; Ebert et al., 2002a; Loughe et al.,
+2002</a>), radar-based rainfall nowcasts (Ebert et al., 2002b),
+convective outlooks, and satellite precipitation estimates (Ebert,
+2002). 
+
+<h4>8. References</h4>
+
+Ebert, E.E., 2002: Verifying satellite precipitation estimates for
+weather and hydrological applications. <em>1st Intl. Precipitation
+Working Group (IPWG) Workshop, Madrid, Spain, 23-27 September
+2002</em>. 
+<br>
+<a name="Ebert and McBride 2000"></a>Ebert, E.E. and J.L. McBride,
+2000: Verification of precipitation in weather systems:
+Determination of systematic errors.&nbsp; <em>J. Hydrology</em>,
+<strong>239</strong>, 179-202. 
+<br>
+Ebert, E.E., U. Damrath, W. Wergen and M.E. Baldwin, 2002a: The
+WGNE assessment of short-term quantitative precipitation forecasts
+(QPFs) from operational numerical weather prediction models.
+<em>Bull. Amer. Met. Soc.</em>, in press. 
+<br>
+Ebert, E., L.J. Wilson, B.G. Brown, P. Nurmi, H.E. Brooks, J.
+Bally, and M. Jaeneke, 2002b: Verification of nowcasts from the
+WWRP Sydney 2000 Forecast Demonstration Project. <em>Wea.
+Forecasting</em>, in press. 
+<br>
+<a name="Hoffman et al 1995"></a>Hoffman, R.N., Z. Liu, J.-F.
+Louis, and C. Grassotti, 1995: Distortion representation of
+forecast errors. <em>Mon. Wea. Rev.</em>, <strong>123</strong>,
+2758-2770. 
+<br>
+Loughe, A.F., L.S. Wharton, J.L. Mahoney, and E.I. Tollerud, 2002:
+Real-time quantitative precipitation forecast verification during
+IHOP (May-June, 2002). <em>Workshop on Making Verification More
+Meaningful, Boulder, 30 July-1 August 2002.</em> 
+
+<hr width="100%">
+<br>
+For more information on this method, contact <a href=
+"mailto:Beth.Ebert@BoM.GOV.AU">Beth Ebert</a>, Bureau of Meteorology, 
+GPO Box 1289K, Melbourne, Vic., Australia 3001.
+</body>
+</html>
+

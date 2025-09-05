@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<meta name="generator" content="HTML Tidy, see www.w3.org">
+<meta http-equiv="Content-Type" content=
+"text/html; charset=iso-8859-1">
+<meta name="Author" content="Beth Ebert">
+<meta name="GENERATOR" content=
+"Mozilla/4.79 [en] (Windows NT 5.0; U) [Netscape]">
+<title>pop-up_test</title>
+
+<style type="text/css">
+  H1 {font-size: x-large; color: #993366; font-family: Arial,Helvitica, sans-serif; font-style: italic }
+  H2 {font-size: large; color: #993366; font-family: Arial,Helvitica, sans-serif; font-style: italic }
+  H3 {font-size: medium; color: black; font-family: Arial,Helvitica, sans-serif; font-style: italic }
+  p  {font-size: small; color: black; font-family: Arial,Helvitica, sans-serif; font-style: normal }
+  p#T1  {font-size: xx-large; color: blue; font-family: Arial,Helvitica, sans-serif; font-style: normal }
+</style>
+
+<script type="text/javascript">
+  <!--
+  function popup(mylink, windowname)
+  {
+  if (! window.focus)return true;
+  var href;
+  if (typeof(mylink) == 'string')
+     href=mylink;
+  else
+     href=mylink.href;
+  window.open(href, windowname, 'width=400,height=200,dependent=yes,left=300,top=200resizable=yes,scrollbars=yes');
+  return false;
+  }
+  //-->
+  </script>
+
+<script type="text/javascript">
+  <!--
+  function dropdown(mySel)
+  {
+  var myWin, myVal;
+  myVal = mySel.options[mySel.selectedIndex].value;
+  if(myVal)
+     {
+     if(mySel.form.target)myWin = parent[mySel.form.target];
+     else myWin = window;
+     if (! myWin) return true;
+     myWin.location = myVal;
+     }
+  return false;
+  }
+  //-->
+</script>
+
+</head>
+
+<body>
+
+<h1>
+<font color="#993366">Forecast Verification - Issues, Methods and FAQ</h1>
+
+<p ID=T1>
+What's here?
+</p>
+
+<p><a href="#Introduction">Introduction - what is this web site about?</a></p>
+
+<p ID="T">
+<table border="0" cellspacing="3">
+<tr>
+<td><strong>Nature of forecast:</strong></td>
+<td><strong>Example(s)</strong></td>
+<td><strong>Verification scores/methods</strong></td>
+</tr>
+
+<tr>
+<td><p>deterministic (non-probabilistic)</p>&nbsp; </td>
+<td>quantitative precipitation forecast&nbsp; </td>
+<td>
+<form action="../cgi-bin/redirect.pl" method="POST" onsubmit=
+"return dropdown(this.gourl)"><select name="gourl">
+<option value="">Deterministic verification
+methods...&nbsp;</option>
+<option value="#BIAS">Bias score&nbsp;</option>
+<option value="#POD">Probability of detection&nbsp;</option>
+<option value="#FAR">False alarm ratio&nbsp;</option>
+</select><input type="SUBMIT" value="Go"></form>
+</td>
+</tr>
+
+<tr>
+<td>probabilistic</td>
+<td>probability of precipitation, ensemble forecast</td>
+<td>
+<p><a href="popupbasic.html" onclick=
+"return popup(this,'test_popup')">Probablistic verification
+methods...</a></p>
+</td>
+</tr>
+
+<tr>
+<td>qualitative (worded)</td>
+<td>5-day outlook</td>
+<td></td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td><strong>Space-time domain:</strong></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>time series</td>
+<td>daily maximum temperature forecasts for a city</td>
+<td></td>
+</tr>
+
+<tr>
+<td>spatial distribution</td>
+<td>map of geopotential height, rainfall chart</td>
+<td></td>
+</tr>
+
+<tr>
+<td>pooled space and time</td>
+<td>monthly average global temperature anomaly</td>
+<td></td>
+</tr>
+
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td><strong>Specificity of forecast:</strong></td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Specificity of forecast:</td>
+<td>occurrence of fog</td>
+<td></td>
+</tr>
+
+<tr>
+<td>multi-category</td>
+<td>cold, normal, or warm conditions</td>
+<td></td>
+</tr>
+
+<tr>
+<td>continuous</td>
+<td>maximum temperature</td>
+<td></td>
+</tr>
+
+<tr>
+<td>object- or event-oriented&nbsp; </td>
+<td>tropical cyclone motion and intensity</td>
+<td></td>
+</tr>
+</table>
+</p>
+
+<p><a name="BIAS"></a>- - - - - - - - - - -</p>
+
+<p><strong><em>Bias score</em></strong> -&nbsp; <img src="BIAS.gif"
+height="53" width="194" align="ABSCENTER"></p></strong>
+
+<p>Measures the ratio of the frequency of forecast events to the
+frequency of observed events.</p>
+
+<p><strong>Range:</strong> 0 to infinity.&nbsp; <strong>Perfect
+score:</strong> 1.</p>
+
+<p><strong>Characteristics:</strong> Indicates whether the forecast
+system has a tendency to underforecast (<em>BIAS</em>&lt;1) or
+overforecast (<em>BIAS</em>&gt;1) events. Does not measure how well
+the forecast corresponds to the observations, only measures
+relative frequencies.</p>
+
+<p>In the example above, <em>BIAS</em> = (82+38) / (82+23) = 1.14,
+indicating slight overforecasting of rain frequency.</p>
+
+<p><a name="POD"></a>- - - - - - - - - - -<br>
+<strong><em>Probability of detection</em></strong> -&nbsp; <img
+src="POD.gif" height="49" width="162" align="ABSCENTER"></p>
+
+<p>Measures the fraction of observed events that were correctly
+forecast.</p>
+
+<p><strong>Range:</strong> 0 to 1.&nbsp; <strong>Perfect
+score:</strong> 1.</p>
+
+<p><strong>Characteristics:</strong> Sensitive to hits, good for
+rare events. Ignores false alarms. Can be artificially improved by
+issuing more "yes" forecasts to increase the number of hits.</p>
+
+<p>In the example above, <em>POD</em> = 82 / (82+23) = 0.78,
+indicating that roughly 3/4 of the observed rain events were
+predicted.</p>
+
+<p><a name="FAR"></a>- - - - - - - - - - -<br>
+<strong><em>False alarm ratio</em></strong> -&nbsp; <img src=
+"FAR.gif" height="52" width="198" align="ABSCENTER"></p>
+
+<p>Measures the fraction of "yes" forecasts in which the event did
+not occur.</p>
+
+<p><strong>Range:</strong> 0 to 1.&nbsp; <strong>Perfect
+score:</strong> 0.</p>
+
+<p><strong>Characteristics:</strong> Sensitive to false alarms.
+Ignores misses. Can be artificially improved by issuing more "no"
+forecasts to reduce the number of false alarms.</p>
+
+<p>In the example above, <em>FAR</em> = 38 / (82+38) = 0.32,
+indicating that in roughly 1/3 of the forecast rain events, rain
+was not observed.</p>
+
+<p><a name="brierscore"></a>- - - - - - - - - - -<br>
+<strong><em>Brier score</em></strong> -&nbsp; <img src=
+"BSexpanded.gif" alt="Expansion of Brier Score" height="47" width=
+"473" align="ABSCENTER"></p>
+
+<p>Measures the mean squared probability error. <a href=
+"#Murphy 1973">Murphy (1973)</a> showed that it could be
+partitioned into three terms: (1) <em>reliability</em>, (2)
+<em>resolution</em>, and (3) <em>uncertainty</em>.</p>
+
+<p><strong>Range:</strong> 0 to 1.&nbsp; <strong>Perfect
+score:</strong> 0.</p>
+
+<p><strong>Characteristics:</strong> Sensitive to climatological
+frequency of the event: the more rare an event, the easier it is to
+get a good <em>BS</em> without having any real skill. Negative
+orientation (smaller score better) - can "fix" by subtracting
+<em>BS</em> from 1.</p>
+
+<p>- - - - - - - - - - -</p>
+
+<p><a name="ROC"></a><strong><em>Relative operating
+characteristic</em></strong> -&nbsp;<img src="ROC.gif" alt=
+"Relative operating characteristic (ROC)" height="299" width="292"
+align="RIGHT">Plot <em>POD</em> vs <em>false alarm rate</em>
+(<em>false alarms</em> / <em>observed no</em>, also known as
+<em>probability of false detection</em>), using a set of increasing
+probability thresholds (for example, 0.05, 0.15, 0.25, etc.) to
+make the yes/no decision. The area under the ROC curve is
+frequently used as a score.</p>
+
+<p>Measures the ability of the forecast to discriminate between two
+alternative outcomes.</p>
+
+<p><strong>Range:</strong> 0 to 1, 0.5 indicates no skill.&nbsp;
+<strong>Perfect score:</strong> 1</p>
+
+<p><strong>Characteristics:</strong> Allows the cost of false
+alarms to be assessed. Does not deal with missed events. Says
+nothing about reliability.</p>
+
+<p><a name="RPS"></a>- - - - - - - - - - -<br>
+<strong><em>Ranked probability score</em></strong> -&nbsp; <img
+src="RPS.gif" alt="ranked probability score formula" height="58"
+width="251" align="ABSCENTER"><br>
+where <em>M</em> is the number of forecast categories,
+<em>p<sub>k</sub></em> is the predicted probability in forecast
+category <em>k</em>, and <em>o<sub>k</sub></em> is an indicator
+(0=no, 1=yes) for the observation in category <em>k</em>.</p>
+
+<p>Continuous version -&nbsp; <img src="CRPS.gif" alt=
+"Continuous ranked probability score" height="60" width="224"
+align="ABSCENTER"></p>
+
+<p>Measures the sum of squared differences in cumulative
+probability space for a multi-category probabilistic forecast.</p>
+
+<p><strong>Range:</strong> 0 to 1.&nbsp; <strong>Perfect
+score:</strong> 0.</p>
+
+<p><strong>Characteristics:</strong> Penalizes forecasts more
+severely when their probabilities are further from the actual
+outcome. Negative orientation - can "fix" by subtracting
+<em>RPS</em> from 1. For two forecast categories the <em>RPS</em>
+is the same as the Brier Score.</p>
+
+<p>- - - - - - - - - - -</p>
+</body>
+</html>
+

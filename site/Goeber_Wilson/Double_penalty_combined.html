@@ -1,0 +1,484 @@
+<!doctype html PUBLIC "-//W3C//DTD html 4.0 transitional//EN">
+<html>
+<head>
+<meta name="generator" content="HTML Tidy, see www.w3.org">
+<meta http-equiv="Content-Type" content=
+"text/html; charset=iso-8859-1">
+<meta name="Generator" content="Microsoft Word 97">
+<meta name="GENERATOR" content=
+"Mozilla/4.79 [en] (Windows NT 5.0; U) [Netscape]">
+<title>Why when a model resolution is improved do the forecasts verify worse</title>
+<link rel = "stylesheet" href="../../default.css">
+</head>
+<body>
+<center><h2>Why, when a model resolution is improved, do the forecasts often verify worse?</h2></center>
+<p><center>Martin Goeber and Clive Wilson, Met Office</center></p>
+
+<br>
+<p>The apparently worse performance of more realistic-looking and
+more detailed forecasts compared to smoother, less realistic
+forecasts is considered from an number of viewpoints. The classic
+"double penalty" explanation is considered first in both a
+continuous error measure (RMS) frame and then in a categorical
+error frame. Finally we caution against relying on RMS alone, as
+one may "hedge" to reduce this by smoothing forecasts (or using
+lower resolution models) which have unrealistic forecast
+variance.</p>
+
+<p><b>Double Penalty (continuous case)</b></p>
+
+<p>The normal explanation of why higher resolution models can
+verify worse than smoother lower resolution models is because of
+the double penalty. At it's simplest this arises when an observed
+small scale feature is more realistically forecast but is
+misplaced. The higher resolution model is penalised twice; once for
+missing the actual feature and again for forecasting it where it
+isn't. For example, consider a step feature (ie a rain area) of
+amplitude 1 (a). (It is assumed to be at least 4 grid points wide
+so that a model may potentially resolve it.) The higher resolution
+model forecasts the correct amplitude but located at the adjacent
+area (b), whereas the lower resolution model forecasts a constant
+of <em>k</em> (0 &lt;= <em>k</em>&nbsp; &lt;= 1) for both areas
+(c). The RMS error is lower for the coarser model, even though it
+has not the correct amplitude or variance unlike the higher
+resolution forecast.<br>
+<img src="Image1602.gif" height="70%" width="70%" alt="Schematic
+diagram of a forecast of a small scale feature that is displaced
+with respect to its observed position"><br>
+&nbsp;</p>
+
+<table border cellpadding="5" width="611" summary="Verification 
+statistics for high and low resolution models for displaced forecast">
+<tr>
+<td valign="TOP">&nbsp;</td>
+<td valign="TOP">High resolution (b)</td>
+<td valign="TOP" colspan="3">Low resolution (c)<br>
+</td>
+</tr>
+
+<tr>
+<td valign="TOP">Forecast amplitude</td>
+<td valign="TOP">(0,1)</td>
+<td valign="TOP"><em>k</em>=0</td>
+<td valign="TOP"><em>k</em>=&frac12;</td>
+<td valign="TOP"><em>k</em>=1</td>
+</tr>
+
+<tr>
+<td valign="TOP">Error (absolute)</td>
+<td valign="TOP">2*1</td>
+<td valign="TOP">1</td>
+<td valign="TOP">2*&frac12;</td>
+<td valign="TOP">1</td>
+</tr>
+
+<tr>
+<td valign="TOP">RMSE</td>
+<td valign="TOP">1</td>
+<td valign="TOP">1/sqrt(2)</td>
+<td valign="TOP">&frac12;</td>
+<td valign="TOP">1/sqrt(2)</td>
+</tr>
+
+<tr>
+<td valign="TOP">Forecast variance</td>
+<td valign="TOP">&frac14;</td>
+<td valign="TOP">0</td>
+<td valign="TOP">0</td>
+<td valign="TOP">0</td>
+</tr>
+
+<tr>
+<td valign="TOP">Correlation with observed</td>
+<td valign="TOP">-1</td>
+<td valign="TOP">0</td>
+<td valign="TOP">0</td>
+<td valign="TOP">0</td>
+</tr>
+</table>
+
+<p>Another way of saying this is that if a feature is misplaced by
+order of its size or more then the double penalty will apply in
+full. This is especially true of narrow features such as rainbands
+or convective squall lines etc. However from a value point of view
+the higher resolution forecast is potentially more useful in that
+it at least has the correct intensity albeit without the accurate
+location.<br>
+<img src="Image1603.gif" height="70%" width="70%" alt="Schematic
+of less severe misplacement"><br>
+Consider now a less severe misplacement, with a fraction <em>f</em>
+in common with the "observed" feature. The double penalty
+contribution to the absolute error is now 2*(1-<em>f</em>)/2, the
+RMS error is sqrt(1-<em>f</em>) and the correlation with the
+observed is 2<em>f-</em>1. If the common fraction is greater than
+
+3/4 the higher resolution forecasts will have a lower RMS error
+than the minimum RMS error of a constant low resolution forecast
+(of 1/2 everywhere). In wave terms this is a phase error of p /4 or
+less. See below for a discussion of the double penalty in
+categorical verification.</p>
+
+<p><b>A (slightly) more realistic case</b></p>
+
+<p>The step feature example above illustrates the essential double
+penalty argument but is rather artificial for continuous fields. A
+somewhat more realistic idealisation is a long wave cosine
+representing a larger synoptic scale feature with a short wave
+pulse superposition, representing a frontal band, say. Three
+forecasts are considered: only the long wave feature is predicted
+(low resolution model), a completely accurate forecast of the
+amplitudes of both wave-lengths but displaced (high resolution
+model), and a forecast in which only the short wave feature is
+displaced.<br>
+<img src="Image1592.gif" height="595" width="842" alt="Idealized
+synoptic scale feature with forecasts having
+displacements in the long or short waves or both"><br>
+The double penalty affects both the high-resolution forecasts,
+whereas only a single penalty (in addition to the long wave phase
+error) applies to the (displaced) long wave forecast.<br>
+<img src="Image1593.gif" height="595" width="842" alt="Absolute
+error for the displaced forecasts"><br>
+The RMS errors for displacements greater than ~1/5 short wavelength
+are smaller for the low resolution "model" than for the two
+forecasts which have the short wave feature. It is only for small
+positional errors that these have smaller rms errors and larger
+correlation with the "truth".</p>
+
+<p><img src="Image1595.gif" height="595" width="842" alt="Root mean square
+error for the displaced forecasts"><br>
+This shows that higher resolution models which have the capability
+of retaining and forecasting sharper and smaller scale features can
+verify worse (in a pointwise sense) than coarser models which are
+less well able to resolve such features. If the cause of the phase
+displacement is a general positional error of the larger scale
+structures (e.g., a cyclone track/speed error due to an inadequate
+initial analysis) which also translates the smaller scale feature,
+the higher resolution model will be rather unjustly judged
+inaccurate. On the other hand, the better resolution model
+potentially may have smaller phase errors at larger scales and a
+better-resolved initial analysis with smaller location errors so
+that the double penalty is less influential on the overall RMS
+error. It may also have higher correlation than the smoother low
+resolution model.<br>
+<img src="Image1594.gif" height="595" width="842" alt="Correlation
+coefficient for the displaced forecasts"><br>
+An alternative to the traditional RMS error, especially when
+assessing rainfall features. is to use some sort of coherent
+pattern based scheme, decomposing the error into amplitude,
+displacement and structural error (e.g., Hoffmann et al., 1995;
+Ebert and McBride, 2000).<br>
+&nbsp;</p>
+
+<p><b>Double penalty (categorical case)</b></p>
+
+<p>When models resolve ever smaller scales, e.g., mesoscale
+precipitation variability instead of 'big blobs of rain', the risk
+of a <em>double penalty</em> rises as will be illustrated with an
+extreme example in the following discussion.</p>
+
+<p>Fig. (a) shows the observed rain in a grid box (e.g., upscaled
+gauge observations or radar), (b) a forecast from a high resolution
+model, and (c) could be a low resolution model forecast or a high
+resolution forecast which is very smooth (i.e., spreads the rain
+over a large area, such as 4 grid boxes). Note that the total area
+rainfall is the same in all cases (otherwise the interpretation
+would be even more complex).</p>
+
+<p>(a)<img src="Image1820.gif" height="248" width="246" alt=
+"Schematic of observed rain blob"> (b)&nbsp;
+<img src="Image1821.gif" height="245" width="245" alt=
+"Schematic of displaced forecast rain blob from high resolution model"></p>
+
+<p>(c)<img src="Image1822.gif" height="327" width="324"alt=
+"Schematic of displaced forecast rain blob from low resolution model"></p>
+
+<p>Now, the <em>double penalty</em> means that forecast (b) is
+penalised twice for not getting the rain at exactly the right place
+(miss) and producing rain at just the wrong place (false alarm),
+whereas forecast (c) makes one hit and is only once penalised for
+issuing false alarms (albeit 3 of them). Various measures for this
+extreme example are summarised in the table below.<br>
+&nbsp;</p>
+
+<table border cellpadding="7" width="567" summary="Contingency
+table elements and error statistics for high and low resolution
+forecasts">
+<tr>
+<td valign="TOP" width="32%">measure<br>
+</td>
+<td valign="TOP" width="35%">Case (b)&nbsp; 
+
+<p>threshold 1 mm (4 mm)</p>
+
+<br>
+</td>
+<td valign="TOP" width="33%">Case (c) 
+
+<p>threshold 1 mm (4 mm)</p>
+
+<br>
+</td>
+</tr>
+
+<tr>
+<td valign="TOP" width="32%"># hits</td>
+<td valign="TOP" width="35%">0 (0)<br>
+</td>
+<td valign="TOP" width="33%">1 (0)<br>
+</td>
+</tr>
+
+<tr>
+<td valign="TOP" width="32%"># false alarms</td>
+<td valign="TOP" width="35%">1 (1)<br>
+</td>
+<td valign="TOP" width="33%">3 (0)<br>
+</td>
+</tr>
+
+<tr>
+<td valign="TOP" width="32%"># misses</td>
+<td valign="TOP" width="35%">1 (1)<br>
+</td>
+<td valign="TOP" width="33%">0 (1)<br>
+</td>
+</tr>
+
+<tr>
+<td valign="TOP" width="32%"># correct rejections</td>
+<td valign="TOP" width="35%">7 (7)<br>
+</td>
+<td valign="TOP" width="33%">5 (8)<br>
+</td>
+</tr>
+
+<tr>
+<td valign="TOP" width="32%">Frequency bias</td>
+<td valign="TOP" width="35%">1 (1)<br>
+</td>
+<td valign="TOP" width="33%">4 (0)<br>
+</td>
+</tr>
+
+<tr>
+<td valign="TOP" width="32%">Hit rate</td>
+<td valign="TOP" width="35%">0<br>
+</td>
+<td valign="TOP" width="33%">1 (0)<br>
+</td>
+</tr>
+
+<tr>
+<td valign="TOP" width="32%">False alarm rate</td>
+<td valign="TOP" width="35%">0.125 (0.125)<br>
+</td>
+<td valign="TOP" width="33%">0.375 (0)<br>
+</td>
+</tr>
+
+<tr>
+<td valign="TOP" width="32%">Equitable threat score</td>
+<td valign="TOP" width="35%">-0.06 (-0.06)<br>
+</td>
+<td valign="TOP" width="33%">0.16 (0)<br>
+</td>
+</tr>
+</table>
+
+<p>This shows that there is not simply a <em>double penalty</em>
+but that case (b) and (c) have different advantages and
+disadvantages. Most clearly, case (c) seems to have higher skill
+according to hit rate and equitable threat score and false alarm
+rate for the 4 mm threshold, but less accuracy according to the
+false alarm rate for the lower threshold. On the other hand, case
+(c) has a terrible bias in both cases, and additionally the bias
+switches orientation from lower to higher threshold. Thus it is
+clear that one has to look at more than one measure, indeed at
+least at two independent ones, because the 2*2 contingency table
+has 2 degrees of freedom when the observations are given.<br>
+&nbsp;</p>
+
+<p><b>So, what is better? It depends</b>.</p>
+
+<p>From a <em>model development point of view</em>
+case (b) is probably better since the frequency
+distribution of rain of the forecast is perfect and thus the
+energetics of the model could be more 'healthy' than in case (c)
+where there is much too much light rain and no heavy rain. This
+might have all sorts of causes (too much cloud, weak widespread
+ascent, too much diffusion, etc.) and lead to all sorts of effects
+(too widespread latent heat release, widespread wet soil,
+etc.).</p>
+
+<p>From a <em>customer point of view</em> it depends again. For
+instance, some customers might complain in case (c) to have no
+indication of heavy rain at all, whereas they might be reasonably
+happy with case (b) if they put up with small placement errors.
+More importantly, it depends on the cost/loss ratio of the specific
+customer. If the loss is high for a customer who misses an event
+case (c) is better for light rain; if the costs are high for a
+customer who experiences a false alarm case (b) is better for light
+rain but case (c) is better for heavy rain.</p>
+
+<p>There is another statistical argument in favour of case (b),
+which is that this model has just missed the event spatially in
+this weather situation, but it has the potential to develop heavy
+rain and might thus hit in another situation, whereas the model in
+case (c) might never be able to produce heavy rain and thus will
+always miss heavy events<br>
+&nbsp;</p>
+
+<p><strong>Why considering RMS error alone may be misleading (or
+how to "cheat" with smoother forecasts )</strong></p>
+
+<p>The changes to RMS errors in going from a very smooth model to a
+model with a more realistic variability can be better understood by
+using the mean square error (MSE) and decomposing as in Murphy and
+Epstein (1989). Here we compare a forecast <em>f</em> against a
+reference <em>r</em> (either a model analysis or observation) using
+the MSE (<em>E'</em><em><sup>2</sup></em>):</p>
+
+<p><img src="Image1836.gif" alt="Equation for mean squared error"
+height="26" width="161"></p>
+
+<p>where the RMS error (<em>E'</em>) is defined by:</p>
+
+<p><img src="Image1837.gif" alt="Equation for RMS error" height=
+"56" width="172"></p>
+
+<p>and the second and third terms are the forecast and analysed
+(reference) variances, and the final term is the covariance of
+forecast and analysed (reference) fields. This covariance term has
+been written as the product of forecast and analysed standard
+deviations and the correlation coefficient <em>R</em> between
+forecast and analysis fields (note: this is not the anomaly
+correlation, but the standard spearman correlation).</p>
+
+<p>This expression does not include the bias or mean error. This
+can be added to the above expression to give us the total MSE for a
+forecast:</p>
+
+<p><img src="Image1838.gif" alt=
+"Equation for total mean squared error" height="28" width="91"></p>
+
+<p>The statistical averaging operator above can be either over a
+spatial domain (e.g. NH, SH) at a given time, at a point but
+measured over the time domain, or both spatially and temporally
+averaged.</p>
+
+<p>For a perfect forecasting system we require that the forecast
+variance equals the analysed/observed variance and the bias is
+zero. The correlation/covariance term measures the phase error in
+the forecast patterns irrespective of the errors in forecast
+amplitude. If we neglect the bias then the error variance (random
+component) has a simple geometric interpretation shown below (taken
+from Taylor (2001), p. 7184).<br>
+<img src="Image1839.gif" alt=
+"Geometric relationship between R, RMS, and standard deviations"
+height="50%" width="50%"><br>
+<font size=-1>Figure 1: Geometric relationship between the correlation
+coefficient, <em>R</em>, the pattern RMS error, <em>E'</em>, and
+the standard deviations, <em>s<sub>f</sub></em> and
+<em>s<sub>r</sub></em>, of the test and reference fields,
+respectively.</font></p>
+
+<p>We can decrease the RMS error (<em>E'</em>) by:</p>
+
+<ul>
+<li>Reducing the forecast standard deviation so that it equals the
+analysed (reference) standard deviation (line 1 in Fig. 2
+below).</li>
+
+<li>Increasing the correlation coefficient (<em>R</em>) (i.e.,
+decreasing cos<sup>-1</sup><em>R</em>)</li>
+</ul>
+
+<img src="Image1840.gif" alt="Taylor diagram" height="389" width=
+"463"> <br>
+<font size=-1>Figure 2: 'Taylor'-diagram (2001) showing lines of constant
+correlation, arcs of constant <em>E'</em> and arcs of constant
+standard deviation. Case 1 has same correlation <em>R</em> as
+forecasted, but observed standard deviation; case 2 has minimum
+<em>E'</em>. </font>
+
+<p>However a simple examination of the diagram shows that <em>a
+minimum in RMSE</em> (for a given <em>R</em>) is actually achieved
+by a line 2 (see above) which is the perpendicular from the line of
+constant correlation to the analysed standard deviation. For this
+scenario the forecast standard deviation is less than the analysed
+standard deviation. The RMS error can in fact be reduced for the
+range of forecast standard deviations between the intersections of
+lines 1 and 2 with the forecast standard deviation line. This is
+the process of "hedging" where we can improve our score, RMS error
+in this case, by smoothing our forecast. If we continue to reduce
+the forecast standard deviation beyond that given by line 2 we see
+that the RMS error increases again. It is also interesting that for
+large correlations (small angles cos<sup>-1</sup><em>R</em>), the
+scope for hedging is much reduced as lines 1 and 2 become very
+close together.</p>
+
+<p>Mathematically, the above discussion can be summarised by
+minimising E' with respect to the forecasted standard
+deviation:</p>
+
+
+<p><img src="Image1841.gif" height="82" width="148" alt=
+"Optimization of forecast variance to minimize RMS error"></p>
+
+<p>Thus, if one looks solely at the RMS error, then the optimal
+strategy is to reduce the variability of the forecast relative to
+the observations by (1-<em>R</em>)*100%.<br>
+&nbsp;</p>
+
+<p><b>Acknowledgements</b></p>
+
+<p>We wish to thank Sean Milton and Ian Culverwell for many helpful
+discussions and contributions.</p>
+
+<p><b>Recommendations</b></p>
+
+<ul>
+<li>Investigate a multi-dimensional problem with many
+(independent!) measures: <b><em>double penalty is a problem
+for the "one eyed"</em></b>.</li>
+
+<li>Start verification and comparison of models at a common,
+coarser scale (e.g., 4 times grid size of the coarsest model), and
+be aware of the double penalty when going down to higher
+resolution.</li>
+
+<li>Verify the frequency distribution of values in a larger area
+(e.g., a catchment), for instance, the median or the 95%
+quintile.</li>
+
+<li>Verify rain areas according to their amplitude, displacement
+and shape error (e.g., Ebert and McBride, 2000).</li>
+
+<li>Be clear about the goal of the forecast and specifically about
+the cost/loss ratio of the customer. A smoother model might pay in
+the short run, but it might lead to a flawed development
+(energetics, etc.) of the model in the long run. As a compromise,
+build "physically" the best model and hedge the output during
+post-processing toward customer desires.</li>
+</ul>
+
+<b>References:</b> 
+
+<p>Ebert, E.E. and J.L. McBride, 2000: Verification of
+precipitation in weather systems: Determination of systematic
+errors. <em>J. Hydrology</em>, <b>239,</b> 179-202.</p>
+
+<p>Hoffman, R.N., Z. Liu, J.-F. Louis, and C. Grassotti, 1995:
+Distortion representation of forecast errors. <em>Mon. Wea.
+Rev.</em>, <b>123,</b> 2758-2770.</p>
+
+<p>Murphy, A.H. and Epstein, E.S., 1989: Skill scores and
+correlation coefficients in model verification. <em>Mon. Wea.
+Rev.</em>, <b>117,</b> 572-581.</p>
+
+<p>Taylor, K.E., 2001: Summarizing multiple aspects of model
+performance in a single diagram. <em>J. Geophys. Res.,</em>
+<b>D7, 106,</b> 7183-7192.</p>
+</body>
+</html>
+

@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0074)../../aggregation/guidelines.html -->
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  <title>Aggregating verification scores</title>
+  <link rel = "stylesheet" href="../../default.css">
+</head>
+<body>
+<h3><center>Guidelines for computing aggregate statistics</center></h3>
+<p>Real-time verification systems often produce daily verification statistics from
+the spatial comparisons of forecasts and observations, and store these
+statistics in files. To get aggregate statistics for a period of many days it is
+tempting to simply average all of the daily verification statistics.
+Note that in general this does not give the same statistics as those that would be
+obtained by pooling the samples over many days. For the linear scores
+such as mean error, the same result is obtained, but for non-linear scores (for
+example, anything involving a ratio) the results can be quite
+different. </p>
+<p>For example, imagine a 30-day time series of the frequency bias score, and suppose
+one day had an extremely high bias of 10 because the forecast predicted an area
+with rain but almost none was observed. If the forecast rain area was 20%
+every day and this forecast was exactly correct on all of the other 29 days
+(i.e., bias=1), the daily mean frequency bias would be 1.30, while the
+frequency bias computed by pooling all of the days is only 1.03. These two values
+would lead to quite different conclusions regarding the quality of the forecast.
+</p>
+<p>The verification statistics for pooled samples are preferable to averaged
+statistics because they are more robust. In most cases they can be computed
+from the statistics for daily forecasts if care is taken. (Note: we
+talk about "daily" forecasts and statistics but these guidelines apply
+to aggregating verification results from multiple forecasts on any scale.)
+The guidelines below describe how to correctly use the daily statistics to
+obtain aggregate multi-day statistics.
+An assumption is made that each forecast contains the same number of
+samples, <i>N</i> (number of gridpoints or stations).
+</p>
+<p><i>For pooled <a href="../../index.html#Methods_for_dichotomous_forecasts">categorical
+scores</a> computed from the <a href="../../index.html#Contingency_table">2x2
+contingency table</a>: </i>
+</p>
+<p>&nbsp;&nbsp;&nbsp; First create an aggregate contingency table of hits, misses, false alarms, and
+correction rejections by summing their daily values, then compute the categorical scores as usual.
+</p>
+<p><i>For linear scores (<a href="../../index.html#meanerror">mean
+error</a>, <a href="../../index.html#MAE">mean absolute error MAE</a>,
+<a href="../../index.html#MSE">mean squared error MSE</a>, 
+<a href="../../index.html#LEPS">linear error in probability space LEPS</a>):</i>
+</p>
+<p>&nbsp;&nbsp;&nbsp; The average of the daily statistics is the same
+as the statistics computed from the pooled values.
+</p>
+<p><i>For non-linear scores:</i>
+</p>
+<p>&nbsp;&nbsp;&nbsp; The key is to transform the score into one for which it is valid to average the
+daily values. The mean value is then transformed back into the original form of the score.
+</p>
+<p style="margin-left: 40px;"><a href="../../index.html#RMS"><i>Root mean squared error RMSE</i></a>:
+First square the daily values to obtain the <i>MSE</i>. Average the squared values, then
+take the square root of the mean value.
+</p>
+<p style="margin-left: 40px;"><a href="../../index.html#RMSF"><i>Root mean squared factor RMSF</i></a>:
+Take the logarithm of the daily values and square the result, then average these
+values. Transform back to <i>RMSF</i> by taking the square root and then the exponential.
+</p>
+<p style="margin-left: 40px;"><i>Variance s<sup>2</sup></i>: The variance can also be expressed as 
+<img alt="Equation for sample variance" src="sf2eqn.gif" style="width: 182px; height: 46px;" align="middle">.
+To compute the pooled variance from the daily variances, subtract the second term (computed from the daily 
+<img alt="Fbar" src="Fbar.gif" style="width: 15px; height: 19px;" align="middle">) from&nbsp;
+<img alt="variance" src="sf2.gif" style="width: 19px; height: 21px;" align="middle"> 
+to get the daily value of the first term. Average the daily values of the first
+term, and use the average of the daily&nbsp;
+<img style="width: 15px; height: 19px;" src="Fbar.gif" alt="Fbar" align="middle"> values to compute
+the second term. Recombine to get the pooled variance.
+</p>
+<p style="margin-left: 40px;"><i>Standard deviation s</i>: Square the daily values of <i>s</i> to get 
+daily variances. Compute the pooled variance as above, then take the square root to get the
+pooled standard deviation.
+</p>
+<p style="margin-left: 40px;"><a href="../../index.html#corr"><i>Correlation coefficient r</i></a>:
+Multiply the daily correlations by the daily <font size="-1"><i style="font-family: helvetica,arial,sans-serif;">s<sub>F</sub></i></font>
+x <font size="-1"><i style="font-family: helvetica,arial,sans-serif;">s<sub>O</sub></i></font>
+to get the covariance, <font size="-1"><i style="font-family: helvetica,arial,sans-serif;">s<sub>FO</sub></i></font>.
+The covariance can be expressed as <img alt="covariance equation" src="sfo.gif" style="width: 212px; height: 43px;" align="middle">.
+Follow the steps given for <font size="-1"><i style="font-family: helvetica,arial,sans-serif;">s<sup>2</sup></i></font>
+above to get a pooled covariance. Divide by theproduct of the pooled standard deviations to get the pooled correlation.
+</p>
+<p style="margin-left: 40px;"><i><a href="../../index.html#Skill_score">Skill scores</a></i>: Use
+the pooled values of <i>MAE</i> or <i>MSE</i> to compute the skill scores.
+</p>
+<p><br>
+<a href="../../index.html#Pooling_vs_stratifying_results">Back to Forecast Verification - Issues, Methods and FAQ</a>
+</p>
+</body></html>

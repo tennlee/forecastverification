@@ -1,0 +1,221 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Beth Ebert">
+   <meta name="GENERATOR" content="Mozilla/4.79 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Spatial Multi-Event Contingency Table</title>
+   <link rel = "stylesheet" href="../../default.css">
+</head>
+<body>
+
+<center>
+<h3>
+Spatial Multi-Event Contingency Table</h3></center>
+
+<center>Fr&eacute;d&eacute;ric Atger
+<br>M&eacute;t&eacute;o-France
+<br>frederic.atger@meteo.fr</center>
+
+<p>The spatial multi-event contingency table methodology is well suited
+for verifying high resolution forecasts since it gives credit to forecasts
+that are "close" to the truth in some way but need not be exactly correct.
+<p>The performance of a set of deterministic forecasts is often represented
+by a simple <a href="../verif_web_page.html#Contingency table">2 x 2 contingency
+table</a> that represents the joint distribution of forecasts and observations
+for a specified event criterion or threshold (for example, rain exceeding
+1 mm/h).
+<br>&nbsp;
+<table WIDTH="324" summary="Two by two contingency table of forecasts and observations" >
+<tr ALIGN=CENTER VALIGN=CENTER>
+  <td>&nbsp;</td>
+  <td>Observed yes</td>
+  <td>Observed no</td>
+</tr>
+<tr ALIGN=CENTER VALIGN=CENTER>
+  <td>Forecast yes</td>
+ <td BGCOLOR="#99FF99"><b><i>hits</i></b></td>
+  <td BGCOLOR="#99FF99"><b><i>false alarms</i></b></td>
+</tr>
+<tr ALIGN=CENTER VALIGN=CENTER>
+  <td>Forecast no</td>
+  <td BGCOLOR="#99FF99"><b><i>misses</i></b></td>
+  <td BGCOLOR="#99FF99"><b><i>correct negatives</i></b></td>
+</tr>
+</table>
+
+<p>Now, for the same observed event criterion, consider a range of <i>K</i>
+thresholds on the forecasts (for example, forecast rain exceeding 1 mm/h,
+2 mm/h, 5 mm/hr, etc). These can be viewed as possible decision thresholds
+for taking action, such as issuing a warning. Instead of the contingency
+table having only a single event category it now contains multiple categories
+corresponding to the <i>K</i> forecast thresholds.
+<br>&nbsp;
+<table summary="Multi-event contingency table of forecasts and observations" >
+<tr ALIGN=CENTER VALIGN=CENTER>
+  <td>&nbsp;</td>
+  <td>Observed yes</td>
+  <td>Observed no</td>
+</tr>
+<tr ALIGN=CENTER VALIGN=CENTER>
+  <td>Forecast >= <i>threshold<sub>1</sub></i></td>
+  <td BGCOLOR="#99FF99"><b><i>hits<sub>1</sub></i></b></td>
+  <td BGCOLOR="#99FF99"><b><i>false alarms<sub>1</sub></i></b></td>
+</tr>
+<tr ALIGN=CENTER VALIGN=CENTER>
+  <td>Forecast &lt; <i>threshold<sub>1</sub></i></td>
+  <td BGCOLOR="#99FF99"><b><i>misses<sub>1</sub></i></b></td>
+  <td BGCOLOR="#99FF99"><b><i>correct negatives<sub>1</sub></i></b></td>
+</tr>
+<tr ALIGN=CENTER VALIGN=CENTER>
+  <td>Forecast >= <i>threshold<sub>2</sub></i></td>
+  <td BGCOLOR="#33FF33"><b><i>hits<sub>2</sub></i></b></td>
+  <td BGCOLOR="#33FF33"><b><i>false alarms<sub>2</sub></i></b></td>
+</tr>
+<tr ALIGN=CENTER VALIGN=CENTER>
+  <td>Forecast &lt; <i>threshold<sub>2</sub></i></td>
+  <td BGCOLOR="#33FF33"><b><i>misses<sub>2</sub></i></b></td>
+  <td BGCOLOR="#33FF33"><b><i>correct negatives<sub>2</sub></i></b></td>
+</tr>
+<tr ALIGN=CENTER VALIGN=CENTER>
+  <td>...</td>
+  <td>...</td>
+  <td>...</td>
+</tr>
+<tr ALIGN=CENTER VALIGN=CENTER>
+  <td>...</td>
+  <td>...</td>
+  <td>...</td>
+</tr>
+<tr ALIGN=CENTER VALIGN=CENTER>
+  <td>Forecast >= <i>threshold<sub>K</sub></i></td>
+  <td BGCOLOR="#00CC00"><b><i>hits<sub>K</sub></i></b></td>
+  <td BGCOLOR="#00CC00"><b><i>false alarms<sub>K</sub></i></b></td>
+</tr>
+<tr ALIGN=CENTER VALIGN=CENTER>
+  <td>Forecast &lt; <i>threshold<sub>K</sub></i></td>
+  <td BGCOLOR="#00CC00"><b><i>misses<sub>K</sub></i></b></td>
+  <td BGCOLOR="#00CC00"><b><i>correct negatives<sub>K</sub></i></b></td>
+</tr>
+</table>
+
+<p>By using multiple thresholds, a deterministic forecast system can be
+evaluated across a range of possible decision thresholds (instead of just
+one) using <a href="../verif_web_page.html#ROC">ROC</a> and <a href="../verif_web_page.html#relative value">relative
+value</a>. This enables a fairer comparison against ensemble prediction
+systems or other probabilistic forecasts.
+<p>For an ensemble prediction system with <i>M</i> members, for each forecast
+threshold <i>k</i> there are now <i>M</i> probability categories (at least
+1 member >= <i>threshold<sub>k</sub></i>, at least 2 members >= <i>threshold<sub>k</sub></i>,
+etc.), yielding a total of <i>K</i>x<i>M</i> categories.
+<p>An alternative to multiple intensity thresholds is multiple "closeness"
+thresholds, for example, forecast event within 10 km of the location of
+interest, within 20 km, 30 km, etc. Forecasters conceptually interpret
+high resolution model output in this way. The verification results can
+therefore be used to assess the performance of high resolution forecasts
+where the exact spatial matching of forecast and observed events is difficult
+or unimportant.
+<p>Other forecast decision criteria are possible, depending on the application.
+<p>Decision criteria can be combined to produce multi-dimensional contingency
+tables. The spatial multi-category contingency table described by <a href="#Atger 2001">Atger
+(2001)</a> is a good example. In the case below, the number of categories
+would be <i>J</i>x<i>K</i> for single-model forecasts, and <i>J</i>x<i>K</i>x<i>M</i>
+for ensemble prediction systems.
+<br>&nbsp;
+<table summary="Spatial multi-event contingency table of forecasts and observations" >
+<tr ALIGN=CENTER VALIGN=CENTER>
+  <td>&nbsp;</td>
+  <td COLSPAN="2">Forecast within <i>distance<sub>1</sub></i></td>
+  <td COLSPAN="2">&nbsp;...&nbsp;</td>
+  <td COLSPAN="2">Forecast within <i>distance<sub>J</sub></i></td>
+</tr>
+<tr ALIGN=CENTER VALIGN=CENTER>
+  <td>&nbsp;</td>
+  <td>Observed yes</td>
+  <td>Observed no</td>
+  <td>&nbsp;...&nbsp;</td>
+  <td>&nbsp;...&nbsp;</td>
+  <td>Observed yes</td>
+  <td>Observed no</td>
+</tr>
+<tr ALIGN=CENTER VALIGN=CENTER>
+  <td>Forecast >= <i>threshold<sub>1</sub></i></td>
+  <td BGCOLOR="#99FF99"><b><i>hits<sub>11</sub></i></b></td>
+  <td BGCOLOR="#99FF99"><b><i>false alarms<sub>11</sub></i></b></td>
+  <td>&nbsp;...&nbsp;</td>
+  <td>&nbsp;...&nbsp;</td>
+  <td BGCOLOR="#CCFFFF"><b><i>hits<sub>J1</sub></i></b></td>
+  <td BGCOLOR="#CCFFFF"><b><i>false alarms<sub>J1</sub></i></b></td>
+</tr>
+<tr ALIGN=CENTER VALIGN=CENTER>
+  <td>Forecast &lt; <i>threshold<sub>1</sub></i></td>
+  <td BGCOLOR="#99FF99"><b><i>misses<sub>11</sub></i></b></td>
+  <td BGCOLOR="#99FF99"><b><i>correct negatives<sub>11</sub></i></b></td>
+  <td>&nbsp;...&nbsp;</td>
+  <td>&nbsp;...&nbsp;</td>
+  <td BGCOLOR="#CCFFFF"><b><i>misses<sub>J1</sub></i></b></td>
+  <td BGCOLOR="#CCFFFF"><b><i>correct negatives<sub>J1</sub></i></b></td>
+</tr>
+<tr ALIGN=CENTER VALIGN=CENTER>
+<td>Forecast >= <i>threshold<sub>2</sub></i></td>
+  <td BGCOLOR="#33FF33"><b><i>hits<sub>12</sub></i></b></td>
+  <td BGCOLOR="#33FF33"><b><i>false alarms<sub>12</sub></i></b></td>
+  <td>&nbsp;...&nbsp;</td>
+  <td>&nbsp;...&nbsp;</td>
+  <td BGCOLOR="#66FFFF"><b><i>hits<sub>J2</sub></i></b></td>
+  <td BGCOLOR="#66FFFF"><b><i>false alarms<sub>J2</sub></i></b></td>
+</tr>
+<tr ALIGN=CENTER VALIGN=CENTER>
+  <td>Forecast &lt; <i>threshold<sub>2</sub></i></td>
+  <td BGCOLOR="#33FF33"><b><i>misses<sub>12</sub></i></b></td>
+  <td BGCOLOR="#33FF33"><b><i>correct negatives<sub>12</sub></i></b></td>
+  <td>&nbsp;...&nbsp;</td>
+  <td>&nbsp;...&nbsp;</td>
+  <td BGCOLOR="#66FFFF"><b><i>misses<sub>J2</sub></i></b></td>
+  <td BGCOLOR="#66FFFF"><b><i>correct negatives<sub>J2</sub></i></b></td>
+</tr>
+<tr ALIGN=CENTER VALIGN=CENTER>
+  <td>...</td>
+  <td>...</td>
+  <td>...</td>
+  <td>&nbsp;...&nbsp;</td>
+  <td>&nbsp;...&nbsp;</td>
+  <td>...</td>
+  <td>...</td>
+</tr>
+<tr ALIGN=CENTER VALIGN=CENTER>
+  <td>...</td>
+  <td>...</td>
+  <td>...</td>
+  <td>&nbsp;...&nbsp;</td>
+  <td>&nbsp;...&nbsp;</td>
+  <td>...</td>
+  <td>...</td>
+</tr>
+<tr ALIGN=CENTER VALIGN=CENTER>
+  <td>Forecast >= <i>threshold<sub>K</sub></i></td>
+  <td BGCOLOR="#00CC00"><b><i>hits<sub>1K</sub></i></b></td>
+  <td BGCOLOR="#00CC00"><b><i>false alarms<sub>1K</sub></i></b></td>
+  <td>&nbsp;...</td>
+  <td>&nbsp;...&nbsp;</td>
+  <td BGCOLOR="#33CCFF"><b><i>hits<sub>JK</sub></i></b></td>
+  <td BGCOLOR="#33CCFF"><b><i>false alarms<sub>JK</sub></i></b></td>
+</tr>
+<tr ALIGN=CENTER VALIGN=CENTER>
+  <td>Forecast &lt; <i>threshold<sub>K</sub></i></td>
+  <td BGCOLOR="#00CC00"><b><i>misses<sub>1K</sub></i></b></td>
+  <td BGCOLOR="#00CC00"><b><i>correct negatives<sub>1K</sub></i></b></td>
+  <td>&nbsp;...&nbsp;</td>
+  <td>&nbsp;...&nbsp;</td>
+  <td BGCOLOR="#33CCFF"><b><i>misses<sub>JK</sub></i></b></td>
+  <td BGCOLOR="#33CCFF"><b><i>correct negatives<sub>JK</sub></i></b></td>
+</tr>
+</table>
+
+<p><b>Reference:</b>
+<p><a NAME="Atger 2001"></a>Atger, F., 2001: Verification of intense precipitation
+forecasts from single models and ensemble prediction systems. <i>Nonlin. Proc. Geophys.</i>,
+<b>8</b>, 401-417. Click <a href="http://www.copernicus.org/EGU/npg/8/401.htm">here</a>
+to get the PDF (295 Kb).
+</body>
+</html>

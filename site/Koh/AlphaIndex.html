@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Alpha Index (Koh and Ng, 2009)</title>
+  <link rel="stylesheet" href="../../default.css">
+</head>
+<body lang="EN-AU">
+<div class="Section1">
+<h2 style="text-align: center;">Alpha Index<br></h2>
+<div style="text-align: center;">Tieh-Yong Koh<br>
+School of Physical &amp; Mathematical Sciences<br>
+Nanyang Technological University, Singapore<br>
+<a href="mailto:kohty@ntu.edu.sg">kohty@ntu.edu.sg</a><br>
+</div>
+<p>The alpha index can be used to compare the random error of a model
+or forecast between regions of different observational variability (<a
+ href="#Koh_Ng_2009">Koh and Ng, 2009</a>). It is given by
+</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img style="width: 206px; height: 60px;"
+ alt="Alpha index equation" src="alpha.gif">
+</p>
+<p>where the squares are replaced by inner
+products if the variable is a vector (e.g. wind). It ranges between 0
+and 2, where the perfect score is 0.<br>
+</p>
+<p>Alpha is a normalized measure of unbiased error variance, where the
+normalization factor is the reciprocal of the sum of forecast and observation
+variances. Unbiased error variance itself tends to follow the trend of
+observation and forecast variability, evidenced by the identity:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<sub><img style="width: 346px; height: 24px;"
+ alt="variance of forecast error" src="varF-O.gif">
+</sub></p>
+<p>In other words, the difference between two
+different largely varying signals tends to be large as well. Such
+ influence of observation and forecast variability is effectively removed by 
+the normalization. </p>
+<p>Alpha is a "truer" measure of random error than the usual mean squared error (MSE) of
+bias-corrected forecasts. The latter measure tends to be misleadingly small if
+the observation has small uncertainty (e.g., wind near the surface, temperature
+near the equator) or if the model under-predicts the variability.</p>
+<p>Another advantage is that alpha being
+dimensionless can be directly compared for different variables. This allows
+quantitative assessment of the relative predictive capability of a
+model with regards to those variables.</p>
+<p>Note that from the identity above, alpha is
+related to a normalized measure of covariance:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img style="width: 244px; height: 63px;"
+ alt="One minus alpha" src="1-alpha.gif">
+<p>and so can be related to Pearson's
+correlation coefficient <i>r</i>:</p>
+<p class="MTDisplayEquation"><span lang="EN-US">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<sub><img style="width: 122px; height: 25px;"
+ alt="Relationship to correlation coefficient" src="relationship2r.gif"><br>
+</sub></span></p>
+<p>For imperfect observations, it can be proven that alpha is the upper bound of the normalized random error. <br>
+</p>
+<p><b>Reference</b></p>
+<p><a name="Koh_Ng_2009"></a>Koh, T.Y. and J.S. Ng
+(2009), Improved Diagnostics for NWP Verification in the Tropics, <i>J. Geophys. Res.</i>,
+<b>114</b>, D12102, doi:10.1029/2008JD011179.</p>
+<p><a  href="http://www3.ntu.edu.sg/home/kohty/spms/publication.htm">
+ http://www3.ntu.edu.sg/home/kohty/spms/publication.htm</a></p>
+<p>
+</div>
+</body>
+</html>

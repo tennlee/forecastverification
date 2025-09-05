@@ -1,0 +1,55 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Generator" content="Microsoft Word 97">
+   <meta name="Template" content="C:\Program Files\Microsoft Office\Office\html.dot">
+   <meta name="GENERATOR" content="Mozilla/4.79 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>Linear error in probability space (LEPS) </title>
+   <link rel = "stylesheet" href="../default.css">
+</head>
+<body link="#0000FF" vlink="#800080">
+<b><center>Linear error in probability space (LEPS)</center></b>
+<p>LEPS measures the error in probability space as opposed to measurement
+space, where CDF<sub>o</sub>( ) is the cumulative probability distribution
+of the observations, determined from an appropriate climatology (Ward and
+Folland, 1991).
+<p>The rationale behind transferring to probability space can be seen with
+the following example. A forecast is made of a temperature 7<sup>o</sup>C
+above average, and the verifying observation is 5<sup>o</sup>C above average.
+On another occasion the forecast is 1<sup>o</sup>C above average and the
+verifying observation is 1<sup>o</sup>C below average. In measurement space
+both forecasts are equally good, but it can be argued that the first forecast,
+which successfully forecasts an extreme value, is the better of the two.
+Transforming to probability space reflects this argument, as can be seen
+in the figure below.
+<p>For notational convenience, let P<sub>f</sub> = CDF<sub>o</sub>(F<sub>i</sub>
+), P<sub>v</sub> = CDF<sub>o</sub>(O<sub>i</sub> ). Then LEPS is simply
+|P<sub>f</sub>-P<sub>v</sub>|.
+<br>&nbsp;
+<img SRC="LEPSdiagramLW.gif" height=459 width=620>
+<br>&nbsp;
+<p>The basic form of LEPS has some disadvantages. Potts et al. (1996) adapted
+the score to overcome these. The revised LEPS score is 3(1-|P<sub>f</sub>-P<sub>v</sub>|+P<sub>f</sub><sup>2</sup>-P<sub>f</sub>+P<sub>v</sub><sup>2</sup>-P<sub>v</sub>)-1.
+<p>This score is doubly equitable, it has simple values for unskilful (0)
+and for perfect forecasts (1), and there is no 'bending back' for categorical
+data. This last property refers to the fact that in the simpler form of
+LEPS it is possible, for ordered categorical data, that forecasts which
+are maximally incorrect are penalised less than those which are slightly
+less erroneous.
+<p>LEPS scores can be used on both continuous and categorical data, and
+a skill score, taking values between –100 and 100 (or –1 and 1) for a set
+of forecasts can be constructed based on the LEPS score, though it is not
+doubly equitable.
+<br>&nbsp;
+<p><b>References</b>
+<br>Potts, J.M., C.K. Folland, I.T. Jolliffe, and D. Sexton, 1996: Revised
+"LEPS" scores for assessing climate model simulations and long-range forecasts.
+<i>J. Climate</i>, <b>9</b>, 34-53.
+<br>Ward, M.N. and C.K. Folland, 1991: Prediction of seasonal rainfall
+in the Nordeste of Brazil using eigenvectors of sea-surface temperature.
+<i>Int. J. Climatol.</i>, <b>11</b>, 711-743.
+<br>&nbsp;
+<p>Ian Jolliffe, February 2003
+</body>
+</html>

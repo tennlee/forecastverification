@@ -1,0 +1,11 @@
+The Eskdalemuir Dataset
+
+The Eskdalemuir dataset consists in a time serie of 6h accumulated precipitation, in mm, covering the period from the 1st January 1998 to the 31st December 2002.
+
+Column 1 contains the date and hour at which the observation and forecast are valid, in the format YYYYMMDDHH, where YYYY=year, MM=month, DD=day, HH=hour
+Column 2 contains the observations: these are synoptic reports of 6h precipitation accumulation measured by the rain-gauge at the Eskdalemuir observatory in Scotland (55^o 19' N, 3^o 12' W, 242m elevation). Missing values correspond to -9999.00.
+Column 3 contains the corresponding 6h accumulations for the 6h lead-time forecast from the UK mesoscale model, at the nearest grid-point.
+
+Eskdalemuir is characterised by a very wet climatology. The long-running Eskdalemuir observatory provides long and reliable time series of precipitation measurements. For these reasons the Eskdalemuir dataset is suitable for testing statistical techniques for extremes.
+
+Acknowledgements: the Eskdalemuir dataset was kindly provided by Clive Wilson at the UK Met Office. Its use and diffusion is for research purposes solely.

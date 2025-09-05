@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="content-type"
+ content="text/html; charset=ISO-8859-1">
+  <title>The logarithmic scoring rule a.k.a. "ignorance"</title>
+  <link rel = "stylesheet" href="../default.css">
+</head>
+<body>
+<h3 style="text-align: center;"><b style="">The Logarithmic Scoring
+Rule a.k.a. &#8220;ignorance&#8221;</b></h3>
+<p class="MsoNormal" align="center" style="text-align: center;"><b
+ style=""><o:p>&nbsp;Mark Roulston, Pennsylvania State University<br>
+</o:p></b></p>
+<p class="MsoNormal" style="text-align: justify;">The logarithmic scoring rule was
+suggested by Good in the 1950s [Good, 1952]. It can be defined as follows: If
+there are <span style=""><span style="font-style: italic;">n</span> </span>(mutually
+exclusive) possible outcomes and <span style="font-style: italic;">f</span><sub
+ style="font-style: italic;">i</sub> (<span style="font-style: italic;">i</span>=1,...<span
+ style="font-style: italic;">n</span>) is the predicted probability of
+the <span style=""><span style="font-style: italic;">i</span><sup>th</sup>
+</span>outcome occurring then if the <span style="font-style: italic;">j</span><span
+ style=""><sup>th</sup> </span>outcome is the
+one which actually occurs the score for this particular
+forecast-realization pair is given by</p>
+<p class="MsoNormal" style="text-align: center;"><o:p>&nbsp;IGN = -log</o:p><small><sub>2</sub></small><span
+ style="font-style: italic;"> f<sub style="font-style: italic;">j</sub></span><br>
+</p>
+<p class="MsoNormal" style="text-align: justify;">As defined above,
+with a negative sign, the logarithmic score cannot be negative and smaller values of
+the score are better. The minimum value of the score (zero) is obtained if a probability
+of 100% is assigned to the actual outcome. If a probability of zero is assigned
+to the actual outcome the logarithmic scoring rule is infinite. We will examine
+the meaning of this below.</p>
+<p class="MsoNormal" style="text-align: justify;">The logarithmic
+scoring rule is <i style="">strictly proper</i> which means that if a
+forecaster believes the probabilities of each outcome occurring are <span
+ style="font-style: italic;">g</span><sub style="font-style: italic;">i</sub>
+(<span style="font-style: italic;">i</span>=1,...<span
+ style="font-style: italic;">n</span>)<span style=""> </span>then that
+forecaster will minimize their
+expected logarithmic score by issuing a forecast <span
+ style="font-style: italic;">f</span><sub style="font-style: italic;">i</sub>
+= <span style="font-style: italic;">g</span><sub
+ style="font-style: italic;">i</sub>. The Brier score is
+also strictly proper. Unlike the Brier score, however, the logarithmic score
+is <i style="">local </i>in that it only depends upon the
+probability assigned to the outcome which occurs and not to any of the
+probabilities assigned to the other outcomes.</p>
+<p class="MsoNormal" style="text-align: justify;">The use of the term
+&#8220;ignorance&#8221; to describe the logarithmic score follows from an
+information theoretic
+interpretation of what the score means [Roulston and Smith, 2002].
+Consider Alice who is in a closed room and Bob who is outside observing
+the weather. If there are <span style="font-style: italic;">n</span>
+possible weather outcomes then, in the absence of any other information, Bob
+will have to send Alice 2<sup><span style="font-style: italic;">n</span></sup>
+bits of information to describe
+which outcome he observes. There is a result from information theory,
+however, which says that a random symbol sequence containing <span
+ style="font-style: italic;">n</span>different types of symbol
+occurring with frequencies <span style="font-style: italic;">p</span><sub
+ style="font-style: italic;">i</sub> (<span style="font-style: italic;">i</span>=1,...<span
+ style="font-style: italic;">n</span>) can be compressed and that the
+maximum level of compression is given by assigning, on average, -log<small><sub>2</sub></small><span
+ style="font-style: italic;"> p<sub style="font-style: italic;">i</sub></span>
+bits to the <span style="font-style: italic;">i</span><sup>th</sup>
+symbol. Note that this compression works by
+assigning fewer bits to commonly occurring symbols while assigning more
+bits to the rarer symbols. So if Alice and Bob both believe that the
+probabilities of the different outcomes are <span style="font-style: italic;">f</span><sub
+ style="font-style: italic;">i</sub> (<span style="font-style: italic;">i</span>=1,...<span
+ style="font-style: italic;">n</span>) they can <i style="">in theory </i>agree
+on some sort of
+compression scheme which assigns, on average, -log<small><sub>2</sub></small><span
+ style="font-style: italic;"> f<sub style="font-style: italic;">i</sub></span>
+bits to the <span style=""><span style="font-style: italic;">i</span><sup>th</sup></span>
+outcome. If
+the <span style="font-style: italic;">j</span><sup>th</sup> outcome
+then occurs then Bob will have
+to send Alice IGN=-log<small><sub>2</sub></small><span
+ style="font-style: italic;"> f<sub style="font-style: italic;">j</sub></span>
+bits to tell her which outcome occurred. In this scenario IGN is the
+extra amount of information Alice needs to know which outcome occurred <i
+ style="">given</i> that she had the forecast<span
+ style="font-style: italic;"> f</span><sub style="font-style: italic;">i</sub>
+(<span style="font-style: italic;">i</span>=1,...<span
+ style="font-style: italic;">n</span>), that is
+it represents the information deficit &#8211; or ignorance &#8211; of Alice when
+she had the forecast. If the forecast assigned a 100% chance to the outcome which
+occurs then Alice's ignorance was zero,
+she didn't need Bob to tell her what happened. If the forecast assigned zero
+probability to the actual outcome then Alice
+is in trouble since an optimal data compression scheme has no way of
+encoding
+outcomes deemed impossible &#8211; that would be suboptimal.
+</p>
+<p class="MsoNormal" style="text-align: justify;">The idea of evaluating the
+goodness of scientific predictions in terms of how much they allow us to
+compress our observations of the real world has been discussed by P.W. Davies [1991].
+Davies argues that rather than concerning ourselves with the question of
+whether scientific theories are &#8220;true&#8221; or not we can gauge their effectiveness
+as data compression schemes. For example, Newton's
+law of gravitation allows a huge number of observations of planetary
+orbits to be compressed down to some initial conditions and some
+equations. The
+ignorance score is a practical way to apply this philosophy to weather predictions.
+</p>
+<p>In addition to interpreting the logarithmic score as an information
+deficit we can also interpret the
+score in terms of the wealth doubling rates of a gambler betting on the
+forecast. Suppose that a casino is offering to multiply any money
+placed on the <span style="font-style: italic;">i</span><sup>th</sup>
+outcome by a factor <span style="font-style: italic;">o</span><sub
+ style="font-style: italic;">i</sub> if
+that outcome occurs. For example if <span style="font-style: italic;">o</span><sub
+ style="font-style: italic;">i</sub>=3 then this is equivalent to
+saying that the
+odds being offered on the <span style=""><span
+ style="font-style: italic;">i</span><sup>th</sup></span> outcome are
+2:1 against (you would get $2 for a stake
+of $1 and you would get the stake returned). If <span
+ style="font-style: italic;">w</span><sub style="font-style: italic;">i</sub>
+is
+the fraction of the total amount gambled
+placed on the <span style=""><span style="font-style: italic;">i</span><sup>th</sup></span>
+outcome then if the <span style=""><span style="font-style: italic;">j</span><sup>th</sup></span>
+outcome occurs the total amount will be
+multiplied by a factor <span style="font-style: italic;">w<sub>j</sub></span><span
+ style="font-style: italic;">o<sub>j</sub></span>. The logarithm log<small><sub>2</sub></small><span
+ style="font-style: italic;"> </span><span style="font-style: italic;">w<sub>j</sub></span><span
+ style="font-style: italic;">o<sub>j</sub></span> can
+be interpreted as the wealth doubling rate &#8211; the number of bets
+required to double the gambler&#8217;s initial wealth.
+It can be shown that if a gambler believes the probabilities of the different
+outcomes occurring are <span style="font-style: italic;">f</span><sub
+ style="font-style: italic;">i</sub>
+(<span style="font-style: italic;">i</span>=1,...<span
+ style="font-style: italic;">n</span>) and they wish to maximize
+their wealth doubling rate then they should distribute their stake
+money such that <span style="font-style: italic;">w</span><sub
+ style="font-style: italic;">i</sub>
+= <span style="font-style: italic;">f</span><sub
+ style="font-style: italic;">i</sub>. This strategy is known as &#8220;Kelly
+betting&#8221; [Kelly, 1956] and follows from
+the fact that the logarithmic score is a proper score. If the casino
+believes the probabilities of the different outcomes are <span
+ style="font-style: italic;">g</span><sub style="font-style: italic;">i</sub>
+(<span style="font-style: italic;">i</span>=1,...<span
+ style="font-style: italic;">n</span>)<span style=""> </span>and
+the casino sets <i style="">fair odds </i>
+(&#931;1/<span style="font-style: italic;">o</span><sub
+ style="font-style: italic;">i</sub>=1)
+then the casino
+will set its odds such that <span style="font-style: italic;">o</span><sub
+ style="font-style: italic;">i</sub>=1/<span style="font-style: italic;">g</span><sub
+ style="font-style: italic;">i</sub>, and the wealth doubling rate of a
+Kelly betting gambler will be given by</p>
+<p class="MsoNormal" style="text-align: justify;"><o:p></o:p></p>
+<p class="MsoNormal" style="text-align: left;"><o:p></o:p></p>
+<p class="MsoNormal" style="text-align: center;"><o:p></o:p>log<small><sub>2</sub></small><span
+ style="font-style: italic;"> </span><span style="font-style: italic;">w<sub>j</sub></span><span
+ style="font-style: italic;">o<sub>j&nbsp; </sub></span>=&nbsp; log<small><sub>2</sub></small><span
+ style="font-style: italic;"> </span><span style="font-style: italic;">f<sub>j</sub></span><span
+ style="font-style: italic;"><sub> </sub></span>-&nbsp;log<small><sub>2</sub></small><span
+ style="font-style: italic;"> </span><span style="font-style: italic;">g<sub>j&nbsp;&nbsp;
+</sub></span>=&nbsp; -log<small><sub>2</sub></small><span
+ style="font-style: italic;"> </span><span style="font-style: italic;">g<sub>j</sub></span>
+- -log<small><sub>2</sub></small><span style="font-style: italic;"> </span><span
+ style="font-style: italic;">f<sub>j</sub></span><span
+ style="font-style: italic;"><sub>&nbsp;&nbsp; </sub></span>=&nbsp;
+IGN(<span style="font-style: italic;">g<sub>j</sub></span>) - IGN(<span
+ style="font-style: italic;">f<sub>j</sub></span>)<br>
+</p>
+<p class="MsoNormal" style="text-align: justify;">For the gambler to make money
+this wealth doubling rate must be positive. This will only be true if the
+ignorance score of the casino's forecast is larger than the ignorance
+score of the gambler&#8217;s forecast.<span style="">&nbsp; </span>In this
+interpretation, if a probability of zero is assigned to the outcome which
+occurs then the gambler would place none of their money on that outcome
+and would lose everything.<span style="">&nbsp; </span></p>
+<p class="MsoNormal" style="text-align: justify;">The idea of
+representing our uncertainty about the Universe through gambling was suggested by
+Immanuel Kant in his <i style="">Critique of Pure Reason </i>in 1781.
+Kant equated betting with &#8220;pragmatic belief&#8221; [Menand, 2001]. The
+logarithmic scoring rule is, in a sense, a practical implementation of this
+philosophical suggestion.</p>
+<p class="MsoNormal" style="text-align: justify;"><b style="">References</b></p>
+<p class="MsoNormal" style="text-align: justify;">Davies, P.C.W., 1991:
+Why is the physical world so comprehensible? <i style="">Complexity,
+Entropy and the Physics of Information, </i>W.H. Zurek, Ed.,
+Addison-Wesley, 61-70.</p>
+<p class="MsoNormal" style="text-align: justify;">Good, I.J., 1952:
+Rational decisions, <i style="">Journal of the Royal
+Statistical Society, </i><b style="">14</b>, 107-114.<o:p></o:p></p>
+<p class="MsoNormal" style="text-align: justify;">Menand, L. 2001: <i
+ style="">The Metaphysical Club, </i>Harper-Collins, <st1:City><st1:place>London</st1:place></st1:City>.
+<o:p></o:p></p>
+<p class="MsoNormal" style="text-align: justify;">Kelly, J., 1956: A new
+interpretation of information rate, <i style="">Bell
+Systems Technical Journal, </i><b style="">35</b>, 916-926.</p>
+<p class="MsoNormal" style="text-align: justify;">Roulston, M.S. and
+Smith, <st1:City><st1:place>L.A.</st1:place></st1:City>,
+2002: Evaluating probabilistic forecasts using information theory, <i
+ style="">Monthly Weather Review, </i><b style="">130</b>, 1653-1660.<o:p></o:p></p>
+</body>
+</html>
