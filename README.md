@@ -1,1 +1,3 @@
-WMO JWGFVR verification webpage which was previously hosted at https://www.cawcr.gov.au/projects/verification/
+WMO JWGFVR verification webpage hosted at https://jwgfvr.github.io/forecastverification/
+
+An older version was this site was previously hosted at https://www.cawcr.gov.au/projects/verification/
