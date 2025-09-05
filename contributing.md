@@ -55,7 +55,9 @@ This repository contains the HTML-based WMO JWGFVR (Joint Working Group on Forec
     # rebase onto latest main
     git checkout issue-123-add-crps
     git rebase upstream/main
-    # resolve conflicts if any, then
+    # If there are no conflicts
+    git push
+    # If there are conflicts, please resolve them and do
     git push --force-with-lease
     ```
 10. Merge: After at least one maintainer approves, a maintainer will merge the pull request.
